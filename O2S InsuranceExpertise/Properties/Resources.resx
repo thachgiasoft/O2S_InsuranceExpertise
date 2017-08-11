@@ -268,12 +268,6 @@
   <data name="settings_24_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\settings-24-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="medical_records_21" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\medical-records_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="medical_records_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\medical-records_2.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="minus_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\minus-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
