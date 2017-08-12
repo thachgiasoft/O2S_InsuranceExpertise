@@ -307,7 +307,7 @@
             this.manv.AppearanceHeader.Options.UseTextOptions = true;
             this.manv.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.manv.Caption = "Mã tùy chọn";
-            this.manv.FieldName = "toolsoptioncode";
+            this.manv.FieldName = "optioncode";
             this.manv.Name = "manv";
             this.manv.OptionsColumn.AllowEdit = false;
             this.manv.Visible = true;
@@ -325,7 +325,7 @@
             this.tennv.AppearanceHeader.Options.UseTextOptions = true;
             this.tennv.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.tennv.Caption = "Tên tùy chọn";
-            this.tennv.FieldName = "toolsoptionname";
+            this.tennv.FieldName = "optionname";
             this.tennv.Name = "tennv";
             this.tennv.OptionsColumn.AllowEdit = false;
             this.tennv.Visible = true;
@@ -343,7 +343,7 @@
             this.gridColumn3.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn3.Caption = "Giá trị";
-            this.gridColumn3.FieldName = "toolsoptionvalue";
+            this.gridColumn3.FieldName = "optionvalue";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
@@ -363,7 +363,7 @@
             this.gridColumn4.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn4.Caption = "Khóa";
-            this.gridColumn4.FieldName = "toolsoptionlook";
+            this.gridColumn4.FieldName = "optionlook";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;
@@ -380,7 +380,7 @@
             this.gridColumn1.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn1.Caption = "Ý nghĩa";
-            this.gridColumn1.FieldName = "toolsoptionnote";
+            this.gridColumn1.FieldName = "optionnote";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;

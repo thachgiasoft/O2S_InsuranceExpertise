@@ -20,7 +20,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -37,7 +37,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void timerTblBCNoiTru_Tick(object sender, EventArgs e)
@@ -58,7 +58,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 

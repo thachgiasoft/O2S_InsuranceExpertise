@@ -22,7 +22,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -37,7 +37,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -52,7 +52,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -67,7 +67,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -82,7 +82,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -97,7 +97,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void navBarItemNhatKySuKien_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
@@ -111,7 +111,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void navBarItemQLMayTram_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
@@ -125,7 +125,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -140,7 +140,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -155,7 +155,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -170,7 +170,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -185,7 +185,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -202,7 +202,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -217,7 +217,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void navBarItemTaoTemplateWord_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
@@ -229,7 +229,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
     }

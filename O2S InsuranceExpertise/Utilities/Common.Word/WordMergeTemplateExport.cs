@@ -48,7 +48,7 @@ namespace O2S_InsuranceExpertise.Utilities.Common.Word
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                O2S_InsuranceExpertise.Common.Logging.LogSystem.Warn(ex);
             }
             return doc;
         }
@@ -70,7 +70,7 @@ namespace O2S_InsuranceExpertise.Utilities.Common.Word
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                O2S_InsuranceExpertise.Common.Logging.LogSystem.Warn(ex);
             }
             return doc;
         }
@@ -89,11 +89,11 @@ namespace O2S_InsuranceExpertise.Utilities.Common.Word
                 doc = docccc.Clone();
                 doc.MailMerge.Execute(dt);
                 doc.Save(result, SaveFormat.Docx);
-               // doc.Save(strRoot + "\\Templates\\ReportTemps\\" + filetempname, SaveFormat.Docx);
+                // doc.Save(strRoot + "\\Templates\\ReportTemps\\" + filetempname, SaveFormat.Docx);
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                O2S_InsuranceExpertise.Common.Logging.LogSystem.Warn(ex);
             }
             return result;
         }

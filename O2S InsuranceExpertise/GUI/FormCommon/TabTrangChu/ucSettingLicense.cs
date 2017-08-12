@@ -31,7 +31,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void HienThiThongTinVeLicense()
@@ -53,7 +53,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void LoadFormTaoLicense()
@@ -77,7 +77,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -99,7 +99,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
 
         }
@@ -122,7 +122,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void btnLicenseCopy_Click(object sender, EventArgs e)
@@ -134,7 +134,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -158,12 +158,12 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
                         string datedenngay = DateTime.ParseExact(dtTaoLicenseKeyDenNgay.Text, "HH:mm:ss dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyyMMdd");
                         MaDatabaseVaThoiGianSuDung = O2S_InsuranceExpertise.Base.KeyTrongPhanMem.SaltEncrypt + "$" + txtTaoLicenseMaMay.Text + "$" + datetungay + "$" + datedenngay;
                     }
-                    txtTaoLicenseMaKichHoat.Text = EncryptAndDecrypt.Encrypt(MaDatabaseVaThoiGianSuDung, true);
+                    txtTaoLicenseMaKichHoat.Text = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(MaDatabaseVaThoiGianSuDung, true);
                 }
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -176,7 +176,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -195,7 +195,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         #endregion
@@ -217,7 +217,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 

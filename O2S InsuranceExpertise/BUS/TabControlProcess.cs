@@ -29,7 +29,7 @@ namespace O2S_InsuranceExpertise.BUS
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -56,7 +56,7 @@ namespace O2S_InsuranceExpertise.BUS
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -95,7 +95,7 @@ namespace O2S_InsuranceExpertise.BUS
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -120,7 +120,7 @@ namespace O2S_InsuranceExpertise.BUS
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
             return result;
         }
@@ -141,7 +141,7 @@ namespace O2S_InsuranceExpertise.BUS
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -304,7 +304,7 @@ namespace O2S_InsuranceExpertise.BUS
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
             return ucResult;
         }

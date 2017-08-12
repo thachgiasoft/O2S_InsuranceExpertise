@@ -36,7 +36,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void Load_ControlDefault()
@@ -58,7 +58,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void LoadDS_LoaiDanhMuc()
@@ -76,7 +76,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void LoadDS_DanhMuc(long othertypelistid)
@@ -97,7 +97,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         #endregion
@@ -128,7 +128,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void btnLoaiDM_Luu_Click(object sender, EventArgs e)
@@ -175,7 +175,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void gridControlLoaiDM_Click(object sender, EventArgs e)
@@ -209,7 +209,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -241,7 +241,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void btnDM_Luu_Click(object sender, EventArgs e)
@@ -288,7 +288,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void gridControlDM_Click(object sender, EventArgs e)
@@ -314,7 +314,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -334,7 +334,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         #endregion

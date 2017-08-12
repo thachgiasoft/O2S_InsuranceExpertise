@@ -297,6 +297,7 @@
             this.chkKhoa.Properties.AppearanceDropDown.Options.UseFont = true;
             this.chkKhoa.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.chkKhoa.Properties.DropDownRows = 15;
             this.chkKhoa.Size = new System.Drawing.Size(337, 26);
             this.chkKhoa.TabIndex = 35;
             // 

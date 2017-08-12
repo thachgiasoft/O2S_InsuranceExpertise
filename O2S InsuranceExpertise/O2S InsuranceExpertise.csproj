@@ -156,8 +156,8 @@
     <Reference Include="Mono.Security">
       <HintPath>..\Library\Mono.Security.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Npgsql, Version=3.2.2.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
@@ -199,10 +199,8 @@
     <Compile Include="Base\bienTrongBaoCao.cs" />
     <Compile Include="Base\CheckPermission.cs" />
     <Compile Include="DAL\ConnectDatabase.cs" />
-    <Compile Include="Base\EncryptAndDecrypt.cs" />
     <Compile Include="Base\KeyTrongPhanMem.cs" />
     <Compile Include="Base\listChucNang.cs" />
-    <Compile Include="Base\Logging.cs" />
     <Compile Include="Base\ReadExcelFile.cs" />
     <Compile Include="Base\SessionLogin.cs" />
     <Compile Include="Base\ThongBaoLable.cs" />

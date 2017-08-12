@@ -248,7 +248,7 @@ namespace O2S_InsuranceExpertise.Base
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
             return lstresult;
         }

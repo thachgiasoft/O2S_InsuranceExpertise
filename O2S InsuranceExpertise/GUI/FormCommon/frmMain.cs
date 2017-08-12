@@ -42,7 +42,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void LoadPageMenu()
@@ -61,24 +61,24 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                 //ucCauHinh.Dock = System.Windows.Forms.DockStyle.Fill;
                 //tabMenuCauHinh.Controls.Add(ucCauHinh);
 
-                tabMenuCauHinh.Controls.Clear();
+                tabMenuCongCuKhac.Controls.Clear();
                 FormCommon.ucCongCuKhac ucCongCuKhac = new ucCongCuKhac();
                 ucCongCuKhac.MyGetData = new ucCongCuKhac.GetString(HienThiTenChucNang);
                 ucCongCuKhac.Dock = System.Windows.Forms.DockStyle.Fill;
-                tabMenuCauHinh.Controls.Add(ucCongCuKhac);
+                tabMenuCongCuKhac.Controls.Add(ucCongCuKhac);
 
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void LoadThongTinVePhanMem_Version()
         {
             try
             {
-                string serverhost = EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["ServerHost"].ToString(), true);
-                string serverdb = EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Database"].ToString(), true);
+                string serverhost = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["ServerHost"].ToString(), true);
+                string serverdb = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Database"].ToString(), true);
                 System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
                 FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
                 string version = fvi.FileVersion;
@@ -88,7 +88,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -114,7 +114,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -131,7 +131,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         #endregion
@@ -160,7 +160,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -179,7 +179,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -218,7 +218,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -235,7 +235,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
                 throw;
             }
         }
@@ -250,7 +250,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 

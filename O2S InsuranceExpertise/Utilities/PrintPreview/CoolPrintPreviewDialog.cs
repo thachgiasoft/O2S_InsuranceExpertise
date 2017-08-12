@@ -361,13 +361,13 @@ namespace O2S_InsuranceExpertise.Utilities.PrintPreview
         {
             try
             {
-                double str =O2S_InsuranceExpertise.Common.TypeConvert.TypeConvertParse.ToDouble( _Zoom.EditValue.ToString());
+                double str = O2S_InsuranceExpertise.Common.TypeConvert.TypeConvertParse.ToDouble(_Zoom.EditValue.ToString());
                 _preview.Zoom = str;
                 _ZoomLable.Caption = (str * 100).ToString() + "%";
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                O2S_InsuranceExpertise.Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -379,7 +379,7 @@ namespace O2S_InsuranceExpertise.Utilities.PrintPreview
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                O2S_InsuranceExpertise.Common.Logging.LogSystem.Warn(ex);
             }
         }
 

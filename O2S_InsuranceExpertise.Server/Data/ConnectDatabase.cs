@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Data;
-using System.Windows.Forms;
 using Npgsql;
 using System.Configuration;
-using O2S_InsuranceExpertise.DTO;
-using O2S_InsuranceExpertise.Base;
 
-namespace O2S_InsuranceExpertise.DAL
+namespace O2S_InsuranceExpertise.Server.Base
 {
     public class ConnectDatabase
     {
@@ -55,7 +52,7 @@ namespace O2S_InsuranceExpertise.DAL
             catch (Exception ex)
             {
                 kiemtraketnoi = false;
-                MessageBox.Show("Có lỗi khi đóng kết nối đến CSDL", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Có lỗi khi đóng kết nối đến CSDL", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Common.Logging.LogSystem.Error("Loi dong ket noi den CSDL: " + ex.ToString());
             }
         }
@@ -74,7 +71,7 @@ namespace O2S_InsuranceExpertise.DAL
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Có lỗi dữ liệu đầu vào" + ex.ToString(), "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Có lỗi dữ liệu đầu vào" + ex.ToString(), "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Common.Logging.LogSystem.Error("Loi getDataTable: " + ex.ToString());
             }
             return dt;
@@ -95,7 +92,7 @@ namespace O2S_InsuranceExpertise.DAL
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Có lỗi khi thực thi đến CSDL", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Có lỗi khi thực thi đến CSDL", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Common.Logging.LogSystem.Error("Loi ExecuteNonQuery: " + ex.ToString());
             }
             return result;
@@ -188,8 +185,8 @@ namespace O2S_InsuranceExpertise.DAL
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Có lỗi dữ liệu đầu vào" + ex.ToString(), "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-              Common.Logging.LogSystem.Error("Loi getDataTable: " + ex.ToString());
+                //MessageBox.Show("Có lỗi dữ liệu đầu vào" + ex.ToString(), "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Common.Logging.LogSystem.Error("Loi getDataTable: " + ex.ToString());
             }
             return dt;
         }
@@ -209,7 +206,7 @@ namespace O2S_InsuranceExpertise.DAL
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Có lỗi khi thực thi đến CSDL", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Có lỗi khi thực thi đến CSDL", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Common.Logging.LogSystem.Error("Loi ExecuteNonQuery: " + ex.ToString());
             }
             return result;
@@ -217,7 +214,7 @@ namespace O2S_InsuranceExpertise.DAL
 
         #endregion
 
-        #region Sử dụng DB_LINK để kết nối đến một CSDL khác
+        #region Kết nối từ DB giám định sang DB HIS
         public DataTable GetDataTable_Dblink(string sql)
         {
             DataTable result = new DataTable();
@@ -253,7 +250,7 @@ namespace O2S_InsuranceExpertise.DAL
             }
             catch (Exception ex)
             {
-                //Logging.Error("Loi getDataTable Dblink: " + ex.ToString());
+                //Common.Logging.LogSystem.Error("Loi getDataTable Dblink: " + ex.ToString());
                 Execute_Dblink_Disconnect_HIS();
                 Execute_Dblink_Connect_HIS();
                 result = ExecuteNonQuery_HSBA(sql);
@@ -286,7 +283,73 @@ namespace O2S_InsuranceExpertise.DAL
         }
         #endregion
 
-
+        #region Kết nối từ DB HIS sang DB Giám định
+        public DataTable GetDataTable_Dblink_IE(string sql)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                //dblink_connect
+                Execute_Dblink_Connect_IE();
+                //Chay SQL thuc thi
+                result = GetDataTable_HIS(sql);
+                //Disconnect
+                Execute_Dblink_Disconnect_IE();
+            }
+            catch (Exception ex)
+            {
+                Execute_Dblink_Disconnect_IE();
+                Execute_Dblink_Connect_IE();
+                result = GetDataTable_HIS(sql);
+                Execute_Dblink_Disconnect_IE();
+            }
+            return result;
+        }
+        //public bool ExecuteNonQuery_Dblink_IE(string sql)
+        //{
+        //    bool result = false;
+        //    try
+        //    {
+        //        //dblink_connect
+        //        Execute_Dblink_Connect_HIS();
+        //        //Chay SQL thuc thi
+        //        result = ExecuteNonQuery_HSBA(sql);
+        //        //Disconnect
+        //        Execute_Dblink_Disconnect_HIS();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //Common.Logging.LogSystem.Error("Loi getDataTable Dblink: " + ex.ToString());
+        //        Execute_Dblink_Disconnect_HIS();
+        //        Execute_Dblink_Connect_HIS();
+        //        result = ExecuteNonQuery_HSBA(sql);
+        //        Execute_Dblink_Disconnect_HIS();
+        //    }
+        //    return result;
+        //}
+        public void Execute_Dblink_Connect_IE()
+        {
+            try
+            {
+                string dblink_connect = "SELECT dblink_connect('myconn_ie', 'dbname=" + serverdb_HSBA + " port=5432 host=" + serverhost_HSBA + " user=" + serveruser_HSBA + " password=" + serverpass_HSBA + "');";
+                GetDataTable_HIS(dblink_connect);
+            }
+            catch (Exception)
+            {
+            }
+        }
+        public void Execute_Dblink_Disconnect_IE()
+        {
+            try
+            {
+                string dblink_dis = "SELECT dblink_disconnect('myconn_ie');";
+                GetDataTable_HIS(dblink_dis);
+            }
+            catch (Exception)
+            {
+            }
+        }
+        #endregion
 
 
     }

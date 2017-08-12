@@ -31,7 +31,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void LoadKetNoiDatabase()
@@ -39,22 +39,22 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
             try
             {
                 // Giải mã giá trị lưu trong config
-                this.txtDBHost.Text = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["ServerHost"].ToString().Trim(), true);
-                this.txtDBPort.Text = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["ServerPort"].ToString().Trim(), true);
-                this.txtDBUser.Text = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Username"].ToString().Trim(), true);
-                this.txtDBPass.Text = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Password"].ToString().Trim(), true);
-                this.txtDBName.Text = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Database"].ToString().Trim(), true);
-                this.txtDBHost_HSBA.Text = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["ServerHost_HSBA"].ToString().Trim(), true);
-                this.txtDBPort_HSBA.Text = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["ServerPort_HSBA"].ToString().Trim(), true);
-                this.txtDBUser_HSBA.Text = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Username_HSBA"].ToString().Trim(), true);
-                this.txtDBPass_HSBA.Text = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Password_HSBA"].ToString().Trim(), true);
-                this.txtDBName_HSBA.Text = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Database_HSBA"].ToString().Trim(), true);
+                this.txtDBHost.Text = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["ServerHost"].ToString().Trim(), true);
+                this.txtDBPort.Text = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["ServerPort"].ToString().Trim(), true);
+                this.txtDBUser.Text = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Username"].ToString().Trim(), true);
+                this.txtDBPass.Text = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Password"].ToString().Trim(), true);
+                this.txtDBName.Text = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Database"].ToString().Trim(), true);
+                this.txtDBHost_HSBA.Text = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["ServerHost_HSBA"].ToString().Trim(), true);
+                this.txtDBPort_HSBA.Text = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["ServerPort_HSBA"].ToString().Trim(), true);
+                this.txtDBUser_HSBA.Text = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Username_HSBA"].ToString().Trim(), true);
+                this.txtDBPass_HSBA.Text = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Password_HSBA"].ToString().Trim(), true);
+                this.txtDBName_HSBA.Text = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Database_HSBA"].ToString().Trim(), true);
 
                 LoadCauHinhTaiKhoanDangNhapTrenCongBHYT();
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void LoadCauHinhTaiKhoanDangNhapTrenCongBHYT()
@@ -73,7 +73,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -118,7 +118,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
                 }
                 if (boolfound_HSBA == false)
                 {
-                    MessageBox.Show("Lỗi kết nối đến cơ sở dữ liệu Hồ sơ bệnh án!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi kết nối đến cơ sở dữ liệu Giám định BHYT!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 dr_HSBA.Close();
                 conn_HSBA.Close();
@@ -126,7 +126,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi kết nối đến cơ sở dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                O2S_InsuranceExpertise.Base.Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
 
@@ -135,16 +135,16 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
             try
             {
                 Configuration _config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                _config.AppSettings.Settings["ServerHost"].Value = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(txtDBHost.Text.Trim(), true);
-                _config.AppSettings.Settings["ServerPort"].Value = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(txtDBPort.Text.Trim(), true);
-                _config.AppSettings.Settings["Username"].Value = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(txtDBUser.Text.Trim(), true);
-                _config.AppSettings.Settings["Password"].Value = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(txtDBPass.Text.Trim(), true);
-                _config.AppSettings.Settings["Database"].Value = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(txtDBName.Text.Trim(), true);
-                _config.AppSettings.Settings["ServerHost_HSBA"].Value = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(txtDBHost_HSBA.Text.Trim(), true);
-                _config.AppSettings.Settings["ServerPort_HSBA"].Value = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(txtDBPort_HSBA.Text.Trim(), true);
-                _config.AppSettings.Settings["Username_HSBA"].Value = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(txtDBUser_HSBA.Text.Trim(), true);
-                _config.AppSettings.Settings["Password_HSBA"].Value = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(txtDBPass_HSBA.Text.Trim(), true);
-                _config.AppSettings.Settings["Database_HSBA"].Value = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(txtDBName_HSBA.Text.Trim(), true);
+                _config.AppSettings.Settings["ServerHost"].Value = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(txtDBHost.Text.Trim(), true);
+                _config.AppSettings.Settings["ServerPort"].Value = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(txtDBPort.Text.Trim(), true);
+                _config.AppSettings.Settings["Username"].Value = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(txtDBUser.Text.Trim(), true);
+                _config.AppSettings.Settings["Password"].Value = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(txtDBPass.Text.Trim(), true);
+                _config.AppSettings.Settings["Database"].Value = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(txtDBName.Text.Trim(), true);
+                _config.AppSettings.Settings["ServerHost_HSBA"].Value = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(txtDBHost_HSBA.Text.Trim(), true);
+                _config.AppSettings.Settings["ServerPort_HSBA"].Value = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(txtDBPort_HSBA.Text.Trim(), true);
+                _config.AppSettings.Settings["Username_HSBA"].Value = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(txtDBUser_HSBA.Text.Trim(), true);
+                _config.AppSettings.Settings["Password_HSBA"].Value = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(txtDBPass_HSBA.Text.Trim(), true);
+                _config.AppSettings.Settings["Database_HSBA"].Value = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(txtDBName_HSBA.Text.Trim(), true);
                 _config.Save(ConfigurationSaveMode.Modified);
                 ConfigurationManager.RefreshSection("appSettings");
 
@@ -155,7 +155,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
         private void LuuLaiTaiKhoanTrenCongGDBHYT()
@@ -175,7 +175,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
 
@@ -196,7 +196,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi cập nhật cơ sở dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                O2S_InsuranceExpertise.Base.Logging.Error("Lỗi cập nhật cơ sở dữ liệu!" + ex.ToString());
+                Common.Logging.LogSystem.Error("Lỗi cập nhật cơ sở dữ liệu!" + ex.ToString());
             }
             SplashScreenManager.CloseForm();
         }

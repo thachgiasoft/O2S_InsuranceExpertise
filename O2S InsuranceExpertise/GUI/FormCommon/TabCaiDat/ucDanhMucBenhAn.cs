@@ -33,7 +33,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -51,7 +51,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -72,7 +72,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -100,7 +100,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -118,7 +118,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void btnSua_Click(object sender, EventArgs e)
@@ -135,7 +135,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -188,7 +188,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
 
@@ -212,7 +212,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -232,7 +232,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 

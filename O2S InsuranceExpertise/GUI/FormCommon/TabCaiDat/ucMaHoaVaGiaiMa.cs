@@ -21,11 +21,11 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
         {
             try
             {
-                this.txtDauRa.Text = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(txtDauVao.Text, true);
+                this.txtDauRa.Text = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(txtDauVao.Text, true);
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -33,11 +33,11 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
         {
             try
             {
-                this.txtDauRa.Text = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(txtDauVao.Text, true);
+                this.txtDauRa.Text = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(txtDauVao.Text, true);
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -50,7 +50,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
     }

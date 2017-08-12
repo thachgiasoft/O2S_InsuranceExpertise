@@ -51,7 +51,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -70,7 +70,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -126,7 +126,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -136,7 +136,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             {
                 HienThiThongTinVeLicense();
                 //Thong tin ve Database
-                linkLabelTenDatabase.Text = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["ServerHost"].ToString().Trim(), true) + " [" + O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Database"].ToString().Trim(), true) + "]";
+                linkLabelTenDatabase.Text = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["ServerHost"].ToString().Trim(), true) + " [" + Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Database"].ToString().Trim(), true) + "]";
 
                 //THong tin ve tai khoan dang nhap
                 if (O2S_InsuranceExpertise.Base.SessionLogin.SessionUsername == "" || O2S_InsuranceExpertise.Base.SessionLogin.SessionUsername == null)
@@ -150,7 +150,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -164,7 +164,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void HienThiThongTinVeLicense()
@@ -186,7 +186,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void LoadLogoThongTin()
@@ -197,7 +197,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void LoadThongTinVeCSYT()
@@ -216,7 +216,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -235,7 +235,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         #endregion
@@ -249,7 +249,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -275,7 +275,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void xtraTabControlHome_SelectedPageChanged(object sender, TabPageChangedEventArgs e)
@@ -298,7 +298,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         #endregion
@@ -313,7 +313,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 

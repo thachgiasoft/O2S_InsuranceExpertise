@@ -37,7 +37,7 @@ namespace O2S_InsuranceExpertise.Base
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn("Ma hoa chuoi theo nhieu dinh dang " + ex.ToString());
+                Common.Logging.LogSystem.Warn("Ma hoa chuoi theo nhieu dinh dang " + ex.ToString());
             }
             return encodeText;
         }

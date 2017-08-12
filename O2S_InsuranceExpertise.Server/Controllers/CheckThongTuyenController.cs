@@ -16,7 +16,6 @@ namespace O2S_InsuranceExpertise.Server.Controllers
     public class CheckThongTuyenController : ApiController
     {
         #region Initialize
-        //private ICheckThongTuyen _checkThongTuyenService;
 
         #endregion
 
@@ -27,9 +26,10 @@ namespace O2S_InsuranceExpertise.Server.Controllers
             try
             {
                 List<LichSuKhamChuaBenhDTO> results = new List<LichSuKhamChuaBenhDTO>();
-                //todo
                 CheckThongTuyenProcess checkthongtuyen = new CheckThongTuyenProcess();
-                    
+                //Lay thong tin
+                checkthongtuyen.LayThongTinVeTaiKhoan_CongBHYT();
+                checkthongtuyen.LayToken_CongBHYT();
                 results = checkthongtuyen.LayDSHosobenhanDaCheckThongTuyen(filter);
                 var response = request.CreateResponse(HttpStatusCode.OK, results);
                 return response;
@@ -38,19 +38,46 @@ namespace O2S_InsuranceExpertise.Server.Controllers
             {
                 return null;
             }
-            //return CreateHttpResponse(request, () =>
-            //{
-            //    var model = _productService.GetById(id);
-
-            //    var responseData = Mapper.Map<Product, ProductViewModel>(model);
-
-            //    var response = request.CreateResponse(HttpStatusCode.OK, responseData);
-
-            //    return response;k
-            //});
         }
 
 
+        [Route("GetDSBN")]
+        [HttpGet]
+        public HttpResponseMessage GetDSBN(HttpRequestMessage request)
+        {
+            try
+            {
+                TieuChiCheckDTO filter = new TieuChiCheckDTO();
+                filter.tuNgay = DateTime.Now;
+                filter.denNgay = DateTime.Now;
+                filter.departmentgroupid = 3;
+
+                List<LichSuKhamChuaBenhDTO> results = new List<LichSuKhamChuaBenhDTO>();
+                //todo
+                CheckThongTuyenProcess checkthongtuyen = new CheckThongTuyenProcess();
+                //Lay thong tin
+                checkthongtuyen.LayThongTinVeTaiKhoan_CongBHYT();
+                checkthongtuyen.LayToken_CongBHYT();
+                results = checkthongtuyen.LayDSHosobenhanDaCheckThongTuyen(filter);
+
+                //LichSuKhamChuaBenhDTO lichsu = new LichSuKhamChuaBenhDTO();
+                //lichsu.maKetQua = "00";
+                //lichsu.tenKetQua = "Chinh xac";
+                //IEBhytCheckDTO _thongTinHoSo = new IEBhytCheckDTO();
+                //List<LichSuKCBDTO> _dsLichSuKCB = new List<LichSuKCBDTO>();
+
+                ////lichsu.thongTinHoSo = _thongTinHoSo;
+                //lichsu.dsLichSuKCB = _dsLichSuKCB;
+                //results.Add(lichsu);
+
+                var response = request.CreateResponse(HttpStatusCode.OK, results);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
 
 
     }

@@ -16,7 +16,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
     public partial class ucCauHinhHeThong : UserControl
     {
         O2S_InsuranceExpertise.DAL.ConnectDatabase condb = new O2S_InsuranceExpertise.DAL.ConnectDatabase();
-        string toolsoptionid = "";
+        string curentoptionid = "";
         #region Load
         public ucCauHinhHeThong()
         {
@@ -32,7 +32,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -50,7 +50,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -58,7 +58,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
         {
             try
             {
-                string sqldsnv = "SELECT toolsoptionid, toolsoptioncode, toolsoptionname, toolsoptionvalue, toolsoptionnote, toolsoptionlook FROM ie_option ORDER BY toolsoptionid;";
+                string sqldsnv = "SELECT optionid, optioncode, optionname, optionvalue, optionnote, optionlook FROM ie_option ORDER BY optionid;";
                 DataView dataOption = new DataView(condb.GetDataTable_HSBA(sqldsnv));
                 if (dataOption != null && dataOption.Count > 0)
                 {
@@ -71,7 +71,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -98,7 +98,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -111,7 +111,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -121,13 +121,13 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             {
                 EnableAndDisableControl(true);
                 var rowHandle = gridViewDSOption.FocusedRowHandle;
-                toolsoptionid = gridViewDSOption.GetRowCellValue(rowHandle, "toolsoptionid").ToString();
-                txtOptionCode.Text = gridViewDSOption.GetRowCellValue(rowHandle, "toolsoptioncode").ToString();
-                txtOptionName.Text = gridViewDSOption.GetRowCellValue(rowHandle, "toolsoptionname").ToString();
-                txtOptionValue.Text = gridViewDSOption.GetRowCellValue(rowHandle, "toolsoptionvalue").ToString();
-                txtOptionNote.Text = gridViewDSOption.GetRowCellValue(rowHandle, "toolsoptionnote").ToString();
+                curentoptionid = gridViewDSOption.GetRowCellValue(rowHandle, "optionid").ToString();
+                txtOptionCode.Text = gridViewDSOption.GetRowCellValue(rowHandle, "optioncode").ToString();
+                txtOptionName.Text = gridViewDSOption.GetRowCellValue(rowHandle, "optionname").ToString();
+                txtOptionValue.Text = gridViewDSOption.GetRowCellValue(rowHandle, "optionvalue").ToString();
+                txtOptionNote.Text = gridViewDSOption.GetRowCellValue(rowHandle, "optionnote").ToString();
 
-                if (gridViewDSOption.GetRowCellValue(rowHandle, "toolsoptionlook").ToString() == "1")
+                if (gridViewDSOption.GetRowCellValue(rowHandle, "optionlook").ToString() == "1")
                 {
                     chkLook.Checked = true;
                 }
@@ -138,7 +138,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -146,14 +146,14 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
         {
             try
             {
-                string toolsoptionlook = "0";
+                string optionlook = "0";
                 if (chkLook.Checked)
                 {
-                    toolsoptionlook = "1";
+                    optionlook = "1";
                 }
-                if (toolsoptionid != "")
+                if (curentoptionid != "")
                 {
-                    string sqlupdate = "UPDATE ie_option SET toolsoptionname='" + txtOptionName.Text.Trim() + "', toolsoptionvalue='" + txtOptionValue.Text.Trim() + "', toolsoptionnote='" + txtOptionNote.Text.Trim() + "', toolsoptionlook='" + toolsoptionlook + "', toolsoptiondate='" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', toolsoptioncreateuser='" + SessionLogin.SessionUsername + "' WHERE toolsoptionid='" + toolsoptionid + "'; ";
+                    string sqlupdate = "UPDATE ie_option SET optionname='" + txtOptionName.Text.Trim() + "', optionvalue='" + txtOptionValue.Text.Trim() + "', optionnote='" + txtOptionNote.Text.Trim() + "', optionlook='" + optionlook + "', optiondate='" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', optioncreateuser='" + SessionLogin.SessionUsername + "' WHERE optionid='" + curentoptionid + "'; ";
                     if (condb.ExecuteNonQuery_HSBA(sqlupdate))
                     {
                         HienThiThongBao(O2S_InsuranceExpertise.Base.ThongBaoLable.SUA_THANH_CONG);
@@ -161,7 +161,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                 }
                 else
                 {
-                    string sqlupdate = "INSERT INTO ie_option(toolsoptioncode, toolsoptionname, toolsoptionvalue, toolsoptionnote, toolsoptionlook, toolsoptiondate, toolsoptioncreateuser) VALUES ('" + txtOptionCode.Text.Trim() + "', '" + txtOptionName.Text.Trim() + "', '" + txtOptionValue.Text.Trim() + "', '" + txtOptionNote.Text.Trim() + "', '" + toolsoptionlook + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + SessionLogin.SessionUsername + "');";
+                    string sqlupdate = "INSERT INTO ie_option(optioncode, optionname, optionvalue, optionnote, optionlook, optiondate, optioncreateuser) VALUES ('" + txtOptionCode.Text.Trim() + "', '" + txtOptionName.Text.Trim() + "', '" + txtOptionValue.Text.Trim() + "', '" + txtOptionNote.Text.Trim() + "', '" + optionlook + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + SessionLogin.SessionUsername + "');";
                     if (condb.ExecuteNonQuery_HSBA(sqlupdate))
                     {
                         HienThiThongBao(O2S_InsuranceExpertise.Base.ThongBaoLable.THEM_MOI_THANH_CONG);
@@ -173,7 +173,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
 
@@ -184,7 +184,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                 EnableAndDisableControl(true);
                 txtOptionCode.ReadOnly = false;
 
-                toolsoptionid = "";
+                curentoptionid = "";
                 txtOptionCode.Text = "";
                 txtOptionName.Text = "";
                 txtOptionValue.Text = "";
@@ -193,7 +193,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -205,7 +205,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                 //if (hoi == DialogResult.Yes)
                 //{
                 //    string sql_delete_option = "delete from ie_option;";
-                //    string sql_default_option = "INSERT INTO ie_option(toolsoptioncode, toolsoptionname, toolsoptionvalue, toolsoptionnote, toolsoptionlook, toolsoptiondate, toolsoptioncreateuser) VALUES ('ThoiGianCapNhatTbl_tools_bndangdt_tmp', 'Thời gian tự động cập nhật dữ liệu bảng tools_bndangdt_tmp', '0', 'Bảng tools_bndangdt_tmp phục vụ báo cáo Dashboard: BC QL tổng thể khoa; BC BN nội trú. Thời gian tính bằng phút - số', '0', now(), 'Administrator'); INSERT INTO ie_option(toolsoptioncode, toolsoptionname, toolsoptionvalue, toolsoptionnote, toolsoptionlook, toolsoptiondate, toolsoptioncreateuser) VALUES ('KhoangThoiGianLayDuLieu', 'Khoảng thời gian lấy dữ liệu báo cáo Dashboard', '2016-01-01 00:00:00', 'Khoảng thời gian lấy dữ liệu báo cáo Dashboard từ -> hiện tại. Định dạng: yyyy-MM-dd HH:mm:ss. VD:  2016-01-01 00:00:00. Phục vụ cho báo cáo: REPORT_08; REPORT_09', '0', now(), 'Administrator');";
+                //    string sql_default_option = "INSERT INTO ie_option(optioncode, optionname, optionvalue, optionnote, optionlook, optiondate, optioncreateuser) VALUES ('ThoiGianCapNhatTbl__bndangdt_tmp', 'Thời gian tự động cập nhật dữ liệu bảng _bndangdt_tmp', '0', 'Bảng _bndangdt_tmp phục vụ báo cáo Dashboard: BC QL tổng thể khoa; BC BN nội trú. Thời gian tính bằng phút - số', '0', now(), 'Administrator'); INSERT INTO ie_option(optioncode, optionname, optionvalue, optionnote, optionlook, optiondate, optioncreateuser) VALUES ('KhoangThoiGianLayDuLieu', 'Khoảng thời gian lấy dữ liệu báo cáo Dashboard', '2016-01-01 00:00:00', 'Khoảng thời gian lấy dữ liệu báo cáo Dashboard từ -> hiện tại. Định dạng: yyyy-MM-dd HH:mm:ss. VD:  2016-01-01 00:00:00. Phục vụ cho báo cáo: REPORT_08; REPORT_09', '0', now(), 'Administrator');";
                 //    if (condb.ExecuteNonQuery_HSBA(sql_delete_option) && condb.ExecuteNonQuery_HSBA(sql_default_option))
                 //    {
                 //        HienThiThongBao(O2S_InsuranceExpertise.Base.ThongBaoLable.THAO_TAC_THANH_CONG);
@@ -219,7 +219,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
 

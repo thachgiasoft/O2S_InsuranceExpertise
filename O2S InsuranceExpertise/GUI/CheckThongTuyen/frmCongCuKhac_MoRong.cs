@@ -29,7 +29,7 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
             }
             catch (Exception ex)
             {
-                Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
         private void frmCongCuKhac_MoRong_FormClosed(object sender, FormClosedEventArgs e)
@@ -42,7 +42,7 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
             }
             catch (Exception ex)
             {
-                Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
 
@@ -56,7 +56,7 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
             }
             catch (Exception ex)
             {
-                Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
     }

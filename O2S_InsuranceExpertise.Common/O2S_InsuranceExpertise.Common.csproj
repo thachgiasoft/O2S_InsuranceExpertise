@@ -55,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\KeyTrongPhanMem.cs" />
+    <Compile Include="EncryptAndDecrypt\EncryptAndDecrypt.cs" />
     <Compile Include="String\StringConvert.cs" />
     <Compile Include="DataTables\ConvertDataTable.cs" />
     <Compile Include="Logging\LogSystem.cs" />

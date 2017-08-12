@@ -43,7 +43,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -52,14 +52,14 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             bool result = false;
             try
             {
-                string serverhost = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["ServerHost"].ToString().Trim() ?? "", true);
-                string serveruser = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Username"].ToString().Trim(), true);
-                string serverpass = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Password"].ToString().Trim(), true);
-                string serverdb = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Database"].ToString().Trim(), true);
-                string serverhost_HSBA = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["ServerHost_HSBA"].ToString().Trim() ?? "", true);
-                string serveruser_HSBA = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Username_HSBA"].ToString().Trim(), true);
-                string serverpass_HSBA = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Password_HSBA"].ToString().Trim(), true);
-                string serverdb_HSBA = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Database_HSBA"].ToString().Trim(), true);
+                string serverhost = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["ServerHost"].ToString().Trim() ?? "", true);
+                string serveruser = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Username"].ToString().Trim(), true);
+                string serverpass = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Password"].ToString().Trim(), true);
+                string serverdb = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Database"].ToString().Trim(), true);
+                string serverhost_HSBA = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["ServerHost_HSBA"].ToString().Trim() ?? "", true);
+                string serveruser_HSBA = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Username_HSBA"].ToString().Trim(), true);
+                string serverpass_HSBA = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Password_HSBA"].ToString().Trim(), true);
+                string serverdb_HSBA = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Database_HSBA"].ToString().Trim(), true);
 
                 if (conn == null)
                 {
@@ -85,7 +85,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                Base.Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
             return result;
         }
@@ -94,7 +94,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             try
             {
                 SessionLogin.MaDatabase = Base.KiemTraLicense.LayThongTinMaDatabase();
-                string license_trang = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt("", true);
+                string license_trang = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt("", true);
                 string kiemtra_client = "SELECT * FROM ie_license WHERE datakey='" + SessionLogin.MaDatabase + "' ;";
                 DataView dv = new DataView(condb.GetDataTable_HSBA(kiemtra_client));
                 if (dv != null && dv.Count > 0)
@@ -110,18 +110,18 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                Base.Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
         private void LoadDataFromDatabase()
         {
             try
             {
-                BUS.LoadDataSystems.LoadTaiKhoanCongBHYT();
+                 BUS.LoadDataSystems.LoadTaiKhoanCongBHYT();
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void LoadDefaultValue()
@@ -130,8 +130,8 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             {
                 if (ConfigurationManager.AppSettings["LoginUser"].ToString() != "" && ConfigurationManager.AppSettings["LoginPassword"].ToString() != "")
                 {
-                    this.txtUsername.Text = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["LoginUser"].ToString(), true);
-                    this.txtPassword.Text = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["LoginPassword"].ToString(), true);
+                    this.txtUsername.Text = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["LoginUser"].ToString(), true);
+                    this.txtPassword.Text = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["LoginPassword"].ToString(), true);
                     this.checkEditNhoPass.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["checkEditNhoPass"]);
                 }
                 else
@@ -158,7 +158,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -176,7 +176,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                Base.Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
         private static void CopyFolder_CheckSum(string SourceFolder, string DestFolder)
@@ -202,7 +202,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                 catch (Exception ex)
                 {
                     continue;
-                    Base.Logging.Error("Lỗi copy file check_sum" + ex.ToString());
+                    Common.Logging.LogSystem.Error("Lỗi copy file check_sum" + ex.ToString());
                 }
             }
 
@@ -238,8 +238,8 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                 }
                 else
                 {
-                    string en_txtUsername = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(txtUsername.Text.Trim().ToLower(), true);
-                    string en_txtPassword = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(txtPassword.Text.Trim(), true);
+                    string en_txtUsername = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(txtUsername.Text.Trim().ToLower(), true);
+                    string en_txtPassword = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(txtPassword.Text.Trim(), true);
                     try
                     {
                         string command = "SELECT userid, usercode, username, userpassword FROM ie_tbluser WHERE usercode='" + en_txtUsername + "' and userpassword='" + en_txtPassword + "';";
@@ -249,7 +249,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                             Base.KiemTraLicense.KiemTraLicenseHopLe();
                             SessionLogin.SessionUserID = Common.TypeConvert.TypeConvertParse.ToInt64(dv[0]["userid"].ToString());
                             SessionLogin.SessionUsercode = txtUsername.Text.Trim().ToLower();
-                            SessionLogin.SessionUsername = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(dv[0]["username"].ToString(), true);
+                            SessionLogin.SessionUsername = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(dv[0]["username"].ToString(), true);
 
                             LoadDuLieuSauKhiDangNhap();
                         }
@@ -260,7 +260,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                     }
                     catch (Exception ex)
                     {
-                        O2S_InsuranceExpertise.Base.Logging.Error(ex);
+                        Common.Logging.LogSystem.Error(ex);
                         txtUsername.Focus();
                     }
                 }
@@ -270,8 +270,8 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                 {
                     Configuration _config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
                     _config.AppSettings.Settings["checkEditNhoPass"].Value = Convert.ToString(checkEditNhoPass.Checked);
-                    _config.AppSettings.Settings["LoginUser"].Value = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(txtUsername.Text.Trim(), true);
-                    _config.AppSettings.Settings["LoginPassword"].Value = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(txtPassword.Text.Trim(), true);
+                    _config.AppSettings.Settings["LoginUser"].Value = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(txtUsername.Text.Trim(), true);
+                    _config.AppSettings.Settings["LoginPassword"].Value = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(txtPassword.Text.Trim(), true);
                     _config.Save(ConfigurationSaveMode.Modified);
 
                     ConfigurationManager.RefreshSection("appSettings");
@@ -289,7 +289,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn("Dang nhap " + ex.ToString());
+                Common.Logging.LogSystem.Warn("Dang nhap " + ex.ToString());
             }
         }
 
@@ -306,7 +306,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
 
                 bool check_ThongTuyen = O2S_InsuranceExpertise.Base.CheckPermission.ChkPerModule("TOOL_10");
                 bool check_Menu = false;
-                List<DTO.classPermission> SessionLstPhanQuyen_ChucNangKhac = Base.SessionLogin.SessionLstPhanQuyenNguoiDung.Where(o => o.permissioncode.Contains("TOOL_10")).ToList();
+                List<DTO.classPermission> SessionLstPhanQuyen_ChucNangKhac = Base.SessionLogin.SessionLstPhanQuyenNguoiDung.Where(o => o.permissioncode!="TOOL_10").ToList();
                 if (SessionLstPhanQuyen_ChucNangKhac != null && SessionLstPhanQuyen_ChucNangKhac.Count > 0)
                 {
                     check_Menu = true;
@@ -331,11 +331,11 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                     frmChon.Show();
                     this.Visible = false;
                 }
-                O2S_InsuranceExpertise.Base.Logging.Info("Application open successfull. Time=" + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss:fff"));
+                Common.Logging.LogSystem.Info("Application open successfull. Time=" + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss:fff"));
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
 
@@ -386,7 +386,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -398,7 +398,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         #endregion

@@ -12,6 +12,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
 {
     public partial class frmChonChucNang : Form
     {
+        bool checkChonChucNang = false;
         public frmChonChucNang()
         {
             InitializeComponent();
@@ -22,13 +23,14 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
         {
             try
             {
+                checkChonChucNang = true;
                 GUI.CheckThongTuyen.frmCheckThongTuyenTuDong frmMenu = new CheckThongTuyen.frmCheckThongTuyenTuDong();
                 frmMenu.Show();
                 this.Visible = false;
             }
             catch (Exception ex)
             {
-                Base.Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
 
@@ -36,13 +38,14 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
         {
             try
             {
+                checkChonChucNang = true;
                 frmMain frmm = new frmMain();
                 frmm.Show();
                 this.Visible = false;
             }
             catch (Exception ex)
             {
-                Base.Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
 
@@ -51,13 +54,16 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             try
             {
                 timerChonChucNang.Stop();
-                frmMain frmm = new frmMain();
-                frmm.Show();
-                this.Visible = false;
+                if (checkChonChucNang == false)
+                {
+                    frmMain frmm = new frmMain();
+                    frmm.Show();
+                    this.Visible = false;
+                }
             }
             catch (Exception ex)
             {
-                Base.Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
     }

@@ -23,13 +23,13 @@ namespace O2S_InsuranceExpertise.BUS
                 {
                     Base.SessionLogin.UserName_GDBHYT = dt_CauHinh.Rows[0]["usergdbhyt"].ToString();
                     Base.SessionLogin.Password_GDBHYT = dt_CauHinh.Rows[0]["passgdbhyt"].ToString();
-                    Base.SessionLogin.Password_GDBHYT_MD5 = Base.EncryptAndDecrypt.CalculateMD5Hash(Base.SessionLogin.Password_GDBHYT);
+                    Base.SessionLogin.Password_GDBHYT_MD5 =Common.EncryptAndDecrypt.EncryptAndDecrypt.CalculateMD5Hash(Base.SessionLogin.Password_GDBHYT);
                     Base.SessionLogin.UrlFullServer = dt_CauHinh.Rows[0]["urlfullserver"].ToString();
                 }
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -57,7 +57,7 @@ namespace O2S_InsuranceExpertise.BUS
         //    }
         //    catch (Exception ex)
         //    {
-        //        O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+        //        Common.Logging.LogSystem.Warn(ex);
         //    }
         //}
         #endregion

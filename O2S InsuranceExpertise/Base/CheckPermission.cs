@@ -32,7 +32,7 @@ namespace O2S_InsuranceExpertise.Base
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
             return result;
         }
@@ -53,7 +53,7 @@ namespace O2S_InsuranceExpertise.Base
                 }
                 else
                 {
-                    string en_usercode = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(SessionLogin.SessionUsercode, true);
+                    string en_usercode = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(SessionLogin.SessionUsercode, true);
                     string sqlper = "SELECT permissionid, permissioncode, permissionname, userid, usercode, permissioncheck FROM ie_tbluser_permission WHERE usercode = '" + en_usercode + "' and permissioncheck='1';";
                     DataView dv = new DataView(condb.GetDataTable_HSBA(sqlper));
                     if (dv.Count > 0)
@@ -62,8 +62,8 @@ namespace O2S_InsuranceExpertise.Base
                         {
                             DTO.classPermission itemPer = new DTO.classPermission();
                             //itemPer.permissionid = Convert.ToInt32(dv[i]["permissionid"]);
-                            itemPer.permissioncode = Base.EncryptAndDecrypt.Decrypt(dv[i]["permissioncode"].ToString(), true);
-                            itemPer.permissionname = Base.EncryptAndDecrypt.Decrypt(dv[i]["permissionname"].ToString(), true);
+                            itemPer.permissioncode = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(dv[i]["permissioncode"].ToString(), true);
+                            itemPer.permissionname = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(dv[i]["permissionname"].ToString(), true);
                             itemPer.en_permissioncode = dv[i]["permissioncode"].ToString();
                             itemPer.en_permissionname = dv[i]["permissionname"].ToString();
                             itemPer.permissioncheck = Convert.ToBoolean(dv[i]["permissioncheck"]);
@@ -84,7 +84,7 @@ namespace O2S_InsuranceExpertise.Base
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
             return lstPhanQuyen;
         }
@@ -102,8 +102,8 @@ namespace O2S_InsuranceExpertise.Base
                 }
                 else
                 {
-                    string en_usercode = Base.EncryptAndDecrypt.Encrypt(SessionLogin.SessionUsercode, true);
-                    string sqlper_mel = "SELECT ude.departmentgroupid, degp.departmentgroupcode, degp.departmentgroupname, degp.departmentgrouptype, ude.departmentid, de.departmentcode, de.departmentname, ude.departmenttype, ude.usercode FROM tools_tbluser_departmentgroup ude inner join dblink('myconn','SELECT departmentid, departmentcode, departmentname, departmenttype FROM department') AS de(departmentid integer, departmentcode text, departmentname text, departmenttype integer) on de.departmentid=ude.departmentid inner join dblink('myconn','SELECT departmentgroupid, departmentgroupcode, departmentgroupname, departmentgrouptype FROM departmentgroup') AS degp(departmentgroupid integer, departmentgroupcode text, departmentgroupname text, departmentgrouptype integer) on degp.departmentgroupid=ude.departmentgroupid WHERE usercode = '" + en_usercode + "' ORDER BY degp.departmentgroupname,de.departmentname,ude.departmenttype;";
+                    string en_usercode = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(SessionLogin.SessionUsercode, true);
+                    string sqlper_mel = "SELECT ude.departmentgroupid, degp.departmentgroupcode, degp.departmentgroupname, degp.departmentgrouptype, ude.departmentid, de.departmentcode, de.departmentname, ude.departmenttype, ude.usercode FROM ie_tbluser_departmentgroup ude inner join dblink('myconn','SELECT departmentid, departmentcode, departmentname, departmenttype FROM department') AS de(departmentid integer, departmentcode text, departmentname text, departmenttype integer) on de.departmentid=ude.departmentid inner join dblink('myconn','SELECT departmentgroupid, departmentgroupcode, departmentgroupname, departmentgrouptype FROM departmentgroup') AS degp(departmentgroupid integer, departmentgroupcode text, departmentgroupname text, departmentgrouptype integer) on degp.departmentgroupid=ude.departmentgroupid WHERE usercode = '" + en_usercode + "' ORDER BY degp.departmentgroupname,de.departmentname,ude.departmenttype;";
                     dataDepartment = new DataView(condb.GetDataTable_Dblink(sqlper_mel));
                 }
                 if (dataDepartment.Count > 0)
@@ -125,7 +125,7 @@ namespace O2S_InsuranceExpertise.Base
             }
             catch (Exception ex)
             {
-                Base.Logging.Error(ex);
+             Common.Logging.LogSystem.Error(ex);
             }
             return lstPhanQuyenKhoaPhong;
         }
@@ -142,7 +142,7 @@ namespace O2S_InsuranceExpertise.Base
         //        }
         //        else
         //        {
-        //            string en_usercode = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(SessionLogin.SessionUsercode, true);
+        //            string en_usercode = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(SessionLogin.SessionUsercode, true);
         //            sqlper = "SELECT ms.medicinestoreid, ms.medicinestorecode, ms.medicinestorename, ms.medicinestoretype, (case ms.medicinestoretype when 1 then 'Kho tổng' when 2 then 'Kho ngoại trú' when 3 then 'Kho nội trú' when 4 then 'Nhà thuốc' when 7 then 'Kho vật tư' end) as medicinestoretypename FROM medicine_store ms INNER JOIN ie_tbluser_medicinestore ttm on ms.medicinestoreid=ttm.medicinestoreid WHERE ttm.usercode = '" + en_usercode + "' ORDER BY ms.medicinestoretype,ms.medicinestorename;";
         //        }
 
@@ -165,7 +165,7 @@ namespace O2S_InsuranceExpertise.Base
         //    }
         //    catch (Exception ex)
         //    {
-        //        O2S_InsuranceExpertise.Base.Logging.Error(ex);
+        //        Common.Logging.LogSystem.Error(ex);
         //    }
         //    return lstPhanQuyen_KhoThuoc;
         //}
@@ -182,7 +182,7 @@ namespace O2S_InsuranceExpertise.Base
         //        }
         //        else
         //        {
-        //            string en_usercode = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(SessionLogin.SessionUsercode, true);
+        //            string en_usercode = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(SessionLogin.SessionUsercode, true);
         //            sqlper = "SELECT pl.medicinephongluuid, pl.medicinephongluucode, (ms.medicinestorename || '-' ||pl.medicinephongluuname) as medicinephongluuname, ms.medicinestoreid, ms.medicinestorecode, ms.medicinestorename FROM medicinephongluu pl INNER JOIN ie_tbluser_medicinephongluu ttm on pl.medicinephongluuid=ttm.medicinephongluuid inner join medicine_store ms on pl.medicinestoreid=ms.medicinestoreid WHERE ttm.usercode = '" + en_usercode + "' ORDER BY ms.medicinestorename, pl.medicinephongluuname;";
         //        }
 
@@ -206,7 +206,7 @@ namespace O2S_InsuranceExpertise.Base
         //    }
         //    catch (Exception ex)
         //    {
-        //        O2S_InsuranceExpertise.Base.Logging.Error(ex);
+        //        Common.Logging.LogSystem.Error(ex);
         //    }
         //    return lstPhanQuyen_PhongLuu;
         //}

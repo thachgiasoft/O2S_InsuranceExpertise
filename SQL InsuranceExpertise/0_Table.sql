@@ -26,6 +26,59 @@ CREATE INDEX IE_configtype_idx
   ON ie_config
   USING btree
   (configtype);
+  
+--=================================================== -- Table: ie_version
+-- DROP TABLE ie_version;
+
+CREATE TABLE ie_version
+(
+  versionid serial NOT NULL,
+  appversion text,
+  app_link text,
+  app_type integer,
+  updateapp bytea,
+  appsize integer,
+  sqlversion text,
+  updatesql bytea,
+  sqlsize integer,
+  sync_flag integer,
+  update_flag integer,
+  CONSTRAINT ie_version_pkey PRIMARY KEY (versionid)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE ie_version
+  OWNER TO postgres;
+
+-- Index: ie_version_app_link_idx
+
+-- DROP INDEX ie_version_app_link_idx;
+
+CREATE INDEX ie_version_app_link_idx
+  ON ie_version
+  USING btree
+  (app_link COLLATE pg_catalog."default");
+
+-- Index: ie_version_appversion_idx
+
+-- DROP INDEX ie_version_appversion_idx;
+
+CREATE INDEX ie_version_appversion_idx
+  ON ie_version
+  USING btree
+  (appversion COLLATE pg_catalog."default");
+
+-- Index: ie_version_versionid_idx
+
+-- DROP INDEX ie_version_versionid_idx;
+
+CREATE INDEX ie_version_versionid_idx
+  ON ie_version
+  USING btree
+  (versionid);
+
+
 --=================================================== Table: IE_tbluser
 -- DROP TABLE IE_tbluser;
 CREATE TABLE IE_tbluser
@@ -197,7 +250,109 @@ CREATE INDEX userpermiss_userpermissionid_idx
   USING btree
   (userpermissionid);
 
+--=================================================== Table: ie_tbluser_medicinephongluu
 
+-- DROP TABLE ie_tbluser_medicinephongluu;
+
+CREATE TABLE ie_tbluser_medicinephongluu
+(
+  userphongluutid serial NOT NULL,
+  medicinephongluuid integer,
+  medicinestoreid integer,
+  usercode text,
+  userdepgidnote text,
+  CONSTRAINT ie_tbluser_medicinephongluu_pkey PRIMARY KEY (userphongluutid)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE ie_tbluser_medicinephongluu
+  OWNER TO postgres;
+
+-- Index: tblphongluu_medicinephongluuid_idx
+
+-- DROP INDEX tblphongluu_medicinephongluuid_idx;
+
+CREATE INDEX tblphongluu_medicinephongluuid_idx
+  ON ie_tbluser_medicinephongluu
+  USING btree
+  (medicinephongluuid);
+
+-- Index: tblphongluu_medicinestoreid_idx
+
+-- DROP INDEX tblphongluu_medicinestoreid_idx;
+
+CREATE INDEX tblphongluu_medicinestoreid_idx
+  ON ie_tbluser_medicinephongluu
+  USING btree
+  (medicinestoreid);
+
+-- Index: tblphongluu_usercode_idx
+
+-- DROP INDEX tblphongluu_usercode_idx;
+
+CREATE INDEX tblphongluu_usercode_idx
+  ON ie_tbluser_medicinephongluu
+  USING btree
+  (usercode COLLATE pg_catalog."default");
+
+-- Index: tblphongluu_userphongluutid_idx
+
+-- DROP INDEX tblphongluu_userphongluutid_idx;
+
+CREATE INDEX tblphongluu_userphongluutid_idx
+  ON ie_tbluser_medicinephongluu
+  USING btree
+  (userphongluutid);
+
+ 
+--=================================================== Table: ie_tbluser_medicinestore
+
+-- DROP TABLE ie_tbluser_medicinestore;
+
+CREATE TABLE ie_tbluser_medicinestore
+(
+  usermestid serial NOT NULL,
+  medicinestoreid integer,
+  medicinestoretype integer,
+  usercode text,
+  userdepgidnote text,
+  CONSTRAINT ie_tbluser_medicinestore_pkey PRIMARY KEY (usermestid)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE ie_tbluser_medicinestore
+  OWNER TO postgres;
+
+-- Index: tblmedistore_medicinestoreid_idx
+
+-- DROP INDEX tblmedistore_medicinestoreid_idx;
+
+CREATE INDEX tblmedistore_medicinestoreid_idx
+  ON ie_tbluser_medicinestore
+  USING btree
+  (medicinestoreid);
+
+-- Index: tblmedistore_usercode_idx
+
+-- DROP INDEX tblmedistore_usercode_idx;
+
+CREATE INDEX tblmedistore_usercode_idx
+  ON ie_tbluser_medicinestore
+  USING btree
+  (usercode COLLATE pg_catalog."default");
+
+-- Index: tblmedistore_usermestid_idx
+
+-- DROP INDEX tblmedistore_usermestid_idx;
+
+CREATE INDEX tblmedistore_usermestid_idx
+  ON ie_tbluser_medicinestore
+  USING btree
+  (usermestid);
+
+ 
 --===================================================Table: IE_tbllog
 
 -- DROP TABLE IE_tbllog;
@@ -372,6 +527,7 @@ CREATE TABLE IE_bhyt_check
   du5nam6thangluongcoban integer,
   dtcbh_luyke6thang integer,
   bhytcheckstatus integer,
+  bhytchecksdate timestamp without time zone,
   departmentgroupid integer,
   departmentid integer,
   hosobenhandate timestamp without time zone,
@@ -421,6 +577,8 @@ CREATE INDEX IE_bhyt_check_hosobenhandate_idx
 --===================================================
 --===================================================
 
+865238
+604149
 
 
 

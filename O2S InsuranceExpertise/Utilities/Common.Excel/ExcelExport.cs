@@ -37,7 +37,7 @@ namespace O2S_InsuranceExpertise.Utilities.Common.Excel
             }
             catch (Exception ex)
             {
-                Base.Logging.Error(ex);
+                O2S_InsuranceExpertise.Common.Logging.LogSystem.Error(ex);
             }
             return orderTable;
         }
@@ -115,7 +115,7 @@ namespace O2S_InsuranceExpertise.Utilities.Common.Excel
             }
             catch (Exception ex)
             {
-                Base.Logging.Error(ex);
+                O2S_InsuranceExpertise.Common.Logging.LogSystem.Error(ex);
                 MessageBox.Show("Export dữ liệu thất bại!", "Thông báo !", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -163,7 +163,7 @@ namespace O2S_InsuranceExpertise.Utilities.Common.Excel
                 }
                 catch (Exception ex)
                 {
-                    Base.Logging.Error(ex);
+                    O2S_InsuranceExpertise.Common.Logging.LogSystem.Error(ex);
                     MessageBox.Show("Export dữ liệu thất bại!", "Thông báo !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

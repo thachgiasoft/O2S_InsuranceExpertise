@@ -33,9 +33,9 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
             {
                 try
                 {
-                    string en_txtUserID = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(SessionLogin.SessionUsercode, true);
-                    string en_txtUserPasswordOld = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(txtPasswordOld.Text.Trim(), true);
-                    string en_txtUserPasswordNew = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(txtPasswordNew1.Text.Trim(), true);
+                    string en_txtUserID = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(SessionLogin.SessionUsercode, true);
+                    string en_txtUserPasswordOld = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(txtPasswordOld.Text.Trim(), true);
+                    string en_txtUserPasswordNew = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(txtPasswordNew1.Text.Trim(), true);
 
                     string sqlquerry = "select * from ie_tbluser where usercode='" + en_txtUserID + "' and userpassword='" + en_txtUserPasswordOld + "'";
                     DataView dataBC = new DataView(condb.GetDataTable_HSBA(sqlquerry));
@@ -56,7 +56,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
                 }
                 catch (Exception ex)
                 {
-                    Base.Logging.Error(ex);
+                    Common.Logging.LogSystem.Error(ex);
                 }
 
             }

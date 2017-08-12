@@ -36,6 +36,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
         {
             try
             {
+                currentUserCode = null;
                 EnableAndDisableControl(false);
                 LoadDanhSachNguoiDung();
                 LoadDanhSachChucNang();
@@ -46,7 +47,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void LoadDanhSachNguoiDung()
@@ -61,8 +62,8 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                     //Giải mã hiển thị lên Gridview
                     for (int i = 0; i < dv.Count; i++)
                     {
-                        string usercode_de = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(dv[i]["usercode"].ToString(), true);
-                        string username_de = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(dv[i]["username"].ToString(), true);
+                        string usercode_de = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(dv[i]["usercode"].ToString(), true);
+                        string username_de = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(dv[i]["username"].ToString(), true);
                         dv[i]["usercode"] = usercode_de;
                         dv[i]["username"] = username_de;
                     }
@@ -76,7 +77,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void LoadDanhSachChucNang()
@@ -89,7 +90,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void LoadDanhSachKhoaPhong()
@@ -116,7 +117,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void LoadDanhSachBaoCao()
@@ -129,7 +130,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void LoadDanhSachKhoThuoc()
@@ -155,7 +156,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void LoadDanhSachPhongLuu()
@@ -182,7 +183,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         #endregion
@@ -199,7 +200,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void gridControlDSUser_Click(object sender, EventArgs e)
@@ -212,7 +213,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                 currentUserCode = gridViewDSUser.GetRowCellValue(rowHandle, "usercode").ToString();
                 txtUserID.Text = currentUserCode;
                 txtUsername.Text = gridViewDSUser.GetRowCellValue(rowHandle, "username").ToString(); ;
-                txtUserPassword.Text = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Decrypt(gridViewDSUser.GetRowCellValue(rowHandle, "userpassword").ToString(), true);
+                txtUserPassword.Text = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(gridViewDSUser.GetRowCellValue(rowHandle, "userpassword").ToString(), true);
                 cbbUserNhom.Text = gridViewDSUser.GetRowCellValue(rowHandle, "usergnhom").ToString();
 
                 gridControlChucNang.DataSource = null;
@@ -235,7 +236,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void LoadPhanQuyenChucNang()
@@ -243,7 +244,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             try
             {
                 gridControlChucNang.DataSource = null;
-                string sqlquerry_per = "SELECT permissioncode, permissionname, permissioncheck FROM ie_tbluser_permission WHERE usercode='" + O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(currentUserCode, true).ToString() + "';";
+                string sqlquerry_per = "SELECT permissioncode, permissionname, permissioncheck FROM ie_tbluser_permission WHERE usercode='" + Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(currentUserCode, true).ToString() + "';";
                 DataView dv = new DataView(condb.GetDataTable_HSBA(sqlquerry_per));
                 //Load dữ liệu list phân quyền + tích quyền của use đang chọn lấy trong DB
                 if (dv != null && dv.Count > 0)
@@ -252,7 +253,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                     {
                         for (int j = 0; j < dv.Count; j++)
                         {
-                            if (lstPer[i].permissioncode.ToString() == EncryptAndDecrypt.Decrypt(dv[j]["permissioncode"].ToString(), true))
+                            if (lstPer[i].permissioncode.ToString() == Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(dv[j]["permissioncode"].ToString(), true))
                             {
                                 lstPer[i].permissioncheck = Convert.ToBoolean(dv[j]["permissioncheck"]);
                             }
@@ -263,7 +264,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void LoadPhanQuyenKhoaPhong()
@@ -271,7 +272,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             try
             {
                 gridControlKhoaPhong.DataSource = null;
-                string sqlquerry_khoaphong = "SELECT userdepgid,departmentgroupid,departmentid,departmenttype,usercode FROM ie_tbluser_departmentgroup WHERE usercode='" + O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(currentUserCode, true).ToString() + "';";
+                string sqlquerry_khoaphong = "SELECT userdepgid,departmentgroupid,departmentid,departmenttype,usercode FROM ie_tbluser_departmentgroup WHERE usercode='" + Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(currentUserCode, true).ToString() + "';";
                 DataView dv_khoaphong = new DataView(condb.GetDataTable_HSBA(sqlquerry_khoaphong));
                 if (dv_khoaphong != null && dv_khoaphong.Count > 0)
                 {
@@ -290,7 +291,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void LoadPhanQuyenBaoCao()
@@ -298,7 +299,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             try
             {
                 gridControlBaoCao.DataSource = null;
-                string sqlquerry_per = "SELECT permissioncode, permissionname, permissioncheck FROM ie_tbluser_permission WHERE usercode='" + O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(currentUserCode, true).ToString() + "' and userpermissionnote='BAOCAO';";
+                string sqlquerry_per = "SELECT permissioncode, permissionname, permissioncheck FROM ie_tbluser_permission WHERE usercode='" + Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(currentUserCode, true).ToString() + "' and userpermissionnote='BAOCAO';";
                 DataView dv = new DataView(condb.GetDataTable_HSBA(sqlquerry_per));
                 //Load dữ liệu list phân quyền + tích quyền của use đang chọn lấy trong DB
                 if (dv != null && dv.Count > 0)
@@ -307,7 +308,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                     {
                         for (int j = 0; j < dv.Count; j++)
                         {
-                            if (lstPerBaoCao[i].permissioncode.ToString() == EncryptAndDecrypt.Decrypt(dv[j]["permissioncode"].ToString(), true))
+                            if (lstPerBaoCao[i].permissioncode.ToString() == Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(dv[j]["permissioncode"].ToString(), true))
                             {
                                 lstPerBaoCao[i].permissioncheck = Convert.ToBoolean(dv[j]["permissioncheck"]);
                             }
@@ -318,7 +319,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void LoadPhanQuyenKhoThuoc()
@@ -326,7 +327,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             try
             {
                 gridControlKhoThuoc.DataSource = null;
-                string sqlquerry_khoaphong = "SELECT usermestid,medicinestoreid,medicinestoretype,usercode FROM ie_tbluser_medicinestore WHERE usercode='" + O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(currentUserCode, true).ToString() + "';";
+                string sqlquerry_khoaphong = "SELECT usermestid,medicinestoreid,medicinestoretype,usercode FROM ie_tbluser_medicinestore WHERE usercode='" + Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(currentUserCode, true).ToString() + "';";
                 DataView dv_khothuoc = new DataView(condb.GetDataTable_HSBA(sqlquerry_khoaphong));
                 if (dv_khothuoc != null && dv_khothuoc.Count > 0)
                 {
@@ -345,7 +346,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void LoadPhanQuyenPhongLuu()
@@ -353,7 +354,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             try
             {
                 gridControlPhongLuu.DataSource = null;
-                string sqlquerry_phongluu = "SELECT userphongluutid,medicinephongluuid,medicinestoreid,usercode FROM ie_tbluser_medicinephongluu WHERE usercode='" + O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(currentUserCode, true).ToString() + "';";
+                string sqlquerry_phongluu = "SELECT userphongluutid,medicinephongluuid,medicinestoreid,usercode FROM ie_tbluser_medicinephongluu WHERE usercode='" + Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(currentUserCode, true).ToString() + "';";
                 DataView dv_phongluu = new DataView(condb.GetDataTable_HSBA(sqlquerry_phongluu));
                 if (dv_phongluu != null && dv_phongluu.Count > 0)
                 {
@@ -372,7 +373,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         private void btnUserThem_Click(object sender, EventArgs e)
@@ -405,9 +406,9 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
         private void btnUserOK_Click(object sender, EventArgs e)
         {
             // Mã hóa tài khoản
-            string en_txtUserID = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(txtUserID.Text.Trim().ToLower(), true);
-            string en_txtUsername = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(txtUsername.Text.Trim(), true);
-            string en_txtUserPassword = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(txtUserPassword.Text.Trim(), true);
+            string en_txtUserID = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(txtUserID.Text.Trim().ToLower(), true);
+            string en_txtUsername = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(txtUsername.Text.Trim(), true);
+            string en_txtUserPassword = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(txtUserPassword.Text.Trim(), true);
             try
             {
                 if (currentUserCode == null)//them moi
@@ -420,7 +421,8 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                     CreateNewUserMedicinePhongLuu(en_txtUserID);
                     O2S_InsuranceExpertise.Utilities.ThongBao.frmThongBao frmthongbao = new O2S_InsuranceExpertise.Utilities.ThongBao.frmThongBao(O2S_InsuranceExpertise.Base.ThongBaoLable.THEM_MOI_THANH_CONG);
                     frmthongbao.Show();
-                    LoadDanhSachNguoiDung();
+                    //LoadDanhSachNguoiDung();
+                    ucQuanLyNguoiDung_Load(null,null);
                 }
                 else //Update 
                 {
@@ -436,7 +438,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -459,7 +461,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
         private void CreateNewUserPermission(string en_txtUserID)
@@ -470,8 +472,8 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                 for (int i = 0; i < lstPer.Count; i++)
                 {
                     sqlinsert_per = "";
-                    string en_permissioncode = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(lstPer[i].permissioncode.ToString(), true);
-                    string en_permissionname = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(lstPer[i].permissionname.ToString(), true);
+                    string en_permissioncode = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(lstPer[i].permissioncode.ToString(), true);
+                    string en_permissionname = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(lstPer[i].permissionname.ToString(), true);
                     if (lstPer[i].permissioncheck == true)
                     {
                         sqlinsert_per = "INSERT INTO ie_tbluser_permission(permissioncode, permissionname, usercode, permissioncheck, userpermissionnote) VALUES ('" + en_permissioncode + "', '" + en_permissionname + "', '" + en_txtUserID + "', 'true', '');";
@@ -481,7 +483,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
         private void CreateNewUserDepartment(string en_txtUserID)
@@ -501,7 +503,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
         private void CreateNewUserBaoCao(string en_txtUserID)
@@ -512,8 +514,8 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                 for (int i = 0; i < lstPerBaoCao.Count; i++)
                 {
                     sqlinsert_per = "";
-                    string en_permissioncode = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(lstPerBaoCao[i].permissioncode.ToString(), true);
-                    string en_permissionname = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(lstPerBaoCao[i].permissionname.ToString(), true);
+                    string en_permissioncode = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(lstPerBaoCao[i].permissioncode.ToString(), true);
+                    string en_permissionname = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(lstPerBaoCao[i].permissionname.ToString(), true);
                     if (lstPerBaoCao[i].permissioncheck == true)
                     {
                         sqlinsert_per = "INSERT INTO ie_tbluser_permission(permissioncode, permissionname, usercode, permissioncheck, userpermissionnote) VALUES ('" + en_permissioncode + "', '" + en_permissionname + "', '" + en_txtUserID + "', 'true', 'BAOCAO');";
@@ -523,7 +525,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
         private void CreateNewUserMedicineStore(string en_txtUserID)
@@ -543,7 +545,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
         private void CreateNewUserMedicinePhongLuu(string en_txtUserID)
@@ -563,7 +565,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
 
@@ -584,7 +586,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
         private void UpdateUserPermission(string en_txtUserID)
@@ -595,7 +597,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                 for (int i = 0; i < lstPer.Count; i++)
                 {
                     sqlupdate_per = "";
-                    string en_permissioncode = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(lstPer[i].permissioncode, true);
+                    string en_permissioncode = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(lstPer[i].permissioncode, true);
                     string sqlkiemtratontai = "SELECT * FROM ie_tbluser_permission WHERE usercode='" + en_txtUserID + "' and permissioncode='" + en_permissioncode + "' ;";
                     DataView dvkt = new DataView(condb.GetDataTable_HSBA(sqlkiemtratontai));
                     if (dvkt.Count > 0) //Nếu có quyền đó rồi thì Update
@@ -610,7 +612,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                     {
                         if (lstPer[i].permissioncheck == true)
                         {
-                            string en_permissionname = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(lstPer[i].permissionname.ToString(), true);
+                            string en_permissionname = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(lstPer[i].permissionname.ToString(), true);
                             sqlupdate_per = "INSERT INTO ie_tbluser_permission(permissioncode, permissionname, usercode, permissioncheck, userpermissionnote) VALUES ('" + en_permissioncode + "', '" + en_permissionname + "', '" + en_txtUserID + "', 'true', '');";
                             condb.ExecuteNonQuery_HSBA(sqlupdate_per);
                         }
@@ -619,7 +621,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
         private void UpdateUserDepartment(string en_txtUserID)
@@ -652,7 +654,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
         private void UpdateUserBaoCao(string en_txtUserID)
@@ -663,7 +665,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                 for (int i = 0; i < lstPerBaoCao.Count; i++)
                 {
                     sqlupdate_per = "";
-                    string en_permissioncode = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(lstPerBaoCao[i].permissioncode, true);
+                    string en_permissioncode = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(lstPerBaoCao[i].permissioncode, true);
                     string sqlkiemtratontai = "SELECT * FROM ie_tbluser_permission WHERE usercode='" + en_txtUserID + "' and permissioncode='" + en_permissioncode + "' ;";
                     DataView dvkt = new DataView(condb.GetDataTable_HSBA(sqlkiemtratontai));
                     if (dvkt.Count > 0) //Nếu có quyền đó rồi thì Update
@@ -678,7 +680,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                     {
                         if (lstPerBaoCao[i].permissioncheck == true)
                         {
-                            string en_permissionname = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(lstPerBaoCao[i].permissionname.ToString(), true);
+                            string en_permissionname = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(lstPerBaoCao[i].permissionname.ToString(), true);
                             sqlupdate_per = "INSERT INTO ie_tbluser_permission(permissioncode, permissionname, usercode, permissioncheck, userpermissionnote) VALUES ('" + en_permissioncode + "', '" + en_permissionname + "', '" + en_txtUserID + "', 'true', 'BAOCAO');";
                             condb.ExecuteNonQuery_HSBA(sqlupdate_per);
                         }
@@ -687,7 +689,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
         private void UpdateUserMedicineStore(string en_txtUserID)
@@ -720,7 +722,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
         private void UpdateUserMedicinePhongLuu(string en_txtUserID)
@@ -753,7 +755,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             }
             catch (Exception ex)
             {
-                Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
 
@@ -798,17 +800,21 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
 
         void itemXoaNguoiDung_Click(object sender, EventArgs e)
         {
+            if (currentUserCode == null)
+            {
+                return;
+            }
             String datetime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa tài khoản: " + currentUserCode + " không?", "Thông báo !!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
             if (dialogResult == DialogResult.Yes)
             {
                 try
                 {
-                    string sqlxoatk = "DELETE FROM ie_tbluser WHERE usercode='" + O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(currentUserCode.ToString(), true) + "';";
-                    string sqlxoatk_chucnang = "DELETE FROM ie_tbluser_permission WHERE usercode='" + O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(currentUserCode.ToString(), true) + "';";
-                    string sqlxoatk_khoaphong = "DELETE FROM ie_tbluser_departmentgroup WHERE usercode='" + O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(currentUserCode.ToString(), true) + "';";
-                    string sqlxoatk_khothuoc = "DELETE FROM ie_tbluser_medicinestore WHERE usercode='" + O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(currentUserCode.ToString(), true) + "';";
-                    string sqlxoatk_phongluu = "DELETE FROM ie_tbluser_medicinephongluu WHERE usercode='" + O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt(currentUserCode.ToString(), true) + "';";
+                    string sqlxoatk = "DELETE FROM ie_tbluser WHERE usercode='" + Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(currentUserCode.ToString(), true) + "';";
+                    string sqlxoatk_chucnang = "DELETE FROM ie_tbluser_permission WHERE usercode='" + Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(currentUserCode.ToString(), true) + "';";
+                    string sqlxoatk_khoaphong = "DELETE FROM ie_tbluser_departmentgroup WHERE usercode='" + Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(currentUserCode.ToString(), true) + "';";
+                    string sqlxoatk_khothuoc = "DELETE FROM ie_tbluser_medicinestore WHERE usercode='" + Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(currentUserCode.ToString(), true) + "';";
+                    string sqlxoatk_phongluu = "DELETE FROM ie_tbluser_medicinephongluu WHERE usercode='" + Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(currentUserCode.ToString(), true) + "';";
                     string sqlinsert_log = "INSERT INTO ie_tbllog(loguser, logvalue, ipaddress, computername, softversion, logtime) VALUES ('" + SessionLogin.SessionUsercode + "', 'Xóa tài khoản: " + currentUserCode + "','" + SessionLogin.SessionMyIP + "', '" + SessionLogin.SessionMachineName + "', '" + SessionLogin.SessionVersion + "', '" + datetime + "');";
 
                     condb.ExecuteNonQuery_HSBA(sqlxoatk);
@@ -825,7 +831,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                 }
                 catch (Exception ex)
                 {
-                    Base.Logging.Warn(ex);
+                    Common.Logging.LogSystem.Error(ex);
                 }
             }
         }

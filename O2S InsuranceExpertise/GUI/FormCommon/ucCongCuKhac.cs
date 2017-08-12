@@ -40,10 +40,11 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             {
                 KiemTraEnable_ChucNang();
                 LoadControl_KiemTraThongTuyen();
+                MyGetData("Công cụ khác - Kiểm tra thông tuyến");
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -56,7 +57,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
 
@@ -74,7 +75,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
         #endregion
@@ -95,7 +96,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
         private void xtraTabControlCongCuKhac_SelectedPageChanged(object sender, TabPageChangedEventArgs e)
@@ -118,7 +119,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
 
@@ -140,7 +141,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
 
@@ -155,7 +156,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
 
@@ -179,7 +180,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
             catch (Exception ex)
             {
-                Base.Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
 

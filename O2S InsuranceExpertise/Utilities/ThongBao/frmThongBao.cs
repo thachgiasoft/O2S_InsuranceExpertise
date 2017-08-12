@@ -34,7 +34,7 @@ namespace O2S_InsuranceExpertise.Utilities.ThongBao
             }
             catch (Exception ex)
             {
-                Base.Logging.Warn(ex);
+                O2S_InsuranceExpertise.Common.Logging.LogSystem.Error(ex);
             }
         }
 
@@ -49,7 +49,7 @@ namespace O2S_InsuranceExpertise.Utilities.ThongBao
             }
             catch (Exception ex)
             {
-                Base.Logging.Warn(ex);
+                O2S_InsuranceExpertise.Common.Logging.LogSystem.Error(ex);
             }
         }
     }

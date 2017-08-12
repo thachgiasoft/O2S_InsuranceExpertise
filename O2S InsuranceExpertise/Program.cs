@@ -30,9 +30,9 @@ namespace O2S_InsuranceExpertise
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
             UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
-            Base.Logging.Info("Application_Start. Time=" + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss:fff"));
-            //  Application.Run(new O2S_InsuranceExpertise.GUI.FormCommon.frmLogin());
-            Application.Run(new GUI.CheckThongTuyen.frmCheckThongTuyenTuDong());
+           Common.Logging.LogSystem.Info("Application_Start. Time=" + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss:fff"));
+            Application.Run(new O2S_InsuranceExpertise.GUI.FormCommon.frmLogin());
+            //Application.Run(new GUI.CheckThongTuyen.frmCheckThongTuyenTuDong());
         }
     }
 }

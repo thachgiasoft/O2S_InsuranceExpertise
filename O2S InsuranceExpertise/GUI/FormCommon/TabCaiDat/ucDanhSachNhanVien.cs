@@ -87,7 +87,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
         {
             string en_txtNVID = txtNVID.Text.Trim().ToLower();
             string en_txtNVName = txtNVName.Text.Trim();
-            string en_pass = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt("", true);
+            string en_pass = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt("", true);
 
             try
             {
@@ -152,7 +152,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                             // Mã hóa tài khoản
                             string en_txtNVCode = dmUser_Import[i]["USERCODE"].ToString().Trim();
                             string en_txtNVName = dmUser_Import[i]["USERNAME"].ToString().Trim();
-                            string en_pass = O2S_InsuranceExpertise.Base.EncryptAndDecrypt.Encrypt("", true);
+                            string en_pass = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt("", true);
                             if (dmUser_Import[i]["USERCODE"].ToString() != "")
                             {
                                 condb.Connect();
@@ -196,7 +196,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm();
-                Base.Logging.Error(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
 
@@ -245,7 +245,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                 }
                 catch (Exception ex)
                 {
-                    Base.Logging.Warn(ex);
+                    Common.Logging.LogSystem.Error(ex);
                 }
             }
         }

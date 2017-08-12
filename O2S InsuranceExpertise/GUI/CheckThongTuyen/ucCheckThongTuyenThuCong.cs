@@ -17,85 +17,109 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
         public ucCheckThongTuyenThuCong()
         {
             InitializeComponent();
-            // Hiển thị Text Hint
-            txtPatientId.ForeColor = SystemColors.GrayText;
-            txtPatientId.Text = "Mã bệnh nhân";
-            this.txtPatientId.Leave += new System.EventHandler(this.txtPatientId_Leave);
-            this.txtPatientId.Enter += new System.EventHandler(this.txtPatientId_Enter);
+            //// Hiển thị Text Hint
+            //txtPatientId.ForeColor = SystemColors.GrayText;
+            //txtPatientId.Text = "Mã bệnh nhân";
+            //this.txtPatientId.Leave += new System.EventHandler(this.txtPatientId_Leave);
+            //this.txtPatientId.Enter += new System.EventHandler(this.txtPatientId_Enter);
 
-            txtVienPhiId.ForeColor = SystemColors.GrayText;
-            txtVienPhiId.Text = "Mã viện phí";
-            this.txtVienPhiId.Leave += new System.EventHandler(this.txtVienPhiId_Leave);
-            this.txtVienPhiId.Enter += new System.EventHandler(this.txtVienPhiId_Enter);
+            //txtVienPhiId.ForeColor = SystemColors.GrayText;
+            //txtVienPhiId.Text = "Mã viện phí";
+            //this.txtVienPhiId.Leave += new System.EventHandler(this.txtVienPhiId_Leave);
+            //this.txtVienPhiId.Enter += new System.EventHandler(this.txtVienPhiId_Enter);
 
-            txtBhytCode.ForeColor = SystemColors.GrayText;
-            txtBhytCode.Text = "Mã thẻ BHYT";
-            this.txtBhytCode.Leave += new System.EventHandler(this.txtBhytCode_Leave);
-            this.txtBhytCode.Enter += new System.EventHandler(this.txtBhytCode_Enter);
+            //txtBhytCode.ForeColor = SystemColors.GrayText;
+            //txtBhytCode.Text = "Mã thẻ BHYT";
+            //this.txtBhytCode.Leave += new System.EventHandler(this.txtBhytCode_Leave);
+            //this.txtBhytCode.Enter += new System.EventHandler(this.txtBhytCode_Enter);
         }
         #region  Hiển thị Text Hint
-        private void txtPatientId_Leave(object sender, EventArgs e)
-        {
-            if (txtPatientId.Text.Length == 0)
-            {
-                txtPatientId.Text = "Mã bệnh nhân";
-                txtPatientId.ForeColor = SystemColors.GrayText;
-            }
-        }
-        private void txtPatientId_Enter(object sender, EventArgs e)
-        {
-            if (txtPatientId.Text == "Mã bệnh nhân")
-            {
-                txtPatientId.Text = "";
-                txtPatientId.ForeColor = SystemColors.WindowText;
-            }
-        }
-        private void txtVienPhiId_Leave(object sender, EventArgs e)
-        {
-            if (txtVienPhiId.Text.Length == 0)
-            {
-                txtVienPhiId.Text = "Mã viện phí";
-                txtVienPhiId.ForeColor = SystemColors.GrayText;
-            }
-        }
-        private void txtVienPhiId_Enter(object sender, EventArgs e)
-        {
-            if (txtVienPhiId.Text == "Mã viện phí")
-            {
-                txtVienPhiId.Text = "";
-                txtVienPhiId.ForeColor = SystemColors.WindowText;
-            }
-        }
-        private void txtBhytCode_Leave(object sender, EventArgs e)
-        {
-            if (txtBhytCode.Text.Length == 0)
-            {
-                txtBhytCode.Text = "Mã thẻ BHYT";
-                txtBhytCode.ForeColor = SystemColors.GrayText;
-            }
-        }
-        private void txtBhytCode_Enter(object sender, EventArgs e)
-        {
-            if (txtBhytCode.Text == "Mã thẻ BHYT")
-            {
-                txtBhytCode.Text = "";
-                txtBhytCode.ForeColor = SystemColors.WindowText;
-            }
-        }
+        //private void txtPatientId_Leave(object sender, EventArgs e)
+        //{
+        //    if (txtPatientId.Text.Length == 0)
+        //    {
+        //        txtPatientId.Text = "Mã bệnh nhân";
+        //        txtPatientId.ForeColor = SystemColors.GrayText;
+        //    }
+        //}
+        //private void txtPatientId_Enter(object sender, EventArgs e)
+        //{
+        //    if (txtPatientId.Text == "Mã bệnh nhân")
+        //    {
+        //        txtPatientId.Text = "";
+        //        txtPatientId.ForeColor = SystemColors.WindowText;
+        //    }
+        //}
+        //private void txtVienPhiId_Leave(object sender, EventArgs e)
+        //{
+        //    if (txtVienPhiId.Text.Length == 0)
+        //    {
+        //        txtVienPhiId.Text = "Mã viện phí";
+        //        txtVienPhiId.ForeColor = SystemColors.GrayText;
+        //    }
+        //}
+        //private void txtVienPhiId_Enter(object sender, EventArgs e)
+        //{
+        //    if (txtVienPhiId.Text == "Mã viện phí")
+        //    {
+        //        txtVienPhiId.Text = "";
+        //        txtVienPhiId.ForeColor = SystemColors.WindowText;
+        //    }
+        //}
+        //private void txtBhytCode_Leave(object sender, EventArgs e)
+        //{
+        //    if (txtBhytCode.Text.Length == 0)
+        //    {
+        //        txtBhytCode.Text = "Mã thẻ BHYT";
+        //        txtBhytCode.ForeColor = SystemColors.GrayText;
+        //    }
+        //}
+        //private void txtBhytCode_Enter(object sender, EventArgs e)
+        //{
+        //    if (txtBhytCode.Text == "Mã thẻ BHYT")
+        //    {
+        //        txtBhytCode.Text = "";
+        //        txtBhytCode.ForeColor = SystemColors.WindowText;
+        //    }
+        //}
 
         #endregion
+
         #region Load
         private void ucCheckThongTuyenThuCong_Load(object sender, EventArgs e)
         {
             try
             {
-
+                dateTuNgay.DateTime = Convert.ToDateTime(DateTime.Now.AddDays(-15).ToString("yyyy-MM-dd") + " 00:00:00");
+                dateDenNgay.DateTime = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd") + " 23:59:59");
+                LoadDanhSachKhoa();
             }
             catch (Exception ex)
             {
-                Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
+        private void LoadDanhSachKhoa()
+        {
+            try
+            {
+                //linq groupby
+                var lstDSKhoa = Base.SessionLogin.SessionlstPhanQuyen_KhoaPhong.Where(o => o.departmentgrouptype == 1 || o.departmentgrouptype == 4 || o.departmentgrouptype == 11).ToList().GroupBy(o => o.departmentgroupid).Select(n => n.First()).ToList();
+                if (lstDSKhoa != null && lstDSKhoa.Count > 0)
+                {
+                    chkKhoa.Properties.DataSource = lstDSKhoa;
+                    chkKhoa.Properties.DisplayMember = "departmentgroupname";
+                    chkKhoa.Properties.ValueMember = "departmentgroupid";
+                }
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Error(ex);
+            }
+        }
+
+
+
         #endregion
 
         #region Custom
@@ -112,7 +136,7 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
             }
             catch (Exception ex)
             {
-                Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
 
@@ -144,7 +168,7 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
             }
             catch (Exception ex)
             {
-                Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
 
@@ -156,7 +180,7 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
             }
             catch (Exception ex)
             {
-                Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
         private void KiemTraTatCa_Click(object sender, EventArgs e)
@@ -167,7 +191,7 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
             }
             catch (Exception ex)
             {
-                Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
         #endregion
@@ -196,29 +220,31 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
             }
             catch (Exception ex)
             {
-                Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
         private void txtBhytCode_EditValueChanged(object sender, EventArgs e)
         {
             try
             {
-                if (txtBhytCode.Text != "")
-                {
-                    //txtPatientId.ForeColor = SystemColors.GrayText;
-                    //txtPatientId.Text = "Mã bệnh nhân";
-                    //this.txtPatientId.Leave += new System.EventHandler(this.txtPatientId_Leave);
-                    //this.txtPatientId.Enter += new System.EventHandler(this.txtPatientId_Enter);
+                txtPatientId.ResetText();
+                txtVienPhiId.ResetText();
+                //if (txtBhytCode.Text != "")
+                //{                 
+                //txtPatientId.ForeColor = SystemColors.GrayText;
+                //txtPatientId.Text = "Mã bệnh nhân";
+                //this.txtPatientId.Leave += new System.EventHandler(this.txtPatientId_Leave);
+                //this.txtPatientId.Enter += new System.EventHandler(this.txtPatientId_Enter);
 
-                    //txtVienPhiId.ForeColor = SystemColors.GrayText;
-                    //txtVienPhiId.Text = "Mã viện phí";
-                    //this.txtVienPhiId.Leave += new System.EventHandler(this.txtVienPhiId_Leave);
-                    //this.txtVienPhiId.Enter += new System.EventHandler(this.txtVienPhiId_Enter);
-                }
+                //txtVienPhiId.ForeColor = SystemColors.GrayText;
+                //txtVienPhiId.Text = "Mã viện phí";
+                //this.txtVienPhiId.Leave += new System.EventHandler(this.txtVienPhiId_Leave);
+                //this.txtVienPhiId.Enter += new System.EventHandler(this.txtVienPhiId_Enter);
+                //}
             }
             catch (Exception ex)
             {
-                Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
 
@@ -226,22 +252,24 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
         {
             try
             {
-                if (txtPatientId.Text != "")
-                {
-                    txtVienPhiId.ForeColor = SystemColors.GrayText;
-                    txtVienPhiId.Text = "Mã viện phí";
-                    this.txtVienPhiId.Leave += new System.EventHandler(this.txtVienPhiId_Leave);
-                    this.txtVienPhiId.Enter += new System.EventHandler(this.txtVienPhiId_Enter);
+                txtBhytCode.ResetText();
+                txtVienPhiId.ResetText();
+                //if (txtPatientId.Text != "")
+                //{
+                    //txtVienPhiId.ForeColor = SystemColors.GrayText;
+                    //txtVienPhiId.Text = "Mã viện phí";
+                    //this.txtVienPhiId.Leave += new System.EventHandler(this.txtVienPhiId_Leave);
+                    //this.txtVienPhiId.Enter += new System.EventHandler(this.txtVienPhiId_Enter);
 
                     //txtBhytCode.ForeColor = SystemColors.GrayText;
                     //txtBhytCode.Text = "Mã thẻ BHYT";
                     //this.txtBhytCode.Leave += new System.EventHandler(this.txtBhytCode_Leave);
                     //this.txtBhytCode.Enter += new System.EventHandler(this.txtBhytCode_Enter);
-                }
+                //}
             }
             catch (Exception ex)
             {
-                Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
 
@@ -249,22 +277,24 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
         {
             try
             {
-                if (txtVienPhiId.Text != "")
-                {
-                    txtPatientId.ForeColor = SystemColors.GrayText;
-                    txtPatientId.Text = "Mã bệnh nhân";
-                    this.txtPatientId.Leave += new System.EventHandler(this.txtPatientId_Leave);
-                    this.txtPatientId.Enter += new System.EventHandler(this.txtPatientId_Enter);
+                txtBhytCode.ResetText();
+                txtPatientId.ResetText();
+                //if (txtVienPhiId.Text != "")
+                //{
+                    //txtPatientId.ForeColor = SystemColors.GrayText;
+                    //txtPatientId.Text = "Mã bệnh nhân";
+                    //this.txtPatientId.Leave += new System.EventHandler(this.txtPatientId_Leave);
+                    //this.txtPatientId.Enter += new System.EventHandler(this.txtPatientId_Enter);
 
                     //txtBhytCode.ForeColor = SystemColors.GrayText;
                     //txtBhytCode.Text = "Mã thẻ BHYT";
                     //this.txtBhytCode.Leave += new System.EventHandler(this.txtBhytCode_Leave);
                     //this.txtBhytCode.Enter += new System.EventHandler(this.txtBhytCode_Enter);
-                }
+                //}
             }
             catch (Exception ex)
             {
-                Base.Logging.Warn(ex);
+                Common.Logging.LogSystem.Error(ex);
             }
         }
         #endregion

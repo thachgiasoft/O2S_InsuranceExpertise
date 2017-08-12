@@ -6,6 +6,9 @@ SELECT dblink_connect('dbname=test_viettiep port=5432 host=localhost user=postgr
 SELECT dblink_connect('myconn', 'dbname=test_viettiep port=5432 host=localhost user=postgres password=1234');
 
 
+SELECT dblink_connect('myconn_ie', 'dbname=O2SInsurance port=5432 host=localhost user=postgres password=1234');
+
+
 --Disconnect
 SELECT dblink_disconnect();
 SELECT dblink_disconnect('myconn');

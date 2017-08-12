@@ -32,7 +32,7 @@ namespace O2S_InsuranceExpertise.Base
                 if (license_keydb != "")
                 {
                     //Giai ma
-                    string makichhoat_giaima = EncryptAndDecrypt.Decrypt(license_keydb, true);
+                    string makichhoat_giaima = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(license_keydb, true);
                     //Tach ma kich hoat:
                     string mamay_keykichhoat = "";
                     string mabanquyenkhongthoihan = "";
@@ -49,7 +49,7 @@ namespace O2S_InsuranceExpertise.Base
                     }
                     catch (Exception ex)
                     {
-                        Base.Logging.Error(ex);
+                        Common.Logging.LogSystem.Error(ex);
                     }
 
                     if (!String.IsNullOrEmpty(makichhoat_giaima))
@@ -81,7 +81,7 @@ namespace O2S_InsuranceExpertise.Base
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn("Kiem tra license " + ex.ToString());
+                Common.Logging.LogSystem.Warn("Kiem tra license " + ex.ToString());
             }
         }
 
@@ -99,7 +99,7 @@ namespace O2S_InsuranceExpertise.Base
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn("Lay thong tin ma database " + ex.ToString());
+                Common.Logging.LogSystem.Warn("Lay thong tin ma database " + ex.ToString());
             }
             return MaDatabase;
         }
@@ -110,7 +110,7 @@ namespace O2S_InsuranceExpertise.Base
             try
             {
                 //Giai ma
-                string makichhoat_giaima = EncryptAndDecrypt.Decrypt(makichhoat_mahoa, true);
+                string makichhoat_giaima =Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(makichhoat_mahoa, true);
                 //Tach ma kich hoat:
                 string mamay_keykichhoat = "";
                 long thoigianTu = 0;
@@ -157,7 +157,7 @@ namespace O2S_InsuranceExpertise.Base
             }
             catch (Exception ex)
             {
-                O2S_InsuranceExpertise.Base.Logging.Warn("Kiem tra license " + ex.ToString());
+                Common.Logging.LogSystem.Warn("Kiem tra license " + ex.ToString());
             }
             return thoiGianSuDung;
         }

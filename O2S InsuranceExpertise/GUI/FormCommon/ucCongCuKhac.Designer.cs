@@ -73,6 +73,7 @@
             this.xtraTab_KiemTraThongTuyen.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
             this.xtraTab_KiemTraThongTuyen.Size = new System.Drawing.Size(994, 582);
             this.xtraTab_KiemTraThongTuyen.Text = "Kiểm tra thông tuyến";
+            this.xtraTab_KiemTraThongTuyen.Tooltip = "Công cụ khác - Kiểm tra thông tuyến";
             // 
             // xtraTab_BaoCao
             // 
@@ -86,6 +87,7 @@
             this.xtraTab_BaoCao.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
             this.xtraTab_BaoCao.Size = new System.Drawing.Size(994, 582);
             this.xtraTab_BaoCao.Text = "Báo cáo";
+            this.xtraTab_BaoCao.Tooltip = "Công cụ khác - Báo cáo";
             // 
             // gridControlDSBaoCao
             // 
