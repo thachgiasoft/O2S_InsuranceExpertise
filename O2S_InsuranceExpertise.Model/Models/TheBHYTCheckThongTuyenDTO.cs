@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace O2S_InsuranceExpertise.Model.Models
 {
-   public class TheBHYT_ChkThongTuyenDTO
+   public class TheBHYTCheckThongTuyenDTO
     {
         public string maThe { get; set; }
         public string hoTen { get; set; }
