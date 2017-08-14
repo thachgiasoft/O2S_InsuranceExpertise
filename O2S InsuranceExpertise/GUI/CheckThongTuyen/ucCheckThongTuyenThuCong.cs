@@ -9,81 +9,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.Utils.Menu;
+using DevExpress.XtraSplashScreen;
 
 namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
 {
     public partial class ucCheckThongTuyenThuCong : UserControl
     {
+        #region Khai bao
+        DAL.ConnectDatabase condb = new DAL.ConnectDatabase();
+
+
+        #endregion
         public ucCheckThongTuyenThuCong()
         {
             InitializeComponent();
-            //// Hiển thị Text Hint
-            //txtPatientId.ForeColor = SystemColors.GrayText;
-            //txtPatientId.Text = "Mã bệnh nhân";
-            //this.txtPatientId.Leave += new System.EventHandler(this.txtPatientId_Leave);
-            //this.txtPatientId.Enter += new System.EventHandler(this.txtPatientId_Enter);
-
-            //txtVienPhiId.ForeColor = SystemColors.GrayText;
-            //txtVienPhiId.Text = "Mã viện phí";
-            //this.txtVienPhiId.Leave += new System.EventHandler(this.txtVienPhiId_Leave);
-            //this.txtVienPhiId.Enter += new System.EventHandler(this.txtVienPhiId_Enter);
-
-            //txtBhytCode.ForeColor = SystemColors.GrayText;
-            //txtBhytCode.Text = "Mã thẻ BHYT";
-            //this.txtBhytCode.Leave += new System.EventHandler(this.txtBhytCode_Leave);
-            //this.txtBhytCode.Enter += new System.EventHandler(this.txtBhytCode_Enter);
         }
-        #region  Hiển thị Text Hint
-        //private void txtPatientId_Leave(object sender, EventArgs e)
-        //{
-        //    if (txtPatientId.Text.Length == 0)
-        //    {
-        //        txtPatientId.Text = "Mã bệnh nhân";
-        //        txtPatientId.ForeColor = SystemColors.GrayText;
-        //    }
-        //}
-        //private void txtPatientId_Enter(object sender, EventArgs e)
-        //{
-        //    if (txtPatientId.Text == "Mã bệnh nhân")
-        //    {
-        //        txtPatientId.Text = "";
-        //        txtPatientId.ForeColor = SystemColors.WindowText;
-        //    }
-        //}
-        //private void txtVienPhiId_Leave(object sender, EventArgs e)
-        //{
-        //    if (txtVienPhiId.Text.Length == 0)
-        //    {
-        //        txtVienPhiId.Text = "Mã viện phí";
-        //        txtVienPhiId.ForeColor = SystemColors.GrayText;
-        //    }
-        //}
-        //private void txtVienPhiId_Enter(object sender, EventArgs e)
-        //{
-        //    if (txtVienPhiId.Text == "Mã viện phí")
-        //    {
-        //        txtVienPhiId.Text = "";
-        //        txtVienPhiId.ForeColor = SystemColors.WindowText;
-        //    }
-        //}
-        //private void txtBhytCode_Leave(object sender, EventArgs e)
-        //{
-        //    if (txtBhytCode.Text.Length == 0)
-        //    {
-        //        txtBhytCode.Text = "Mã thẻ BHYT";
-        //        txtBhytCode.ForeColor = SystemColors.GrayText;
-        //    }
-        //}
-        //private void txtBhytCode_Enter(object sender, EventArgs e)
-        //{
-        //    if (txtBhytCode.Text == "Mã thẻ BHYT")
-        //    {
-        //        txtBhytCode.Text = "";
-        //        txtBhytCode.ForeColor = SystemColors.WindowText;
-        //    }
-        //}
-
-        #endregion
 
         #region Load
         private void ucCheckThongTuyenThuCong_Load(object sender, EventArgs e)
@@ -107,9 +47,9 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
                 var lstDSKhoa = Base.SessionLogin.SessionlstPhanQuyen_KhoaPhong.Where(o => o.departmentgrouptype == 1 || o.departmentgrouptype == 4 || o.departmentgrouptype == 11).ToList().GroupBy(o => o.departmentgroupid).Select(n => n.First()).ToList();
                 if (lstDSKhoa != null && lstDSKhoa.Count > 0)
                 {
-                    chkKhoa.Properties.DataSource = lstDSKhoa;
-                    chkKhoa.Properties.DisplayMember = "departmentgroupname";
-                    chkKhoa.Properties.ValueMember = "departmentgroupid";
+                    chkcomboListDSKhoa.Properties.DataSource = lstDSKhoa;
+                    chkcomboListDSKhoa.Properties.DisplayMember = "departmentgroupname";
+                    chkcomboListDSKhoa.Properties.ValueMember = "departmentgroupid";
                 }
             }
             catch (Exception ex)
@@ -121,27 +61,6 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
 
 
         #endregion
-
-        #region Custom
-        private void gridViewDSBN_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
-        {
-            try
-            {
-                GridView view = sender as GridView;
-                if (e.RowHandle == view.FocusedRowHandle)
-                {
-                    e.Appearance.BackColor = Color.LightGreen;
-                    e.Appearance.ForeColor = Color.Black;
-                }
-            }
-            catch (Exception ex)
-            {
-                Common.Logging.LogSystem.Error(ex);
-            }
-        }
-
-        #endregion
-
 
         #region Grid Danh sách bệnh nhân
         private void gridViewDSBN_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
@@ -174,41 +93,52 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
 
         private void KiemTraDaChon_Click(object sender, EventArgs e)
         {
+            SplashScreenManager.ShowForm(typeof(Utilities.ThongBao.WaitForm1));
             try
             {
-
+                CheckThongTuyenRowDangChon();
             }
             catch (Exception ex)
             {
                 Common.Logging.LogSystem.Error(ex);
             }
+            SplashScreenManager.CloseForm();
+            btnTimKiem_Click(null, null);
         }
         private void KiemTraTatCa_Click(object sender, EventArgs e)
         {
+            SplashScreenManager.ShowForm(typeof(Utilities.ThongBao.WaitForm1));
             try
             {
+                CheckThongTuyenTatCaRowDangChon();
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Error(ex);
+            }
+            SplashScreenManager.CloseForm();
+            btnTimKiem_Click(null, null);
+        }
+        #endregion
 
+        #region Custom
+        private void gridViewDSBN_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+            try
+            {
+                GridView view = sender as GridView;
+                if (e.RowHandle == view.FocusedRowHandle)
+                {
+                    e.Appearance.BackColor = Color.LightGreen;
+                    e.Appearance.ForeColor = Color.Black;
+                }
             }
             catch (Exception ex)
             {
                 Common.Logging.LogSystem.Error(ex);
             }
         }
-        #endregion
 
-        #region Grid Kết quả Check Thông tuyến
-        private void gridControlKQCheck_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-
-        #endregion
-
-
-        #region Custom
         private void txtPatientId_KeyPress(object sender, KeyPressEventArgs e)
         {
             try
@@ -227,24 +157,16 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
         {
             try
             {
-                txtPatientId.ResetText();
-                txtVienPhiId.ResetText();
-                //if (txtBhytCode.Text != "")
-                //{                 
-                //txtPatientId.ForeColor = SystemColors.GrayText;
-                //txtPatientId.Text = "Mã bệnh nhân";
-                //this.txtPatientId.Leave += new System.EventHandler(this.txtPatientId_Leave);
-                //this.txtPatientId.Enter += new System.EventHandler(this.txtPatientId_Enter);
-
-                //txtVienPhiId.ForeColor = SystemColors.GrayText;
-                //txtVienPhiId.Text = "Mã viện phí";
-                //this.txtVienPhiId.Leave += new System.EventHandler(this.txtVienPhiId_Leave);
-                //this.txtVienPhiId.Enter += new System.EventHandler(this.txtVienPhiId_Enter);
-                //}
+                if (txtBhytCode.Text.Trim() != "")
+                {
+                    txtPatientId.ResetText();
+                    txtVienPhiId.ResetText();
+                    txtBhytCode.Text = txtBhytCode.Text.ToUpper().Trim();
+                }
             }
             catch (Exception ex)
             {
-                Common.Logging.LogSystem.Error(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -252,24 +174,15 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
         {
             try
             {
-                txtBhytCode.ResetText();
-                txtVienPhiId.ResetText();
-                //if (txtPatientId.Text != "")
-                //{
-                    //txtVienPhiId.ForeColor = SystemColors.GrayText;
-                    //txtVienPhiId.Text = "Mã viện phí";
-                    //this.txtVienPhiId.Leave += new System.EventHandler(this.txtVienPhiId_Leave);
-                    //this.txtVienPhiId.Enter += new System.EventHandler(this.txtVienPhiId_Enter);
-
-                    //txtBhytCode.ForeColor = SystemColors.GrayText;
-                    //txtBhytCode.Text = "Mã thẻ BHYT";
-                    //this.txtBhytCode.Leave += new System.EventHandler(this.txtBhytCode_Leave);
-                    //this.txtBhytCode.Enter += new System.EventHandler(this.txtBhytCode_Enter);
-                //}
+                if (txtPatientId.Text.Trim() != "")
+                {
+                    txtBhytCode.ResetText();
+                    txtVienPhiId.ResetText();
+                }
             }
             catch (Exception ex)
             {
-                Common.Logging.LogSystem.Error(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
@@ -277,27 +190,142 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
         {
             try
             {
-                txtBhytCode.ResetText();
-                txtPatientId.ResetText();
-                //if (txtVienPhiId.Text != "")
-                //{
-                    //txtPatientId.ForeColor = SystemColors.GrayText;
-                    //txtPatientId.Text = "Mã bệnh nhân";
-                    //this.txtPatientId.Leave += new System.EventHandler(this.txtPatientId_Leave);
-                    //this.txtPatientId.Enter += new System.EventHandler(this.txtPatientId_Enter);
+                if (txtVienPhiId.Text.Trim() != "")
+                {
+                    txtBhytCode.ResetText();
+                    txtPatientId.ResetText();
+                }
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Warn(ex);
+            }
+        }
 
-                    //txtBhytCode.ForeColor = SystemColors.GrayText;
-                    //txtBhytCode.Text = "Mã thẻ BHYT";
-                    //this.txtBhytCode.Leave += new System.EventHandler(this.txtBhytCode_Leave);
-                    //this.txtBhytCode.Enter += new System.EventHandler(this.txtBhytCode_Enter);
-                //}
+        #endregion
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtBhytCode.Text.Trim() == "" && txtPatientId.Text.Trim() == "" && txtVienPhiId.Text.Trim() == "")
+                {
+                    string lstKhoaChonLayBC = "";
+                    List<Object> lstKhoaCheck = chkcomboListDSKhoa.Properties.Items.GetCheckedValues();
+                    if (lstKhoaCheck.Count > 0)
+                    {
+                        for (int i = 0; i < lstKhoaCheck.Count - 1; i++)
+                        {
+                            lstKhoaChonLayBC += lstKhoaCheck[i] + ",";
+                        }
+                        lstKhoaChonLayBC += lstKhoaCheck[lstKhoaCheck.Count - 1];
+                    }
+                    if (lstKhoaChonLayBC == "")
+                    {
+                        Utilities.ThongBao.frmThongBao frmthongbao = new Utilities.ThongBao.frmThongBao(Base.ThongBaoLable.CHUA_CHON_KHOA_PHONG);
+                        frmthongbao.Show();
+                    }
+                    else
+                    {
+                        gridControlDSBN.DataSource = null;
+                        LayDanhSachBenhNhan_TheoKhoa(lstKhoaChonLayBC);
+                    }
+                }
+                else
+                {
+                    Model.Models.FilterDSBNThuCongDTO dieukientimkiem = new Model.Models.FilterDSBNThuCongDTO();
+                    if (txtBhytCode.Text.Trim() != "")
+                    {
+                        dieukientimkiem.bhytcode = " and bhytcode='" + txtBhytCode.Text.Trim().ToUpper() + "' ";
+                        dieukientimkiem.patientid = "";
+                        dieukientimkiem.vienphiid = "";
+                    }
+                    else if (txtPatientId.Text.Trim() != "")
+                    {
+                        dieukientimkiem.patientid =" and patientid='" +txtPatientId.Text.Trim() + "' ";
+                        dieukientimkiem.bhytcode = "";
+                        dieukientimkiem.vienphiid = "";
+                    }
+                    if (txtVienPhiId.Text.Trim() != "")
+                    {
+                        dieukientimkiem.vienphiid = " and vienphiid='" +txtVienPhiId.Text.Trim() + "' ";
+                        dieukientimkiem.bhytcode = "";
+                        dieukientimkiem.patientid = "";
+                    }
+                    gridControlDSBN.DataSource = null;
+                    LayDanhSachBenhNhan_TheoDieuKien(dieukientimkiem);
+                }
+
             }
             catch (Exception ex)
             {
                 Common.Logging.LogSystem.Error(ex);
             }
         }
+
+        #region Click chon row
+        private void repositoryItemButton_Check_Click(object sender, EventArgs e)
+        {
+            SplashScreenManager.ShowForm(typeof(Utilities.ThongBao.WaitForm1));
+            try
+            {
+                CheckThongTuyenRowDangChon();
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Error(ex);
+            }
+            SplashScreenManager.CloseForm();
+            btnTimKiem_Click(null, null);
+        }
         #endregion
+        //Tùy chọn View con của View hiển thị
+        private void gridControlDSDotDieuTri_ViewRegistered(object sender, DevExpress.XtraGrid.ViewOperationEventArgs e)
+        {
+            try
+            {
+                (e.View as GridView).ColumnPanelRowHeight = 25;
+                (e.View as GridView).RowHeight = 25;
+                (e.View as GridView).OptionsView.ShowIndicator = false;
+
+                (e.View as GridView).Columns["stt_lichsu"].Caption = "STT";
+                (e.View as GridView).Columns["maHoSo"].Caption = "Mã hồ sơ";
+                (e.View as GridView).Columns["maCSKCB"].Caption = "Mã CSKCB";
+                (e.View as GridView).Columns["tuNgay"].Caption = "Ngày vào viện";
+                (e.View as GridView).Columns["denNgay"].Caption = "Ngày ra viện";
+                (e.View as GridView).Columns["tenBenh"].Caption = "Tên bệnh";
+                (e.View as GridView).Columns["tinhTrang"].Caption = "Mã tình trạng";
+                (e.View as GridView).Columns["tinhTrang_Ten"].Caption = "Tình trạng";
+                (e.View as GridView).Columns["kqDieuTri"].Caption = "Mã kết quả ĐT";
+                (e.View as GridView).Columns["kqDieuTri_Ten"].Caption = "Kết quả điều trị";
+
+                (e.View as GridView).Columns["tinhTrang"].Visible = false;
+                (e.View as GridView).Columns["kqDieuTri"].Visible = false;
+
+                (e.View as GridView).Columns["stt_lichsu"].Width = 35;
+                (e.View as GridView).Columns["maHoSo"].Width = 80;
+                (e.View as GridView).Columns["maCSKCB"].Width = 70;
+                (e.View as GridView).Columns["tuNgay"].Width = 90;
+                (e.View as GridView).Columns["denNgay"].Width = 90;
+                (e.View as GridView).Columns["tenBenh"].Width = 200;
+                (e.View as GridView).Columns["tinhTrang_Ten"].Width = 100;
+                (e.View as GridView).Columns["kqDieuTri_Ten"].Width = 100;
+
+                (e.View as GridView).Columns["stt_lichsu"].OptionsColumn.AllowEdit = false;
+                (e.View as GridView).Columns["maHoSo"].OptionsColumn.AllowEdit = false;
+                (e.View as GridView).Columns["maCSKCB"].OptionsColumn.AllowEdit = false;
+                (e.View as GridView).Columns["tuNgay"].OptionsColumn.AllowEdit = false;
+                (e.View as GridView).Columns["denNgay"].OptionsColumn.AllowEdit = false;
+                (e.View as GridView).Columns["tenBenh"].OptionsColumn.AllowEdit = false;
+                (e.View as GridView).Columns["tinhTrang_Ten"].OptionsColumn.AllowEdit = false;
+                (e.View as GridView).Columns["kqDieuTri_Ten"].OptionsColumn.AllowEdit = false;
+
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Warn(ex);
+            }
+        }
 
 
     }

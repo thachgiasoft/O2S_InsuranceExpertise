@@ -54,12 +54,15 @@
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtUrlFullServer = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.txtPassGDBHYT = new DevExpress.XtraEditors.TextEdit();
             this.txtUserGDBHYT = new DevExpress.XtraEditors.TextEdit();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
-            this.txtUrlFullServer = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtUpdateVersionLink = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.groupBoxDatabase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDBPort.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDBName.Properties)).BeginInit();
@@ -73,9 +76,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDBUser_HSBA.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDBHost_HSBA.Properties)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUrlFullServer.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassGDBHYT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserGDBHYT.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtUrlFullServer.Properties)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUpdateVersionLink.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxDatabase
@@ -90,10 +95,10 @@
             this.groupBoxDatabase.Controls.Add(this.labelControl3);
             this.groupBoxDatabase.Controls.Add(this.labelControl2);
             this.groupBoxDatabase.Controls.Add(this.labelControl1);
-            this.groupBoxDatabase.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxDatabase.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.groupBoxDatabase.Location = new System.Drawing.Point(0, 0);
             this.groupBoxDatabase.Name = "groupBoxDatabase";
-            this.groupBoxDatabase.Size = new System.Drawing.Size(768, 144);
+            this.groupBoxDatabase.Size = new System.Drawing.Size(997, 144);
             this.groupBoxDatabase.TabIndex = 16;
             this.groupBoxDatabase.TabStop = false;
             this.groupBoxDatabase.Text = "Chi tiết database HIS";
@@ -101,7 +106,7 @@
             // txtDBPort
             // 
             this.txtDBPort.EditValue = "";
-            this.txtDBPort.Location = new System.Drawing.Point(420, 29);
+            this.txtDBPort.Location = new System.Drawing.Point(451, 29);
             this.txtDBPort.Name = "txtDBPort";
             this.txtDBPort.Properties.AllowFocused = false;
             this.txtDBPort.Properties.AllowMouseWheel = false;
@@ -113,7 +118,7 @@
             // txtDBName
             // 
             this.txtDBName.EditValue = "";
-            this.txtDBName.Location = new System.Drawing.Point(110, 106);
+            this.txtDBName.Location = new System.Drawing.Point(141, 106);
             this.txtDBName.Name = "txtDBName";
             this.txtDBName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDBName.Properties.Appearance.Options.UseFont = true;
@@ -123,7 +128,7 @@
             // txtDBPass
             // 
             this.txtDBPass.EditValue = "";
-            this.txtDBPass.Location = new System.Drawing.Point(420, 67);
+            this.txtDBPass.Location = new System.Drawing.Point(451, 67);
             this.txtDBPass.Name = "txtDBPass";
             this.txtDBPass.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDBPass.Properties.Appearance.Options.UseFont = true;
@@ -134,7 +139,7 @@
             // txtDBUser
             // 
             this.txtDBUser.EditValue = "";
-            this.txtDBUser.Location = new System.Drawing.Point(110, 67);
+            this.txtDBUser.Location = new System.Drawing.Point(141, 67);
             this.txtDBUser.Name = "txtDBUser";
             this.txtDBUser.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDBUser.Properties.Appearance.Options.UseFont = true;
@@ -144,7 +149,7 @@
             // txtDBHost
             // 
             this.txtDBHost.EditValue = "";
-            this.txtDBHost.Location = new System.Drawing.Point(110, 29);
+            this.txtDBHost.Location = new System.Drawing.Point(141, 29);
             this.txtDBHost.Name = "txtDBHost";
             this.txtDBHost.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDBHost.Properties.Appearance.Options.UseFont = true;
@@ -153,51 +158,51 @@
             // 
             // labelControl5
             // 
-            this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl5.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelControl5.Location = new System.Drawing.Point(15, 113);
+            this.labelControl5.Location = new System.Drawing.Point(42, 112);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(84, 14);
+            this.labelControl5.Size = new System.Drawing.Size(89, 16);
             this.labelControl5.TabIndex = 22;
             this.labelControl5.Text = "Database name";
             // 
             // labelControl4
             // 
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl4.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelControl4.Location = new System.Drawing.Point(353, 71);
+            this.labelControl4.Location = new System.Drawing.Point(384, 73);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(51, 14);
+            this.labelControl4.Size = new System.Drawing.Size(55, 16);
             this.labelControl4.TabIndex = 21;
             this.labelControl4.Text = "Password";
             // 
             // labelControl3
             // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelControl3.Location = new System.Drawing.Point(45, 71);
+            this.labelControl3.Location = new System.Drawing.Point(73, 73);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(54, 14);
+            this.labelControl3.Size = new System.Drawing.Size(58, 16);
             this.labelControl3.TabIndex = 20;
             this.labelControl3.Text = "Username";
             // 
             // labelControl2
             // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelControl2.Location = new System.Drawing.Point(74, 36);
+            this.labelControl2.Location = new System.Drawing.Point(106, 36);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(25, 14);
+            this.labelControl2.Size = new System.Drawing.Size(25, 16);
             this.labelControl2.TabIndex = 19;
             this.labelControl2.Text = "Host";
             // 
             // labelControl1
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelControl1.Location = new System.Drawing.Point(381, 36);
+            this.labelControl1.Location = new System.Drawing.Point(416, 36);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(23, 14);
+            this.labelControl1.Size = new System.Drawing.Size(23, 16);
             this.labelControl1.TabIndex = 18;
             this.labelControl1.Text = "Port";
             // 
@@ -208,7 +213,7 @@
             this.btnDBUpdate.Appearance.Options.UseFont = true;
             this.btnDBUpdate.Appearance.Options.UseForeColor = true;
             this.btnDBUpdate.Image = global::O2S_InsuranceExpertise.Properties.Resources.sinchronize_16;
-            this.btnDBUpdate.Location = new System.Drawing.Point(439, 461);
+            this.btnDBUpdate.Location = new System.Drawing.Point(439, 548);
             this.btnDBUpdate.Name = "btnDBUpdate";
             this.btnDBUpdate.Size = new System.Drawing.Size(100, 30);
             this.btnDBUpdate.TabIndex = 30;
@@ -222,7 +227,7 @@
             this.btnDBLuu.Appearance.Options.UseFont = true;
             this.btnDBLuu.Appearance.Options.UseForeColor = true;
             this.btnDBLuu.Image = global::O2S_InsuranceExpertise.Properties.Resources.save_16;
-            this.btnDBLuu.Location = new System.Drawing.Point(286, 461);
+            this.btnDBLuu.Location = new System.Drawing.Point(286, 548);
             this.btnDBLuu.Name = "btnDBLuu";
             this.btnDBLuu.Size = new System.Drawing.Size(100, 30);
             this.btnDBLuu.TabIndex = 17;
@@ -236,7 +241,7 @@
             this.btnDBKiemTra.Appearance.Options.UseFont = true;
             this.btnDBKiemTra.Appearance.Options.UseForeColor = true;
             this.btnDBKiemTra.Image = global::O2S_InsuranceExpertise.Properties.Resources.question_mark_16;
-            this.btnDBKiemTra.Location = new System.Drawing.Point(117, 461);
+            this.btnDBKiemTra.Location = new System.Drawing.Point(117, 548);
             this.btnDBKiemTra.Name = "btnDBKiemTra";
             this.btnDBKiemTra.Size = new System.Drawing.Size(100, 30);
             this.btnDBKiemTra.TabIndex = 16;
@@ -255,10 +260,10 @@
             this.groupBox1.Controls.Add(this.labelControl8);
             this.groupBox1.Controls.Add(this.labelControl9);
             this.groupBox1.Controls.Add(this.labelControl10);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(1, 148);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(768, 144);
+            this.groupBox1.Size = new System.Drawing.Size(997, 144);
             this.groupBox1.TabIndex = 31;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chi tiết database Giám định BHYT";
@@ -266,7 +271,7 @@
             // txtDBPort_HSBA
             // 
             this.txtDBPort_HSBA.EditValue = "";
-            this.txtDBPort_HSBA.Location = new System.Drawing.Point(420, 29);
+            this.txtDBPort_HSBA.Location = new System.Drawing.Point(450, 24);
             this.txtDBPort_HSBA.Name = "txtDBPort_HSBA";
             this.txtDBPort_HSBA.Properties.AllowFocused = false;
             this.txtDBPort_HSBA.Properties.AllowMouseWheel = false;
@@ -278,7 +283,7 @@
             // txtDBName_HSBA
             // 
             this.txtDBName_HSBA.EditValue = "";
-            this.txtDBName_HSBA.Location = new System.Drawing.Point(110, 106);
+            this.txtDBName_HSBA.Location = new System.Drawing.Point(140, 101);
             this.txtDBName_HSBA.Name = "txtDBName_HSBA";
             this.txtDBName_HSBA.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDBName_HSBA.Properties.Appearance.Options.UseFont = true;
@@ -288,7 +293,7 @@
             // txtDBPass_HSBA
             // 
             this.txtDBPass_HSBA.EditValue = "";
-            this.txtDBPass_HSBA.Location = new System.Drawing.Point(420, 67);
+            this.txtDBPass_HSBA.Location = new System.Drawing.Point(450, 62);
             this.txtDBPass_HSBA.Name = "txtDBPass_HSBA";
             this.txtDBPass_HSBA.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDBPass_HSBA.Properties.Appearance.Options.UseFont = true;
@@ -299,7 +304,7 @@
             // txtDBUser_HSBA
             // 
             this.txtDBUser_HSBA.EditValue = "";
-            this.txtDBUser_HSBA.Location = new System.Drawing.Point(110, 67);
+            this.txtDBUser_HSBA.Location = new System.Drawing.Point(140, 62);
             this.txtDBUser_HSBA.Name = "txtDBUser_HSBA";
             this.txtDBUser_HSBA.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDBUser_HSBA.Properties.Appearance.Options.UseFont = true;
@@ -309,7 +314,7 @@
             // txtDBHost_HSBA
             // 
             this.txtDBHost_HSBA.EditValue = "";
-            this.txtDBHost_HSBA.Location = new System.Drawing.Point(110, 29);
+            this.txtDBHost_HSBA.Location = new System.Drawing.Point(140, 24);
             this.txtDBHost_HSBA.Name = "txtDBHost_HSBA";
             this.txtDBHost_HSBA.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDBHost_HSBA.Properties.Appearance.Options.UseFont = true;
@@ -318,51 +323,51 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl6.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelControl6.Location = new System.Drawing.Point(15, 113);
+            this.labelControl6.Location = new System.Drawing.Point(41, 107);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(84, 14);
+            this.labelControl6.Size = new System.Drawing.Size(89, 16);
             this.labelControl6.TabIndex = 22;
             this.labelControl6.Text = "Database name";
             // 
             // labelControl7
             // 
-            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl7.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelControl7.Location = new System.Drawing.Point(353, 71);
+            this.labelControl7.Location = new System.Drawing.Point(383, 68);
             this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(51, 14);
+            this.labelControl7.Size = new System.Drawing.Size(55, 16);
             this.labelControl7.TabIndex = 21;
             this.labelControl7.Text = "Password";
             // 
             // labelControl8
             // 
-            this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl8.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelControl8.Location = new System.Drawing.Point(44, 74);
+            this.labelControl8.Location = new System.Drawing.Point(72, 68);
             this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(54, 14);
+            this.labelControl8.Size = new System.Drawing.Size(58, 16);
             this.labelControl8.TabIndex = 20;
             this.labelControl8.Text = "Username";
             // 
             // labelControl9
             // 
-            this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl9.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelControl9.Location = new System.Drawing.Point(74, 36);
+            this.labelControl9.Location = new System.Drawing.Point(105, 31);
             this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(25, 14);
+            this.labelControl9.Size = new System.Drawing.Size(25, 16);
             this.labelControl9.TabIndex = 19;
             this.labelControl9.Text = "Host";
             // 
             // labelControl10
             // 
-            this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl10.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelControl10.Location = new System.Drawing.Point(381, 36);
+            this.labelControl10.Location = new System.Drawing.Point(415, 31);
             this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(23, 14);
+            this.labelControl10.Size = new System.Drawing.Size(23, 16);
             this.labelControl10.TabIndex = 18;
             this.labelControl10.Text = "Port";
             // 
@@ -374,18 +379,38 @@
             this.groupBox2.Controls.Add(this.txtUserGDBHYT);
             this.groupBox2.Controls.Add(this.labelControl12);
             this.groupBox2.Controls.Add(this.labelControl13);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(3, 296);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(768, 130);
+            this.groupBox2.Size = new System.Drawing.Size(997, 116);
             this.groupBox2.TabIndex = 32;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tài khoản đăng nhập trên cổng giám định BHYT";
             // 
+            // txtUrlFullServer
+            // 
+            this.txtUrlFullServer.EditValue = "";
+            this.txtUrlFullServer.Location = new System.Drawing.Point(135, 73);
+            this.txtUrlFullServer.Name = "txtUrlFullServer";
+            this.txtUrlFullServer.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUrlFullServer.Properties.Appearance.Options.UseFont = true;
+            this.txtUrlFullServer.Size = new System.Drawing.Size(510, 26);
+            this.txtUrlFullServer.TabIndex = 27;
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl11.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.labelControl11.Location = new System.Drawing.Point(49, 79);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(79, 16);
+            this.labelControl11.TabIndex = 26;
+            this.labelControl11.Text = "Url full Server";
+            // 
             // txtPassGDBHYT
             // 
             this.txtPassGDBHYT.EditValue = "";
-            this.txtPassGDBHYT.Location = new System.Drawing.Point(417, 37);
+            this.txtPassGDBHYT.Location = new System.Drawing.Point(445, 33);
             this.txtPassGDBHYT.Name = "txtPassGDBHYT";
             this.txtPassGDBHYT.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassGDBHYT.Properties.Appearance.Options.UseFont = true;
@@ -396,7 +421,7 @@
             // txtUserGDBHYT
             // 
             this.txtUserGDBHYT.EditValue = "";
-            this.txtUserGDBHYT.Location = new System.Drawing.Point(110, 37);
+            this.txtUserGDBHYT.Location = new System.Drawing.Point(138, 33);
             this.txtUserGDBHYT.Name = "txtUserGDBHYT";
             this.txtUserGDBHYT.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserGDBHYT.Properties.Appearance.Options.UseFont = true;
@@ -405,48 +430,61 @@
             // 
             // labelControl12
             // 
-            this.labelControl12.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl12.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl12.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelControl12.Location = new System.Drawing.Point(350, 41);
+            this.labelControl12.Location = new System.Drawing.Point(381, 39);
             this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(51, 14);
+            this.labelControl12.Size = new System.Drawing.Size(55, 16);
             this.labelControl12.TabIndex = 21;
             this.labelControl12.Text = "Password";
             // 
             // labelControl13
             // 
-            this.labelControl13.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl13.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl13.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelControl13.Location = new System.Drawing.Point(42, 44);
+            this.labelControl13.Location = new System.Drawing.Point(70, 39);
             this.labelControl13.Name = "labelControl13";
-            this.labelControl13.Size = new System.Drawing.Size(54, 14);
+            this.labelControl13.Size = new System.Drawing.Size(58, 16);
             this.labelControl13.TabIndex = 20;
             this.labelControl13.Text = "Username";
             // 
-            // txtUrlFullServer
+            // groupBox3
             // 
-            this.txtUrlFullServer.EditValue = "";
-            this.txtUrlFullServer.Location = new System.Drawing.Point(107, 77);
-            this.txtUrlFullServer.Name = "txtUrlFullServer";
-            this.txtUrlFullServer.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUrlFullServer.Properties.Appearance.Options.UseFont = true;
-            this.txtUrlFullServer.Size = new System.Drawing.Size(510, 26);
-            this.txtUrlFullServer.TabIndex = 27;
+            this.groupBox3.Controls.Add(this.txtUpdateVersionLink);
+            this.groupBox3.Controls.Add(this.labelControl14);
+            this.groupBox3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(3, 414);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(997, 78);
+            this.groupBox3.TabIndex = 33;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Đường dẫn cập nhật phiên bản phần mềm";
             // 
-            // labelControl11
+            // txtUpdateVersionLink
             // 
-            this.labelControl11.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl11.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelControl11.Location = new System.Drawing.Point(25, 84);
-            this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(72, 14);
-            this.labelControl11.TabIndex = 26;
-            this.labelControl11.Text = "Url full Server";
+            this.txtUpdateVersionLink.EditValue = "";
+            this.txtUpdateVersionLink.Location = new System.Drawing.Point(135, 31);
+            this.txtUpdateVersionLink.Name = "txtUpdateVersionLink";
+            this.txtUpdateVersionLink.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUpdateVersionLink.Properties.Appearance.Options.UseFont = true;
+            this.txtUpdateVersionLink.Size = new System.Drawing.Size(510, 26);
+            this.txtUpdateVersionLink.TabIndex = 27;
+            // 
+            // labelControl14
+            // 
+            this.labelControl14.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl14.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.labelControl14.Location = new System.Drawing.Point(21, 37);
+            this.labelControl14.Name = "labelControl14";
+            this.labelControl14.Size = new System.Drawing.Size(107, 16);
+            this.labelControl14.TabIndex = 26;
+            this.labelControl14.Text = "Link version server";
             // 
             // ucSettingDatabase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnDBUpdate);
@@ -454,7 +492,7 @@
             this.Controls.Add(this.btnDBLuu);
             this.Controls.Add(this.btnDBKiemTra);
             this.Name = "ucSettingDatabase";
-            this.Size = new System.Drawing.Size(771, 582);
+            this.Size = new System.Drawing.Size(1000, 600);
             this.Load += new System.EventHandler(this.ucSettingDatabase_Load);
             this.groupBoxDatabase.ResumeLayout(false);
             this.groupBoxDatabase.PerformLayout();
@@ -472,9 +510,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDBHost_HSBA.Properties)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUrlFullServer.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassGDBHYT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserGDBHYT.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtUrlFullServer.Properties)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUpdateVersionLink.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -513,5 +554,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl13;
         private DevExpress.XtraEditors.TextEdit txtUrlFullServer;
         private DevExpress.XtraEditors.LabelControl labelControl11;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private DevExpress.XtraEditors.TextEdit txtUpdateVersionLink;
+        private DevExpress.XtraEditors.LabelControl labelControl14;
     }
 }

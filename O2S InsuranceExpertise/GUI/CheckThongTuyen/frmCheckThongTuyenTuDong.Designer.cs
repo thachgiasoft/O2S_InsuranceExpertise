@@ -267,7 +267,7 @@
             this.gridControlDSBN.Location = new System.Drawing.Point(0, 0);
             this.gridControlDSBN.MainView = this.gridViewDSBN;
             this.gridControlDSBN.Name = "gridControlDSBN";
-            this.gridControlDSBN.Size = new System.Drawing.Size(684, 430);
+            this.gridControlDSBN.Size = new System.Drawing.Size(684, 420);
             this.gridControlDSBN.TabIndex = 29;
             this.gridControlDSBN.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDSBN,
@@ -361,7 +361,7 @@
             this.gridColumn4.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn4.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn4.Caption = "Trạng thái";
+            this.gridColumn4.Caption = "Kết quả kiểm tra";
             this.gridColumn4.FieldName = "tenKetQua";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
@@ -405,7 +405,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(684, 182);
+            this.panel1.Size = new System.Drawing.Size(684, 192);
             this.panel1.TabIndex = 29;
             // 
             // linkLabelXemThem
@@ -558,9 +558,9 @@
             // 
             this.panel2.Controls.Add(this.gridControlDSBN);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 182);
+            this.panel2.Location = new System.Drawing.Point(0, 192);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(684, 430);
+            this.panel2.Size = new System.Drawing.Size(684, 420);
             this.panel2.TabIndex = 30;
             // 
             // frmCheckThongTuyenTuDong

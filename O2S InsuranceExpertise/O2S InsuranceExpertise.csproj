@@ -59,8 +59,9 @@
     <Reference Include="Aspose.Words">
       <HintPath>..\Library\Aspose.Words.dll</HintPath>
     </Reference>
-    <Reference Include="AutoMapper">
-      <HintPath>..\Library\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="DevExpress.BonusSkins.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -89,6 +90,7 @@
     <Reference Include="DevExpress.Sparkline.v15.2.Core, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
+    <Reference Include="DevExpress.Spreadsheet.v15.2.Core, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
@@ -122,6 +124,7 @@
     <Reference Include="DevExpress.XtraScheduler.v15.2.Core, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
+    <Reference Include="DevExpress.XtraSpreadsheet.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -235,9 +238,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DTO\MedicalrecordDTO.cs" />
-    <Compile Include="DTO\reportExcelDTO.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="DTO\serviceprice_ptttDTO.cs" />
     <Compile Include="GUI\CheckThongTuyen\frmCheckThongTuyenTuDong.cs">
       <SubType>Form</SubType>
@@ -245,17 +245,15 @@
     <Compile Include="GUI\CheckThongTuyen\frmCheckThongTuyenTuDong.Designer.cs">
       <DependentUpon>frmCheckThongTuyenTuDong.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\CheckThongTuyen\frmCongCuKhac_MoRong.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\CheckThongTuyen\frmCongCuKhac_MoRong.Designer.cs">
-      <DependentUpon>frmCongCuKhac_MoRong.cs</DependentUpon>
-    </Compile>
+    <Compile Include="GUI\CheckThongTuyen\GoiServerYeuCauCheckThongTuyenProcess.cs" />
     <Compile Include="GUI\CheckThongTuyen\ucCheckThongTuyenThuCong.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GUI\CheckThongTuyen\ucCheckThongTuyenThuCong.Designer.cs">
       <DependentUpon>ucCheckThongTuyenThuCong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CheckThongTuyen\ucCheckThongTuyenThuCongPartial.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GUI\FormCommon\frmChonChucNang.cs">
       <SubType>Form</SubType>
@@ -390,11 +388,18 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GlobalStore.cs" />
+    <Compile Include="GUI\TabCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\TabCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe.Designer.cs">
+      <DependentUpon>ucBCDangKyBaoHiemYTe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\PrintPreview\PrintPreview_ExcelFileTemplate.cs" />
     <Compile Include="Utilities\PrintPreview\PrintRibbonControllerResources.Designer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -438,9 +443,6 @@
     </Compile>
     <EmbeddedResource Include="GUI\CheckThongTuyen\frmCheckThongTuyenTuDong.resx">
       <DependentUpon>frmCheckThongTuyenTuDong.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CheckThongTuyen\frmCongCuKhac_MoRong.resx">
-      <DependentUpon>frmCongCuKhac_MoRong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\CheckThongTuyen\ucCheckThongTuyenThuCong.resx">
       <DependentUpon>ucCheckThongTuyenThuCong.cs</DependentUpon>
@@ -505,6 +507,9 @@
     <EmbeddedResource Include="GUI\FormCommon\ucTrangChu.resx">
       <DependentUpon>ucTrangChu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TabCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe.resx">
+      <DependentUpon>ucBCDangKyBaoHiemYTe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Utilities\PrintPreview\PrintRibbonControllerResources.resx" />
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -532,6 +537,7 @@
     </None>
     <None Include="bin\Library\Aspose.Cells.lic" />
     <None Include="bin\Library\Aspose.Words.lic" />
+    <None Include="AppSettings.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -550,7 +556,7 @@
     <Content Include="InsuranceExpertise.ico" />
     <None Include="Resources\xml_16.png" />
     <None Include="Resources\xml_161.png" />
-    <Content Include="Templates\1_Mrd_DMHCThuoc__ExportTemplateKetQua.xlsx">
+    <Content Include="Templates\BC_DangKyBaoHiemYTe.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

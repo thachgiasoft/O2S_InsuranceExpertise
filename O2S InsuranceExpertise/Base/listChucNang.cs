@@ -187,13 +187,14 @@ namespace O2S_InsuranceExpertise.Base
 
 
                 //report
-                //DTO.classPermission REPORT_01 = new DTO.classPermission();
-                //REPORT_01.permissioncheck = false;
-                //REPORT_01.permissioncode = "REPORT_01";
-                //REPORT_01.permissionname = "BC danh sách BN sử dụng dịch vụ...";
-                //REPORT_01.permissiontype = 3;
-                //REPORT_01.permissionnote = "BC danh sách BN sử dụng dịch vụ...";
-                //lstresult.Add(REPORT_01);
+                DTO.classPermission REPORT_01 = new DTO.classPermission();
+                REPORT_01.permissioncheck = false;
+                REPORT_01.permissioncode = "REPORT_01";
+                REPORT_01.permissionname = "Báo cáo đăng ký thẻ bảo hiểm y tế";
+                REPORT_01.permissiontype = 3;
+                REPORT_01.tabMenuId = 5;
+                REPORT_01.permissionnote = "Báo cáo đăng ký thẻ bảo hiểm y tế";
+                lstresult.Add(REPORT_01);
 
                 //DTO.classPermission REPORT_02 = new DTO.classPermission();
                 //REPORT_02.permissioncheck = false;

@@ -27,10 +27,22 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
         // khai báo 1 kiểu hàm delegate
         public GetString MyGetData;
 
+        //Delegate Thoat khoi Cua so Main
+        public delegate void ExitFormMain(bool exit_frmmain);
+        // khai báo 1 kiểu hàm delegate
+        public ExitFormMain ExitFormMain_Data;
+        private bool hienthi_btnTroVe = false;
+
+
         #endregion
         public ucCongCuKhac()
         {
             InitializeComponent();
+        }
+        public ucCongCuKhac(bool _hienthi_btnTroVe)
+        {
+            InitializeComponent();
+            this.hienthi_btnTroVe = _hienthi_btnTroVe;
         }
 
         #region Load
@@ -41,6 +53,8 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                 KiemTraEnable_ChucNang();
                 LoadControl_KiemTraThongTuyen();
                 MyGetData("Công cụ khác - Kiểm tra thông tuyến");
+                EnableAndDisableControl();
+                CongCuKhac_LoadDanhSachBaoCao();
             }
             catch (Exception ex)
             {
@@ -52,8 +66,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
         {
             try
             {
-               // xtraTab_KiemTraThongTuyen.Visible = Base.CheckPermission.ChkPerModule("TOOL_10");
-                //xtraTab_BaoCao.Visible = Base.CheckPermission.ChkPerModule("DASHBOARD_02");
+                xtraTab_KiemTraThongTuyen.Visible = Base.CheckPermission.ChkPerModule("TOOL_10");
             }
             catch (Exception ex)
             {
@@ -67,11 +80,34 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             {
                 if (xtraTab_KiemTraThongTuyen.Visible)
                 {
-                    xtraTab_KiemTraThongTuyen.Controls.Clear();
+                    panel_NoiDung.Controls.Clear();
                     ucCheckThongTuyenThuCong uchienthi = new ucCheckThongTuyenThuCong();
                     uchienthi.Dock = System.Windows.Forms.DockStyle.Fill;
-                    xtraTab_KiemTraThongTuyen.Controls.Add(uchienthi);
+                    panel_NoiDung.Controls.Add(uchienthi);
                 }
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Warn(ex);
+            }
+        }
+        private void EnableAndDisableControl()
+        {
+            try
+            {
+                panel_btnTroVe.Visible = hienthi_btnTroVe;
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Warn(ex);
+            }
+        }
+        private void CongCuKhac_LoadDanhSachBaoCao()
+        {
+            try
+            {
+                List<DTO.classPermission> lstBaoCao_CongCuKhac = Base.SessionLogin.SessionLstPhanQuyenNguoiDung.Where(o=>o.permissiontype==3 && o.tabMenuId==5).ToList();
+                gridControlDSBaoCao.DataSource = lstBaoCao_CongCuKhac;
             }
             catch (Exception ex)
             {
@@ -122,8 +158,6 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                 Common.Logging.LogSystem.Error(ex);
             }
         }
-
-
 
         #endregion
 
@@ -184,8 +218,20 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
         }
 
+
         #endregion
 
-
+        private void btnTroVe_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmMain = new frmMain();
+                ExitFormMain_Data(false);
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Error(ex);
+            }
+        }
     }
 }

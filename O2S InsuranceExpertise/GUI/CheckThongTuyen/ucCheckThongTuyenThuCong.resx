@@ -117,105 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="gridColumn21.FieldName" xml:space="preserve">
-    <value>
-        public long bhytcheckid { get; set; }
-        public long bhytid { get; set; }
-        public long hosobenhanid { get; set; }
-        public long vienphiid { get; set; }
-        public long patientid { get; set; }
-        public string patientname { get; set; }
-        public DateTime birthday { get; set; }
-        public string birthday_year { get; set; }
-        public string gioitinhcode { get; set; }
-        public string gioitinhname { get; set; }
-        public string bhytcode { get; set; }
-        public string macskcbbd { get; set; }
-        public DateTime bhytdate { get; set; }
-        public DateTime bhytfromdate { get; set; }
-        public DateTime bhytutildate { get; set; }
-        public long bhyt_loaiid { get; set; }
-        public string noisinhsong { get; set; }
-        public long du5nam6thangluongcoban { get; set; }
-        public long dtcbh_luyke6thang { get; set; }
-        public long bhytcheckstatus { get; set; }
-        public long departmentgroupid { get; set; }
-        public long departmentid { get; set; }
-        public string departmentgroupname { get; set; }
-        public string departmentname { get; set; }
-        public DateTime hosobenhandate { get; set; }
-        public DateTime hosobenhandate_ravien { get; set; }
-        public DateTime lastupdatedate_hsba { get; set; }
-        public DateTime lastupdatedate_bhyt { get; set; }
-        public string bhytchecknote { get; set; }
-    }</value>
-  </data>
-  <data name="gridColumn2.FieldName" xml:space="preserve">
-    <value>
-        public long bhytcheckid { get; set; }
-        public long bhytid { get; set; }
-        public long hosobenhanid { get; set; }
-        public long vienphiid { get; set; }
-        public long patientid { get; set; }
-        public string patientname { get; set; }
-        public DateTime birthday { get; set; }
-        public string birthday_year { get; set; }
-        public string gioitinhcode { get; set; }
-        public string gioitinhname { get; set; }
-        public string bhytcode { get; set; }
-        public string macskcbbd { get; set; }
-        public DateTime bhytdate { get; set; }
-        public DateTime bhytfromdate { get; set; }
-        public DateTime bhytutildate { get; set; }
-        public long bhyt_loaiid { get; set; }
-        public string noisinhsong { get; set; }
-        public long du5nam6thangluongcoban { get; set; }
-        public long dtcbh_luyke6thang { get; set; }
-        public long bhytcheckstatus { get; set; }
-        public long departmentgroupid { get; set; }
-        public long departmentid { get; set; }
-        public string departmentgroupname { get; set; }
-        public string departmentname { get; set; }
-        public DateTime hosobenhandate { get; set; }
-        public DateTime hosobenhandate_ravien { get; set; }
-        public DateTime lastupdatedate_hsba { get; set; }
-        public DateTime lastupdatedate_bhyt { get; set; }
-        public string bhytchecknote { get; set; }
-    }</value>
-  </data>
-  <data name="gridColumn7.FieldName" xml:space="preserve">
-    <value>
-        public long bhytcheckid { get; set; }
-        public long bhytid { get; set; }
-        public long hosobenhanid { get; set; }
-        public long vienphiid { get; set; }
-        public long patientid { get; set; }
-        public string patientname { get; set; }
-        public DateTime birthday { get; set; }
-        public string birthday_year { get; set; }
-        public string gioitinhcode { get; set; }
-        public string gioitinhname { get; set; }
-        public string bhytcode { get; set; }
-        public string macskcbbd { get; set; }
-        public DateTime bhytdate { get; set; }
-        public DateTime bhytfromdate { get; set; }
-        public DateTime bhytutildate { get; set; }
-        public long bhyt_loaiid { get; set; }
-        public string noisinhsong { get; set; }
-        public long du5nam6thangluongcoban { get; set; }
-        public long dtcbh_luyke6thang { get; set; }
-        public long bhytcheckstatus { get; set; }
-        public long departmentgroupid { get; set; }
-        public long departmentid { get; set; }
-        public string departmentgroupname { get; set; }
-        public string departmentname { get; set; }
-        public DateTime hosobenhandate { get; set; }
-        public DateTime hosobenhandate_ravien { get; set; }
-        public DateTime lastupdatedate_hsba { get; set; }
-        public DateTime lastupdatedate_bhyt { get; set; }
-        public string bhytchecknote { get; set; }
-    }</value>
-  </data>
   <metadata name="imageCollectionDSBN.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -242,4 +143,7 @@
         SUVORK5CYIIL
 </value>
   </data>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>33</value>
+  </metadata>
 </root>

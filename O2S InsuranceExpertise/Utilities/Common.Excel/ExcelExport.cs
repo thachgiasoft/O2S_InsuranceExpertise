@@ -13,7 +13,7 @@ namespace O2S_InsuranceExpertise.Utilities.Common.Excel
     public class ExcelExport
     {
         #region Process_TMP
-        private DataTable InsertOrders(List<DTO.reportExcelDTO> thongTinThem)
+        private DataTable InsertOrders(List<Model.Models.reportExcelDTO> thongTinThem)
         {
             DataTable orderTable = new DataTable("DATA");
             try
@@ -45,7 +45,7 @@ namespace O2S_InsuranceExpertise.Utilities.Common.Excel
         #endregion
 
 
-        public void ExportExcelTemplate(string pv_sErr, string fileNameTemplate, List<DTO.reportExcelDTO> thongTinThem, DataTable dataTable)
+        public void ExportExcelTemplate(string pv_sErr, string fileNameTemplate, List<Model.Models.reportExcelDTO> thongTinThem, DataTable dataTable)
         {
             try
             {
@@ -173,7 +173,48 @@ namespace O2S_InsuranceExpertise.Utilities.Common.Excel
             }
         }
 
+        public MemoryStream ExportExcelTemplate_ToStream(string pv_sErr, string fileNameTemplate, List<Model.Models.reportExcelDTO> thongTinThem, DataTable dataTable)
+        {
+            MemoryStream result = new MemoryStream();
+            try
+            {
+                DataSet dataExportExcel = new DataSet();
+                dataExportExcel.Tables.Add(InsertOrders(thongTinThem));
 
+                DataTable dataTableCopy = dataTable.Copy();
+                dataExportExcel.Tables.Add(dataTableCopy);
+
+                string fileTemplatePath = Environment.CurrentDirectory + "\\Templates\\" + fileNameTemplate;
+                WorkbookDesigner designer;
+
+                if (File.Exists(fileTemplatePath))
+                {
+                    designer = new WorkbookDesigner();
+                    string strRoot = Environment.CurrentDirectory + "\\Library\\";
+                    Aspose.Cells.License l = new Aspose.Cells.License();
+                    string strLicense = strRoot + "Aspose.Cells.lic";
+                    l.SetLicense(strLicense);
+                    designer.Open(fileTemplatePath);
+                    if (dataExportExcel.Tables.Count > 0)
+                    {
+                        dataExportExcel.Tables[0].TableName = "DATA";
+                        for (int i = 1; i < dataExportExcel.Tables.Count; i++)
+                        {
+                            dataExportExcel.Tables[i].TableName = "DATA" + i;
+                        }
+                        designer.SetDataSource(dataExportExcel);
+                        designer.Process();
+                        designer.Workbook.CalculateFormula();
+                        designer.Workbook.Save(result, new XlsSaveOptions(SaveFormat.Xlsx));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                O2S_InsuranceExpertise.Common.Logging.LogSystem.Error(ex);
+            }
+            return result;
+        }
 
 
     }

@@ -23,7 +23,7 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
     {
         static HttpClient client = new HttpClient();
         private HttpClient client_1 = new HttpClient();
-        private List<LichSuKhamChuaBenhDTO> lsLichSuKhamChuaBenh { get; set; }
+        private List<KetQuaCheckThongTuyen_ExtendDTO> lsLichSuKhamChuaBenh { get; set; }
         public frmCheckThongTuyenTuDong()
         {
             InitializeComponent();
@@ -39,6 +39,7 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
                 lblThongBaoKetQua.Text = "";
                 LoadDanhSachKhoa();
                 this.Size = new System.Drawing.Size(440, 220);
+                this.StartPosition = FormStartPosition.CenterScreen;
             }
             catch (Exception ex)
             {
@@ -104,7 +105,7 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
                     }
                     //CheckThongTuyen();
 
-                    TheBHYT_ChkThongTuyenDTO form_data = new TheBHYT_ChkThongTuyenDTO();
+                    TheBHYTCheckThongTuyenDTO form_data = new TheBHYTCheckThongTuyenDTO();
                     form_data.maThe = "XN2311201300054";
                     form_data.hoTen = "LÊ VĂN RƯỢC";
                     form_data.ngaySinh = "20/10/1930";
@@ -117,7 +118,7 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
                     form_data.token = GlobalStore.tokenSession.APIKey.access_token;
                     form_data.id_token = GlobalStore.tokenSession.APIKey.id_token;
 
-                    LichSuKhamChuaBenhDTO lichsuKCB = new LichSuKhamChuaBenhDTO();
+                    KetQuaCheckThongTuyen_ExtendDTO lichsuKCB = new KetQuaCheckThongTuyen_ExtendDTO();
                     lichsuKCB = CheckTungTheBHYT_CongBHYT(form_data);
                     //results.Add(lichsuKCB);
                 }
@@ -140,7 +141,7 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
                 //HTTP POST
                 string param_data = string.Format("token={0}&id_token={1}&username={2}&password={3}", GlobalStore.tokenSession.APIKey.access_token, GlobalStore.tokenSession.APIKey.id_token, Base.SessionLogin.UserName_GDBHYT, password);
 
-                TheBHYT_ChkThongTuyenDTO form_data = new TheBHYT_ChkThongTuyenDTO();
+                TheBHYTCheckThongTuyenDTO form_data = new TheBHYTCheckThongTuyenDTO();
                 form_data.maThe = "XN2311201300054";
                 form_data.hoTen = "LÊ VĂN RƯỢC";
                 form_data.ngaySinh = "20/10/1930";
@@ -169,10 +170,10 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
 
                 HttpResponseMessage response = client_1.PostAsync("api/egw/nhanLichSuKCB?" + param_data, content).Result;
 
-                LichSuKhamChuaBenhDTO lsKhamChuaBenh = new LichSuKhamChuaBenhDTO();
+                KetQuaCheckThongTuyen_ExtendDTO lsKhamChuaBenh = new KetQuaCheckThongTuyen_ExtendDTO();
                 if (response.IsSuccessStatusCode)
                 {
-                    lsKhamChuaBenh = response.Content.ReadAsAsync<LichSuKhamChuaBenhDTO>().Result;
+                    lsKhamChuaBenh = response.Content.ReadAsAsync<KetQuaCheckThongTuyen_ExtendDTO>().Result;
                     switch (lsKhamChuaBenh.maKetQua)
                     {
                         case "00":
@@ -241,9 +242,9 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
             }
         }
 
-        private LichSuKhamChuaBenhDTO CheckTungTheBHYT_CongBHYT(TheBHYT_ChkThongTuyenDTO form_data)
+        private KetQuaCheckThongTuyen_ExtendDTO CheckTungTheBHYT_CongBHYT(TheBHYTCheckThongTuyenDTO form_data)
         {
-            LichSuKhamChuaBenhDTO result = new LichSuKhamChuaBenhDTO();
+            KetQuaCheckThongTuyen_ExtendDTO result = new KetQuaCheckThongTuyen_ExtendDTO();
             try
             {
                 client_1 = new HttpClient();
@@ -256,10 +257,10 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
                 var content = new StringContent(JsonConvert.SerializeObject(form_data), Encoding.UTF8, "application/json");
                 HttpResponseMessage response = client_1.PostAsync("api/egw/nhanLichSuKCB?" + param_data, content).Result;
 
-                LichSuKhamChuaBenhDTO lsKhamChuaBenh = new LichSuKhamChuaBenhDTO();
+                KetQuaCheckThongTuyen_ExtendDTO lsKhamChuaBenh = new KetQuaCheckThongTuyen_ExtendDTO();
                 if (response.IsSuccessStatusCode)
                 {
-                    lsKhamChuaBenh = response.Content.ReadAsAsync<LichSuKhamChuaBenhDTO>().Result;
+                    lsKhamChuaBenh = response.Content.ReadAsAsync<KetQuaCheckThongTuyen_ExtendDTO>().Result;
                     switch (lsKhamChuaBenh.maKetQua)
                     {
                         case "00":
@@ -343,11 +344,13 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
                 {
                     this.Size = new System.Drawing.Size(700, 650);
                     linkLabelXemDanhSach.Text = "Thu gọn danh sách";
+                    this.StartPosition= FormStartPosition.CenterScreen;
                 }
                 else
                 {
                     this.Size = new System.Drawing.Size(440, 220);
                     linkLabelXemDanhSach.Text = "Xem danh sách";
+                    this.StartPosition = FormStartPosition.CenterScreen;
                 }
             }
             catch (Exception ex)
@@ -359,7 +362,7 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
         {
             try
             {
-                frmCongCuKhac_MoRong frmChon = new frmCongCuKhac_MoRong();
+                FormCommon.frmMain frmChon = new FormCommon.frmMain(true);
                 frmChon.ShowDialog();
                 //this.Visible = false;
             }
@@ -477,7 +480,7 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
                 client_1.DefaultRequestHeaders.Accept.Clear();
                 client_1.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                TieuChiCheckDTO form_data = new TieuChiCheckDTO();
+                TieuChiCheckThongTuyenDTO form_data = new TieuChiCheckThongTuyenDTO();
                 form_data.tuNgay = dateTuNgay.DateTime;
                 form_data.denNgay = dateDenNgay.DateTime;
                 if (cboKhoa.EditValue != null)
@@ -487,13 +490,13 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
                 var content = new StringContent(JsonConvert.SerializeObject(form_data), Encoding.UTF8, "application/json");
                 HttpResponseMessage response = client_1.PostAsync("api/CheckThongTuyen/GetCheckListHosobenhan", content).Result;
 
-                this.lsLichSuKhamChuaBenh = new List<LichSuKhamChuaBenhDTO>();
+                this.lsLichSuKhamChuaBenh = new List<KetQuaCheckThongTuyen_ExtendDTO>();
                 if (response.IsSuccessStatusCode)
                 {
-                    this.lsLichSuKhamChuaBenh = response.Content.ReadAsAsync<List<LichSuKhamChuaBenhDTO>>().Result;
-                    List<LichSuKhamChuaBenhDTO> lstlichsuKCB_Loi = this.lsLichSuKhamChuaBenh.Where(o => o.maKetQua != "00").ToList();
-                    List<LichSuKhamChuaBenhDTO> lstlichsuKCB_LoiGDBHYT = this.lsLichSuKhamChuaBenh.Where(o => o.maLoi_CongGDBHYT ==null).ToList();
-                    if (lstlichsuKCB_LoiGDBHYT == null || lstlichsuKCB_LoiGDBHYT.Count == 0)
+                    this.lsLichSuKhamChuaBenh = response.Content.ReadAsAsync<List<KetQuaCheckThongTuyen_ExtendDTO>>().Result;
+                    List<KetQuaCheckThongTuyen_ExtendDTO> lstlichsuKCB_Loi = this.lsLichSuKhamChuaBenh.Where(o => o.maKetQua != "00").ToList();
+                    List<KetQuaCheckThongTuyen_ExtendDTO> lstlichsuKCB_LoiGDBHYT = this.lsLichSuKhamChuaBenh.Where(o => o.maLoi_CongGDBHYT == null).ToList();
+                    if ((lstlichsuKCB_LoiGDBHYT == null || lstlichsuKCB_LoiGDBHYT.Count == 0) && this.lsLichSuKhamChuaBenh.Count > 0)
                     {
                         lblThongBaoKetQua.Text = "Lỗi kết nối đến cổng Giám định BHYT!";
                         lblThongBaoKetQua.ForeColor = System.Drawing.Color.Red;

@@ -7,7 +7,7 @@ CREATE TABLE IE_license
   datakey text,
   licensekey text,
   CONSTRAINT IE_license_pkey PRIMARY KEY (licenseid)
-)
+);
 --=================================================== table IE_config
 -- Table: ie_config
 
@@ -44,14 +44,7 @@ CREATE TABLE ie_version
   sync_flag integer,
   update_flag integer,
   CONSTRAINT ie_version_pkey PRIMARY KEY (versionid)
-)
-WITH (
-  OIDS=FALSE
 );
-ALTER TABLE ie_version
-  OWNER TO postgres;
-
--- Index: ie_version_app_link_idx
 
 -- DROP INDEX ie_version_app_link_idx;
 
@@ -92,12 +85,7 @@ CREATE TABLE IE_tbluser
   usernote text,
   userhisid integer,
   CONSTRAINT IE_tbluser_pkey PRIMARY KEY (userid)
-)
-WITH (
-  OIDS=FALSE
 );
-ALTER TABLE IE_tbluser
-  OWNER TO postgres;
 
 -- Index: IE_tbluser_usercode_idx
 
@@ -140,12 +128,7 @@ CREATE TABLE IE_tbluser_departmentgroup
   usercode text,
   userdepgidnote text,
   CONSTRAINT tbluser_departmentgroup_pkey PRIMARY KEY (userdepgid)
-)
-WITH (
-  OIDS=FALSE
 );
-ALTER TABLE IE_tbluser_departmentgroup
-  OWNER TO postgres;
 
 -- Index: tbldegp_departmentgroupid_idx
 
@@ -198,12 +181,7 @@ CREATE TABLE IE_tbluser_permission
   permissioncheck boolean,
   userpermissionnote text,
   CONSTRAINT userpermissionid_pkey PRIMARY KEY (userpermissionid)
-)
-WITH (
-  OIDS=FALSE
 );
-ALTER TABLE IE_tbluser_permission
-  OWNER TO postgres;
 
 -- Index: userpermiss_permissioncode_idx
 
@@ -262,12 +240,7 @@ CREATE TABLE ie_tbluser_medicinephongluu
   usercode text,
   userdepgidnote text,
   CONSTRAINT ie_tbluser_medicinephongluu_pkey PRIMARY KEY (userphongluutid)
-)
-WITH (
-  OIDS=FALSE
 );
-ALTER TABLE ie_tbluser_medicinephongluu
-  OWNER TO postgres;
 
 -- Index: tblphongluu_medicinephongluuid_idx
 
@@ -318,12 +291,7 @@ CREATE TABLE ie_tbluser_medicinestore
   usercode text,
   userdepgidnote text,
   CONSTRAINT ie_tbluser_medicinestore_pkey PRIMARY KEY (usermestid)
-)
-WITH (
-  OIDS=FALSE
 );
-ALTER TABLE ie_tbluser_medicinestore
-  OWNER TO postgres;
 
 -- Index: tblmedistore_medicinestoreid_idx
 
@@ -367,12 +335,7 @@ CREATE TABLE IE_tbllog
   softversion text,
   logtime timestamp without time zone,
   CONSTRAINT IE_tbllog_pkey PRIMARY KEY (logid)
-)
-WITH (
-  OIDS=FALSE
 );
-ALTER TABLE IE_tbllog
-  OWNER TO postgres;
 
 --=================================================== Table: IE_otherlist
 
@@ -388,12 +351,7 @@ CREATE TABLE IE_otherlist
   otherliststatus integer,
   otherlistnote text,
   CONSTRAINT IE_otherlist_pkey PRIMARY KEY (otherlistid)
-)
-WITH (
-  OIDS=FALSE
 );
-ALTER TABLE IE_otherlist
-  OWNER TO postgres;
 
 -- Index: IE_otherlistid_idx
 
@@ -426,12 +384,7 @@ CREATE TABLE IE_othertypelist
   othertypeliststatus integer,
   othertypelistnote text,
   CONSTRAINT IE_othertypelist_pkey PRIMARY KEY (othertypelistid)
-)
-WITH (
-  OIDS=FALSE
 );
-ALTER TABLE IE_othertypelist
-  OWNER TO postgres;
 
 -- Index: IE_othertypelist_typecode_idx
 
@@ -467,12 +420,7 @@ CREATE TABLE IE_option
   optiondate timestamp without time zone,
   optioncreateuser text,
   CONSTRAINT IE_option_pkey PRIMARY KEY (optionid)
-)
-WITH (
-  OIDS=FALSE
 );
-ALTER TABLE IE_option
-  OWNER TO postgres;
 
 -- Index: IE_option_toolsoptioncode_idx
 
@@ -504,7 +452,8 @@ CREATE INDEX IE_option_toolsoptionvalue_idx
 
 --=================================================== Table IE_bhyt_check
 --ALTER TABLE bhyt add bhytcheckstatus integer DEFAULT 0;
--- DROP TABLE IE_option;
+-- DROP TABLE IE_bhyt_check;
+
 CREATE TABLE IE_bhyt_check
 (
   bhytcheckid serial NOT NULL,
@@ -536,7 +485,7 @@ CREATE TABLE IE_bhyt_check
   lastupdatedate_bhyt timestamp without time zone,
   bhytchecknote text,
   CONSTRAINT bhytcheckid_pkey PRIMARY KEY (bhytcheckid)
-)
+);
 CREATE INDEX IE_bhyt_check_bhytid_idx
   ON IE_bhyt_check
   USING btree
@@ -576,9 +525,6 @@ CREATE INDEX IE_bhyt_check_hosobenhandate_idx
 --===================================================
 --===================================================
 --===================================================
-
-865238
-604149
 
 
 

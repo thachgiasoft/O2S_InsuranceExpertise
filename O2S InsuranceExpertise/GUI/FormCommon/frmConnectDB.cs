@@ -77,7 +77,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                 if (dr_HSBA.Read())
                 {
                     boolfound_HSBA = true;
-                    MessageBox.Show("Kết nối đến cơ sở dữ liệu Hồ sơ bệnh án thành công!", "Thông báo");
+                    MessageBox.Show("Kết nối đến cơ sở dữ liệu Giám định BHYT thành công!", "Thông báo");
                 }
                 if (boolfound_HSBA == false)
                 {

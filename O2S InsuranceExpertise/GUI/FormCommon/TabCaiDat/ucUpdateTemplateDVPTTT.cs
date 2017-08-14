@@ -524,8 +524,8 @@ parentForRootNodes, null);
                     DataTable dv_dataserviceref = condb.GetDataTable_HSBA(sql_laydanhsach);
                     if (dv_dataserviceref.Rows.Count > 0)
                     {
-                        List<DTO.reportExcelDTO> thongTinThem = new List<DTO.reportExcelDTO>();
-                        DTO.reportExcelDTO reportitem = new DTO.reportExcelDTO();
+                        List<Model.Models.reportExcelDTO> thongTinThem = new List<Model.Models.reportExcelDTO>();
+                        Model.Models.reportExcelDTO reportitem = new Model.Models.reportExcelDTO();
                         reportitem.name = Base.bienTrongBaoCao.THOIGIANBAOCAO;
                         reportitem.value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                         thongTinThem.Add(reportitem);

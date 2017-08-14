@@ -221,9 +221,9 @@ namespace O2S_InsuranceExpertise.BUS
 
 
                     ////Bao cao
-                    //case "REPORT_01":
-                    //    ucResult = new ChucNang.ucBCDSBNSDdv();
-                    //    break;
+                    case "REPORT_01":
+                        ucResult = new GUI.TabCongCuKhac.ucBCDangKyBaoHiemYTe();
+                        break;
                     //case "REPORT_02":
                     //    ucResult = new ChucNang.ucBCThongKeTheoICD10();
                     //    break;

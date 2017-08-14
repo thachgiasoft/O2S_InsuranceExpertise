@@ -36,6 +36,7 @@
     <Reference Include="Aspose.Words">
       <HintPath>..\Library\Aspose.Words.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.XtraGrid.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="log4net">
       <HintPath>..\Library\log4net.dll</HintPath>
     </Reference>
@@ -57,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Base\KeyTrongPhanMem.cs" />
     <Compile Include="EncryptAndDecrypt\EncryptAndDecrypt.cs" />
+    <Compile Include="GridControl\GridControlConvert.cs" />
     <Compile Include="String\StringConvert.cs" />
     <Compile Include="DataTables\ConvertDataTable.cs" />
     <Compile Include="Logging\LogSystem.cs" />

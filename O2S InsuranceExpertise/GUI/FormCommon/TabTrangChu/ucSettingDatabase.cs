@@ -28,6 +28,9 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
             try
             {
                 LoadKetNoiDatabase();
+                LoadCauHinhTaiKhoanDangNhapTrenCongBHYT();
+                KiemTraTonTaiVaInsertLinkSersion();
+                LoadCauHinhUpdateVersion();
             }
             catch (Exception ex)
             {
@@ -49,8 +52,6 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
                 this.txtDBUser_HSBA.Text = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Username_HSBA"].ToString().Trim(), true);
                 this.txtDBPass_HSBA.Text = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Password_HSBA"].ToString().Trim(), true);
                 this.txtDBName_HSBA.Text = Common.EncryptAndDecrypt.EncryptAndDecrypt.Decrypt(ConfigurationManager.AppSettings["Database_HSBA"].ToString().Trim(), true);
-
-                LoadCauHinhTaiKhoanDangNhapTrenCongBHYT();
             }
             catch (Exception ex)
             {
@@ -76,7 +77,46 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
                 Common.Logging.LogSystem.Warn(ex);
             }
         }
-
+        private void KiemTraTonTaiVaInsertLinkSersion()
+        {
+            try
+            {
+                string kiemtraApp = "SELECT * FROM ie_version WHERE app_type=0;";
+                //string kiemtraLauncher = "SELECT * FROM ie_version WHERE app_type=1;";
+                DataTable dataApp = condb.GetDataTable_HSBA(kiemtraApp);
+                //DataTable dataLauncher = condb.GetDataTable_HSBA(kiemtraLauncher);
+                if (dataApp == null || dataApp.Rows.Count != 1)
+                {
+                    string insertApp = "INSERT INTO ie_version(appversion,app_type) values('1.0.0.0','0') ;";
+                    condb.ExecuteNonQuery_HSBA(insertApp);
+                }
+                //if (dataLauncher == null || dataLauncher.Rows.Count != 1)
+                //{
+                //    string insertApp = "INSERT INTO ie_version(app_type) values('1') ;";
+                //    condb.ExecuteNonQuery_HSBA(insertApp);
+                //}
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Warn(ex);
+            }
+        }
+        private void LoadCauHinhUpdateVersion()
+        {
+            try
+            {
+                string kiemtraApp = "SELECT * FROM ie_version WHERE app_type=0;";
+                DataTable dataApp = condb.GetDataTable_HSBA(kiemtraApp);
+                if (dataApp != null || dataApp.Rows.Count > 0)
+                {
+                    txtUpdateVersionLink.Text = dataApp.Rows[0]["app_link"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Warn(ex);
+            }
+        }
         #endregion
         private void btnDBKiemTra_Click(object sender, EventArgs e)
         {
@@ -130,7 +170,22 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
             }
         }
 
+        #region Luu
         private void btnDBLuu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LuuLaiCauHinhFileConfig();
+                LuuLaiDuongDanUpdateVersion();
+                LuuLaiTaiKhoanTrenCongGDBHYT();
+                MessageBox.Show("Lưu dữ liệu thành công", "Thông báo");
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Error(ex);
+            }
+        }
+        private void LuuLaiCauHinhFileConfig()
         {
             try
             {
@@ -147,11 +202,6 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
                 _config.AppSettings.Settings["Database_HSBA"].Value = Common.EncryptAndDecrypt.EncryptAndDecrypt.Encrypt(txtDBName_HSBA.Text.Trim(), true);
                 _config.Save(ConfigurationSaveMode.Modified);
                 ConfigurationManager.RefreshSection("appSettings");
-
-                LuuLaiTaiKhoanTrenCongGDBHYT();
-
-
-                MessageBox.Show("Lưu dữ liệu thành công", "Thông báo");
             }
             catch (Exception ex)
             {
@@ -178,7 +228,19 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu
                 Common.Logging.LogSystem.Error(ex);
             }
         }
-
+        private void LuuLaiDuongDanUpdateVersion()
+        {
+            try
+            {
+                string sqlcommit = "update ie_version set app_link= '" + txtUpdateVersionLink.Text.Trim() + "';";
+                condb.ExecuteNonQuery_HSBA(sqlcommit);
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Error(ex);
+            }
+        }
+        #endregion
         private void btnDBUpdate_Click(object sender, EventArgs e)
         {
             SplashScreenManager.ShowForm(typeof(O2S_InsuranceExpertise.Utilities.ThongBao.WaitForm1));

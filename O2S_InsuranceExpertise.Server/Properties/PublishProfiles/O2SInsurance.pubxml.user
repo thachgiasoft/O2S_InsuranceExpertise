@@ -16,6 +16,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="ApplicationInsights.config">
       <publishTime>08/10/2017 17:56:54</publishTime>
     </File>
+    <File Include="AppSettings.config">
+      <publishTime>08/13/2017 10:35:47</publishTime>
+    </File>
     <File Include="Areas/HelpPage/HelpPage.css">
       <publishTime>08/10/2017 17:56:50</publishTime>
     </File>
@@ -128,19 +131,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/18/2017 01:25:14</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>08/03/2014 20:33:56</publishTime>
+      <publishTime>06/18/2017 13:57:10</publishTime>
     </File>
     <File Include="bin/Npgsql.dll">
       <publishTime>05/21/2017 15:17:37</publishTime>
     </File>
     <File Include="bin/O2S_InsuranceExpertise.Common.dll">
-      <publishTime>08/12/2017 00:37:18</publishTime>
+      <publishTime>08/13/2017 03:09:20</publishTime>
     </File>
     <File Include="bin/O2S_InsuranceExpertise.Model.dll">
-      <publishTime>08/12/2017 00:37:17</publishTime>
+      <publishTime>08/13/2017 03:09:20</publishTime>
     </File>
     <File Include="bin/O2S_InsuranceExpertise.Server.dll">
-      <publishTime>08/12/2017 00:37:21</publishTime>
+      <publishTime>08/13/2017 16:54:25</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>06/18/2015 20:19:46</publishTime>
@@ -186,6 +189,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
       <publishTime>01/28/2015 04:02:42</publishTime>
+    </File>
+    <File Include="bin/System.Threading.Tasks.Extensions.dll">
+      <publishTime>11/05/2016 04:57:24</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>01/28/2015 04:04:30</publishTime>
@@ -251,7 +257,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/12/2017 00:17:27</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>08/12/2017 00:17:27</publishTime>
+      <publishTime>08/12/2017 17:17:04</publishTime>
     </File>
     <File Include="Scripts/ai.0.22.9-build00167.js">
       <publishTime>08/10/2017 17:56:54</publishTime>
@@ -302,7 +308,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/10/2017 17:56:45</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/12/2017 00:37:22</publishTime>
+      <publishTime>08/13/2017 16:20:38</publishTime>
     </File>
   </ItemGroup>
 </Project>

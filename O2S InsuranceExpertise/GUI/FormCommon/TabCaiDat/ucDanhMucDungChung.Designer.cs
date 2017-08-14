@@ -172,14 +172,14 @@
             // 
             // gridColumn9
             // 
-            this.gridColumn9.Caption = "ie_otherlistid";
-            this.gridColumn9.FieldName = "ie_otherlistid";
+            this.gridColumn9.Caption = "otherlistid";
+            this.gridColumn9.FieldName = "otherlistid";
             this.gridColumn9.Name = "gridColumn9";
             // 
             // gridColumn10
             // 
-            this.gridColumn10.Caption = "ie_othertypelistid";
-            this.gridColumn10.FieldName = "ie_othertypelistid";
+            this.gridColumn10.Caption = "othertypelistid";
+            this.gridColumn10.FieldName = "othertypelistid";
             this.gridColumn10.Name = "gridColumn10";
             // 
             // gridColumn7
@@ -193,7 +193,7 @@
             this.gridColumn7.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn7.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn7.Caption = "Tên loại danh mục";
-            this.gridColumn7.FieldName = "ie_othertypelistname";
+            this.gridColumn7.FieldName = "othertypelistname";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.Visible = true;
@@ -211,7 +211,7 @@
             this.gridColumn5.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn5.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn5.Caption = "Mã danh mục";
-            this.gridColumn5.FieldName = "ie_otherlistcode";
+            this.gridColumn5.FieldName = "otherlistcode";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
@@ -229,7 +229,7 @@
             this.gridColumn6.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn6.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn6.Caption = "Tên danh mục";
-            this.gridColumn6.FieldName = "ie_otherlistname";
+            this.gridColumn6.FieldName = "otherlistname";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.Visible = true;
@@ -247,7 +247,7 @@
             this.gridColumn11.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn11.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn11.Caption = "Giá trị";
-            this.gridColumn11.FieldName = "ie_otherlistvalue";
+            this.gridColumn11.FieldName = "otherlistvalue";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.OptionsColumn.AllowEdit = false;
             this.gridColumn11.Visible = true;
@@ -272,7 +272,6 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(645, 190);
             this.panel6.TabIndex = 0;
-           // this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
             // 
             // labelControl7
             // 
@@ -372,8 +371,8 @@
             this.cboDM_LoaiDMTen.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboDM_LoaiDMTen.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ie_othertypelistid", 35, "ID"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ie_othertypelistname", 100, "Tên")});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("othertypelistid", 35, "ID"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("othertypelistname", 100, "Tên")});
             this.cboDM_LoaiDMTen.Properties.NullText = "";
             this.cboDM_LoaiDMTen.Size = new System.Drawing.Size(230, 22);
             this.cboDM_LoaiDMTen.TabIndex = 24;
@@ -470,8 +469,8 @@
             // 
             // gridColumn8
             // 
-            this.gridColumn8.Caption = "ie_othertypelistid";
-            this.gridColumn8.FieldName = "ie_othertypelistid";
+            this.gridColumn8.Caption = "othertypelistid";
+            this.gridColumn8.FieldName = "othertypelistid";
             this.gridColumn8.Name = "gridColumn8";
             // 
             // gridColumn2
@@ -485,7 +484,7 @@
             this.gridColumn2.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn2.Caption = "Mã loại danh mục";
-            this.gridColumn2.FieldName = "ie_othertypelistcode";
+            this.gridColumn2.FieldName = "othertypelistcode";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
@@ -503,7 +502,7 @@
             this.gridColumn3.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn3.Caption = "Tên loại danh mục";
-            this.gridColumn3.FieldName = "ie_othertypelistname";
+            this.gridColumn3.FieldName = "othertypelistname";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;

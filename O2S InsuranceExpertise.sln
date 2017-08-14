@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2S_InsuranceExpertise.Mode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2S_InsuranceExpertise.Common", "O2S_InsuranceExpertise.Common\O2S_InsuranceExpertise.Common.csproj", "{6C338723-1358-4581-9D20-D14A18B5E3B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "O2S InsuranceExpertiseLauncher", "O2S InsuranceExpertiseLauncher\O2S InsuranceExpertiseLauncher.csproj", "{9803CA31-4169-407E-9720-95B8D5483A18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{6C338723-1358-4581-9D20-D14A18B5E3B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C338723-1358-4581-9D20-D14A18B5E3B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C338723-1358-4581-9D20-D14A18B5E3B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9803CA31-4169-407E-9720-95B8D5483A18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9803CA31-4169-407E-9720-95B8D5483A18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9803CA31-4169-407E-9720-95B8D5483A18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9803CA31-4169-407E-9720-95B8D5483A18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

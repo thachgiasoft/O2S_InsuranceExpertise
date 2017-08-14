@@ -10,7 +10,7 @@ namespace O2S_InsuranceExpertise.Server.Services
 {
     public interface ICheckThongTuyen
     {
-        IEnumerable<LichSuKhamChuaBenhDTO> GetCheckListHosobenhan(TieuChiCheckDTO tieuchicheck);
+        IEnumerable<KetQuaCheckThongTuyenDTO> GetCheckListHosobenhan(TieuChiCheckThongTuyenDTO tieuchicheck);
 
     }
 

@@ -30,6 +30,9 @@
         {
             this.xtraTabControlCongCuKhac = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTab_KiemTraThongTuyen = new DevExpress.XtraTab.XtraTabPage();
+            this.panel_NoiDung = new System.Windows.Forms.Panel();
+            this.panel_btnTroVe = new System.Windows.Forms.Panel();
+            this.btnTroVe = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTab_BaoCao = new DevExpress.XtraTab.XtraTabPage();
             this.gridControlDSBaoCao = new DevExpress.XtraGrid.GridControl();
             this.gridViewDSBaoCao = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -41,6 +44,8 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControlCongCuKhac)).BeginInit();
             this.xtraTabControlCongCuKhac.SuspendLayout();
+            this.xtraTab_KiemTraThongTuyen.SuspendLayout();
+            this.panel_btnTroVe.SuspendLayout();
             this.xtraTab_BaoCao.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlDSBaoCao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDSBaoCao)).BeginInit();
@@ -49,6 +54,7 @@
             // 
             // xtraTabControlCongCuKhac
             // 
+            this.xtraTabControlCongCuKhac.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
             this.xtraTabControlCongCuKhac.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraTabControlCongCuKhac.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControlCongCuKhac.Name = "xtraTabControlCongCuKhac";
@@ -68,12 +74,46 @@
             this.xtraTab_KiemTraThongTuyen.Appearance.Header.ForeColor = System.Drawing.Color.Navy;
             this.xtraTab_KiemTraThongTuyen.Appearance.Header.Options.UseFont = true;
             this.xtraTab_KiemTraThongTuyen.Appearance.Header.Options.UseForeColor = true;
+            this.xtraTab_KiemTraThongTuyen.Controls.Add(this.panel_NoiDung);
+            this.xtraTab_KiemTraThongTuyen.Controls.Add(this.panel_btnTroVe);
             this.xtraTab_KiemTraThongTuyen.Image = global::O2S_InsuranceExpertise.Properties.Resources.checkmark_16;
             this.xtraTab_KiemTraThongTuyen.Name = "xtraTab_KiemTraThongTuyen";
             this.xtraTab_KiemTraThongTuyen.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
             this.xtraTab_KiemTraThongTuyen.Size = new System.Drawing.Size(994, 582);
             this.xtraTab_KiemTraThongTuyen.Text = "Kiểm tra thông tuyến";
             this.xtraTab_KiemTraThongTuyen.Tooltip = "Công cụ khác - Kiểm tra thông tuyến";
+            // 
+            // panel_NoiDung
+            // 
+            this.panel_NoiDung.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_NoiDung.Location = new System.Drawing.Point(0, 40);
+            this.panel_NoiDung.Name = "panel_NoiDung";
+            this.panel_NoiDung.Size = new System.Drawing.Size(994, 542);
+            this.panel_NoiDung.TabIndex = 1;
+            // 
+            // panel_btnTroVe
+            // 
+            this.panel_btnTroVe.Controls.Add(this.btnTroVe);
+            this.panel_btnTroVe.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_btnTroVe.Location = new System.Drawing.Point(0, 0);
+            this.panel_btnTroVe.Name = "panel_btnTroVe";
+            this.panel_btnTroVe.Size = new System.Drawing.Size(994, 40);
+            this.panel_btnTroVe.TabIndex = 0;
+            // 
+            // btnTroVe
+            // 
+            this.btnTroVe.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTroVe.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnTroVe.Appearance.Options.UseFont = true;
+            this.btnTroVe.Appearance.Options.UseForeColor = true;
+            this.btnTroVe.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnTroVe.Image = global::O2S_InsuranceExpertise.Properties.Resources.undo_16;
+            this.btnTroVe.Location = new System.Drawing.Point(25, 4);
+            this.btnTroVe.Name = "btnTroVe";
+            this.btnTroVe.Size = new System.Drawing.Size(100, 30);
+            this.btnTroVe.TabIndex = 32;
+            this.btnTroVe.Text = "Trở về";
+            this.btnTroVe.Click += new System.EventHandler(this.btnTroVe_Click);
             // 
             // xtraTab_BaoCao
             // 
@@ -235,6 +275,8 @@
             this.Load += new System.EventHandler(this.ucHoSoBenhAn_Load);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControlCongCuKhac)).EndInit();
             this.xtraTabControlCongCuKhac.ResumeLayout(false);
+            this.xtraTab_KiemTraThongTuyen.ResumeLayout(false);
+            this.panel_btnTroVe.ResumeLayout(false);
             this.xtraTab_BaoCao.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControlDSBaoCao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDSBaoCao)).EndInit();
@@ -259,5 +301,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn permissioncheck1;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private System.Windows.Forms.Panel panel_NoiDung;
+        private System.Windows.Forms.Panel panel_btnTroVe;
+        private DevExpress.XtraEditors.SimpleButton btnTroVe;
     }
 }

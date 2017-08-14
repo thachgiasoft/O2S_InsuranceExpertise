@@ -167,7 +167,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
         {
             try
             {
-                DataView dataurlfile = new DataView(condb.GetDataTable_HSBA("select app_link from ie_version where app_type=1 limit 1;"));
+                DataView dataurlfile = new DataView(condb.GetDataTable_HSBA("select app_link from ie_version where app_type=0 limit 1;"));
                 if (dataurlfile != null && dataurlfile.Count > 0)
                 {
                     string tempDirectory = dataurlfile[0]["app_link"].ToString();
@@ -190,7 +190,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                 {
                     string name = Path.GetFileName(file);
                     string dest = Path.Combine(DestFolder, name);
-                    if (name.Contains("InsuranceExpertiseLauncher"))
+                    if (name.Contains("O2S InsuranceExpertiseLauncher"))
                     {
                         //Check file
                         if (Common.Checksum.GetFileCheckSum.GetMD5HashFromFile(file) != Common.Checksum.GetFileCheckSum.GetMD5HashFromFile(dest))
@@ -312,7 +312,6 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                     check_Menu = true;
                 }
 
-                check_Menu = true;
                 if (check_ThongTuyen == true && check_Menu == false)
                 {
                     GUI.CheckThongTuyen.frmCheckThongTuyenTuDong frmChon = new CheckThongTuyen.frmCheckThongTuyenTuDong();

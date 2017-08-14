@@ -36,8 +36,7 @@ namespace O2S_InsuranceExpertise.Server.Base
             catch (Exception ex)
             {
                 kiemtraketnoi = false;
-                // MessageBox.Show("Không kết nối được cơ sở dữ liệu", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Common.Logging.LogSystem.Error("Loi ket noi den CSDL: " + ex.ToString());
+                Common.Logging.LogSystem.Error("Loi ket noi den CSDL HIS: " + "( Server = " + serverhost + "; Port = 5432; User Id = " + serveruser + "; " + "Password = " + serverpass + "; Database = " + serverdb + " )" + ex.ToString());
             }
         }
         public void Disconnect()
@@ -52,7 +51,6 @@ namespace O2S_InsuranceExpertise.Server.Base
             catch (Exception ex)
             {
                 kiemtraketnoi = false;
-                //MessageBox.Show("Có lỗi khi đóng kết nối đến CSDL", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Common.Logging.LogSystem.Error("Loi dong ket noi den CSDL: " + ex.ToString());
             }
         }
@@ -71,7 +69,6 @@ namespace O2S_InsuranceExpertise.Server.Base
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Có lỗi dữ liệu đầu vào" + ex.ToString(), "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Common.Logging.LogSystem.Error("Loi getDataTable: " + ex.ToString());
             }
             return dt;
@@ -92,7 +89,6 @@ namespace O2S_InsuranceExpertise.Server.Base
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Có lỗi khi thực thi đến CSDL", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Common.Logging.LogSystem.Error("Loi ExecuteNonQuery: " + ex.ToString());
             }
             return result;
@@ -152,7 +148,7 @@ namespace O2S_InsuranceExpertise.Server.Base
             catch (Exception ex)
             {
                 kiemtraketnoi = false;
-                Common.Logging.LogSystem.Error("Loi ket noi den CSDL: " + ex.ToString());
+                Common.Logging.LogSystem.Error("Loi ket noi den CSDL Giam dinh: " + "( Server = " + serverhost_HSBA + ";Port=5432;User Id=" + serveruser_HSBA + "; " + "Password=" + serverpass_HSBA + ";Database=" + serverdb_HSBA + " )" + ex.ToString());
             }
         }
         public void Disconnect_HSBA()
@@ -185,7 +181,6 @@ namespace O2S_InsuranceExpertise.Server.Base
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Có lỗi dữ liệu đầu vào" + ex.ToString(), "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Common.Logging.LogSystem.Error("Loi getDataTable: " + ex.ToString());
             }
             return dt;
@@ -206,7 +201,6 @@ namespace O2S_InsuranceExpertise.Server.Base
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Có lỗi khi thực thi đến CSDL", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Common.Logging.LogSystem.Error("Loi ExecuteNonQuery: " + ex.ToString());
             }
             return result;
@@ -233,6 +227,7 @@ namespace O2S_InsuranceExpertise.Server.Base
                 Execute_Dblink_Connect_HIS();
                 result = GetDataTable_HSBA(sql);
                 Execute_Dblink_Disconnect_HIS();
+                Common.Logging.LogSystem.Error("Loi GetDataTable_Dblink: " + ex.ToString());
             }
             return result;
         }
@@ -250,11 +245,11 @@ namespace O2S_InsuranceExpertise.Server.Base
             }
             catch (Exception ex)
             {
-                //Common.Logging.LogSystem.Error("Loi getDataTable Dblink: " + ex.ToString());
                 Execute_Dblink_Disconnect_HIS();
                 Execute_Dblink_Connect_HIS();
                 result = ExecuteNonQuery_HSBA(sql);
                 Execute_Dblink_Disconnect_HIS();
+                Common.Logging.LogSystem.Error("Loi ExecuteNonQuery_Dblink: " + ex.ToString());
             }
             return result;
         }
@@ -266,8 +261,9 @@ namespace O2S_InsuranceExpertise.Server.Base
                 string dblink_connect = "SELECT dblink_connect('myconn', 'dbname=" + serverdb + " port=5432 host=" + serverhost + " user=" + serveruser + " password=" + serverpass + "');";
                 GetDataTable_HSBA(dblink_connect);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Common.Logging.LogSystem.Error("Loi Execute_Dblink_Connect_HIS: " + ex.ToString());
             }
         }
         public void Execute_Dblink_Disconnect_HIS()
@@ -277,8 +273,9 @@ namespace O2S_InsuranceExpertise.Server.Base
                 string dblink_dis = "SELECT dblink_disconnect('myconn');";
                 GetDataTable_HSBA(dblink_dis);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Common.Logging.LogSystem.Error("Loi Execute_Dblink_Disconnect_HIS: " + ex.ToString());
             }
         }
         #endregion
@@ -302,6 +299,7 @@ namespace O2S_InsuranceExpertise.Server.Base
                 Execute_Dblink_Connect_IE();
                 result = GetDataTable_HIS(sql);
                 Execute_Dblink_Disconnect_IE();
+                Common.Logging.LogSystem.Error("Loi GetDataTable_Dblink_IE: " + ex.ToString());
             }
             return result;
         }
@@ -334,8 +332,9 @@ namespace O2S_InsuranceExpertise.Server.Base
                 string dblink_connect = "SELECT dblink_connect('myconn_ie', 'dbname=" + serverdb_HSBA + " port=5432 host=" + serverhost_HSBA + " user=" + serveruser_HSBA + " password=" + serverpass_HSBA + "');";
                 GetDataTable_HIS(dblink_connect);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Common.Logging.LogSystem.Error("Loi Execute_Dblink_Connect_IE: " + ex.ToString());
             }
         }
         public void Execute_Dblink_Disconnect_IE()
@@ -345,8 +344,9 @@ namespace O2S_InsuranceExpertise.Server.Base
                 string dblink_dis = "SELECT dblink_disconnect('myconn_ie');";
                 GetDataTable_HIS(dblink_dis);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Common.Logging.LogSystem.Error("Loi Execute_Dblink_Disconnect_IE: " + ex.ToString());
             }
         }
         #endregion

@@ -16,7 +16,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             {
                 //tools_dangdt_tmp
                 //tools_ravienchuatt_tmp
-                TimerUpdateData_BCNoiTru();
+                //TimerUpdateData_BCNoiTru();
             }
             catch (Exception ex)
             {

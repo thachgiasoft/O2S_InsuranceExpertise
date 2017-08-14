@@ -16,8 +16,8 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
         #region Khai bao
         O2S_InsuranceExpertise.DAL.ConnectDatabase condb = new O2S_InsuranceExpertise.DAL.ConnectDatabase();
         private DataView loaiDanhMuc { get; set; } 
-        private long selectie_othertypelistid { get; set; }
-        private long selectie_otherlistid { get; set; }
+        private long select_othertypelistid { get; set; }
+        private long select_otherlistid { get; set; }
 
         #endregion
         public ucDanhMucDungChung()
@@ -66,12 +66,12 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             try
             {
                 loaiDanhMuc = new DataView();
-                string sqlgetdanhsach = "select ROW_NUMBER() OVER (ORDER BY ie_othertypelistid) as stt, ie_othertypelistid, ie_othertypelistcode, ie_othertypelistname, ie_othertypeliststatus from ie_othertypelist; ";
+                string sqlgetdanhsach = "select ROW_NUMBER() OVER (ORDER BY othertypelistid) as stt, othertypelistid, othertypelistcode, othertypelistname, othertypeliststatus from ie_othertypelist; ";
                 DataView dataDanhSach = new DataView(condb.GetDataTable_HSBA(sqlgetdanhsach));
                 gridControlLoaiDM.DataSource = dataDanhSach;
                 cboDM_LoaiDMTen.Properties.DataSource = dataDanhSach;
-                cboDM_LoaiDMTen.Properties.DisplayMember = "ie_othertypelistname";
-                cboDM_LoaiDMTen.Properties.ValueMember = "ie_othertypelistid";
+                cboDM_LoaiDMTen.Properties.DisplayMember = "othertypelistname";
+                cboDM_LoaiDMTen.Properties.ValueMember = "othertypelistid";
                 loaiDanhMuc = dataDanhSach;
             }
             catch (Exception ex)
@@ -86,14 +86,14 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                 string ie_othertypelistid = "";
                 if (othertypelistid != 0)
                 {
-                    ie_othertypelistid = " where oty.ie_othertypelistid=" + othertypelistid;
+                    ie_othertypelistid = " where oty.othertypelistid=" + othertypelistid;
                 }
-                string sqlgetdanhsach = "select ROW_NUMBER() OVER (ORDER BY oty.ie_othertypelistname, o.ie_otherlistname) as stt, oty.ie_othertypelistid, oty.ie_othertypelistcode, oty.ie_othertypelistname, o.ie_otherlistid, o.ie_otherlistcode, o.ie_otherlistname, o.ie_otherliststatus from ie_othertypelist oty inner join ie_otherlist o on o.ie_othertypelistid=oty.ie_othertypelistid " + ie_othertypelistid + "; ";
+                string sqlgetdanhsach = "select ROW_NUMBER() OVER (ORDER BY oty.othertypelistname, o.otherlistname) as stt, oty.othertypelistid, oty.othertypelistcode, oty.othertypelistname, o.otherlistid, o.otherlistcode, o.otherlistname, o.otherliststatus from ie_othertypelist oty inner join ie_otherlist o on o.othertypelistid=oty.othertypelistid " + ie_othertypelistid + "; ";
                 DataView dataDanhSach = new DataView(condb.GetDataTable_HSBA(sqlgetdanhsach));
                 gridControlDM.DataSource = dataDanhSach;
                 cboDM_LoaiDMTen.Properties.DataSource = this.loaiDanhMuc;
-                cboDM_LoaiDMTen.Properties.DisplayMember = "ie_othertypelistname";
-                cboDM_LoaiDMTen.Properties.ValueMember = "ie_othertypelistid";
+                cboDM_LoaiDMTen.Properties.DisplayMember = "othertypelistname";
+                cboDM_LoaiDMTen.Properties.ValueMember = "othertypelistid";
             }
             catch (Exception ex)
             {
@@ -107,7 +107,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
         {
             try
             {
-                this.selectie_othertypelistid = 0;
+                this.select_othertypelistid = 0;
                 btnLoaiDM_Them.Enabled = true;
                 btnLoaiDM_Luu.Enabled = true;
                 txtLoaiDM_Ma.ReadOnly = false;
@@ -137,9 +137,9 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             {
                 if (txtLoaiDM_Ma.Text.Trim() != "" && txtLoaiDM_Ten.Text.Trim() != "")
                 {
-                    if (this.selectie_othertypelistid == 0)
+                    if (this.select_othertypelistid == 0)
                     {
-                        string kiemtratontai = "select ie_othertypelistid from ie_othertypelist where ie_othertypelistcode='" + txtLoaiDM_Ma.Text.Trim().ToUpper() + "';";
+                        string kiemtratontai = "select othertypelistid from ie_othertypelist where othertypelistcode='" + txtLoaiDM_Ma.Text.Trim().ToUpper() + "';";
                         DataView dataDanhSach = new DataView(condb.GetDataTable_HSBA(kiemtratontai));
                         if (dataDanhSach != null && dataDanhSach.Count > 0)
                         {
@@ -148,7 +148,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                         }
                         else //them moi
                         {
-                            string insert = "INSERT INTO ie_othertypelist(ie_othertypelistcode, ie_othertypelistname) VALUES ('" + txtLoaiDM_Ma.Text.Trim().ToUpper() + "', '" + txtLoaiDM_Ten.Text.Trim() + "'); ";
+                            string insert = "INSERT INTO ie_othertypelist(othertypelistcode, othertypelistname) VALUES ('" + txtLoaiDM_Ma.Text.Trim().ToUpper() + "', '" + txtLoaiDM_Ten.Text.Trim() + "'); ";
                             if (condb.ExecuteNonQuery_HSBA(insert))
                             {
                                 O2S_InsuranceExpertise.Utilities.ThongBao.frmThongBao frmthongbao = new O2S_InsuranceExpertise.Utilities.ThongBao.frmThongBao(O2S_InsuranceExpertise.Base.ThongBaoLable.THEM_MOI_THANH_CONG);
@@ -158,7 +158,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                     }
                     else//cap nhat
                     {
-                        string insert = "UPDATE ie_othertypelist SET ie_othertypelistname='" + txtLoaiDM_Ten.Text.Trim() + "' WHERE ie_othertypelistid=" + this.selectie_othertypelistid + "; ";
+                        string insert = "UPDATE ie_othertypelist SET othertypelistname='" + txtLoaiDM_Ten.Text.Trim() + "' WHERE othertypelistid=" + this.select_othertypelistid + "; ";
                         if (condb.ExecuteNonQuery_HSBA(insert))
                         {
                             O2S_InsuranceExpertise.Utilities.ThongBao.frmThongBao frmthongbao = new O2S_InsuranceExpertise.Utilities.ThongBao.frmThongBao(O2S_InsuranceExpertise.Base.ThongBaoLable.CAP_NHAT_THANH_CONG);
@@ -186,14 +186,14 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                 {
                     var rowHandle = gridViewLoaiDM.FocusedRowHandle;
 
-                    this.selectie_othertypelistid = Common.TypeConvert.TypeConvertParse.ToInt64(gridViewLoaiDM.GetRowCellValue(rowHandle, "ie_othertypelistid").ToString());
-                    txtLoaiDM_Ma.Text = gridViewLoaiDM.GetRowCellValue(rowHandle, "ie_othertypelistcode").ToString();
-                    txtLoaiDM_Ten.Text = gridViewLoaiDM.GetRowCellValue(rowHandle, "ie_othertypelistname").ToString();
+                    this.select_othertypelistid = Common.TypeConvert.TypeConvertParse.ToInt64(gridViewLoaiDM.GetRowCellValue(rowHandle, "othertypelistid").ToString());
+                    txtLoaiDM_Ma.Text = gridViewLoaiDM.GetRowCellValue(rowHandle, "othertypelistcode").ToString();
+                    txtLoaiDM_Ten.Text = gridViewLoaiDM.GetRowCellValue(rowHandle, "othertypelistname").ToString();
                     btnLoaiDM_Them.Enabled = true;
                     btnLoaiDM_Luu.Enabled = true;
                     txtLoaiDM_Ma.ReadOnly = true;
                     txtLoaiDM_Ten.ReadOnly = false;
-                    LoadDS_DanhMuc(this.selectie_othertypelistid);
+                    LoadDS_DanhMuc(this.select_othertypelistid);
 
                     btnDM_Them.Enabled = true;
                     btnDM_Luu.Enabled = true;
@@ -220,7 +220,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
         {
             try
             {
-                this.selectie_otherlistid = 0;
+                this.select_otherlistid = 0;
                 btnLoaiDM_Them.Enabled = false;
                 btnLoaiDM_Luu.Enabled = false;
                 txtLoaiDM_Ma.ReadOnly = true;
@@ -250,9 +250,9 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
             {
                 if (txtDM_Ma.Text.Trim() != "" && txtDM_Ten.Text.Trim() != "" && cboDM_LoaiDMTen.EditValue != null)
                 {
-                    if (this.selectie_otherlistid == 0)
+                    if (this.select_otherlistid == 0)
                     {
-                        string kiemtratontai = "select ie_otherlistid from ie_otherlist where ie_otherlistcode='" + txtDM_Ma.Text.Trim().ToUpper() + "';";
+                        string kiemtratontai = "select otherlistid from ie_otherlist where otherlistcode='" + txtDM_Ma.Text.Trim().ToUpper() + "';";
                         DataView dataDanhSach = new DataView(condb.GetDataTable_HSBA(kiemtratontai));
                         if (dataDanhSach != null && dataDanhSach.Count > 0)
                         {
@@ -261,7 +261,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                         }
                         else //them moi
                         {
-                            string insert = "INSERT INTO ie_otherlist(ie_otherlistcode, ie_otherlistname, ie_othertypelistid, ie_otherlistvalue) VALUES ('" + txtDM_Ma.Text.Trim().ToUpper() + "', '" + txtDM_Ten.Text.Trim() + "','" + cboDM_LoaiDMTen.EditValue.ToString() + "', '" + txtDM_GiaTri.Text.Trim().ToUpper() + "'); ";
+                            string insert = "INSERT INTO ie_otherlist(otherlistcode, otherlistname, othertypelistid, otherlistvalue) VALUES ('" + txtDM_Ma.Text.Trim().ToUpper() + "', '" + txtDM_Ten.Text.Trim() + "','" + cboDM_LoaiDMTen.EditValue.ToString() + "', '" + txtDM_GiaTri.Text.Trim().ToUpper() + "'); ";
                             if (condb.ExecuteNonQuery_HSBA(insert))
                             {
                                 O2S_InsuranceExpertise.Utilities.ThongBao.frmThongBao frmthongbao = new O2S_InsuranceExpertise.Utilities.ThongBao.frmThongBao(O2S_InsuranceExpertise.Base.ThongBaoLable.THEM_MOI_THANH_CONG);
@@ -271,7 +271,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                     }
                     else//cap nhat
                     {
-                        string insert = "UPDATE ie_otherlist SET ie_otherlistname='" + txtDM_Ten.Text.Trim() + "', ie_otherlistvalue='" + txtDM_GiaTri.Text.Trim() + "' WHERE ie_otherlistid=" + this.selectie_otherlistid + "; ";
+                        string insert = "UPDATE ie_otherlist SET otherlistname='" + txtDM_Ten.Text.Trim() + "', otherlistvalue='" + txtDM_GiaTri.Text.Trim() + "' WHERE otherlistid=" + this.select_otherlistid + "; ";
                         if (condb.ExecuteNonQuery_HSBA(insert))
                         {
                             O2S_InsuranceExpertise.Utilities.ThongBao.frmThongBao frmthongbao = new O2S_InsuranceExpertise.Utilities.ThongBao.frmThongBao(O2S_InsuranceExpertise.Base.ThongBaoLable.CAP_NHAT_THANH_CONG);
@@ -299,11 +299,11 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat
                 {
                     var rowHandle = gridViewDM.FocusedRowHandle;
 
-                    this.selectie_otherlistid = Common.TypeConvert.TypeConvertParse.ToInt64(gridViewDM.GetRowCellValue(rowHandle, "ie_otherlistid").ToString());
-                    txtDM_Ma.Text = gridViewDM.GetRowCellValue(rowHandle, "ie_otherlistcode").ToString();
-                    txtDM_Ten.Text = gridViewDM.GetRowCellValue(rowHandle, "ie_otherlistname").ToString();
-                    cboDM_LoaiDMTen.EditValue = gridViewDM.GetRowCellValue(rowHandle, "ie_othertypelistid");
-                    txtDM_GiaTri.Text = gridViewDM.GetRowCellValue(rowHandle, "ie_otherlistvalue").ToString();
+                    this.select_otherlistid = Common.TypeConvert.TypeConvertParse.ToInt64(gridViewDM.GetRowCellValue(rowHandle, "otherlistid").ToString());
+                    txtDM_Ma.Text = gridViewDM.GetRowCellValue(rowHandle, "otherlistcode").ToString();
+                    txtDM_Ten.Text = gridViewDM.GetRowCellValue(rowHandle, "otherlistname").ToString();
+                    cboDM_LoaiDMTen.EditValue = gridViewDM.GetRowCellValue(rowHandle, "othertypelistid");
+                    txtDM_GiaTri.Text = gridViewDM.GetRowCellValue(rowHandle, "otherlistvalue").ToString();
                     btnDM_Them.Enabled = true;
                     btnDM_Luu.Enabled = true;
                     txtDM_Ma.ReadOnly = true;

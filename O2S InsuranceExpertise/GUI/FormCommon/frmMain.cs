@@ -14,13 +14,21 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
 {
     public partial class frmMain : Form
     {
-        O2S_InsuranceExpertise.DAL.ConnectDatabase condb = new O2S_InsuranceExpertise.DAL.ConnectDatabase();
-        internal string lblHienThiThongTinChucNang { get; set; }
-        DialogResult hoi;
+        #region Khai bao
+        DAL.ConnectDatabase condb = new DAL.ConnectDatabase();
+        private DialogResult hoiThoatChuongTrinh;
+        private bool exit_frmmain = true;
+        private bool hienthi_btnTroVe { get; set; }
+        #endregion
 
         public frmMain()
         {
             InitializeComponent();
+        }
+        public frmMain(bool _hienthi_btnTroVe)
+        {
+            InitializeComponent();
+            this.hienthi_btnTroVe = _hienthi_btnTroVe;
         }
 
         #region Load
@@ -29,23 +37,20 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             try
             {
                 timerClock.Start();
-                timerKiemTraLicense.Interval = O2S_InsuranceExpertise.Base.KeyTrongPhanMem.ThoiGianKiemTraLicense;
+                timerKiemTraLicense.Interval = Base.KeyTrongPhanMem.ThoiGianKiemTraLicense;
                 timerKiemTraLicense.Start();
 
-                LoadPageMenu();
-                KiemTraLicense_EnableButton(); //kiem tra license truoc khi kiem tra phan quyen
-                KiemTraPhanQuyenNguoiDung();
-                LoadThongTinVePhanMem_Version();
+                KhoiTaoPageMenu();
+                KiemTraLicensevaEnableChucNang(); //kiem tra license truoc khi kiem tra phan quyen
+                HienThiThongTinVePhanMem_Version();
                 LoadGiaoDien();
-
-                TimerChayChuongTrinhServiceAn(); // Chay du lieu ngam   - TAM THOI KHONG SU DUNG
             }
             catch (Exception ex)
             {
                 Common.Logging.LogSystem.Warn(ex);
             }
         }
-        private void LoadPageMenu()
+        private void KhoiTaoPageMenu()
         {
             try
             {
@@ -62,10 +67,12 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                 //tabMenuCauHinh.Controls.Add(ucCauHinh);
 
                 tabMenuCongCuKhac.Controls.Clear();
-                FormCommon.ucCongCuKhac ucCongCuKhac = new ucCongCuKhac();
+                FormCommon.ucCongCuKhac ucCongCuKhac = new ucCongCuKhac(hienthi_btnTroVe);
                 ucCongCuKhac.MyGetData = new ucCongCuKhac.GetString(HienThiTenChucNang);
+                ucCongCuKhac.ExitFormMain_Data = new ucCongCuKhac.ExitFormMain(ExitFormMain_Function);
                 ucCongCuKhac.Dock = System.Windows.Forms.DockStyle.Fill;
                 tabMenuCongCuKhac.Controls.Add(ucCongCuKhac);
+
 
             }
             catch (Exception ex)
@@ -73,7 +80,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                 Common.Logging.LogSystem.Warn(ex);
             }
         }
-        private void LoadThongTinVePhanMem_Version()
+        private void HienThiThongTinVePhanMem_Version()
         {
             try
             {
@@ -136,25 +143,21 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
         }
         #endregion
 
-        private void KiemTraLicense_EnableButton()
+        private void KiemTraLicensevaEnableChucNang()
         {
             try
             {
                 //Kiểm tra phân quyền
-                if (SessionLogin.SessionUsercode == O2S_InsuranceExpertise.Base.KeyTrongPhanMem.AdminUser_key)
+                if (SessionLogin.SessionUsercode != O2S_InsuranceExpertise.Base.KeyTrongPhanMem.AdminUser_key)
                 {
-                    EnableAndDisableChucNang(true); //admin              
-                }
-                else
-                {
-                    if (SessionLogin.KiemTraLicenseSuDung)
+                    if (!SessionLogin.KiemTraLicenseSuDung)
                     {
-                        EnableAndDisableChucNang(true);
+                        EnableAndDisableTabChucNang(false);
+                        DialogResult dialogResult = MessageBox.Show("Phần mềm hết bản quyền! \nVui lòng liên hệ với tác giả để được trợ giúp.\nAuthor: Hồng Minh Nhất \nE-mail: hongminhnhat15@gmail.com \nPhone: 0868-915-456", "Thông báo !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
-                        EnableAndDisableChucNang(false);
-                        DialogResult dialogResult = MessageBox.Show("Phần mềm hết bản quyền! \nVui lòng liên hệ với tác giả để được trợ giúp.\nAuthor: Hồng Minh Nhất \nE-mail: hongminhnhat15@gmail.com \nPhone: 0868-915-456", "Thông báo !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        KiemTraPhanQuyenNguoiDung();
                     }
                 }
             }
@@ -170,10 +173,14 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
         {
             try
             {
-                if (hoi != DialogResult.Retry)
+                if (this.exit_frmmain == false)
                 {
-                    hoi = MessageBox.Show("Bạn có chắc chắn muốn thoát chương trình?", "Thông báo!", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                    if (hoi == DialogResult.No)
+                    return;
+                }
+                if (hoiThoatChuongTrinh != DialogResult.Retry)
+                {
+                    hoiThoatChuongTrinh = MessageBox.Show("Bạn có chắc chắn muốn thoát chương trình?", "Thông báo!", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                    if (hoiThoatChuongTrinh == DialogResult.No)
                         e.Cancel = true;
                 }
             }
@@ -228,9 +235,11 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             {
                 if (tabPaneMenu.SelectedPage == tabMenuRestart)
                 {
-                    hoi = DialogResult.Retry;
-                    Application.Restart();
+                    hoiThoatChuongTrinh = DialogResult.Retry;
+                    // Application.Restart();
                     Application.ExitThread();
+                    System.Diagnostics.Process.Start(@"O2S InsuranceExpertiseLauncher.exe");
+                    Application.Exit();
                 }
             }
             catch (Exception ex)
@@ -240,13 +249,24 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
         }
 
-        //delegate
+        #region Delegate
         internal void HienThiTenChucNang(string _message)
         {
             try
             {
-                lblHienThiThongTinChucNang = _message;
-                lblStatusTenBC.Caption = lblHienThiThongTinChucNang;
+                lblStatusTenBC.Caption = _message;
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Warn(ex);
+            }
+        }
+        internal void ExitFormMain_Function(bool _exit_frmmain)
+        {
+            try
+            {
+                this.exit_frmmain = _exit_frmmain;
+                this.Visible = _exit_frmmain;
             }
             catch (Exception ex)
             {
@@ -254,8 +274,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
         }
 
-
-
+        #endregion
 
 
 

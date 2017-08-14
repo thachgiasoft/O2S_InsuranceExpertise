@@ -41,10 +41,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\ApiTokenDTO.cs" />
+    <Compile Include="Models\FilterDSBNThuCongDTO.cs" />
     <Compile Include="Models\IEBhytCheckDTO.cs" />
-    <Compile Include="Models\LichSuKhamChuaBenhDTO.cs" />
-    <Compile Include="Models\TheBHYT_ChkThongTuyenDTO.cs" />
-    <Compile Include="Models\TieuChiCheckDTO.cs" />
+    <Compile Include="Models\KetQuaCheckThongTuyen_ExtendDTO.cs" />
+    <Compile Include="Models\LichSuKCBDTO.cs" />
+    <Compile Include="Models\LichSuKCB_ThuCongDTO.cs" />
+    <Compile Include="Models\KetQuaCheckThongTuyenDTO.cs" />
+    <Compile Include="Models\reportExcelDTO.cs" />
+    <Compile Include="Models\TheBHYTCheckThongTuyen_ThuCongDTO.cs" />
+    <Compile Include="Models\TheBHYTCheckThongTuyenDTO.cs" />
+    <Compile Include="Models\TieuChiCheckThongTuyenDTO.cs" />
+    <Compile Include="Models\TieuChiCheck_ThuCongDTO.cs" />
     <Compile Include="Models\TokenDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

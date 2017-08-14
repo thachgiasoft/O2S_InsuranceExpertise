@@ -397,7 +397,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(331, 26);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Copiright 2016, OneOne solution co.";
+            this.label2.Text = "Copiright 2017, OneOne solution co.";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // xtraTabCaiDat
@@ -667,7 +667,6 @@
             this.navBarItemDMDungChung.AppearancePressed.Options.UseFont = true;
             this.navBarItemDMDungChung.Caption = "Danh mục dùng chung";
             this.navBarItemDMDungChung.Name = "navBarItemDMDungChung";
-            this.navBarItemDMDungChung.Visible = false;
             this.navBarItemDMDungChung.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemDMDungChung_LinkClicked);
             // 
             // navBarGroup3
