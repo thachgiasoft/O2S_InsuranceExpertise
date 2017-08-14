@@ -202,6 +202,38 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
             }
         }
 
+        private void txtPatientId_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (txtPatientId.Text != "")
+                {
+                    btnTimKiem.PerformClick();
+                }
+            }
+        }
+
+        private void txtVienPhiId_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (txtVienPhiId.Text != "")
+                {
+                    btnTimKiem.PerformClick();
+                }
+            }
+        }
+
+        private void txtBhytCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (txtBhytCode.Text != "")
+                {
+                    btnTimKiem.PerformClick();
+                }
+            }
+        }
         #endregion
 
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -228,7 +260,21 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
                     else
                     {
                         gridControlDSBN.DataSource = null;
-                        LayDanhSachBenhNhan_TheoKhoa(lstKhoaChonLayBC);
+                        if (cboTrangThai.Text == "Đang điều trị")
+                        {
+                            LayDSBenhNhanDangDieuTri_TheoKhoa(lstKhoaChonLayBC);
+                        }
+                        else if (cboTrangThai.Text == "Ra viện chưa thanh toán")
+                        {
+                            LayDSBenhNhanDaRaVien_TheoKhoa(lstKhoaChonLayBC, " vienphistatus<>0 and COALESCE(vienphistatus_vp,0)=0 ");
+                        }
+                        else if (cboTrangThai.Text == "Đã thanh toán")
+                        {
+                            LayDSBenhNhanDaRaVien_TheoKhoa(lstKhoaChonLayBC, " vienphistatus <> 0 and vienphistatus_vp = 1 ");
+                        }
+
+
+
                     }
                 }
                 else
@@ -242,13 +288,13 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
                     }
                     else if (txtPatientId.Text.Trim() != "")
                     {
-                        dieukientimkiem.patientid =" and patientid='" +txtPatientId.Text.Trim() + "' ";
+                        dieukientimkiem.patientid = " and patientid='" + txtPatientId.Text.Trim() + "' ";
                         dieukientimkiem.bhytcode = "";
                         dieukientimkiem.vienphiid = "";
                     }
                     if (txtVienPhiId.Text.Trim() != "")
                     {
-                        dieukientimkiem.vienphiid = " and vienphiid='" +txtVienPhiId.Text.Trim() + "' ";
+                        dieukientimkiem.vienphiid = " and vienphiid='" + txtVienPhiId.Text.Trim() + "' ";
                         dieukientimkiem.bhytcode = "";
                         dieukientimkiem.patientid = "";
                     }
