@@ -68,13 +68,14 @@ namespace O2S_InsuranceExpertise.Base
                 SYS_05.permissionnote = "Quản trị hệ thống";
                 lstresult.Add(SYS_05);
 
-                //DTO.classPermission SYS_06 = new DTO.classPermission();
-                //SYS_06.permissioncheck = false;
-                //SYS_06.permissioncode = "SYS_06";
-                //SYS_06.permissionname = "Danh mục dịch vụ PTTT";
-                //SYS_06.permissiontype = 1;
-                //SYS_06.permissionnote = "Danh mục dịch vụ PTTT";
-                //lstresult.Add(SYS_06);
+                DTO.classPermission SYS_06 = new DTO.classPermission();
+                SYS_06.permissioncheck = false;
+                SYS_06.permissioncode = "SYS_06";
+                SYS_06.permissionname = "Danh mục cơ sở khám chữa bệnh";
+                SYS_06.permissiontype = 1;
+                SYS_06.tabMenuId = 1;
+                SYS_06.permissionnote = "Danh mục cơ sở khám chữa bệnh";
+                lstresult.Add(SYS_06);
 
                 //DTO.classPermission SYS_07 = new DTO.classPermission();
                 //SYS_07.permissioncheck = false;
@@ -190,19 +191,20 @@ namespace O2S_InsuranceExpertise.Base
                 DTO.classPermission REPORT_01 = new DTO.classPermission();
                 REPORT_01.permissioncheck = false;
                 REPORT_01.permissioncode = "REPORT_01";
-                REPORT_01.permissionname = "Báo cáo đăng ký thẻ bảo hiểm y tế";
+                REPORT_01.permissionname = "Báo cáo đăng ký thẻ bảo hiểm y tế Nội trú";
                 REPORT_01.permissiontype = 3;
                 REPORT_01.tabMenuId = 5;
-                REPORT_01.permissionnote = "Báo cáo đăng ký thẻ bảo hiểm y tế";
+                REPORT_01.permissionnote = "Báo cáo đăng ký thẻ bảo hiểm y tế Nội trú";
                 lstresult.Add(REPORT_01);
 
-                //DTO.classPermission REPORT_02 = new DTO.classPermission();
-                //REPORT_02.permissioncheck = false;
-                //REPORT_02.permissioncode = "REPORT_02";
-                //REPORT_02.permissionname = "Thống kê bệnh theo ICD10";
-                //REPORT_02.permissiontype = 3;
-                //REPORT_02.permissionnote = "Thống kê bệnh theo ICD10";
-                //lstresult.Add(REPORT_02);
+                DTO.classPermission REPORT_02 = new DTO.classPermission();
+                REPORT_02.permissioncheck = false;
+                REPORT_02.permissioncode = "REPORT_02";
+                REPORT_02.permissionname = "Báo cáo đăng ký thẻ bảo hiểm y tế Ngoại trú";
+                REPORT_02.permissiontype = 3;
+                REPORT_02.tabMenuId = 5;
+                REPORT_02.permissionnote = "Báo cáo đăng ký thẻ bảo hiểm y tế Ngoại trú";
+                lstresult.Add(REPORT_02);
 
 
 

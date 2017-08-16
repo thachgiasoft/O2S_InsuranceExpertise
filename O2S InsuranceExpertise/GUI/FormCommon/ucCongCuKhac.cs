@@ -106,7 +106,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
         {
             try
             {
-                List<DTO.classPermission> lstBaoCao_CongCuKhac = Base.SessionLogin.SessionLstPhanQuyenNguoiDung.Where(o=>o.permissiontype==3 && o.tabMenuId==5).ToList();
+                List<DTO.classPermission> lstBaoCao_CongCuKhac = Base.SessionLogin.SessionLstPhanQuyenNguoiDung.Where(o=>o.permissiontype==3 && o.tabMenuId==5).OrderBy(u=>u.permissioncode).ToList();
                 gridControlDSBaoCao.DataSource = lstBaoCao_CongCuKhac;
             }
             catch (Exception ex)

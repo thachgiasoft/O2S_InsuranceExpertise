@@ -15,7 +15,7 @@ using DevExpress.XtraGrid.Views.Grid;
 
 namespace O2S_InsuranceExpertise.GUI.TabCongCuKhac
 {
-    public partial class ucBCDangKyBaoHiemYTe : UserControl
+    public partial class ucBCDangKyBaoHiemYTe_NoiTru : UserControl
     {
         #region Declaration
         DAL.ConnectDatabase condb = new DAL.ConnectDatabase();
@@ -23,7 +23,7 @@ namespace O2S_InsuranceExpertise.GUI.TabCongCuKhac
         #endregion
 
         #region Load
-        public ucBCDangKyBaoHiemYTe()
+        public ucBCDangKyBaoHiemYTe_NoiTru()
         {
             InitializeComponent();
         }
@@ -34,19 +34,21 @@ namespace O2S_InsuranceExpertise.GUI.TabCongCuKhac
             {
                 dateTuNgay.DateTime = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd") + " 00:00:00");
                 dateDenNgay.DateTime = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd") + " 23:59:59");
-                LoadDanhSachKhoa();
+                LoadDanhSachKhoa_NoiTru();
             }
             catch (Exception ex)
             {
                 Common.Logging.LogSystem.Warn(ex);
             }
         }
-        private void LoadDanhSachKhoa()
+        private void LoadDanhSachKhoa_NoiTru()
         {
             try
             {
+                //Load Danh Sach Khoa co buong dieu tri
+                var lstKhoaCoBuongDieuTri = Base.SessionLogin.SessionlstPhanQuyen_KhoaPhong.Where(o => o.departmenttype == 3 || o.departmenttype == 9).ToList();
                 //linq groupby
-                var lstDSKhoa = Base.SessionLogin.SessionlstPhanQuyen_KhoaPhong.Where(o => o.departmentgrouptype == 1 || o.departmentgrouptype == 4 || o.departmentgrouptype == 11).ToList().GroupBy(o => o.departmentgroupid).Select(n => n.First()).ToList();
+                var lstDSKhoa = lstKhoaCoBuongDieuTri.Where(o => o.departmentgrouptype == 1 || o.departmentgrouptype == 4 || o.departmentgrouptype == 11).ToList().GroupBy(o => o.departmentgroupid).Select(n => n.First()).ToList();
                 if (lstDSKhoa != null && lstDSKhoa.Count > 0)
                 {
                     chkcomboListDSKhoa.Properties.DataSource = lstDSKhoa;
@@ -67,8 +69,15 @@ namespace O2S_InsuranceExpertise.GUI.TabCongCuKhac
             SplashScreenManager.ShowForm(typeof(Utilities.ThongBao.WaitForm1));
             try
             {
+                if (chkcomboListDSKhoa.Text == "")
+                {
+                    Utilities.ThongBao.frmThongBao frmthongbao = new Utilities.ThongBao.frmThongBao(Base.ThongBaoLable.CHUA_CHON_KHOA_PHONG);
+                    frmthongbao.Show();
+                    SplashScreenManager.CloseForm();
+                    return;
+                }
                 string tieuchi_hsba = "";
-                string tieuchi_bhyt = "";
+                //string tieuchi_bhyt = "";
                 string tieuchi_log = "";
                 string orderby = "";
                 string lstKhoaChonLayBC = "";
@@ -84,7 +93,7 @@ namespace O2S_InsuranceExpertise.GUI.TabCongCuKhac
                         lstKhoaChonLayBC += lstKhoaCheck[i] + ",";
                     }
                     lstKhoaChonLayBC += lstKhoaCheck[lstKhoaCheck.Count - 1];
-                }
+                }        
 
                 if (cboTieuChi.Text == "Theo ngày vào viện")
                 {
@@ -98,14 +107,14 @@ namespace O2S_InsuranceExpertise.GUI.TabCongCuKhac
                 }
                 else if (cboTieuChi.Text == "Theo ngày đăng ký thẻ")
                 {
-                    tieuchi_bhyt = " and bhytdate between '" + tungay + "' and '" + denngay + "' ";
+                   // tieuchi_bhyt = " and bhytdate between '" + tungay + "' and '" + denngay + "' ";
                     tieuchi_log = " and logtime between '" + tungay + "' and '" + denngay + "' ";
                     orderby = " log.logtime ";
                 }
 
-                string sql_getdata = "SELECT row_number () over (order by " + orderby + ") as stt, hsba.patientid, log.vienphiid, hsba.sovaovien, '' as sodkbhyt, hsba.patientname, bh.bhytcode, bh.macskcbbd, bh.bhytfromdate, bh.bhytutildate, log.logeventcontent, bh.noisinhsong, (case when bh.du5nam6thangluongcoban=1 then 'OK' end) as du5nam6thangluongcoban, degp.departmentgroupname, '' as noichuyenden, hsba.hosobenhandate, (case when hsba.hosobenhandate_ravien<>'0001-01-01 00:00:00' then hsba.hosobenhandate_ravien end) as hosobenhandate_ravien, replace(log.logform, 'TAB:', '') as noidangky, (log.loguser || ' - ' || nv.username )as nguoidangky, (case bh.bhyt_loaiid when 1 then 'Đúng tuyến' when 2 then 'Đúng tuyến (giới thiệu)' when 3 then 'Đúng tuyến (cấp cứu)' when 4 then 'Trái tuyến' else '' end) as bhyt_loaiid, log.logeventtype, log.logtime FROM (select hosobenhanid,patientid,sovaovien,patientname,hosobenhandate,hosobenhandate_ravien from hosobenhan " + tieuchi_hsba + ") hsba inner join (select hosobenhanid,bhytcode,macskcbbd,bhytfromdate,bhytutildate,noisinhsong,du5nam6thangluongcoban,bhyt_loaiid from bhyt where bhytcode<>'' " + tieuchi_bhyt + ") bh on hsba.hosobenhanid=bh.hosobenhanid left join (select hosobenhanid,vienphiid,medicalrecordid,logeventcontent,logform,loguser,logeventtype,logtime from logevent where logeventtype in (1,8) " + tieuchi_log + ") log on log.hosobenhanid=hsba.hosobenhanid and log.logeventcontent like '%' || bh.bhytcode || '%' left join (select medicalrecordid,departmentgroupid,departmentid from medicalrecord ) mrd on mrd.medicalrecordid=log.medicalrecordid left join (select userhisid,usercode,username from nhompersonnel) nv on nv.usercode=log.loguser left join (select departmentgroupid,departmentgroupname from departmentgroup) degp on degp.departmentgroupid=mrd.departmentgroupid GROUP BY hsba.patientid,log.vienphiid,hsba.sovaovien,hsba.patientname,bh.bhytcode,bh.macskcbbd,bh.bhytfromdate,bh.bhytutildate,log.logeventcontent,bh.noisinhsong,bh.du5nam6thangluongcoban,degp.departmentgroupname,hsba.hosobenhandate,hsba.hosobenhandate_ravien,log.logform,log.loguser,nv.username,bh.bhyt_loaiid,log.logeventtype,log.logtime; ";
+                string sql_getdata = "SELECT row_number () over (order by " + orderby + ") as stt, hsba.patientid, log.vienphiid, hsba.sovaovien, '' as sodkbhyt, hsba.patientname, bh.bhytcode, bh.macskcbbd, bh.bhytfromdate, bh.bhytutildate, (case bh.bhyt_loaiid when 1 then 'Đúng tuyến' when 2 then 'Đúng tuyến (giới thiệu)' when 3 then 'Đúng tuyến (cấp cứu)' when 4 then 'Trái tuyến' else '' end) as bhyt_loaiid, bh.noisinhsong, (case when bh.du5nam6thangluongcoban=1 then 'OK' end) as du5nam6thangluongcoban, degp.departmentgroupname, (mrd.noigioithieucode || '-' || ncd.benhvienname) as noichuyenden, hsba.hosobenhandate, (case when hsba.hosobenhandate_ravien<>'0001-01-01 00:00:00' then hsba.hosobenhandate_ravien end) as hosobenhandate_ravien, log.logtime, (log.loguser || ' - ' || ndk.username )as nguoidangky, '' as bhytchecknote, '' as nguoihuydangky, log.logeventcontent FROM (select hosobenhanid,patientid,patientname,hosobenhandate,hosobenhandate_ravien,sovaovien from hosobenhan " + tieuchi_hsba + ") hsba inner join (select logeventid,hosobenhanid,vienphiid,medicalrecordid,logeventcontent,logform,loguser,logeventtype,logtime from logevent where logeventtype=8 and medicalrecordid=0 " + tieuchi_log + ") log on log.hosobenhanid=hsba.hosobenhanid inner join (select hosobenhanid,medicalrecordid,departmentgroupid,departmentid,bhytid,chandoanbandau,noigioithieucode,xutrikhambenhid,nextdepartmentid from medicalrecord where loaibenhanid=24 and hinhthucvaovienid=0) mrd on mrd.hosobenhanid=hsba.hosobenhanid inner join (select bhytid,bhytcode,macskcbbd,bhytfromdate,bhytutildate,noisinhsong,du5nam6thangluongcoban,bhyt_loaiid from bhyt where bhytcode<>'') bh on bh.bhytid=mrd.bhytid inner join (select userhisid,usercode,username from nhompersonnel) ndk on ndk.usercode=log.loguser inner join tbldepartment user_de on user_de.usercode=log.loguser inner join (select departmentid,departmentname,departmentgroupid from department) de on de.departmentid=user_de.departmentid inner join (select departmentgroupid,departmentgroupname from departmentgroup where departmentgroupid in (" + lstKhoaChonLayBC + ")) degp on degp.departmentgroupid=de.departmentgroupid left join (select ie_benhvien.benhvienkcbbd,ie_benhvien,benhvienname from dblink('myconn_ie','SELECT benhvienkcbbd,benhvienname FROM ie_benhvien') AS ie_benhvien(benhvienkcbbd text,benhvienname text)) ncd on ncd.benhvienkcbbd=mrd.noigioithieucode where log.logeventcontent like '%' || bh.bhytcode || '%' group by hsba.patientid,log.vienphiid,hsba.sovaovien,hsba.patientname,bh.bhytcode,bh.macskcbbd,bh.bhytfromdate,bh.bhytutildate,bh.bhyt_loaiid,bh.noisinhsong,bh.du5nam6thangluongcoban,degp.departmentgroupname,mrd.noigioithieucode,ncd.benhvienname,hsba.hosobenhandate,hsba.hosobenhandate_ravien,log.logtime,log.loguser,ndk.username,log.logeventcontent; ";
 
-                DataTable dataDanhBenhNhan = condb.GetDataTable_HIS(sql_getdata);
+                DataTable dataDanhBenhNhan = condb.GetDataTable_Dblink_IE(sql_getdata);
                 if (dataDanhBenhNhan != null && dataDanhBenhNhan.Rows.Count > 0)
                 {
                     gridControlDataBaoCao.DataSource = dataDanhBenhNhan;
@@ -141,8 +150,13 @@ namespace O2S_InsuranceExpertise.GUI.TabCongCuKhac
                     reportitem.name = Base.bienTrongBaoCao.THOIGIANBAOCAO;
                     reportitem.value = tungaydenngay;
 
+                    O2S_InsuranceExpertise.Model.Models.reportExcelDTO reportitem_khoa = new O2S_InsuranceExpertise.Model.Models.reportExcelDTO();
+                    reportitem_khoa.name = Base.bienTrongBaoCao.DEPARTMENTGROUPNAME;
+                    reportitem_khoa.value = chkcomboListDSKhoa.Text;
+
                     thongTinThem.Add(reportitem);
-                    string fileTemplatePath = "BC_DangKyBaoHiemYTe.xlsx";
+                    thongTinThem.Add(reportitem_khoa);
+                    string fileTemplatePath = "BC_DangKyBaoHiemYTe_NoiTru.xlsx";
 
                     DataTable dataExportFilter = Common.GridControl.GridControlConvert.ConvertGridControlToDataTable(gridViewDataBaoCao);
                     Utilities.Common.Excel.ExcelExport export = new Utilities.Common.Excel.ExcelExport();
@@ -172,8 +186,13 @@ namespace O2S_InsuranceExpertise.GUI.TabCongCuKhac
                 reportitem.name = Base.bienTrongBaoCao.THOIGIANBAOCAO;
                 reportitem.value = tungaydenngay;
 
+                O2S_InsuranceExpertise.Model.Models.reportExcelDTO reportitem_khoa = new O2S_InsuranceExpertise.Model.Models.reportExcelDTO();
+                reportitem_khoa.name = Base.bienTrongBaoCao.DEPARTMENTGROUPNAME;
+                reportitem_khoa.value = chkcomboListDSKhoa.Text;
+
                 thongTinThem.Add(reportitem);
-                string fileTemplatePath = "BC_DangKyBaoHiemYTe.xlsx";
+                thongTinThem.Add(reportitem_khoa);
+                string fileTemplatePath = "BC_DangKyBaoHiemYTe_NoiTru.xlsx";
                 DataTable dataExportFilter = Common.GridControl.GridControlConvert.ConvertGridControlToDataTable(gridViewDataBaoCao);
                 Utilities.PrintPreview.PrintPreview_ExcelFileTemplate.ShowPrintPreview_UsingExcelTemplate(fileTemplatePath, thongTinThem, dataExportFilter);
             }

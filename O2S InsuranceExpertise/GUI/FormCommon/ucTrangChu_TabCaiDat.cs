@@ -144,12 +144,12 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
         }
 
-        private void navBarItemListDMBenhAn_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        private void navBarItemListDMBenhVien_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             try
             {
                 panelCaiDatChiTiet.Controls.Clear();
-                ucDanhMucBenhAn frmResult = new ucDanhMucBenhAn();
+                ucDanhSachBenhVien frmResult = new ucDanhSachBenhVien();
                 frmResult.Dock = System.Windows.Forms.DockStyle.Fill;
                 panelCaiDatChiTiet.Controls.Add(frmResult);
             }

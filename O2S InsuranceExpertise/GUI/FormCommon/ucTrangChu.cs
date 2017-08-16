@@ -91,13 +91,13 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                             navBarItemListNhanVien.Visible = O2S_InsuranceExpertise.Base.CheckPermission.ChkPerModule("SYS_03");
                             navBarItemListOption.Visible = O2S_InsuranceExpertise.Base.CheckPermission.ChkPerModule("SYS_04");
                             //
-                            //navBarItemListDVPTTT.Visible = O2S_InsuranceExpertise.Base.CheckPermission.ChkPerModule("SYS_06");
+                            navBarItemListBenhVien.Visible = O2S_InsuranceExpertise.Base.CheckPermission.ChkPerModule("SYS_06");
                             //navBarItemListDMBenhAn.Visible = O2S_InsuranceExpertise.Base.CheckPermission.ChkPerModule("SYS_07");
                             //navBarItemDMHoiChanThuoc.Visible = O2S_InsuranceExpertise.Base.CheckPermission.ChkPerModule("SYS_08");
                             //navBarItemDMHoiChanPTTT.Visible = O2S_InsuranceExpertise.Base.CheckPermission.ChkPerModule("SYS_09");
                             //navBarItemDMHoiChanChuyenVien.Visible = O2S_InsuranceExpertise.Base.CheckPermission.ChkPerModule("SYS_10");
                             //
-                           navBarItemDMDungChung.Visible = O2S_InsuranceExpertise.Base.CheckPermission.ChkPerModule("SYS_11");
+                            navBarItemDMDungChung.Visible = O2S_InsuranceExpertise.Base.CheckPermission.ChkPerModule("SYS_11");
 
                         }
                         else
@@ -204,7 +204,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
         {
             try
             {
-                string thongtinbv = "SELECT hospitalcode,hospitalname,hospitaladdress,giamdocname FROM hospital limit 1;";
+                string thongtinbv = "SELECT hospitalcode,hospitalname,hospitaladdress,giamdocname,soytename FROM hospital limit 1;";
                 DataView dtthongtindv = new DataView(condb.GetDataTable_HIS(thongtinbv));
                 if (dtthongtindv != null && dtthongtindv.Count > 0)
                 {
@@ -212,6 +212,8 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                     lblMaCSYT.Text = dtthongtindv[0]["hospitalcode"].ToString();
                     lblDiaChi.Text = dtthongtindv[0]["hospitaladdress"].ToString();
                     lblGiamDocBV.Text = dtthongtindv[0]["giamdocname"].ToString();
+                    GlobalStore.SoYTe_String = dtthongtindv[0]["soytename"].ToString();
+                    GlobalStore.TenBenhVien_String = dtthongtindv[0]["hospitalname"].ToString();
                 }
             }
             catch (Exception ex)
@@ -316,21 +318,6 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                 Common.Logging.LogSystem.Warn(ex);
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }

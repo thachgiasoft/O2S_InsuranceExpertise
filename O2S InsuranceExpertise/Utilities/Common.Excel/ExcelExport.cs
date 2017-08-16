@@ -32,6 +32,13 @@ namespace O2S_InsuranceExpertise.Utilities.Common.Excel
                         newRow[item_value.name] = item_value.value;
                     }
                     newRow["CURRENTDATETIME"] = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
+
+                    orderTable.Columns.Add("SOYTE", typeof(string));
+                    newRow["SOYTE"] = GlobalStore.SoYTe_String;
+
+                    orderTable.Columns.Add("TENBENHVIEN", typeof(string));
+                    newRow["TENBENHVIEN"] = GlobalStore.TenBenhVien_String;
+
                     orderTable.Rows.Add(newRow);
                 }
             }

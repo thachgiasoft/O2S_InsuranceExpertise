@@ -286,7 +286,76 @@ namespace O2S_InsuranceExpertise.DAL
         }
         #endregion
 
-
+        #region Kết nối từ DB HIS sang DB Giám định
+        public DataTable GetDataTable_Dblink_IE(string sql)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                //dblink_connect
+                Execute_Dblink_Connect_IE();
+                //Chay SQL thuc thi
+                result = GetDataTable_HIS(sql);
+                //Disconnect
+                Execute_Dblink_Disconnect_IE();
+            }
+            catch (Exception ex)
+            {
+                Execute_Dblink_Disconnect_IE();
+                Execute_Dblink_Connect_IE();
+                result = GetDataTable_HIS(sql);
+                Execute_Dblink_Disconnect_IE();
+                Common.Logging.LogSystem.Error("Loi GetDataTable_Dblink_IE: " + ex.ToString());
+            }
+            return result;
+        }
+        //public bool ExecuteNonQuery_Dblink_IE(string sql)
+        //{
+        //    bool result = false;
+        //    try
+        //    {
+        //        //dblink_connect
+        //        Execute_Dblink_Connect_HIS();
+        //        //Chay SQL thuc thi
+        //        result = ExecuteNonQuery_HSBA(sql);
+        //        //Disconnect
+        //        Execute_Dblink_Disconnect_HIS();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //Common.Logging.LogSystem.Error("Loi getDataTable Dblink: " + ex.ToString());
+        //        Execute_Dblink_Disconnect_HIS();
+        //        Execute_Dblink_Connect_HIS();
+        //        result = ExecuteNonQuery_HSBA(sql);
+        //        Execute_Dblink_Disconnect_HIS();
+        //    }
+        //    return result;
+        //}
+        public void Execute_Dblink_Connect_IE()
+        {
+            try
+            {
+                string dblink_connect = "SELECT dblink_connect('myconn_ie', 'dbname=" + serverdb_HSBA + " port=5432 host=" + serverhost_HSBA + " user=" + serveruser_HSBA + " password=" + serverpass_HSBA + "');";
+                GetDataTable_HIS(dblink_connect);
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Error("Loi Execute_Dblink_Connect_IE: " + ex.ToString());
+            }
+        }
+        public void Execute_Dblink_Disconnect_IE()
+        {
+            try
+            {
+                string dblink_dis = "SELECT dblink_disconnect('myconn_ie');";
+                GetDataTable_HIS(dblink_dis);
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Error("Loi Execute_Dblink_Disconnect_IE: " + ex.ToString());
+            }
+        }
+        #endregion
 
 
     }

@@ -33,6 +33,7 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
                 dateTuNgay.DateTime = Convert.ToDateTime(DateTime.Now.AddDays(-15).ToString("yyyy-MM-dd") + " 00:00:00");
                 dateDenNgay.DateTime = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd") + " 23:59:59");
                 LoadDanhSachKhoa();
+                XoaBoBanGhiThua_LichSuKCB();
             }
             catch (Exception ex)
             {
@@ -58,7 +59,19 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
             }
         }
 
-
+        private void XoaBoBanGhiThua_LichSuKCB()
+        {
+            try
+            {
+                //Xóa bỏ bản ghi thừa tại bảng Lưu Lịch sử KCB
+                string sql_xoarowthua = "DELETE FROM ie_lichsukcb_check WHERE lichsukcbcheckid IN (select lichsukcbcheckid from (SELECT ROW_NUMBER() Over(PARTITION BY mahoso) As RowNumber, lichsukcbcheckid FROM ie_lichsukcb_check ) A where RowNumber>1 );";
+                condb.ExecuteNonQuery_HSBA(sql_xoarowthua);
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Warn(ex);
+            }
+        }
 
         #endregion
 
@@ -97,6 +110,7 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
             try
             {
                 CheckThongTuyenRowDangChon();
+                Custom_GridDisplayLichSuKCB(false);
             }
             catch (Exception ex)
             {
@@ -111,6 +125,7 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
             try
             {
                 CheckThongTuyenTatCaRowDangChon();
+                Custom_GridDisplayLichSuKCB(false);
             }
             catch (Exception ex)
             {
@@ -316,6 +331,7 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
             try
             {
                 CheckThongTuyenRowDangChon();
+                Custom_GridDisplayLichSuKCB(false);
             }
             catch (Exception ex)
             {
@@ -373,6 +389,27 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
             }
         }
 
-
+        private void gridViewDSBN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Custom_GridDisplayLichSuKCB(true);
+                var rowHandle = gridViewDSBN.FocusedRowHandle;
+                string sql_lskcb = " SELECT row_number () over (order by lsc.ngayvaovien) as stt, lsc.patientid, lsc.patientname, lsc.mahoso, lsc.macskcb, bv.benhvienname as tencskcb, lsc.ngayvaovien, lsc.ngayravien, lsc.tenbenh, lsc.tinhtrangcode, lsc.tinhtrangten, lsc.kqdieutricode, lsc.kqdieutri_ten FROM ie_lichsukcb_check lsc inner join (select benhvienkcbbd,benhvienname from ie_benhvien) bv on bv.benhvienkcbbd=lsc.macskcb WHERE patientid='" + gridViewDSBN.GetRowCellValue(rowHandle, "patientid").ToString() + "' GROUP BY lsc.patientid,lsc.patientname,lsc.mahoso,lsc.macskcb,bv.benhvienname,lsc.ngayvaovien,lsc.ngayravien,lsc.tenbenh,lsc.tinhtrangcode,lsc.tinhtrangten,lsc.kqdieutricode,lsc.kqdieutri_ten; ";
+                DataTable dataLichSuKCB = condb.GetDataTable_HSBA(sql_lskcb);
+                if (dataLichSuKCB != null && dataLichSuKCB.Rows.Count > 0)
+                {
+                    gridControlDSDotDieuTri.DataSource = dataLichSuKCB;
+                }
+                else
+                {
+                    gridControlDSDotDieuTri.DataSource = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Warn(ex);
+            }
+        }
     }
 }

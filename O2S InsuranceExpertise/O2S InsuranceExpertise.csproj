@@ -311,6 +311,12 @@
     <Compile Include="GUI\FormCommon\TabCaiDat\ucDanhMucDungChung.Designer.cs">
       <DependentUpon>ucDanhMucDungChung.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\FormCommon\TabCaiDat\ucDanhSachBenhVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\FormCommon\TabCaiDat\ucDanhSachBenhVien.Designer.cs">
+      <DependentUpon>ucDanhSachBenhVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\FormCommon\TabCaiDat\ucDanhSachNhanVien.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -388,11 +394,17 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GlobalStore.cs" />
-    <Compile Include="GUI\TabCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe.cs">
+    <Compile Include="GUI\TabCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe_NgoaiTru.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\TabCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe.Designer.cs">
-      <DependentUpon>ucBCDangKyBaoHiemYTe.cs</DependentUpon>
+    <Compile Include="GUI\TabCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe_NgoaiTru.Designer.cs">
+      <DependentUpon>ucBCDangKyBaoHiemYTe_NgoaiTru.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\TabCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe_NoiTru.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\TabCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe_NoiTru.Designer.cs">
+      <DependentUpon>ucBCDangKyBaoHiemYTe_NoiTru.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -471,6 +483,9 @@
     <EmbeddedResource Include="GUI\FormCommon\TabCaiDat\ucDanhMucDungChung.resx">
       <DependentUpon>ucDanhMucDungChung.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FormCommon\TabCaiDat\ucDanhSachBenhVien.resx">
+      <DependentUpon>ucDanhSachBenhVien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\FormCommon\TabCaiDat\ucDanhSachNhanVien.resx">
       <DependentUpon>ucDanhSachNhanVien.cs</DependentUpon>
     </EmbeddedResource>
@@ -507,8 +522,11 @@
     <EmbeddedResource Include="GUI\FormCommon\ucTrangChu.resx">
       <DependentUpon>ucTrangChu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\TabCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe.resx">
-      <DependentUpon>ucBCDangKyBaoHiemYTe.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\TabCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe_NgoaiTru.resx">
+      <DependentUpon>ucBCDangKyBaoHiemYTe_NgoaiTru.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TabCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe_NoiTru.resx">
+      <DependentUpon>ucBCDangKyBaoHiemYTe_NoiTru.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utilities\PrintPreview\PrintRibbonControllerResources.resx" />
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -556,7 +574,10 @@
     <Content Include="InsuranceExpertise.ico" />
     <None Include="Resources\xml_16.png" />
     <None Include="Resources\xml_161.png" />
-    <Content Include="Templates\BC_DangKyBaoHiemYTe.xlsx">
+    <Content Include="Templates\BC_DangKyBaoHiemYTe_NgoaiTru.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\BC_DangKyBaoHiemYTe_NoiTru.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -219,5 +219,25 @@ namespace O2S_InsuranceExpertise.GUI.CheckThongTuyen
 
         #endregion
 
+        private void Custom_GridDisplayLichSuKCB(bool _hienthi)
+        {
+            try
+            {
+                gridColumn_bhytcode.Visible = !_hienthi;
+                gridColumn_tenKetQua.Visible = !_hienthi;
+                gridColumn_mahoso.Visible = _hienthi;
+                gridColumn_macskcb.Visible = _hienthi;
+                gridColumn_tencskcb.Visible = _hienthi;
+                gridColumn_ngayvaovien.Visible = _hienthi;
+                gridColumn_ngayravien.Visible = _hienthi;
+                gridColumn_tenbenh.Visible = _hienthi;
+                gridColumn_tinhtrangten.Visible = _hienthi;
+                gridColumn_kqdieutri_ten.Visible = _hienthi;
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Warn(ex);
+            }
+        }
     }
 }

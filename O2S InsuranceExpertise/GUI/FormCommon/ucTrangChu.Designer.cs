@@ -65,7 +65,7 @@
             this.navBarItemListNguoiDung = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemListNhanVien = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemListOption = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItemListDVPTTT = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItemListBenhVien = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemListDMBenhAn = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemDMHoiChanThuoc = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemDMHoiChanPTTT = new DevExpress.XtraNavBar.NavBarItem();
@@ -441,7 +441,7 @@
             this.navBarItemMaHoaGiaiMa,
             this.navBarItemNhatKySuKien,
             this.navBarItemQLMayTram,
-            this.navBarItemListDVPTTT,
+            this.navBarItemListBenhVien,
             this.navBarItemListDMBenhAn,
             this.navBarItemDMHoiChanThuoc,
             this.navBarItemDMHoiChanPTTT,
@@ -512,7 +512,7 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemListNguoiDung),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemListNhanVien),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemListOption),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemListDVPTTT),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemListBenhVien),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemListDMBenhAn),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemDMHoiChanThuoc),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemDMHoiChanPTTT),
@@ -568,22 +568,21 @@
             this.navBarItemListOption.Name = "navBarItemListOption";
             this.navBarItemListOption.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemListOption_LinkClicked);
             // 
-            // navBarItemListDVPTTT
+            // navBarItemListBenhVien
             // 
-            this.navBarItemListDVPTTT.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F);
-            this.navBarItemListDVPTTT.Appearance.Options.UseFont = true;
-            this.navBarItemListDVPTTT.AppearanceDisabled.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.navBarItemListDVPTTT.AppearanceDisabled.Options.UseFont = true;
-            this.navBarItemListDVPTTT.AppearanceHotTracked.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.navBarItemListDVPTTT.AppearanceHotTracked.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.navBarItemListDVPTTT.AppearanceHotTracked.Options.UseFont = true;
-            this.navBarItemListDVPTTT.AppearanceHotTracked.Options.UseForeColor = true;
-            this.navBarItemListDVPTTT.AppearancePressed.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.navBarItemListDVPTTT.AppearancePressed.Options.UseFont = true;
-            this.navBarItemListDVPTTT.Caption = "Danh mục dịch vụ PTTT";
-            this.navBarItemListDVPTTT.Name = "navBarItemListDVPTTT";
-            this.navBarItemListDVPTTT.Visible = false;
-            this.navBarItemListDVPTTT.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemListDVPTTT_LinkClicked);
+            this.navBarItemListBenhVien.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F);
+            this.navBarItemListBenhVien.Appearance.Options.UseFont = true;
+            this.navBarItemListBenhVien.AppearanceDisabled.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.navBarItemListBenhVien.AppearanceDisabled.Options.UseFont = true;
+            this.navBarItemListBenhVien.AppearanceHotTracked.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.navBarItemListBenhVien.AppearanceHotTracked.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.navBarItemListBenhVien.AppearanceHotTracked.Options.UseFont = true;
+            this.navBarItemListBenhVien.AppearanceHotTracked.Options.UseForeColor = true;
+            this.navBarItemListBenhVien.AppearancePressed.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.navBarItemListBenhVien.AppearancePressed.Options.UseFont = true;
+            this.navBarItemListBenhVien.Caption = "Danh mục CSKCB";
+            this.navBarItemListBenhVien.Name = "navBarItemListBenhVien";
+            this.navBarItemListBenhVien.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemListDMBenhVien_LinkClicked);
             // 
             // navBarItemListDMBenhAn
             // 
@@ -600,7 +599,6 @@
             this.navBarItemListDMBenhAn.Caption = "Danh mục bệnh án";
             this.navBarItemListDMBenhAn.Name = "navBarItemListDMBenhAn";
             this.navBarItemListDMBenhAn.Visible = false;
-            this.navBarItemListDMBenhAn.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemListDMBenhAn_LinkClicked);
             // 
             // navBarItemDMHoiChanThuoc
             // 
@@ -832,7 +830,7 @@
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup3;
         private DevExpress.XtraNavBar.NavBarItem navBarItemNhatKySuKien;
         private DevExpress.XtraNavBar.NavBarItem navBarItemQLMayTram;
-        private DevExpress.XtraNavBar.NavBarItem navBarItemListDVPTTT;
+        private DevExpress.XtraNavBar.NavBarItem navBarItemListBenhVien;
         private DevExpress.XtraNavBar.NavBarItem navBarItemListDMBenhAn;
         private DevExpress.XtraNavBar.NavBarItem navBarItemDMHoiChanThuoc;
         private DevExpress.XtraNavBar.NavBarItem navBarItemDMHoiChanPTTT;
