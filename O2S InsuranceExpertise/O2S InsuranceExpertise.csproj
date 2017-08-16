@@ -239,20 +239,20 @@
     </Compile>
     <Compile Include="DTO\MedicalrecordDTO.cs" />
     <Compile Include="DTO\serviceprice_ptttDTO.cs" />
-    <Compile Include="GUI\CheckThongTuyen\frmCheckThongTuyenTuDong.cs">
+    <Compile Include="GUI\MenuCongCuKhac\CheckThongTuyen\frmCheckThongTuyenTuDong.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\CheckThongTuyen\frmCheckThongTuyenTuDong.Designer.cs">
+    <Compile Include="GUI\MenuCongCuKhac\CheckThongTuyen\frmCheckThongTuyenTuDong.Designer.cs">
       <DependentUpon>frmCheckThongTuyenTuDong.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\CheckThongTuyen\GoiServerYeuCauCheckThongTuyenProcess.cs" />
-    <Compile Include="GUI\CheckThongTuyen\ucCheckThongTuyenThuCong.cs">
+    <Compile Include="GUI\MenuCongCuKhac\CheckThongTuyen\GoiServerYeuCauCheckThongTuyenProcess.cs" />
+    <Compile Include="GUI\MenuCongCuKhac\CheckThongTuyen\ucCheckThongTuyenThuCong.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\CheckThongTuyen\ucCheckThongTuyenThuCong.Designer.cs">
+    <Compile Include="GUI\MenuCongCuKhac\CheckThongTuyen\ucCheckThongTuyenThuCong.Designer.cs">
       <DependentUpon>ucCheckThongTuyenThuCong.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\CheckThongTuyen\ucCheckThongTuyenThuCongPartial.cs">
+    <Compile Include="GUI\MenuCongCuKhac\CheckThongTuyen\ucCheckThongTuyenThuCongPartial.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GUI\FormCommon\frmChonChucNang.cs">
@@ -261,10 +261,10 @@
     <Compile Include="GUI\FormCommon\frmChonChucNang.Designer.cs">
       <DependentUpon>frmChonChucNang.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\FormCommon\TabCaiDat\frmTaoTemplateWord.cs">
+    <Compile Include="GUI\MenuTrangChu\ChucNangKhac\frmTaoTemplateWord.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\FormCommon\TabCaiDat\frmTaoTemplateWord.Designer.cs">
+    <Compile Include="GUI\MenuTrangChu\ChucNangKhac\frmTaoTemplateWord.Designer.cs">
       <DependentUpon>frmTaoTemplateWord.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\FormCommon\frmConnectDB.cs">
@@ -293,118 +293,125 @@
     </Compile>
     <Compile Include="DAL\KetNoiSCDLProcess.cs" />
     <Compile Include="BUS\LoadDataSystems.cs" />
-    <Compile Include="GUI\FormCommon\TabCaiDat\ucCauHinhHeThong.cs">
+    <Compile Include="GUI\MenuTrangChu\TabCaiDat\ucCauHinhHeThong.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\FormCommon\TabCaiDat\ucCauHinhHeThong.Designer.cs">
+    <Compile Include="GUI\MenuTrangChu\TabCaiDat\ucCauHinhHeThong.Designer.cs">
       <DependentUpon>ucCauHinhHeThong.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\FormCommon\TabCaiDat\ucDanhMucBenhAn.cs">
+    <Compile Include="GUI\MenuTrangChu\TabCaiDat\ucDanhMucBenhAn.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\FormCommon\TabCaiDat\ucDanhMucBenhAn.Designer.cs">
+    <Compile Include="GUI\MenuTrangChu\TabCaiDat\ucDanhMucBenhAn.Designer.cs">
       <DependentUpon>ucDanhMucBenhAn.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\FormCommon\TabCaiDat\ucDanhMucDungChung.cs">
+    <Compile Include="GUI\MenuTrangChu\TabCaiDat\ucDanhMucDungChung.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\FormCommon\TabCaiDat\ucDanhMucDungChung.Designer.cs">
+    <Compile Include="GUI\MenuTrangChu\TabCaiDat\ucDanhMucDungChung.Designer.cs">
       <DependentUpon>ucDanhMucDungChung.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\FormCommon\TabCaiDat\ucDanhSachBenhVien.cs">
+    <Compile Include="GUI\MenuTrangChu\TabCaiDat\ucDanhSachBenhVien.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\FormCommon\TabCaiDat\ucDanhSachBenhVien.Designer.cs">
+    <Compile Include="GUI\MenuTrangChu\TabCaiDat\ucDanhSachBenhVien.Designer.cs">
       <DependentUpon>ucDanhSachBenhVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\FormCommon\TabCaiDat\ucDanhSachNhanVien.cs">
+    <Compile Include="GUI\MenuTrangChu\TabCaiDat\ucDanhSachNhanVien.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\FormCommon\TabCaiDat\ucDanhSachNhanVien.Designer.cs">
+    <Compile Include="GUI\MenuTrangChu\TabCaiDat\ucDanhSachNhanVien.Designer.cs">
       <DependentUpon>ucDanhSachNhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\FormCommon\TabCaiDat\ucMaHoaVaGiaiMa.cs">
+    <Compile Include="GUI\MenuTrangChu\TabCaiDat\ucMaHoaVaGiaiMa.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\FormCommon\TabCaiDat\ucMaHoaVaGiaiMa.Designer.cs">
+    <Compile Include="GUI\MenuTrangChu\TabCaiDat\ucMaHoaVaGiaiMa.Designer.cs">
       <DependentUpon>ucMaHoaVaGiaiMa.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\FormCommon\TabCaiDat\ucQuanLyNguoiDung.cs">
+    <Compile Include="GUI\MenuTrangChu\TabCaiDat\ucQuanLyNguoiDung.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\FormCommon\TabCaiDat\ucQuanLyNguoiDung.Designer.cs">
+    <Compile Include="GUI\MenuTrangChu\TabCaiDat\ucQuanLyNguoiDung.Designer.cs">
       <DependentUpon>ucQuanLyNguoiDung.cs</DependentUpon>
     </Compile>
     <Compile Include="BUS\TabControlProcess.cs" />
-    <Compile Include="GUI\FormCommon\TabCaiDat\ucUpdateTemplateDVPTTT.cs">
+    <Compile Include="GUI\MenuTrangChu\TabCaiDat\ucUpdateTemplateDVPTTT.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\FormCommon\TabCaiDat\ucUpdateTemplateDVPTTT.Designer.cs">
+    <Compile Include="GUI\MenuTrangChu\TabCaiDat\ucUpdateTemplateDVPTTT.Designer.cs">
       <DependentUpon>ucUpdateTemplateDVPTTT.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\FormCommon\TabTrangChu\frmThayPass.cs">
+    <Compile Include="GUI\MenuTrangChu\ChucNangKhac\frmThayPass.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\FormCommon\TabTrangChu\frmThayPass.Designer.cs">
+    <Compile Include="GUI\MenuTrangChu\ChucNangKhac\frmThayPass.Designer.cs">
       <DependentUpon>frmThayPass.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\FormCommon\TabTrangChu\ucSettingDatabase.cs">
+    <Compile Include="GUI\MenuTrangChu\TabCaiDat\ucSettingDatabase.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\FormCommon\TabTrangChu\ucSettingDatabase.Designer.cs">
+    <Compile Include="GUI\MenuTrangChu\TabCaiDat\ucSettingDatabase.Designer.cs">
       <DependentUpon>ucSettingDatabase.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\FormCommon\TabTrangChu\ucSettingLicense.cs">
+    <Compile Include="GUI\MenuTrangChu\TabCaiDat\ucSettingLicense.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\FormCommon\TabTrangChu\ucSettingLicense.Designer.cs">
+    <Compile Include="GUI\MenuTrangChu\TabCaiDat\ucSettingLicense.Designer.cs">
       <DependentUpon>ucSettingLicense.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\FormCommon\ucCauHinh.cs">
+    <Compile Include="GUI\FormCommon\ucMenuCauHinh.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\FormCommon\ucCauHinh.Designer.cs">
-      <DependentUpon>ucCauHinh.cs</DependentUpon>
+    <Compile Include="GUI\FormCommon\ucMenuCauHinh.Designer.cs">
+      <DependentUpon>ucMenuCauHinh.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\FormCommon\ucCongCuKhac.cs">
+    <Compile Include="GUI\FormCommon\ucMenuCongCuKhac.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\FormCommon\ucCongCuKhac.Designer.cs">
-      <DependentUpon>ucCongCuKhac.cs</DependentUpon>
+    <Compile Include="GUI\FormCommon\ucMenuCongCuKhac.Designer.cs">
+      <DependentUpon>ucMenuCongCuKhac.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\FormCommon\ucGiamDinhHSBA.cs">
+    <Compile Include="GUI\FormCommon\ucMenuTrangChu.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\FormCommon\ucGiamDinhHSBA.Designer.cs">
-      <DependentUpon>ucGiamDinhHSBA.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\FormCommon\ucGiamDinhXML.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\FormCommon\ucGiamDinhXML.Designer.cs">
-      <DependentUpon>ucGiamDinhXML.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\FormCommon\ucTrangChu.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\FormCommon\ucTrangChu.Designer.cs">
-      <DependentUpon>ucTrangChu.cs</DependentUpon>
+    <Compile Include="GUI\FormCommon\ucMenuTrangChu.Designer.cs">
+      <DependentUpon>ucMenuTrangChu.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\FormCommon\ucTrangChu_TabCaiDat.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GlobalStore.cs" />
-    <Compile Include="GUI\TabCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe_NgoaiTru.cs">
+    <Compile Include="GUI\MenuCauHinh\ucCauHinhDM_DVKT.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\TabCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe_NgoaiTru.Designer.cs">
+    <Compile Include="GUI\MenuCauHinh\ucCauHinhDM_DVKT.Designer.cs">
+      <DependentUpon>ucCauHinhDM_DVKT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MenuCongCuKhac\BCTinhHinhRaVaoVien\DanhSTTBHYTProcess.cs" />
+    <Compile Include="GUI\MenuCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe_NgoaiTru.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\MenuCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe_NgoaiTru.Designer.cs">
       <DependentUpon>ucBCDangKyBaoHiemYTe_NgoaiTru.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\TabCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe_NoiTru.cs">
+    <Compile Include="GUI\MenuCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe_NoiTru.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\TabCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe_NoiTru.Designer.cs">
+    <Compile Include="GUI\MenuCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe_NoiTru.Designer.cs">
       <DependentUpon>ucBCDangKyBaoHiemYTe_NoiTru.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FormCommon\ucDanhMucTraCuu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\FormCommon\ucDanhMucTraCuu.Designer.cs">
+      <DependentUpon>ucDanhMucTraCuu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MenuDanhMucTraCuu\ucDanhSachBenhVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\MenuDanhMucTraCuu\ucDanhSachBenhVien.Designer.cs">
+      <DependentUpon>ucDanhSachBenhVien.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -453,16 +460,16 @@
     <Compile Include="Utilities\ThongBao\WaitForm1.Designer.cs">
       <DependentUpon>WaitForm1.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="GUI\CheckThongTuyen\frmCheckThongTuyenTuDong.resx">
+    <EmbeddedResource Include="GUI\MenuCongCuKhac\CheckThongTuyen\frmCheckThongTuyenTuDong.resx">
       <DependentUpon>frmCheckThongTuyenTuDong.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CheckThongTuyen\ucCheckThongTuyenThuCong.resx">
+    <EmbeddedResource Include="GUI\MenuCongCuKhac\CheckThongTuyen\ucCheckThongTuyenThuCong.resx">
       <DependentUpon>ucCheckThongTuyenThuCong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\FormCommon\frmChonChucNang.resx">
       <DependentUpon>frmChonChucNang.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\FormCommon\TabCaiDat\frmTaoTemplateWord.resx">
+    <EmbeddedResource Include="GUI\MenuTrangChu\ChucNangKhac\frmTaoTemplateWord.resx">
       <DependentUpon>frmTaoTemplateWord.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\FormCommon\frmConnectDB.resx">
@@ -474,59 +481,62 @@
     <EmbeddedResource Include="GUI\FormCommon\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\FormCommon\TabCaiDat\ucCauHinhHeThong.resx">
+    <EmbeddedResource Include="GUI\MenuTrangChu\TabCaiDat\ucCauHinhHeThong.resx">
       <DependentUpon>ucCauHinhHeThong.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\FormCommon\TabCaiDat\ucDanhMucBenhAn.resx">
+    <EmbeddedResource Include="GUI\MenuTrangChu\TabCaiDat\ucDanhMucBenhAn.resx">
       <DependentUpon>ucDanhMucBenhAn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\FormCommon\TabCaiDat\ucDanhMucDungChung.resx">
+    <EmbeddedResource Include="GUI\MenuTrangChu\TabCaiDat\ucDanhMucDungChung.resx">
       <DependentUpon>ucDanhMucDungChung.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\FormCommon\TabCaiDat\ucDanhSachBenhVien.resx">
+    <EmbeddedResource Include="GUI\MenuTrangChu\TabCaiDat\ucDanhSachBenhVien.resx">
       <DependentUpon>ucDanhSachBenhVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\FormCommon\TabCaiDat\ucDanhSachNhanVien.resx">
+    <EmbeddedResource Include="GUI\MenuTrangChu\TabCaiDat\ucDanhSachNhanVien.resx">
       <DependentUpon>ucDanhSachNhanVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\FormCommon\TabCaiDat\ucMaHoaVaGiaiMa.resx">
+    <EmbeddedResource Include="GUI\MenuTrangChu\TabCaiDat\ucMaHoaVaGiaiMa.resx">
       <DependentUpon>ucMaHoaVaGiaiMa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\FormCommon\TabCaiDat\ucQuanLyNguoiDung.resx">
+    <EmbeddedResource Include="GUI\MenuTrangChu\TabCaiDat\ucQuanLyNguoiDung.resx">
       <DependentUpon>ucQuanLyNguoiDung.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\FormCommon\TabCaiDat\ucUpdateTemplateDVPTTT.resx">
+    <EmbeddedResource Include="GUI\MenuTrangChu\TabCaiDat\ucUpdateTemplateDVPTTT.resx">
       <DependentUpon>ucUpdateTemplateDVPTTT.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\FormCommon\TabTrangChu\frmThayPass.resx">
+    <EmbeddedResource Include="GUI\MenuTrangChu\ChucNangKhac\frmThayPass.resx">
       <DependentUpon>frmThayPass.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\FormCommon\TabTrangChu\ucSettingDatabase.resx">
+    <EmbeddedResource Include="GUI\MenuTrangChu\TabCaiDat\ucSettingDatabase.resx">
       <DependentUpon>ucSettingDatabase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\FormCommon\TabTrangChu\ucSettingLicense.resx">
+    <EmbeddedResource Include="GUI\MenuTrangChu\TabCaiDat\ucSettingLicense.resx">
       <DependentUpon>ucSettingLicense.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\FormCommon\ucCauHinh.resx">
-      <DependentUpon>ucCauHinh.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\FormCommon\ucMenuCauHinh.resx">
+      <DependentUpon>ucMenuCauHinh.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\FormCommon\ucCongCuKhac.resx">
-      <DependentUpon>ucCongCuKhac.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\FormCommon\ucMenuCongCuKhac.resx">
+      <DependentUpon>ucMenuCongCuKhac.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\FormCommon\ucGiamDinhHSBA.resx">
-      <DependentUpon>ucGiamDinhHSBA.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\FormCommon\ucMenuTrangChu.resx">
+      <DependentUpon>ucMenuTrangChu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\FormCommon\ucGiamDinhXML.resx">
-      <DependentUpon>ucGiamDinhXML.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\MenuCauHinh\ucCauHinhDM_DVKT.resx">
+      <DependentUpon>ucCauHinhDM_DVKT.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\FormCommon\ucTrangChu.resx">
-      <DependentUpon>ucTrangChu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\TabCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe_NgoaiTru.resx">
+    <EmbeddedResource Include="GUI\MenuCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe_NgoaiTru.resx">
       <DependentUpon>ucBCDangKyBaoHiemYTe_NgoaiTru.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\TabCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe_NoiTru.resx">
+    <EmbeddedResource Include="GUI\MenuCongCuKhac\BCTinhHinhRaVaoVien\ucBCDangKyBaoHiemYTe_NoiTru.resx">
       <DependentUpon>ucBCDangKyBaoHiemYTe_NoiTru.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FormCommon\ucDanhMucTraCuu.resx">
+      <DependentUpon>ucDanhMucTraCuu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\MenuDanhMucTraCuu\ucDanhSachBenhVien.resx">
+      <DependentUpon>ucDanhSachBenhVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utilities\PrintPreview\PrintRibbonControllerResources.resx" />
     <EmbeddedResource Include="Properties\licenses.licx" />

@@ -1,5 +1,5 @@
 ﻿using DevExpress.XtraTab;
-using O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat;
+using O2S_InsuranceExpertise.GUI.MenuTrangChu;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -222,10 +222,10 @@ namespace O2S_InsuranceExpertise.BUS
 
                     ////Bao cao
                     case "REPORT_01":
-                        ucResult = new GUI.TabCongCuKhac.ucBCDangKyBaoHiemYTe_NoiTru();
+                        ucResult = new GUI.MenuCongCuKhac.ucBCDangKyBaoHiemYTe_NoiTru();
                         break;
                     case "REPORT_02":
-                        ucResult = new GUI.TabCongCuKhac.ucBCDangKyBaoHiemYTe_NgoaiTru();
+                        ucResult = new GUI.MenuCongCuKhac.ucBCDangKyBaoHiemYTe_NgoaiTru();
                         break;
                     //case "REPORT_03":
                     //    ucResult = new ChucNang.ucBCTimPhieuTHYL();
@@ -271,30 +271,11 @@ namespace O2S_InsuranceExpertise.BUS
                     //case "DASHBOARD_02":
                     //    ucResult = new Dashboard.ucBaoCaoBenhNhanNoiTru();
                     //    break;
-                    //case "DASHBOARD_03":
-                    //    ucResult = new Dashboard.ucBaoCaoBenhNhanNgoaiTru();
-                    //    break;
-                    //case "DASHBOARD_04":
-                    //    ucResult = new Dashboard.ucBaoCaoTongHopToanVien();
-                    //    break;
-                    //case "DASHBOARD_05":
-                    //    ucResult = new Dashboard.ucBaoCaoCanLamSang();
-                    //    break;
-                    //case "DASHBOARD_06":
-                    //    ucResult = new Dashboard.ucBaoCaoXNTTuTruc();
-                    //    break;
-                    //case "DASHBOARD_07":
-                    //    ucResult = new Dashboard.ucBCBNSuDungThuocTaiKhoa();
-                    //    break;
-                    //case "DASHBOARD_08":
-                    //    ucResult = new Dashboard.ucDashboardDoanhThuTungKhoa();
-                    //    break;
-                    //case "DASHBOARD_09":
-                    //    ucResult = new Dashboard.ucDashboardBenhNhanNoiTru();
-                    //    break;
-                    //case "DASHBOARD_10":
-                    //    ucResult = new Dashboard.ucBCTongHopDoanhThuKhoa();
-                    //    break;
+
+                    //Danh muc tra cuu
+                    case "DANHMUC_01":
+                        ucResult = new GUI.MenuDanhMucTraCuu.ucDanhSachBenhVien();
+                        break;
 
 
 

@@ -46,8 +46,9 @@
             this.tabMenuRestart = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.tabMenuGiamDinhXML = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.tabMenuCauHinh = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.tabMenuGiamDinhHSBA = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.tabMenuCongCuKhac = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.tabMenuGiamDinhHSBA = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.tabMenuDanhMucTraCuu = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.timerClock = new System.Windows.Forms.Timer(this.components);
             this.timerKiemTraLicense = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -175,18 +176,23 @@
             // 
             // tabPaneMenu
             // 
+            this.tabPaneMenu.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPaneMenu.Appearance.Options.UseFont = true;
             this.tabPaneMenu.Controls.Add(this.tabMenuTrangChu);
             this.tabPaneMenu.Controls.Add(this.tabMenuRestart);
             this.tabPaneMenu.Controls.Add(this.tabMenuGiamDinhXML);
             this.tabPaneMenu.Controls.Add(this.tabMenuCauHinh);
-            this.tabPaneMenu.Controls.Add(this.tabMenuGiamDinhHSBA);
             this.tabPaneMenu.Controls.Add(this.tabMenuCongCuKhac);
+            this.tabPaneMenu.Controls.Add(this.tabMenuGiamDinhHSBA);
+            this.tabPaneMenu.Controls.Add(this.tabMenuDanhMucTraCuu);
             this.tabPaneMenu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabPaneMenu.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPaneMenu.Location = new System.Drawing.Point(0, 0);
             this.tabPaneMenu.Margin = new System.Windows.Forms.Padding(0);
             this.tabPaneMenu.Name = "tabPaneMenu";
             this.tabPaneMenu.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tabMenuRestart,
+            this.tabMenuDanhMucTraCuu,
             this.tabMenuCongCuKhac,
             this.tabMenuGiamDinhHSBA,
             this.tabMenuGiamDinhXML,
@@ -201,6 +207,8 @@
             // 
             // tabMenuTrangChu
             // 
+            this.tabMenuTrangChu.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabMenuTrangChu.Appearance.Options.UseFont = true;
             this.tabMenuTrangChu.Caption = "TRANG CHỦ";
             this.tabMenuTrangChu.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabMenuTrangChu.Image = global::O2S_InsuranceExpertise.Properties.Resources.house_16;
@@ -224,7 +232,9 @@
             // tabMenuGiamDinhXML
             // 
             this.tabMenuGiamDinhXML.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.tabMenuGiamDinhXML.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
             this.tabMenuGiamDinhXML.Appearance.Options.UseBackColor = true;
+            this.tabMenuGiamDinhXML.Appearance.Options.UseFont = true;
             this.tabMenuGiamDinhXML.Caption = "GIÁM ĐỊNH XML";
             this.tabMenuGiamDinhXML.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
             this.tabMenuGiamDinhXML.Image = global::O2S_InsuranceExpertise.Properties.Resources.xml_161;
@@ -233,10 +243,12 @@
             this.tabMenuGiamDinhXML.Margin = new System.Windows.Forms.Padding(0);
             this.tabMenuGiamDinhXML.Name = "tabMenuGiamDinhXML";
             this.tabMenuGiamDinhXML.Properties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
-            this.tabMenuGiamDinhXML.Size = new System.Drawing.Size(1216, 668);
+            this.tabMenuGiamDinhXML.Size = new System.Drawing.Size(1234, 716);
             // 
             // tabMenuCauHinh
             // 
+            this.tabMenuCauHinh.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.tabMenuCauHinh.Appearance.Options.UseFont = true;
             this.tabMenuCauHinh.Caption = "CẤU HÌNH";
             this.tabMenuCauHinh.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
             this.tabMenuCauHinh.Image = global::O2S_InsuranceExpertise.Properties.Resources.settings_7_16;
@@ -244,21 +256,12 @@
             this.tabMenuCauHinh.Margin = new System.Windows.Forms.Padding(0);
             this.tabMenuCauHinh.Name = "tabMenuCauHinh";
             this.tabMenuCauHinh.Properties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
-            this.tabMenuCauHinh.Size = new System.Drawing.Size(1216, 668);
-            // 
-            // tabMenuGiamDinhHSBA
-            // 
-            this.tabMenuGiamDinhHSBA.Caption = "GIÁM ĐỊNH HSBA";
-            this.tabMenuGiamDinhHSBA.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.tabMenuGiamDinhHSBA.Image = global::O2S_InsuranceExpertise.Properties.Resources.book_stack_16;
-            this.tabMenuGiamDinhHSBA.ItemShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
-            this.tabMenuGiamDinhHSBA.Margin = new System.Windows.Forms.Padding(0);
-            this.tabMenuGiamDinhHSBA.Name = "tabMenuGiamDinhHSBA";
-            this.tabMenuGiamDinhHSBA.Properties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
-            this.tabMenuGiamDinhHSBA.Size = new System.Drawing.Size(1216, 668);
+            this.tabMenuCauHinh.Size = new System.Drawing.Size(1234, 716);
             // 
             // tabMenuCongCuKhac
             // 
+            this.tabMenuCongCuKhac.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.tabMenuCongCuKhac.Appearance.Options.UseFont = true;
             this.tabMenuCongCuKhac.Caption = "CÔNG CỤ KHÁC";
             this.tabMenuCongCuKhac.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
             this.tabMenuCongCuKhac.Image = global::O2S_InsuranceExpertise.Properties.Resources.list_2_16;
@@ -267,6 +270,32 @@
             this.tabMenuCongCuKhac.Name = "tabMenuCongCuKhac";
             this.tabMenuCongCuKhac.Properties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
             this.tabMenuCongCuKhac.Size = new System.Drawing.Size(1216, 668);
+            // 
+            // tabMenuGiamDinhHSBA
+            // 
+            this.tabMenuGiamDinhHSBA.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.tabMenuGiamDinhHSBA.Appearance.Options.UseFont = true;
+            this.tabMenuGiamDinhHSBA.Caption = "GIÁM ĐỊNH HSBA";
+            this.tabMenuGiamDinhHSBA.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.tabMenuGiamDinhHSBA.Image = global::O2S_InsuranceExpertise.Properties.Resources.checkmark_16;
+            this.tabMenuGiamDinhHSBA.ItemShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
+            this.tabMenuGiamDinhHSBA.Margin = new System.Windows.Forms.Padding(0);
+            this.tabMenuGiamDinhHSBA.Name = "tabMenuGiamDinhHSBA";
+            this.tabMenuGiamDinhHSBA.Properties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
+            this.tabMenuGiamDinhHSBA.Size = new System.Drawing.Size(1234, 716);
+            // 
+            // tabMenuDanhMucTraCuu
+            // 
+            this.tabMenuDanhMucTraCuu.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.tabMenuDanhMucTraCuu.Appearance.Options.UseFont = true;
+            this.tabMenuDanhMucTraCuu.Caption = "DANH MỤC TRA CỨU";
+            this.tabMenuDanhMucTraCuu.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.tabMenuDanhMucTraCuu.Image = global::O2S_InsuranceExpertise.Properties.Resources.book_stack_16;
+            this.tabMenuDanhMucTraCuu.ItemShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
+            this.tabMenuDanhMucTraCuu.Margin = new System.Windows.Forms.Padding(0);
+            this.tabMenuDanhMucTraCuu.Name = "tabMenuDanhMucTraCuu";
+            this.tabMenuDanhMucTraCuu.Properties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
+            this.tabMenuDanhMucTraCuu.Size = new System.Drawing.Size(1216, 668);
             // 
             // timerClock
             // 
@@ -317,12 +346,13 @@
         private DevExpress.XtraBars.Navigation.TabPane tabPaneMenu;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabMenuCauHinh;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabMenuGiamDinhXML;
-        private DevExpress.XtraBars.Navigation.TabNavigationPage tabMenuTrangChu;
         private System.Windows.Forms.Timer timerClock;
         private System.Windows.Forms.Timer timerKiemTraLicense;
         internal DevExpress.XtraBars.BarStaticItem lblStatusTenBC;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabMenuRestart;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabMenuGiamDinhHSBA;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabMenuCongCuKhac;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabMenuTrangChu;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabMenuDanhMucTraCuu;
     }
 }

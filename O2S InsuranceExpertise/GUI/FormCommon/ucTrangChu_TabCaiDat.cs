@@ -1,5 +1,5 @@
-﻿using O2S_InsuranceExpertise.GUI.FormCommon.TabCaiDat;
-using O2S_InsuranceExpertise.GUI.FormCommon.TabTrangChu;
+﻿using O2S_InsuranceExpertise.GUI.MenuTrangChu;
+using O2S_InsuranceExpertise.GUI.MenuTrangChu;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace O2S_InsuranceExpertise.GUI.FormCommon
 {
-    public partial class ucTrangChu : UserControl
+    public partial class ucMenuTrangChu : UserControl
     {
         private void navBarItemLicense_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {

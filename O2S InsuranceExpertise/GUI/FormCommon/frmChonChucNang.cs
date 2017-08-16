@@ -24,7 +24,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             try
             {
                 checkChonChucNang = true;
-                GUI.CheckThongTuyen.frmCheckThongTuyenTuDong frmMenu = new CheckThongTuyen.frmCheckThongTuyenTuDong();
+                GUI.MenuCongCuKhac.frmCheckThongTuyenTuDong frmMenu = new MenuCongCuKhac.frmCheckThongTuyenTuDong();
                 frmMenu.Show();
                 this.Visible = false;
             }

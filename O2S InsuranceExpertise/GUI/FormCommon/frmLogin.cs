@@ -314,7 +314,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
 
                 if (check_ThongTuyen == true && check_Menu == false)
                 {
-                    GUI.CheckThongTuyen.frmCheckThongTuyenTuDong frmChon = new CheckThongTuyen.frmCheckThongTuyenTuDong();
+                    GUI.MenuCongCuKhac.frmCheckThongTuyenTuDong frmChon = new MenuCongCuKhac.frmCheckThongTuyenTuDong();
                     frmChon.Show();
                     this.Visible = false;
                 }

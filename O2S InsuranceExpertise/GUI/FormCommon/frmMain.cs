@@ -55,25 +55,29 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             try
             {
                 tabMenuTrangChu.Controls.Clear();
-                O2S_InsuranceExpertise.GUI.FormCommon.ucTrangChu ucTrangChu = new FormCommon.ucTrangChu();
-                ucTrangChu.MyGetData = new FormCommon.ucTrangChu.GetString(HienThiTenChucNang);
+                O2S_InsuranceExpertise.GUI.FormCommon.ucMenuTrangChu ucTrangChu = new FormCommon.ucMenuTrangChu();
+                ucTrangChu.MyGetData = new FormCommon.ucMenuTrangChu.GetString(HienThiTenChucNang);
                 ucTrangChu.Dock = System.Windows.Forms.DockStyle.Fill;
                 tabMenuTrangChu.Controls.Add(ucTrangChu);
 
-                //tabMenuCauHinh.Controls.Clear();
-                //FormCommon.ucCauHinh ucCauHinh = new ucCauHinh();
-                //ucCauHinh.MyGetData = new ucCauHinh.GetString(HienThiTenChucNang);
-                //ucCauHinh.Dock = System.Windows.Forms.DockStyle.Fill;
-                //tabMenuCauHinh.Controls.Add(ucCauHinh);
+                tabMenuCauHinh.Controls.Clear();
+                GUI.FormCommon.ucMenuCauHinh ucCauHinh = new GUI.FormCommon.ucMenuCauHinh();
+                ucCauHinh.MyGetData = new GUI.FormCommon.ucMenuCauHinh.GetString(HienThiTenChucNang);
+                ucCauHinh.Dock = System.Windows.Forms.DockStyle.Fill;
+                tabMenuCauHinh.Controls.Add(ucCauHinh);
 
                 tabMenuCongCuKhac.Controls.Clear();
-                FormCommon.ucCongCuKhac ucCongCuKhac = new ucCongCuKhac(hienthi_btnTroVe);
-                ucCongCuKhac.MyGetData = new ucCongCuKhac.GetString(HienThiTenChucNang);
-                ucCongCuKhac.ExitFormMain_Data = new ucCongCuKhac.ExitFormMain(ExitFormMain_Function);
+                FormCommon.ucMenuCongCuKhac ucCongCuKhac = new ucMenuCongCuKhac(hienthi_btnTroVe);
+                ucCongCuKhac.MyGetData = new ucMenuCongCuKhac.GetString(HienThiTenChucNang);
+                ucCongCuKhac.ExitFormMain_Data = new ucMenuCongCuKhac.ExitFormMain(ExitFormMain_Function);
                 ucCongCuKhac.Dock = System.Windows.Forms.DockStyle.Fill;
                 tabMenuCongCuKhac.Controls.Add(ucCongCuKhac);
 
-
+                tabMenuDanhMucTraCuu.Controls.Clear();
+                FormCommon.ucDanhMucTraCuu ucTabMenu = new ucDanhMucTraCuu();
+                ucTabMenu.MyGetData = new ucDanhMucTraCuu.GetString(HienThiTenChucNang);
+                ucTabMenu.Dock = System.Windows.Forms.DockStyle.Fill;
+                tabMenuDanhMucTraCuu.Controls.Add(ucTabMenu);
             }
             catch (Exception ex)
             {

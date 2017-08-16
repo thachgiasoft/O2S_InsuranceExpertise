@@ -207,7 +207,15 @@ namespace O2S_InsuranceExpertise.Base
                 lstresult.Add(REPORT_02);
 
 
-
+                //Danh muc dung chung - tabMenuId=6
+                DTO.classPermission DANHMUC_01 = new DTO.classPermission();
+                DANHMUC_01.permissioncheck = false;
+                DANHMUC_01.permissioncode = "DANHMUC_01";
+                DANHMUC_01.permissionname = "Danh mục tra cứu - Danh mục cơ sở y tế";
+                DANHMUC_01.permissiontype = 3;
+                DANHMUC_01.tabMenuId = 6;
+                DANHMUC_01.permissionnote = "Danh mục tra cứu - Danh mục cơ sở y tế";
+                lstresult.Add(DANHMUC_01);
 
 
 
