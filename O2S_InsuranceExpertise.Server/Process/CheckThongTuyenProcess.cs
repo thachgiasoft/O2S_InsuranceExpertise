@@ -161,7 +161,7 @@ namespace O2S_InsuranceExpertise.Server.Process
             catch (Exception ex)
             {
                 Common.Logging.LogSystem.Error("Loi lay danh sach the can check " + ex.ToString());
-                Common.Logging.LogSystem.Info("Cau truy van lay danh sach the can check " + sqldsthebhyt_chuacheck);
+                //Common.Logging.LogSystem.Info("Cau truy van lay danh sach the can check " + sqldsthebhyt_chuacheck);
             }
             return results;
         }
