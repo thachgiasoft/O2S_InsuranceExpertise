@@ -819,7 +819,7 @@
             this.gridColumn11.OptionsColumn.AllowEdit = false;
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 21;
-            this.gridColumn11.Width = 500;
+            this.gridColumn11.Width = 800;
             // 
             // ucBCDangKyBaoHiemYTe_NoiTru
             // 

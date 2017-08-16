@@ -58,43 +58,13 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
         {
             try
             {
-                xtraTab_CHDanhMuc.Visible = Base.CheckPermission.ChkPerModule("TOOL_10");
+                // navBarItemDM_DVKT.Visible = O2S_InsuranceExpertise.Base.CheckPermission.ChkPerModule("SYS_01");
             }
             catch (Exception ex)
             {
                 Common.Logging.LogSystem.Error(ex);
             }
         }
-
-        //private void LoadControl_KiemTraThongTuyen()
-        //{
-        //    try
-        //    {
-        //        if (xtraTab_CHDanhMuc.Visible)
-        //        {
-        //            panel_NoiDung.Controls.Clear();
-        //            ucCheckThongTuyenThuCong uchienthi = new ucCheckThongTuyenThuCong();
-        //            uchienthi.Dock = System.Windows.Forms.DockStyle.Fill;
-        //            panel_NoiDung.Controls.Add(uchienthi);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Common.Logging.LogSystem.Warn(ex);
-        //    }
-        //}
-        //private void CongCuKhac_LoadDanhSachBaoCao()
-        //{
-        //    try
-        //    {
-        //        List<DTO.classPermission> lstBaoCao_CongCuKhac = Base.SessionLogin.SessionLstPhanQuyenNguoiDung.Where(o=>o.permissiontype==3 && o.tabMenuId==5).OrderBy(u=>u.permissioncode).ToList();
-        //        gridControlDSBaoCao.DataSource = lstBaoCao_CongCuKhac;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Common.Logging.LogSystem.Warn(ex);
-        //    }
-        //}
         #endregion
 
         #region Tabcontrol function
@@ -142,27 +112,67 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
 
         #endregion
 
-        #region Bao Cao
-        private void gridViewDSBaoCao_RowCellStyle(object sender, RowCellStyleEventArgs e)
+
+        #region Danh Muc
+        private void navBarItemDM_DVKT_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             try
             {
-                GridView view = sender as GridView;
-                if (e.RowHandle == view.FocusedRowHandle)
-                {
-                    e.Appearance.BackColor = Color.LightGreen;
-                    e.Appearance.ForeColor = Color.Black;
-                }
+                panelCauHinhNoiDung.Controls.Clear();
+                GUI.MenuCauHinh.ucCauHinhDM_DVKT uchienthi = new MenuCauHinh.ucCauHinhDM_DVKT();
+                uchienthi.Dock = System.Windows.Forms.DockStyle.Fill;
+                panelCauHinhNoiDung.Controls.Add(uchienthi);
             }
             catch (Exception ex)
             {
-                Common.Logging.LogSystem.Error(ex);
+                Common.Logging.LogSystem.Warn(ex);
             }
         }
 
+        private void navBarItemDM_Thuoc_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            try
+            {
+                //panelCauHinhNoiDung.Controls.Clear();
+                //GUI.MenuCauHinh.ucCauHinhDM_DVKT uchienthi = new MenuCauHinh.ucCauHinhDM_DVKT();
+                //uchienthi.Dock = System.Windows.Forms.DockStyle.Fill;
+                //panelCauHinhNoiDung.Controls.Add(uchienthi);
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Warn(ex);
+            }
+        }
 
+        private void navBarItemDM_VatTu_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            try
+            {
+                //panelCauHinhNoiDung.Controls.Clear();
+                //GUI.MenuCauHinh.ucCauHinhDM_DVKT uchienthi = new MenuCauHinh.ucCauHinhDM_DVKT();
+                //uchienthi.Dock = System.Windows.Forms.DockStyle.Fill;
+                //panelCauHinhNoiDung.Controls.Add(uchienthi);
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Warn(ex);
+            }
+        }
 
+        private void navBarItemDM_NgayGiuong_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            try
+            {
+                //panelCauHinhNoiDung.Controls.Clear();
+                //GUI.MenuCauHinh.ucCauHinhDM_DVKT uchienthi = new MenuCauHinh.ucCauHinhDM_DVKT();
+                //uchienthi.Dock = System.Windows.Forms.DockStyle.Fill;
+                //panelCauHinhNoiDung.Controls.Add(uchienthi);
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Warn(ex);
+            }
+        }
         #endregion
-
     }
 }
