@@ -518,7 +518,83 @@ CREATE INDEX IE_bhyt_check_hosobenhandate_idx
   ON IE_bhyt_check
   USING btree
   (hosobenhandate);  
---===================================================
+  
+  
+--=================================================== Table IE_lichsukcb_check
+-- DROP TABLE IE_lichsukcb_check;
+
+CREATE TABLE IE_lichsukcb_check
+(
+  lichsukcbcheckid serial not null,
+  patientid integer,
+  patientname text,
+  mahoso integer,
+  macskcb text,
+  tencskcb text,
+  ngayvaovien timestamp without time zone,
+  ngayravien timestamp without time zone,
+  tenbenh text,
+  tinhtrangcode text,
+  tinhtrangten text,
+  kqdieutricode text,
+  kqdieutri_ten text,
+  bhytchecksdate timestamp without time zone,  
+  CONSTRAINT IE_lichsukcb_check_pkey PRIMARY KEY (lichsukcbcheckid)
+);
+  
+CREATE INDEX lichsukcbcheck_patientid_idx
+  ON IE_lichsukcb_check
+  USING btree
+  (patientid);    
+CREATE INDEX lichsukcbcheck_mahosoidx
+  ON IE_lichsukcb_check
+  USING btree
+  (mahoso);    
+  
+  
+  
+--===================================================-- Table: ie_benhvien
+
+-- DROP TABLE ie_benhvien;
+
+CREATE TABLE ie_benhvien
+(
+  benhvienid serial NOT NULL,
+  benhvienkcbbd text,
+  benhviencode text,
+  benhvienname text,
+  benhvienaddress text,
+  benhvienhang text,
+  benhvienloai text,
+  benhvientuyen text,
+  ghichu text,
+  matinh text,
+  mahuyen text,
+  maxa text,
+  version timestamp without time zone,
+  sync_flag integer,
+  update_flag integer,
+  CONSTRAINT ie_benhvien_pkey PRIMARY KEY (benhvienid)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE ie_benhvien
+  OWNER TO postgres;
+
+-- Index: ie_benhvien_benhviencode_idx
+
+-- DROP INDEX ie_benhvien_benhviencode_idx;
+
+CREATE INDEX ie_benhvien_benhviencode_idx
+  ON ie_benhvien
+  USING btree
+  (benhviencode COLLATE pg_catalog."default");
+
+CREATE INDEX ie_benhvien_benhvienkcbbd_idx
+  ON ie_benhvien
+  USING btree
+  (benhvienkcbbd);
 --===================================================
 --===================================================
 --===================================================

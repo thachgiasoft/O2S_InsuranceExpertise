@@ -48,6 +48,11 @@ order by hsba.patientname;
 
 
 
+
+
+
+
+
 --So sanh voi bang Luu tru ben GIam Dinh
 select bh.bhytid, 
 		mrd.hosobenhanid, 
