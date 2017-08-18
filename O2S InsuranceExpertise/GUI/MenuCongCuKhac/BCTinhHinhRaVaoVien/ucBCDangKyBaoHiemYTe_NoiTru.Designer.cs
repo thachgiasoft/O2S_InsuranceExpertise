@@ -69,6 +69,7 @@
             this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlThongTinDV)).BeginInit();
             this.panelControlThongTinDV.SuspendLayout();
             this.groupBoxFile.SuspendLayout();
@@ -333,6 +334,7 @@
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6,
+            this.gridColumn25,
             this.gridColumn7,
             this.gridColumn8,
             this.gridColumn9,
@@ -353,6 +355,9 @@
             this.gridColumn11});
             this.gridViewDataBaoCao.GridControl = this.gridControlDataBaoCao;
             this.gridViewDataBaoCao.Name = "gridViewDataBaoCao";
+            this.gridViewDataBaoCao.OptionsFind.AlwaysVisible = true;
+            this.gridViewDataBaoCao.OptionsFind.FindNullPrompt = "Từ khóa tìm kiếm...";
+            this.gridViewDataBaoCao.OptionsFind.ShowClearButton = false;
             this.gridViewDataBaoCao.OptionsView.ColumnAutoWidth = false;
             this.gridViewDataBaoCao.OptionsView.RowAutoHeight = true;
             this.gridViewDataBaoCao.OptionsView.ShowGroupPanel = false;
@@ -510,7 +515,7 @@
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 7;
+            this.gridColumn8.VisibleIndex = 8;
             this.gridColumn8.Width = 96;
             // 
             // gridColumn9
@@ -530,7 +535,7 @@
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.OptionsColumn.AllowEdit = false;
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 8;
+            this.gridColumn9.VisibleIndex = 9;
             this.gridColumn9.Width = 90;
             // 
             // gridColumn10
@@ -550,7 +555,7 @@
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.OptionsColumn.AllowEdit = false;
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 9;
+            this.gridColumn10.VisibleIndex = 10;
             this.gridColumn10.Width = 90;
             // 
             // gridColumn23
@@ -568,7 +573,7 @@
             this.gridColumn23.Name = "gridColumn23";
             this.gridColumn23.OptionsColumn.AllowEdit = false;
             this.gridColumn23.Visible = true;
-            this.gridColumn23.VisibleIndex = 10;
+            this.gridColumn23.VisibleIndex = 11;
             this.gridColumn23.Width = 165;
             // 
             // gridColumn12
@@ -588,7 +593,7 @@
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.OptionsColumn.AllowEdit = false;
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 11;
+            this.gridColumn12.VisibleIndex = 12;
             this.gridColumn12.Width = 91;
             // 
             // gridColumn22
@@ -608,7 +613,7 @@
             this.gridColumn22.Name = "gridColumn22";
             this.gridColumn22.OptionsColumn.AllowEdit = false;
             this.gridColumn22.Visible = true;
-            this.gridColumn22.VisibleIndex = 12;
+            this.gridColumn22.VisibleIndex = 13;
             this.gridColumn22.Width = 100;
             // 
             // gridColumn24
@@ -626,7 +631,7 @@
             this.gridColumn24.Name = "gridColumn24";
             this.gridColumn24.OptionsColumn.AllowEdit = false;
             this.gridColumn24.Visible = true;
-            this.gridColumn24.VisibleIndex = 13;
+            this.gridColumn24.VisibleIndex = 14;
             this.gridColumn24.Width = 239;
             // 
             // gridColumn13
@@ -644,7 +649,7 @@
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.OptionsColumn.AllowEdit = false;
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 14;
+            this.gridColumn13.VisibleIndex = 15;
             this.gridColumn13.Width = 225;
             // 
             // gridColumn14
@@ -666,7 +671,7 @@
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.OptionsColumn.AllowEdit = false;
             this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 15;
+            this.gridColumn14.VisibleIndex = 16;
             this.gridColumn14.Width = 120;
             // 
             // gridColumn15
@@ -688,7 +693,7 @@
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.OptionsColumn.AllowEdit = false;
             this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 16;
+            this.gridColumn15.VisibleIndex = 17;
             this.gridColumn15.Width = 120;
             // 
             // gridColumn16
@@ -726,7 +731,7 @@
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.OptionsColumn.AllowEdit = false;
             this.gridColumn17.Visible = true;
-            this.gridColumn17.VisibleIndex = 17;
+            this.gridColumn17.VisibleIndex = 18;
             this.gridColumn17.Width = 120;
             // 
             // gridColumn18
@@ -744,7 +749,7 @@
             this.gridColumn18.Name = "gridColumn18";
             this.gridColumn18.OptionsColumn.AllowEdit = false;
             this.gridColumn18.Visible = true;
-            this.gridColumn18.VisibleIndex = 18;
+            this.gridColumn18.VisibleIndex = 19;
             this.gridColumn18.Width = 239;
             // 
             // gridColumn19
@@ -762,7 +767,7 @@
             this.gridColumn19.Name = "gridColumn19";
             this.gridColumn19.OptionsColumn.AllowEdit = false;
             this.gridColumn19.Visible = true;
-            this.gridColumn19.VisibleIndex = 19;
+            this.gridColumn19.VisibleIndex = 20;
             this.gridColumn19.Width = 194;
             // 
             // gridColumn20
@@ -780,7 +785,7 @@
             this.gridColumn20.Name = "gridColumn20";
             this.gridColumn20.OptionsColumn.AllowEdit = false;
             this.gridColumn20.Visible = true;
-            this.gridColumn20.VisibleIndex = 20;
+            this.gridColumn20.VisibleIndex = 21;
             this.gridColumn20.Width = 205;
             // 
             // gridColumn21
@@ -818,8 +823,26 @@
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.OptionsColumn.AllowEdit = false;
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 21;
+            this.gridColumn11.VisibleIndex = 22;
             this.gridColumn11.Width = 800;
+            // 
+            // gridColumn25
+            // 
+            this.gridColumn25.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridColumn25.AppearanceCell.Options.UseFont = true;
+            this.gridColumn25.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridColumn25.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.gridColumn25.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn25.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn25.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn25.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn25.Caption = "Đối tượng bệnh nhân";
+            this.gridColumn25.FieldName = "doituongbenhnhanid";
+            this.gridColumn25.Name = "gridColumn25";
+            this.gridColumn25.OptionsColumn.AllowEdit = false;
+            this.gridColumn25.Visible = true;
+            this.gridColumn25.VisibleIndex = 7;
+            this.gridColumn25.Width = 130;
             // 
             // ucBCDangKyBaoHiemYTe_NoiTru
             // 
@@ -894,5 +917,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn25;
     }
 }

@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.panelControlNV_DT = new DevExpress.XtraEditors.PanelControl();
+            this.txtTuKhoaTimKiem = new System.Windows.Forms.TextBox();
+            this.btnTimKiem = new DevExpress.XtraEditors.SimpleButton();
+            this.openFileDialogSelect = new System.Windows.Forms.OpenFileDialog();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.gridControlDSBenhVien = new DevExpress.XtraGrid.GridControl();
             this.gridViewDSBenhVien = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.stt = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -40,9 +44,9 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.openFileDialogSelect = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlNV_DT)).BeginInit();
             this.panelControlNV_DT.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlDSBenhVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDSBenhVien)).BeginInit();
             this.SuspendLayout();
@@ -50,12 +54,50 @@
             // panelControlNV_DT
             // 
             this.panelControlNV_DT.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControlNV_DT.Controls.Add(this.gridControlDSBenhVien);
-            this.panelControlNV_DT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControlNV_DT.Controls.Add(this.txtTuKhoaTimKiem);
+            this.panelControlNV_DT.Controls.Add(this.btnTimKiem);
+            this.panelControlNV_DT.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControlNV_DT.Location = new System.Drawing.Point(0, 0);
             this.panelControlNV_DT.Name = "panelControlNV_DT";
-            this.panelControlNV_DT.Size = new System.Drawing.Size(1096, 613);
+            this.panelControlNV_DT.Size = new System.Drawing.Size(1096, 39);
             this.panelControlNV_DT.TabIndex = 2;
+            // 
+            // txtTuKhoaTimKiem
+            // 
+            this.txtTuKhoaTimKiem.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTuKhoaTimKiem.Location = new System.Drawing.Point(19, 6);
+            this.txtTuKhoaTimKiem.Name = "txtTuKhoaTimKiem";
+            this.txtTuKhoaTimKiem.Size = new System.Drawing.Size(416, 27);
+            this.txtTuKhoaTimKiem.TabIndex = 41;
+            this.txtTuKhoaTimKiem.TextChanged += new System.EventHandler(this.txtTuKhoaTimKiem_TextChanged);
+            this.txtTuKhoaTimKiem.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTuKhoaTimKiem_KeyDown);
+            // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTimKiem.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnTimKiem.Appearance.Options.UseFont = true;
+            this.btnTimKiem.Appearance.Options.UseForeColor = true;
+            this.btnTimKiem.Image = global::O2S_InsuranceExpertise.Properties.Resources.search_3_16;
+            this.btnTimKiem.Location = new System.Drawing.Point(471, 3);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(100, 30);
+            this.btnTimKiem.TabIndex = 40;
+            this.btnTimKiem.Text = "Tìm kiếm";
+            // 
+            // openFileDialogSelect
+            // 
+            this.openFileDialogSelect.Filter = "Excel 2003|*.xls|Excel 2007-2013|*.xlsx";
+            this.openFileDialogSelect.Title = "Mở file Excel";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.gridControlDSBenhVien);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 39);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1096, 574);
+            this.panel1.TabIndex = 3;
             // 
             // gridControlDSBenhVien
             // 
@@ -63,8 +105,8 @@
             this.gridControlDSBenhVien.Location = new System.Drawing.Point(0, 0);
             this.gridControlDSBenhVien.MainView = this.gridViewDSBenhVien;
             this.gridControlDSBenhVien.Name = "gridControlDSBenhVien";
-            this.gridControlDSBenhVien.Size = new System.Drawing.Size(1096, 613);
-            this.gridControlDSBenhVien.TabIndex = 0;
+            this.gridControlDSBenhVien.Size = new System.Drawing.Size(1096, 574);
+            this.gridControlDSBenhVien.TabIndex = 1;
             this.gridControlDSBenhVien.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDSBenhVien});
             // 
@@ -83,7 +125,6 @@
             this.gridColumn6});
             this.gridViewDSBenhVien.GridControl = this.gridControlDSBenhVien;
             this.gridViewDSBenhVien.Name = "gridViewDSBenhVien";
-            this.gridViewDSBenhVien.OptionsFind.AlwaysVisible = true;
             this.gridViewDSBenhVien.OptionsFind.FindNullPrompt = "Từ khóa tìm kiếm...";
             this.gridViewDSBenhVien.OptionsFind.ShowClearButton = false;
             this.gridViewDSBenhVien.OptionsView.ColumnAutoWidth = false;
@@ -247,21 +288,19 @@
             this.gridColumn6.VisibleIndex = 7;
             this.gridColumn6.Width = 196;
             // 
-            // openFileDialogSelect
-            // 
-            this.openFileDialogSelect.Filter = "Excel 2003|*.xls|Excel 2007-2013|*.xlsx";
-            this.openFileDialogSelect.Title = "Mở file Excel";
-            // 
             // ucDanhSachBenhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelControlNV_DT);
             this.Name = "ucDanhSachBenhVien";
             this.Size = new System.Drawing.Size(1096, 613);
             this.Load += new System.EventHandler(this.ucDanhSachBenhVien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.panelControlNV_DT)).EndInit();
             this.panelControlNV_DT.ResumeLayout(false);
+            this.panelControlNV_DT.PerformLayout();
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControlDSBenhVien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDSBenhVien)).EndInit();
             this.ResumeLayout(false);
@@ -270,17 +309,20 @@
 
         #endregion
         private DevExpress.XtraEditors.PanelControl panelControlNV_DT;
+        internal System.Windows.Forms.OpenFileDialog openFileDialogSelect;
+        private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraGrid.GridControl gridControlDSBenhVien;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewDSBenhVien;
+        protected internal DevExpress.XtraGrid.Columns.GridColumn stt;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn manv;
         private DevExpress.XtraGrid.Columns.GridColumn tennv;
-        protected internal DevExpress.XtraGrid.Columns.GridColumn stt;
-        internal System.Windows.Forms.OpenFileDialog openFileDialogSelect;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private System.Windows.Forms.TextBox txtTuKhoaTimKiem;
+        private DevExpress.XtraEditors.SimpleButton btnTimKiem;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucMenuCauHinh));
             this.xtraTabControlCongCuKhac = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTab_CHDanhMuc = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControlCaiDat = new DevExpress.XtraEditors.SplitContainerControl();
@@ -38,6 +39,7 @@
             this.navBarItemDM_VatTu = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemDM_NgayGiuong = new DevExpress.XtraNavBar.NavBarItem();
             this.panelCauHinhNoiDung = new DevExpress.XtraEditors.PanelControl();
+            this.xtraTab_CHTieuChiGiamDinh = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTab_CHTheXML = new DevExpress.XtraTab.XtraTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControlCongCuKhac)).BeginInit();
             this.xtraTabControlCongCuKhac.SuspendLayout();
@@ -54,11 +56,12 @@
             this.xtraTabControlCongCuKhac.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraTabControlCongCuKhac.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControlCongCuKhac.Name = "xtraTabControlCongCuKhac";
-            this.xtraTabControlCongCuKhac.SelectedTabPage = this.xtraTab_CHDanhMuc;
+            this.xtraTabControlCongCuKhac.SelectedTabPage = this.xtraTab_CHTieuChiGiamDinh;
             this.xtraTabControlCongCuKhac.Size = new System.Drawing.Size(1000, 613);
             this.xtraTabControlCongCuKhac.TabIndex = 0;
             this.xtraTabControlCongCuKhac.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTab_CHDanhMuc,
+            this.xtraTab_CHTieuChiGiamDinh,
             this.xtraTab_CHTheXML});
             this.xtraTabControlCongCuKhac.TabPageWidth = 160;
             this.xtraTabControlCongCuKhac.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraTabControlCongCuKhac_SelectedPageChanged);
@@ -198,6 +201,19 @@
             this.panelCauHinhNoiDung.Size = new System.Drawing.Size(795, 572);
             this.panelCauHinhNoiDung.TabIndex = 0;
             // 
+            // xtraTab_CHTieuChiGiamDinh
+            // 
+            this.xtraTab_CHTieuChiGiamDinh.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.xtraTab_CHTieuChiGiamDinh.Appearance.Header.ForeColor = System.Drawing.Color.Navy;
+            this.xtraTab_CHTieuChiGiamDinh.Appearance.Header.Options.UseFont = true;
+            this.xtraTab_CHTieuChiGiamDinh.Appearance.Header.Options.UseForeColor = true;
+            this.xtraTab_CHTieuChiGiamDinh.Image = ((System.Drawing.Image)(resources.GetObject("xtraTab_CHTieuChiGiamDinh.Image")));
+            this.xtraTab_CHTieuChiGiamDinh.Name = "xtraTab_CHTieuChiGiamDinh";
+            this.xtraTab_CHTieuChiGiamDinh.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
+            this.xtraTab_CHTieuChiGiamDinh.Size = new System.Drawing.Size(994, 582);
+            this.xtraTab_CHTieuChiGiamDinh.Text = "Tiêu chí giám định";
+            this.xtraTab_CHTieuChiGiamDinh.Tooltip = "Cấu hình - Tiêu chí giám định";
+            // 
             // xtraTab_CHTheXML
             // 
             this.xtraTab_CHTheXML.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -246,5 +262,6 @@
         private DevExpress.XtraEditors.PanelControl panelCauHinhNoiDung;
         private DevExpress.XtraNavBar.NavBarItem navBarItemDM_VatTu;
         private DevExpress.XtraNavBar.NavBarItem navBarItemDM_NgayGiuong;
+        private DevExpress.XtraTab.XtraTabPage xtraTab_CHTieuChiGiamDinh;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace O2S_InsuranceExpertise.GUI.MenuCauHinh
 {
-    partial class ucCauHinhDM_DVKT
+    partial class ucCauHinhDM_Giuong
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucCauHinhDM_DVKT));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucCauHinhDM_Giuong));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnLuuLai = new DevExpress.XtraEditors.SimpleButton();
             this.btnNhapTuExcel = new DevExpress.XtraEditors.SimpleButton();
@@ -51,9 +51,9 @@
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.openFileDialogSelect = new System.Windows.Forms.OpenFileDialog();
             this.imageCollectionDSBN = new DevExpress.Utils.ImageCollection(this.components);
-            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel1.SuspendLayout();
             this.panelNoiDung.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlDichVu)).BeginInit();
@@ -435,6 +435,12 @@
             this.gridColumn15.VisibleIndex = 15;
             this.gridColumn15.Width = 180;
             // 
+            // gridColumn16
+            // 
+            this.gridColumn16.Caption = "danhmucgiuongid";
+            this.gridColumn16.FieldName = "danhmucgiuongid";
+            this.gridColumn16.Name = "gridColumn16";
+            // 
             // openFileDialogSelect
             // 
             this.openFileDialogSelect.Filter = "Excel 2007-2013|*.xlsx|Excel 2003|*.xls";
@@ -445,21 +451,15 @@
             this.imageCollectionDSBN.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollectionDSBN.ImageStream")));
             this.imageCollectionDSBN.Images.SetKeyName(0, "delete-16.png");
             // 
-            // gridColumn16
-            // 
-            this.gridColumn16.Caption = "danhmucdvktid";
-            this.gridColumn16.FieldName = "danhmucdvktid";
-            this.gridColumn16.Name = "gridColumn16";
-            // 
-            // ucCauHinhDM_DVKT
+            // ucCauHinhDM_Giuong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelNoiDung);
             this.Controls.Add(this.panel1);
-            this.Name = "ucCauHinhDM_DVKT";
+            this.Name = "ucCauHinhDM_Giuong";
             this.Size = new System.Drawing.Size(1000, 613);
-            this.Load += new System.EventHandler(this.ucCauHinhDM_DVKT_Load);
+            this.Load += new System.EventHandler(this.ucCauHinhDM_Giuong_Load);
             this.panel1.ResumeLayout(false);
             this.panelNoiDung.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControlDichVu)).EndInit();

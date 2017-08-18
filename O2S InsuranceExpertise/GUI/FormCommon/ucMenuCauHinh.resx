@@ -117,4 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="xtraTab_CHTieuChiGiamDinh.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAE5SURBVDhPlZKxS8JREMdFGsIhGsIpwtHBIZqcgrYGp2jyP2iT/otwchJpEpGIaIj+AIlodAhp
+        aJCIiIgGcRQJ+3zjXryup5jw4fm7u/e9u3eX2Tt6PoQ3uIdixv2wrUAHRnAK2V8hGF5hZnQTApXIr7hd
+        LzCIAhoJgXLk/+R/yQsUMXahAeeQT4jIfgVV7/NieYIugoj1v6oECy/GTl02kTbnBFT2Daz9R0SXw8OG
+        82wpAStbmb3AFFvO/DXOE9j8I7pAQK1oD/RGQbyfrIqAXqKCS6tA0wgCYz8FbV0djm2kKluZH2FdwZzb
+        8A7y1WTYhwe4BWX52TTLqDFqR7ZCNmsz9/3Nx0tUUifVE/4S9KEFBV+2ygs9NecI6GKIufMC6ukaNPuN
+        OQLxww2X2ge3nTuIP8EHHMS+LwLfMVr1OndoAAAAAElFTkSuQmCC
+</value>
+  </data>
 </root>

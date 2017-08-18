@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucCheckThongTuyenThuCong));
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
@@ -515,7 +515,7 @@
             this.gridColumn_tenKetQua.Name = "gridColumn_tenKetQua";
             this.gridColumn_tenKetQua.OptionsColumn.AllowEdit = false;
             this.gridColumn_tenKetQua.Visible = true;
-            this.gridColumn_tenKetQua.VisibleIndex = 3;
+            this.gridColumn_tenKetQua.VisibleIndex = 4;
             this.gridColumn_tenKetQua.Width = 200;
             // 
             // gridColumn_stt_lichsu
@@ -1055,15 +1055,13 @@
             this.gridColumn4.OptionsColumn.ShowCaption = false;
             this.gridColumn4.ToolTip = "Kiểm tra thông tuyến";
             this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.Object;
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 1;
             this.gridColumn4.Width = 30;
             // 
             // repositoryItemButton_Check
             // 
             this.repositoryItemButton_Check.AutoHeight = false;
             this.repositoryItemButton_Check.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, global::O2S_InsuranceExpertise.Properties.Resources.checkmark_16, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "Kiểm tra thông tuyến", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, global::O2S_InsuranceExpertise.Properties.Resources.checkmark_16, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "Kiểm tra thông tuyến", null, null, true)});
             this.repositoryItemButton_Check.Name = "repositoryItemButton_Check";
             this.repositoryItemButton_Check.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repositoryItemButton_Check.Click += new System.EventHandler(this.repositoryItemButton_Check_Click);

@@ -58,7 +58,9 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
         {
             try
             {
-                // navBarItemDM_DVKT.Visible = O2S_InsuranceExpertise.Base.CheckPermission.ChkPerModule("SYS_01");
+                xtraTab_CHDanhMuc.Visible = O2S_InsuranceExpertise.Base.CheckPermission.ChkPerModule("TOOL_01");
+                xtraTab_CHTieuChiGiamDinh.PageVisible = O2S_InsuranceExpertise.Base.CheckPermission.ChkPerModule("TOOL_02");
+                xtraTab_CHTheXML.PageVisible = O2S_InsuranceExpertise.Base.CheckPermission.ChkPerModule("TOOL_03");
             }
             catch (Exception ex)
             {
@@ -122,6 +124,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                 GUI.MenuCauHinh.ucCauHinhDM_DVKT uchienthi = new MenuCauHinh.ucCauHinhDM_DVKT();
                 uchienthi.Dock = System.Windows.Forms.DockStyle.Fill;
                 panelCauHinhNoiDung.Controls.Add(uchienthi);
+                MyGetData("Cấu hình - Danh mục dịch vụ kỹ thuật");
             }
             catch (Exception ex)
             {
@@ -133,10 +136,11 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
         {
             try
             {
-                //panelCauHinhNoiDung.Controls.Clear();
-                //GUI.MenuCauHinh.ucCauHinhDM_DVKT uchienthi = new MenuCauHinh.ucCauHinhDM_DVKT();
-                //uchienthi.Dock = System.Windows.Forms.DockStyle.Fill;
-                //panelCauHinhNoiDung.Controls.Add(uchienthi);
+                panelCauHinhNoiDung.Controls.Clear();
+                GUI.MenuCauHinh.ucCauHinhDM_Thuoc uchienthi = new MenuCauHinh.ucCauHinhDM_Thuoc();
+                uchienthi.Dock = System.Windows.Forms.DockStyle.Fill;
+                panelCauHinhNoiDung.Controls.Add(uchienthi);
+                MyGetData("Cấu hình - Danh mục thuốc");
             }
             catch (Exception ex)
             {
@@ -148,10 +152,11 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
         {
             try
             {
-                //panelCauHinhNoiDung.Controls.Clear();
-                //GUI.MenuCauHinh.ucCauHinhDM_DVKT uchienthi = new MenuCauHinh.ucCauHinhDM_DVKT();
-                //uchienthi.Dock = System.Windows.Forms.DockStyle.Fill;
-                //panelCauHinhNoiDung.Controls.Add(uchienthi);
+                panelCauHinhNoiDung.Controls.Clear();
+                GUI.MenuCauHinh.ucCauHinhDM_VatTu uchienthi = new MenuCauHinh.ucCauHinhDM_VatTu();
+                uchienthi.Dock = System.Windows.Forms.DockStyle.Fill;
+                panelCauHinhNoiDung.Controls.Add(uchienthi);
+                MyGetData("Cấu hình - Danh mục vật tư");
             }
             catch (Exception ex)
             {
@@ -163,10 +168,11 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
         {
             try
             {
-                //panelCauHinhNoiDung.Controls.Clear();
-                //GUI.MenuCauHinh.ucCauHinhDM_DVKT uchienthi = new MenuCauHinh.ucCauHinhDM_DVKT();
-                //uchienthi.Dock = System.Windows.Forms.DockStyle.Fill;
-                //panelCauHinhNoiDung.Controls.Add(uchienthi);
+                panelCauHinhNoiDung.Controls.Clear();
+                GUI.MenuCauHinh.ucCauHinhDM_Giuong uchienthi = new MenuCauHinh.ucCauHinhDM_Giuong();
+                uchienthi.Dock = System.Windows.Forms.DockStyle.Fill;
+                panelCauHinhNoiDung.Controls.Add(uchienthi);
+                MyGetData("Cấu hình - Danh mục ngày giường");
             }
             catch (Exception ex)
             {

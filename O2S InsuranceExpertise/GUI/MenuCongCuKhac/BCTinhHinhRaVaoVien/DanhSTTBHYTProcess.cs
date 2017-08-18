@@ -16,7 +16,7 @@ namespace O2S_InsuranceExpertise.GUI.MenuCongCuKhac
             try
             {
                 //Lay danh sach can cap nhat STT
-                string get_dscancapnhat = "SELECT bh.bhytid,to_char(bhytdate, 'yyyy') as year_bhytid FROM (select bhytid,bhytdate from bhyt where bhytcode<>'' and (stt_dkbhyt is null or stt_dkbhyt='')) bh inner join (select bhytid,vienphiid,vienphidate from vienphi where doituongbenhnhanid=1 and loaivienphiid=0 and vienphidate >= '2017-01-01 00:00:00') vp on vp.bhytid=bh.bhytid order by vp.vienphidate; ";
+                string get_dscancapnhat = "SELECT bh.bhytid,to_char(bhytdate, 'yyyy') as year_bhytid FROM (select bhytid,bhytdate from bhyt where bhytcode<>'' and (stt_dkbhyt is null or stt_dkbhyt='')) bh inner join (select bhytid,vienphiid,vienphidate from vienphi where doituongbenhnhanid=1 and loaivienphiid=0 and vienphidate >= '2017-01-01 00:00:00') vp on vp.bhytid=bh.bhytid order by bh.bhytdate; ";
                 DataTable datalstBhytId = condb.GetDataTable_HIS(get_dscancapnhat);
                 if (datalstBhytId != null && datalstBhytId.Rows.Count > 0)
                 {

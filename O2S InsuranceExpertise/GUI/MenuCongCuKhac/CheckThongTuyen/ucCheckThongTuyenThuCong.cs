@@ -80,7 +80,6 @@ namespace O2S_InsuranceExpertise.GUI.MenuCongCuKhac
         {
             try
             {
-
                 if (e.MenuType == DevExpress.XtraGrid.Views.Grid.GridMenuType.Row)
                 {
                     //GridView view = sender as GridView;
@@ -95,7 +94,6 @@ namespace O2S_InsuranceExpertise.GUI.MenuCongCuKhac
                     itemKiemTraTatCa.Click += new EventHandler(KiemTraTatCa_Click);// thêm sự kiện click
                     e.Menu.Items.Add(itemKiemTraTatCa);
                     itemKiemTraTatCa.BeginGroup = true;
-
                 }
             }
             catch (Exception ex)

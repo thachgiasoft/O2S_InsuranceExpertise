@@ -649,6 +649,7 @@
             this.gridViewChucNang.OptionsFind.ShowClearButton = false;
             this.gridViewChucNang.OptionsSelection.CheckBoxSelectorColumnWidth = 30;
             this.gridViewChucNang.OptionsSelection.MultiSelect = true;
+            this.gridViewChucNang.OptionsSelection.ResetSelectionClickOutsideCheckboxSelector = true;
             this.gridViewChucNang.OptionsView.EnableAppearanceEvenRow = true;
             this.gridViewChucNang.OptionsView.ShowGroupPanel = false;
             this.gridViewChucNang.RowHeight = 25;

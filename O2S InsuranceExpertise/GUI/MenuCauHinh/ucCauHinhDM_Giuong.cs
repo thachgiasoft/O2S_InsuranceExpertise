@@ -15,18 +15,18 @@ using DevExpress.Utils.Menu;
 
 namespace O2S_InsuranceExpertise.GUI.MenuCauHinh
 {
-    public partial class ucCauHinhDM_DVKT : UserControl
+    public partial class ucCauHinhDM_Giuong : UserControl
     {
         private DAL.ConnectDatabase condb = new DAL.ConnectDatabase();
         //private string worksheetName = "Sheet";
-        private List<Model.Models.DanhMucDichVu_DVKTDTO> lstDichVuImport { get; set; }
-        public ucCauHinhDM_DVKT()
+        private List<Model.Models.DanhMucDichVu_GiuongDTO> lstDichVuImport { get; set; }
+        public ucCauHinhDM_Giuong()
         {
             InitializeComponent();
         }
 
         #region Load
-        private void ucCauHinhDM_DVKT_Load(object sender, EventArgs e)
+        private void ucCauHinhDM_Giuong_Load(object sender, EventArgs e)
         {
             try
             {
@@ -44,15 +44,15 @@ namespace O2S_InsuranceExpertise.GUI.MenuCauHinh
             try
             {
                 gridControlDichVu.DataSource = null;
-                string sql_getdmdv = "SELECT danhmucdvktid, stt as STT, ma_dvkt, ma_ax, ten_dvkt, ten_ax, ma_gia, don_gia, gia_ax, quyet_dinh, cong_bo, ma_cosokcb, manhom_9324, hieuluc, ketqua, lydotuchoi, is_look, version FROM ie_danhmuc_dvkt order by stt;";
+                string sql_getdmdv = "SELECT danhmucgiuongid, stt as STT, ma_dvkt, ma_ax, ten_dvkt, ten_ax, ma_gia, don_gia, gia_ax, quyet_dinh, cong_bo, ma_cosokcb, manhom_9324, hieuluc, ketqua, lydotuchoi, is_look, version FROM ie_danhmuc_giuong order by stt;";
                 DataTable dataDMDV = condb.GetDataTable_HSBA(sql_getdmdv);
-                this.lstDichVuImport = new List<Model.Models.DanhMucDichVu_DVKTDTO>();
+                this.lstDichVuImport = new List<Model.Models.DanhMucDichVu_GiuongDTO>();
                 if (dataDMDV != null && dataDMDV.Rows.Count > 0)
                 {
                     foreach (DataRow row in dataDMDV.Rows)
                     {
-                        Model.Models.DanhMucDichVu_DVKTDTO dichVu = new Model.Models.DanhMucDichVu_DVKTDTO();
-                        dichVu.danhmucdvktid = Common.TypeConvert.TypeConvertParse.ToInt64(row["danhmucdvktid"].ToString());
+                        Model.Models.DanhMucDichVu_GiuongDTO dichVu = new Model.Models.DanhMucDichVu_GiuongDTO();
+                        dichVu.danhmucgiuongid = Common.TypeConvert.TypeConvertParse.ToInt64(row["danhmucgiuongid"].ToString());
                         dichVu.STT = Common.TypeConvert.TypeConvertParse.ToInt64(row["STT"].ToString());
                         dichVu.MA_DVKT = row["MA_DVKT"].ToString();
                         dichVu.MA_AX = row["MA_AX"].ToString();
@@ -110,7 +110,7 @@ namespace O2S_InsuranceExpertise.GUI.MenuCauHinh
             {
                 if (openFileDialogSelect.ShowDialog() == DialogResult.OK)
                 {
-                    this.lstDichVuImport = new List<Model.Models.DanhMucDichVu_DVKTDTO>();
+                    this.lstDichVuImport = new List<Model.Models.DanhMucDichVu_GiuongDTO>();
                     gridControlDichVu.DataSource = null;
                     SplashScreenManager.ShowForm(typeof(Utilities.ThongBao.WaitForm1));
                     Workbook workbook = new Workbook(openFileDialogSelect.FileName);
@@ -120,10 +120,10 @@ namespace O2S_InsuranceExpertise.GUI.MenuCauHinh
                     if (data_Excel != null)
                     {
                         //Toc do cham
-                        //this.lstDichVuImport = Common.DataTables.ConvertDataTable.DataTableToList<Model.Models.DanhMucDichVu_DVKTDTO>(data_Excel);
+                        //this.lstDichVuImport = Common.DataTables.ConvertDataTable.DataTableToList<Model.Models.DanhMucDichVu_GiuongDTO>(data_Excel);
                         foreach (DataRow row in data_Excel.Rows)
                         {
-                            Model.Models.DanhMucDichVu_DVKTDTO dichVu = new Model.Models.DanhMucDichVu_DVKTDTO();
+                            Model.Models.DanhMucDichVu_GiuongDTO dichVu = new Model.Models.DanhMucDichVu_GiuongDTO();
                             dichVu.STT = Common.TypeConvert.TypeConvertParse.ToInt64(row["STT"].ToString());
                             dichVu.MA_DVKT = row["MA_DVKT"].ToString();
                             dichVu.MA_AX = row["MA_AX"].ToString();
@@ -180,7 +180,7 @@ namespace O2S_InsuranceExpertise.GUI.MenuCauHinh
                 {
                     try
                     {
-                        string sql_insert = "INSERT INTO ie_danhmuc_dvkt(stt, ma_dvkt, ma_ax, ten_dvkt, ten_ax, ma_gia, don_gia, gia_ax, quyet_dinh, cong_bo, ma_cosokcb, manhom_9324, hieuluc_id, hieuluc, ketqua_id, ketqua, lydotuchoi, is_look, version) VALUES ('" + item_dv.STT + "', '" + item_dv.MA_DVKT + "', '" + item_dv.MA_AX + "', '" + item_dv.TEN_DVKT.Replace("'", "''") + "', '" + item_dv.TEN_AX.Replace("'", "''") + "', '" + item_dv.MA_GIA + "', '" + item_dv.DON_GIA.ToString().Replace(",", ".") + "', '" + item_dv.GIA_AX.ToString().Replace(",", ".") + "', '" + item_dv.QUYET_DINH + "', '" + item_dv.CONG_BO + "', '" + item_dv.MA_COSOKCB + "', '" + item_dv.MANHOM_9324 + "', '" + item_dv.HIEULUC_ID + "', '" + item_dv.HIEULUC + "', '" + item_dv.KETQUA_ID + "', '" + item_dv.KETQUA + "', '" + item_dv.LYDOTUCHOI + "', '0', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'); ";
+                        string sql_insert = "INSERT INTO ie_danhmuc_giuong(stt, ma_dvkt, ma_ax, ten_dvkt, ten_ax, ma_gia, don_gia, gia_ax, quyet_dinh, cong_bo, ma_cosokcb, manhom_9324, hieuluc_id, hieuluc, ketqua_id, ketqua, lydotuchoi, is_look, version) VALUES ('" + item_dv.STT + "', '" + item_dv.MA_DVKT + "', '" + item_dv.MA_AX + "', '" + item_dv.TEN_DVKT.Replace("'", "''") + "', '" + item_dv.TEN_AX.Replace("'", "''") + "', '" + item_dv.MA_GIA + "', '" + item_dv.DON_GIA.ToString().Replace(",", ".") + "', '" + item_dv.GIA_AX.ToString().Replace(",", ".") + "', '" + item_dv.QUYET_DINH + "', '" + item_dv.CONG_BO + "', '" + item_dv.MA_COSOKCB + "', '" + item_dv.MANHOM_9324 + "', '" + item_dv.HIEULUC_ID + "', '" + item_dv.HIEULUC + "', '" + item_dv.KETQUA_ID + "', '" + item_dv.KETQUA + "', '" + item_dv.LYDOTUCHOI + "', '0', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'); ";
                         if (condb.ExecuteNonQuery_HSBA(sql_insert))
                         {
                             insert_count += 1;
@@ -188,7 +188,7 @@ namespace O2S_InsuranceExpertise.GUI.MenuCauHinh
                     }
                     catch (Exception ex)
                     {
-                        Common.Logging.LogSystem.Error("Loi insert ie_danhmuc_dvkt " + ex.ToString());
+                        Common.Logging.LogSystem.Error("Loi insert ie_danhmuc_giuong " + ex.ToString());
                         continue;
                     }
                 }
@@ -199,7 +199,7 @@ namespace O2S_InsuranceExpertise.GUI.MenuCauHinh
                 Common.Logging.LogSystem.Error(ex);
             }
             SplashScreenManager.CloseForm();
-            ucCauHinhDM_DVKT_Load(null, null);
+            ucCauHinhDM_Giuong_Load(null, null);
         }
 
         #region Custom
@@ -253,13 +253,13 @@ namespace O2S_InsuranceExpertise.GUI.MenuCauHinh
                     string sql_deleteDV = "";
                     foreach (var item_index in gridViewDichVu.GetSelectedRows())
                     {
-                        string danhmucdvktid = gridViewDichVu.GetRowCellValue(item_index, "danhmucdvktid").ToString();
-                        sql_deleteDV += "DELETE FROM ie_danhmuc_dvkt where danhmucdvktid='" + danhmucdvktid + "'; ";
+                        string danhmucgiuongid = gridViewDichVu.GetRowCellValue(item_index, "danhmucgiuongid").ToString();
+                        sql_deleteDV += "DELETE FROM ie_danhmuc_giuong where danhmucgiuongid='" + danhmucgiuongid + "'; ";
                     }
                     condb.ExecuteNonQuery_HSBA(sql_deleteDV);
                     Utilities.ThongBao.frmThongBao frmthongbao = new Utilities.ThongBao.frmThongBao(Base.ThongBaoLable.XOA_THANH_CONG);
                     frmthongbao.Show();
-                    ucCauHinhDM_DVKT_Load(null, null);
+                    ucCauHinhDM_Giuong_Load(null, null);
                 }
             }
             catch (Exception ex)

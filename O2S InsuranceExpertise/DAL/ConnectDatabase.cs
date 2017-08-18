@@ -55,7 +55,7 @@ namespace O2S_InsuranceExpertise.DAL
             catch (Exception ex)
             {
                 kiemtraketnoi = false;
-                MessageBox.Show("Có lỗi khi đóng kết nối đến CSDL", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Có lỗi khi đóng kết nối đến CSDL", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Common.Logging.LogSystem.Error("Loi dong ket noi den CSDL: " + ex.ToString());
             }
         }
@@ -95,7 +95,7 @@ namespace O2S_InsuranceExpertise.DAL
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Có lỗi khi thực thi đến CSDL", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               // MessageBox.Show("Có lỗi khi thực thi đến CSDL", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Common.Logging.LogSystem.Error("Loi ExecuteNonQuery: " + ex.ToString());
             }
             return result;
@@ -209,7 +209,7 @@ namespace O2S_InsuranceExpertise.DAL
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Có lỗi khi thực thi đến CSDL", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Có lỗi khi thực thi đến CSDL", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Common.Logging.LogSystem.Error("Loi ExecuteNonQuery: " + ex.ToString());
             }
             return result;

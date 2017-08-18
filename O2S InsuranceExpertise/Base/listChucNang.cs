@@ -150,6 +150,8 @@ namespace O2S_InsuranceExpertise.Base
                 TOOL_03.permissionnote = "Cấu hình - Thẻ XML";
                 lstresult.Add(TOOL_03);
 
+
+
                 DTO.classPermission TOOL_04 = new DTO.classPermission();
                 TOOL_04.permissioncheck = false;
                 TOOL_04.permissioncode = "TOOL_04";

@@ -237,7 +237,7 @@
             this.tabMenuGiamDinhXML.Appearance.Options.UseFont = true;
             this.tabMenuGiamDinhXML.Caption = "GIÁM ĐỊNH XML";
             this.tabMenuGiamDinhXML.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.tabMenuGiamDinhXML.Image = global::O2S_InsuranceExpertise.Properties.Resources.xml_161;
+            this.tabMenuGiamDinhXML.Image = global::O2S_InsuranceExpertise.Properties.Resources.checkmark_16;
             this.tabMenuGiamDinhXML.ImageUri.Uri = "AlignJustify";
             this.tabMenuGiamDinhXML.ItemShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
             this.tabMenuGiamDinhXML.Margin = new System.Windows.Forms.Padding(0);
@@ -281,8 +281,9 @@
             this.tabMenuGiamDinhHSBA.ItemShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
             this.tabMenuGiamDinhHSBA.Margin = new System.Windows.Forms.Padding(0);
             this.tabMenuGiamDinhHSBA.Name = "tabMenuGiamDinhHSBA";
+            this.tabMenuGiamDinhHSBA.PageVisible = false;
             this.tabMenuGiamDinhHSBA.Properties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
-            this.tabMenuGiamDinhHSBA.Size = new System.Drawing.Size(1234, 716);
+            this.tabMenuGiamDinhHSBA.Size = new System.Drawing.Size(1216, 668);
             // 
             // tabMenuDanhMucTraCuu
             // 
