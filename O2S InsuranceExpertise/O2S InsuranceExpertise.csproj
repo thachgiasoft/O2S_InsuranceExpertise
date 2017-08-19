@@ -239,6 +239,12 @@
     </Compile>
     <Compile Include="DTO\MedicalrecordDTO.cs" />
     <Compile Include="DTO\serviceprice_ptttDTO.cs" />
+    <Compile Include="GUI\FormCommon\ucMenuGiamDinhXML.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\FormCommon\ucMenuGiamDinhXML.Designer.cs">
+      <DependentUpon>ucMenuGiamDinhXML.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\MenuCauHinh\ucCauHinhDM_VatTu.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -478,6 +484,9 @@
     <Compile Include="Utilities\ThongBao\WaitForm1.Designer.cs">
       <DependentUpon>WaitForm1.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GUI\FormCommon\ucMenuGiamDinhXML.resx">
+      <DependentUpon>ucMenuGiamDinhXML.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\MenuCauHinh\ucCauHinhDM_VatTu.resx">
       <DependentUpon>ucCauHinhDM_VatTu.cs</DependentUpon>
     </EmbeddedResource>

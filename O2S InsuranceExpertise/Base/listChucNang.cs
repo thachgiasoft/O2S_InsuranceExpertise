@@ -155,29 +155,29 @@ namespace O2S_InsuranceExpertise.Base
                 DTO.classPermission TOOL_04 = new DTO.classPermission();
                 TOOL_04.permissioncheck = false;
                 TOOL_04.permissioncode = "TOOL_04";
-                TOOL_04.permissionname = "Giám định XML - Hiển thị dữ liệu";
+                TOOL_04.permissionname = "Giám định XML - Tổng hợp dữ liệu";
                 TOOL_04.permissiontype = 2;
                 TOOL_04.tabMenuId = 3;
-                TOOL_04.permissionnote = "Giám định XML - Hiển thị dữ liệu";
+                TOOL_04.permissionnote = "Giám định XML - Tổng hợp dữ liệu";
                 lstresult.Add(TOOL_04);
 
-                DTO.classPermission TOOL_05 = new DTO.classPermission();
-                TOOL_05.permissioncheck = false;
-                TOOL_05.permissioncode = "TOOL_05";
-                TOOL_05.permissionname = "Giám định XML - Kiểm tra lỗi";
-                TOOL_05.permissiontype = 2;
-                TOOL_05.tabMenuId = 3;
-                TOOL_05.permissionnote = "Giám định XML - Kiểm tra lỗi";
-                lstresult.Add(TOOL_05);
+                //DTO.classPermission TOOL_05 = new DTO.classPermission();
+                //TOOL_05.permissioncheck = false;
+                //TOOL_05.permissioncode = "TOOL_05";
+                //TOOL_05.permissionname = "Giám định XML - Kiểm tra lỗi";
+                //TOOL_05.permissiontype = 2;
+                //TOOL_05.tabMenuId = 3;
+                //TOOL_05.permissionnote = "Giám định XML - Kiểm tra lỗi";
+                //lstresult.Add(TOOL_05);
 
-                DTO.classPermission TOOL_06 = new DTO.classPermission();
-                TOOL_06.permissioncheck = false;
-                TOOL_06.permissioncode = "TOOL_06";
-                TOOL_06.permissionname = "Giám định HSBA - Hiển thị dữ liệu";
-                TOOL_06.permissiontype = 2;
-                TOOL_06.tabMenuId = 4;
-                TOOL_06.permissionnote = "Giám định HSBA - Hiển thị dữ liệu";
-                lstresult.Add(TOOL_06);
+                //DTO.classPermission TOOL_06 = new DTO.classPermission();
+                //TOOL_06.permissioncheck = false;
+                //TOOL_06.permissioncode = "TOOL_06";
+                //TOOL_06.permissionname = "Giám định HSBA - Hiển thị dữ liệu";
+                //TOOL_06.permissiontype = 2;
+                //TOOL_06.tabMenuId = 4;
+                //TOOL_06.permissionnote = "Giám định HSBA - Hiển thị dữ liệu";
+                //lstresult.Add(TOOL_06);
 
                 DTO.classPermission TOOL_10 = new DTO.classPermission();
                 TOOL_10.permissioncheck = false;

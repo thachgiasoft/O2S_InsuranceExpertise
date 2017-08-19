@@ -66,6 +66,12 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                 ucCauHinh.Dock = System.Windows.Forms.DockStyle.Fill;
                 tabMenuCauHinh.Controls.Add(ucCauHinh);
 
+                tabMenuGiamDinhXML.Controls.Clear();
+                GUI.FormCommon.ucMenuGiamDinhXML ucGiamDinhXML = new GUI.FormCommon.ucMenuGiamDinhXML();
+                ucGiamDinhXML.MyGetData = new GUI.FormCommon.ucMenuGiamDinhXML.GetString(HienThiTenChucNang);
+                ucGiamDinhXML.Dock = System.Windows.Forms.DockStyle.Fill;
+                tabMenuGiamDinhXML.Controls.Add(ucGiamDinhXML);
+
                 tabMenuCongCuKhac.Controls.Clear();
                 FormCommon.ucMenuCongCuKhac ucCongCuKhac = new ucMenuCongCuKhac(hienthi_btnTroVe);
                 ucCongCuKhac.MyGetData = new ucMenuCongCuKhac.GetString(HienThiTenChucNang);
