@@ -13,7 +13,7 @@ namespace O2S_InsuranceExpertise.Model.Models.Xml_917.XMLChiTiet
         [XmlElement(Order = 1)]
         public string MA_LK { get; set; }
         [XmlElement(Order = 2)]
-        public long STT { get; set; }
+        public string STT { get; set; }
         [XmlElement(Order = 3)]
         public string MA_BN { get; set; }
         [XmlElement(Order = 4)]
@@ -21,7 +21,7 @@ namespace O2S_InsuranceExpertise.Model.Models.Xml_917.XMLChiTiet
         [XmlElement(Order = 5)]
         public string NGAY_SINH { get; set; }
         [XmlElement(Order = 6)]
-        public int GIOI_TINH { get; set; }
+        public string GIOI_TINH { get; set; }
         [XmlElement(Order = 7)]
         public string DIA_CHI { get; set; }
         [XmlElement(Order = 8)]
@@ -39,45 +39,45 @@ namespace O2S_InsuranceExpertise.Model.Models.Xml_917.XMLChiTiet
         [XmlElement(Order = 14)]
         public string MA_BENHKHAC { get; set; }
         [XmlElement(Order = 15)]
-        public int MA_LYDO_VVIEN { get; set; }
+        public string MA_LYDO_VVIEN { get; set; }
         [XmlElement(Order = 16)]
         public string MA_NOI_CHUYEN { get; set; }
         [XmlElement(Order = 17)]
-        public int MA_TAI_NAN { get; set; }
+        public string MA_TAI_NAN { get; set; }
         [XmlElement(Order = 18)]
         public string NGAY_VAO { get; set; }
         [XmlElement(Order = 19)]
         public string NGAY_RA { get; set; }
         [XmlElement(Order = 20)]
-        public long SO_NGAY_DTRI { get; set; }
+        public string SO_NGAY_DTRI { get; set; }
         [XmlElement(Order = 21)]
-        public int KET_QUA_DTRI { get; set; }
+        public string KET_QUA_DTRI { get; set; }
         [XmlElement(Order = 22)]
-        public int TINH_TRANG_RV { get; set; }
+        public string TINH_TRANG_RV { get; set; }
         [XmlElement(Order = 23)]
         public string NGAY_TTOAN { get; set; }
         [XmlElement(Order = 24)]
-        public int MUC_HUONG { get; set; }
+        public int? MUC_HUONG { get; set; }
         [XmlElement(Order = 25)]
-        public decimal T_THUOC { get; set; }
+        public decimal? T_THUOC { get; set; }
         [XmlElement(Order = 26)]
-        public decimal T_VTYT { get; set; }
+        public decimal? T_VTYT { get; set; }
         [XmlElement(Order = 27)]
-        public decimal T_TONGCHI { get; set; }
+        public decimal? T_TONGCHI { get; set; }
         [XmlElement(Order = 28)]
-        public decimal T_BNTT { get; set; }
+        public decimal? T_BNTT { get; set; }
         [XmlElement(Order = 29)]
-        public decimal T_BHTT { get; set; }
+        public decimal? T_BHTT { get; set; }
         [XmlElement(Order = 30)]
-        public decimal T_NGUONKHAC { get; set; }
+        public decimal? T_NGUONKHAC { get; set; }
         [XmlElement(Order = 31)]
-        public decimal T_NGOAIDS { get; set; }
+        public decimal? T_NGOAIDS { get; set; }
         [XmlElement(Order = 32)]
-        public int NAM_QT { get; set; }
+        public string NAM_QT { get; set; }
         [XmlElement(Order = 33)]
-        public int THANG_QT { get; set; }
+        public string THANG_QT { get; set; }
         [XmlElement(Order = 34)]
-        public int MA_LOAI_KCB { get; set; }
+        public string MA_LOAI_KCB { get; set; }
         [XmlElement(Order = 35)]
         public string MA_KHOA { get; set; }
         [XmlElement(Order = 36)]
@@ -87,7 +87,7 @@ namespace O2S_InsuranceExpertise.Model.Models.Xml_917.XMLChiTiet
         [XmlElement(Order = 38)]
         public string MA_PTTT_QT { get; set; }
         [XmlElement(Order = 39)]
-        public decimal CAN_NANG { get; set; }
+        public string CAN_NANG { get; set; }
 
         public XML1_ThongTinBenhNhan()
         {

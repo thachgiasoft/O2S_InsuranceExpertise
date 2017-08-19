@@ -13,7 +13,7 @@ namespace O2S_InsuranceExpertise.Model.Models.Xml_917.XMLChiTiet
         [XmlElement(Order = 1)]
         public string MA_LK { get; set; }
         [XmlElement(Order = 2)]
-        public long STT { get; set; }
+        public string STT { get; set; }
         [XmlElement(Order = 3)]
         public string MA_DICH_VU { get; set; }
         [XmlElement(Order = 4)]

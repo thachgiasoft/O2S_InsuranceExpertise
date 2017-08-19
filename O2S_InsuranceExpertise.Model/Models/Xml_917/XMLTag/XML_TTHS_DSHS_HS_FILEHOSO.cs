@@ -15,8 +15,6 @@ namespace O2S_InsuranceExpertise.Model.Models.Xml_917.XMLTag
         public string LOAIHOSO { get; set; }
         [XmlElement(Order = 2)]
         public string NOIDUNGFILE { get; set; }
-        //[XmlElement(Order = 3)]
-        //public string NOIDUNGFILE_GIAIMA { get; set; }
         public XML_TTHS_DSHS_HS_FILEHOSO()
         {
         }

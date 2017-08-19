@@ -41,6 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\ApiTokenDTO.cs" />
+    <Compile Include="Models\DanhMucDichVu_VatTuDTO.cs" />
+    <Compile Include="Models\DanhMucDichVu_ThuocDTO.cs" />
+    <Compile Include="Models\DanhMucDichVu_GiuongDTO.cs" />
+    <Compile Include="Models\DanhMucDichVu_DVKTDTO.cs" />
+    <Compile Include="Models\DanhSachBenhVienDTO.cs" />
     <Compile Include="Models\FilterDSBNThuCongDTO.cs" />
     <Compile Include="Models\IEBhytCheckDTO.cs" />
     <Compile Include="Models\KetQuaCheckThongTuyen_ExtendDTO.cs" />
@@ -53,8 +58,30 @@
     <Compile Include="Models\TieuChiCheckThongTuyenDTO.cs" />
     <Compile Include="Models\TieuChiCheck_ThuCongDTO.cs" />
     <Compile Include="Models\TokenDTO.cs" />
+    <Compile Include="Models\Xml_917\XMLTag\XML2_TagDTO.cs" />
+    <Compile Include="Models\Xml_917\XMLTag\XML1_TagDTO.cs" />
+    <Compile Include="Models\Xml_917\XMLTag\XML4_TagDTO.cs" />
+    <Compile Include="Models\Xml_917\XMLTag\XML3_TagDTO.cs" />
+    <Compile Include="Models\Xml_917\XMLDTO\XML_HOSODTO.cs" />
+    <Compile Include="Models\Xml_917\XMLTag\XML_TTHS_DANHSACHHOSO.cs" />
+    <Compile Include="Models\Xml_917\XMLTag\XML_TTHS_DSHS_HOSO.cs" />
+    <Compile Include="Models\Xml_917\XMLTag\XML_TTHS_DSHS_HS_FILEHOSO.cs" />
+    <Compile Include="Models\Xml_917\XMLTag\XML_GIAMDINHHS.cs" />
+    <Compile Include="Models\Xml_917\XMLTag\XML_THONGTINDONVI.cs" />
+    <Compile Include="Models\Xml_917\XMLTag\XML_THONGTINHOSO.cs" />
+    <Compile Include="Models\Xml_917\XMLDTO\XML1DTO.cs" />
+    <Compile Include="Models\Xml_917\XMLDTO\XML2DTO.cs" />
+    <Compile Include="Models\Xml_917\XMLDTO\XML3DTO.cs" />
+    <Compile Include="Models\Xml_917\XMLDTO\XML4DTO.cs" />
+    <Compile Include="Models\Xml_917\XMLDTO\XML5DTO.cs" />
+    <Compile Include="Models\Xml_917\XMLChiTiet\XML1_ThongTinBenhNhan.cs" />
+    <Compile Include="Models\Xml_917\XMLChiTiet\XML2_Thuoc.cs" />
+    <Compile Include="Models\Xml_917\XMLChiTiet\XML3_DVKT.cs" />
+    <Compile Include="Models\Xml_917\XMLChiTiet\XML4_CLS.cs" />
+    <Compile Include="Models\Xml_917\XMLChiTiet\XML5_DienBien.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

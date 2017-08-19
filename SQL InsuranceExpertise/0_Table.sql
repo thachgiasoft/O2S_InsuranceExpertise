@@ -518,7 +518,30 @@ CREATE INDEX IE_bhyt_check_hosobenhandate_idx
   ON IE_bhyt_check
   USING btree
   (hosobenhandate);  
-  
+CREATE INDEX IE_bhyt_check_patientname_idx
+  ON IE_bhyt_check
+  USING btree
+  (patientname);    
+CREATE INDEX IE_bhyt_check_birthday_idx
+  ON IE_bhyt_check
+  USING btree
+  (birthday); 
+CREATE INDEX IE_bhyt_check_gioitinhcode_idx
+  ON IE_bhyt_check
+  USING btree
+  (gioitinhcode); 
+CREATE INDEX IE_bhyt_check_macskcbbd_idx
+  ON IE_bhyt_check
+  USING btree
+  (macskcbbd); 
+CREATE INDEX IE_bhyt_check_bhytfromdate_idx
+  ON IE_bhyt_check
+  USING btree
+  (bhytfromdate);    
+CREATE INDEX IE_bhyt_check_bhytutildate_idx
+  ON IE_bhyt_check
+  USING btree
+  (bhytutildate);      
   
 --=================================================== Table IE_lichsukcb_check
 -- DROP TABLE IE_lichsukcb_check;
@@ -595,9 +618,203 @@ CREATE INDEX ie_benhvien_benhvienkcbbd_idx
   ON ie_benhvien
   USING btree
   (benhvienkcbbd);
---===================================================
---===================================================
---===================================================
+--=================================================================Table Giam dinh BHYT.
+
+--===================================================TABLE ie_danhmuc_dvkt;
+-- DROP TABLE ie_danhmuc_dvkt;
+
+CREATE TABLE ie_danhmuc_dvkt
+(
+	danhmucdvktid serial NOT NULL,
+	stt	integer,
+	ma_dvkt text,
+	ma_ax text,
+	ten_dvkt text,
+	ten_ax text,
+	ma_gia text,
+	don_gia double precision,
+	gia_ax double precision,
+	quyet_dinh text,
+	cong_bo integer,
+	ma_cosokcb integer,
+	manhom_9324 text,
+	hieuluc_id integer,
+	hieuluc text,
+	ketqua_id integer,
+	ketqua text,
+	lydotuchoi text,
+	is_look integer default 0,
+	version timestamp without time zone,
+  CONSTRAINT ie_danhmuc_dvkt_pkey PRIMARY KEY (danhmucdvktid)
+);
+CREATE INDEX ie_danhmuc_dvkt_ma_dvkt_idx ON ie_danhmuc_dvkt USING btree (ma_dvkt); 
+CREATE INDEX ie_danhmuc_dvkt_ma_ax_idx ON ie_danhmuc_dvkt USING btree (ma_ax); 
+CREATE INDEX ie_danhmuc_dvkt_ten_dvkt_idx ON ie_danhmuc_dvkt USING btree (ten_dvkt); 
+CREATE INDEX ie_danhmuc_dvkt_ten_ax_idx ON ie_danhmuc_dvkt USING btree (ten_ax); 
+CREATE INDEX ie_danhmuc_dvkt_ma_gia_idx ON ie_danhmuc_dvkt USING btree (ma_gia); 
+CREATE INDEX ie_danhmuc_dvkt_don_gia_idx ON ie_danhmuc_dvkt USING btree (don_gia); 
+CREATE INDEX ie_danhmuc_dvkt_gia_ax_idx ON ie_danhmuc_dvkt USING btree (gia_ax); 
+CREATE INDEX ie_danhmuc_dvkt_manhom_9324_idx ON ie_danhmuc_dvkt USING btree (manhom_9324); 
+
+--===================================================TABLE ie_danhmuc_giuong;
+-- DROP TABLE ie_danhmuc_giuong;
+
+CREATE TABLE ie_danhmuc_giuong
+(
+	danhmucgiuongid serial NOT NULL,
+	stt	integer,
+	ma_dvkt text,
+	ma_ax text,
+	ten_dvkt text,
+	ten_ax text,
+	ma_gia text,
+	don_gia double precision,
+	gia_ax double precision,
+	quyet_dinh text,
+	cong_bo integer,
+	ma_cosokcb integer,
+	manhom_9324 text,
+	hieuluc_id integer,
+	hieuluc text,
+	ketqua_id integer,
+	ketqua text,
+	lydotuchoi text,
+	is_look integer default 0,
+	version timestamp without time zone,
+  CONSTRAINT ie_danhmuc_giuong_pkey PRIMARY KEY (danhmucgiuongid)
+);
+CREATE INDEX ie_danhmuc_giuong_ma_dvkt_idx ON ie_danhmuc_dvkt USING btree (ma_dvkt);
+CREATE INDEX ie_danhmuc_giuong_ma_ax_idx ON ie_danhmuc_dvkt USING btree (ma_ax); 
+CREATE INDEX ie_danhmuc_giuong_ten_dvkt_idx ON ie_danhmuc_dvkt USING btree (ten_dvkt); 
+CREATE INDEX ie_danhmuc_giuong_ten_ax_idx ON ie_danhmuc_dvkt USING btree (ten_ax); 
+CREATE INDEX ie_danhmuc_giuong_ma_gia_idx ON ie_danhmuc_dvkt USING btree (ma_gia); 
+CREATE INDEX ie_danhmuc_giuong_don_gia_idx ON ie_danhmuc_dvkt USING btree (don_gia); 
+CREATE INDEX ie_danhmuc_giuong_gia_ax_idx ON ie_danhmuc_dvkt USING btree (gia_ax); 
+CREATE INDEX ie_danhmuc_giuong_manhom_9324_idx ON ie_danhmuc_dvkt USING btree (manhom_9324); 
+  
+--===================================================Table ie_danhmuc_thuoc
+-- DROP TABLE ie_danhmuc_thuoc;
+
+CREATE TABLE ie_danhmuc_thuoc
+(
+	danhmucthuocid serial NOT NULL,
+	stt	integer,
+	ma_hoat_chat text,
+	ma_ax text,
+	hoat_chat text,
+	hoatchat_ax text,
+	ma_duong_dung text,
+	ma_duongdung_ax text,
+	duong_dung text,
+	duongdung_ax text,
+	ham_luong text,
+	hamluong_ax text,
+	ten_thuoc text,
+	tenthuoc_ax text,
+	so_dang_ky text,
+	sodangky_ax text,
+	dong_goi text,
+	don_vi_tinh text,
+	don_gia double precision,
+	don_gia_tt double precision,
+	so_luong double precision,
+	ma_cskcb integer,
+	hang_sx text,
+	nuoc_sx text,
+	nha_thau text,
+	quyet_dinh text,
+	cong_bo text,
+	ma_thuoc_bv text,
+	loai_thuoc integer,
+	loai_thau integer,
+	nhom_thau text,
+	manhom_9324 integer,
+	hieuluc_id integer,
+	hieuluc text,
+	ketqua_id integer,
+	ketqua text,
+	lydotuchoi text,
+	is_look integer default 0,
+	version timestamp without time zone,
+  CONSTRAINT ie_danhmuc_thuoc_pkey PRIMARY KEY (danhmucthuocid)
+);
+CREATE INDEX ie_danhmuc_thuoc_ma_hoat_chat_idx ON ie_danhmuc_thuoc USING btree (ma_hoat_chat); 
+CREATE INDEX ie_danhmuc_thuoc_ma_ax_idx ON ie_danhmuc_thuoc USING btree (ma_ax); 
+CREATE INDEX ie_danhmuc_thuoc_hoat_chat_idx ON ie_danhmuc_thuoc USING btree (hoat_chat); 
+CREATE INDEX ie_danhmuc_thuoc_hoatchat_ax_idx ON ie_danhmuc_thuoc USING btree (hoatchat_ax); 
+CREATE INDEX ie_danhmuc_thuoc_ma_duong_dung_idx ON ie_danhmuc_thuoc USING btree (ma_duong_dung); 
+CREATE INDEX ie_danhmuc_thuoc_ma_duongdung_ax_idx ON ie_danhmuc_thuoc USING btree (ma_duongdung_ax); 
+CREATE INDEX ie_danhmuc_thuoc_duong_dung_idx ON ie_danhmuc_thuoc USING btree (duong_dung); 
+CREATE INDEX ie_danhmuc_thuoc_duongdung_ax_idx ON ie_danhmuc_thuoc USING btree (duongdung_ax); 
+CREATE INDEX ie_danhmuc_thuoc_ten_thuoc_idx ON ie_danhmuc_thuoc USING btree (ten_thuoc); 
+CREATE INDEX ie_danhmuc_thuoc_tenthuoc_ax_idx ON ie_danhmuc_thuoc USING btree (tenthuoc_ax); 
+CREATE INDEX ie_danhmuc_thuoc_so_dang_ky_idx ON ie_danhmuc_thuoc USING btree (so_dang_ky); 
+CREATE INDEX ie_danhmuc_thuoc_sodangky_ax_idx ON ie_danhmuc_thuoc USING btree (sodangky_ax); 
+CREATE INDEX ie_danhmuc_thuoc_dong_goi_idx ON ie_danhmuc_thuoc USING btree (dong_goi); 
+CREATE INDEX ie_danhmuc_thuoc_don_vi_tinh_idx ON ie_danhmuc_thuoc USING btree (don_vi_tinh); 
+CREATE INDEX ie_danhmuc_thuoc_don_gia_idx ON ie_danhmuc_thuoc USING btree (don_gia); 
+CREATE INDEX ie_danhmuc_thuoc_don_gia_tt_idx ON ie_danhmuc_thuoc USING btree (don_gia_tt); 
+CREATE INDEX ie_danhmuc_thuoc_quyet_dinh_idx ON ie_danhmuc_thuoc USING btree (quyet_dinh); 
+CREATE INDEX ie_danhmuc_thuoc_cong_bo_idx ON ie_danhmuc_thuoc USING btree (cong_bo); 
+CREATE INDEX ie_danhmuc_thuoc_loai_thuoc_idx ON ie_danhmuc_thuoc USING btree (loai_thuoc); 
+CREATE INDEX ie_danhmuc_thuoc_loai_thau_idx ON ie_danhmuc_thuoc USING btree (loai_thau); 
+CREATE INDEX ie_danhmuc_thuoc_nhom_thau_idx ON ie_danhmuc_thuoc USING btree (nhom_thau); 
+CREATE INDEX ie_danhmuc_thuoc_manhom_9324_idx ON ie_danhmuc_thuoc USING btree (manhom_9324); 
+
+
+--===================================================Table ie_danhmuc_vattu
+-- DROP TABLE ie_danhmuc_vattu;
+
+CREATE TABLE ie_danhmuc_vattu
+(
+	danhmucvattuid serial NOT NULL,
+	stt integer,
+	ma_nhom_vtyt text,
+	ma_nhom_ax text,
+	ten_nhom_vtyt text,
+	ten_nhom_ax text,
+	ma_hieu text,
+	ma_vtyt_bv text,
+	ten_vtyt_bv text,
+	quy_cach text,
+	nuoc_sx text,
+	hang_sx text,
+	don_vi_tinh text,
+	don_gia double precision,
+	don_gia_tt double precision,
+	nha_thau text,
+	quyet_dinh text,
+	cong_bo integer,
+	dinh_muc text,
+	so_luong double precision,
+	ma_cskcb integer,
+	loai_thau integer,
+	manhom_9324 integer,
+	hieuluc_id integer,
+	hieuluc text,
+	ketqua_id integer,
+	ketqua text,
+	lydotuchoi text,
+	is_look integer default 0,
+	version timestamp without time zone,
+  CONSTRAINT ie_danhmuc_vattu_pkey PRIMARY KEY (danhmucvattuid)
+);
+CREATE INDEX ie_danhmuc_vattu_ma_nhom_vtyt_idx ON ie_danhmuc_vattu USING btree (ma_nhom_vtyt); 
+CREATE INDEX ie_danhmuc_vattu_ma_nhom_ax_idx ON ie_danhmuc_vattu USING btree (ma_nhom_ax); 
+CREATE INDEX ie_danhmuc_vattu_ten_nhom_vtyt_idx ON ie_danhmuc_vattu USING btree (ten_nhom_vtyt); 
+CREATE INDEX ie_danhmuc_vattu_ten_nhom_ax_idx ON ie_danhmuc_vattu USING btree (ten_nhom_ax); 
+CREATE INDEX ie_danhmuc_vattu_ma_vtyt_bv_idx ON ie_danhmuc_vattu USING btree (ma_vtyt_bv); 
+CREATE INDEX ie_danhmuc_vattu_ten_vtyt_bv_idx ON ie_danhmuc_vattu USING btree (ten_vtyt_bv); 
+CREATE INDEX ie_danhmuc_vattu_don_vi_tinh_idx ON ie_danhmuc_vattu USING btree (don_vi_tinh); 
+CREATE INDEX ie_danhmuc_vattu_don_gia_idx ON ie_danhmuc_vattu USING btree (don_gia); 
+CREATE INDEX ie_danhmuc_vattu_don_gia_tt_idx ON ie_danhmuc_vattu USING btree (don_gia_tt); 
+CREATE INDEX ie_danhmuc_vattu_quyet_dinh_idx ON ie_danhmuc_vattu USING btree (quyet_dinh); 
+CREATE INDEX ie_danhmuc_vattu_cong_bo_idx ON ie_danhmuc_vattu USING btree (cong_bo); 
+CREATE INDEX ie_danhmuc_vattu_dinh_muc_idx ON ie_danhmuc_vattu USING btree (dinh_muc); 
+CREATE INDEX ie_danhmuc_vattu_ma_cskcb_idx ON ie_danhmuc_vattu USING btree (ma_cskcb); 
+CREATE INDEX ie_danhmuc_vattu_loai_thau_idx ON ie_danhmuc_vattu USING btree (loai_thau); 
+CREATE INDEX ie_danhmuc_vattu_manhom_9324_idx ON ie_danhmuc_vattu USING btree (manhom_9324); 
+
 --===================================================
 --===================================================
 --===================================================

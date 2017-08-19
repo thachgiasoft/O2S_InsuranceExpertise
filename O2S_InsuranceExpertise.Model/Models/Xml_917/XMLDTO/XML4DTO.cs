@@ -9,7 +9,7 @@ namespace O2S_InsuranceExpertise.Model.Models.Xml_917.XMLDTO
     public class XML4DTO
     {
         public string MA_LK { get; set; }
-        public long STT { get; set; }
+        public string STT { get; set; }
         public string MA_DICH_VU { get; set; }
         public string MA_CHI_SO { get; set; }
         public string TEN_CHI_SO { get; set; }

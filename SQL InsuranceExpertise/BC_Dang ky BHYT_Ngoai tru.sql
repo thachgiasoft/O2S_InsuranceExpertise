@@ -1,5 +1,5 @@
 ----============================ Báo cáo Đăng ký thẻ BHYT Ngoại trú
---ngay 15/8/2017
+--ngay 17/8/2017
 
 --SELECT dblink_connect('myconn_ie', 'dbname=O2SInsurance port=5432 host=localhost user=postgres password=1234');
 
@@ -7,6 +7,13 @@ SELECT row_number () over (order by "+orderby+") as stt,
 	hsba.patientid, 
 	log.vienphiid, 
 	hsba.patientname,
+	(case mrd.doituongbenhnhanid when 1 then 'BHYT'
+			when 2 then 'Viện phí'
+			when 3 then 'Dịch vụ'
+			when 4 then 'Người nước ngoài'
+			when 5 then 'Miễn phí'
+			when 6 then 'Hợp đồng'
+		end) as doituongbenhnhanid,
 	bh.bhytcode,
 	bh.macskcbbd,
 	bh.bhytfromdate,
@@ -43,12 +50,12 @@ SELECT row_number () over (order by "+orderby+") as stt,
 	kvv.departmentgroupname as khoavaovien,	
 	log.logtime,
 	(log.loguser || ' - ' || ndk.username )as nguoidangky,
-	'' as bhytchecknote,
+	(select ibc.bhytchecknote from dblink('myconn_ie','SELECT bhytcheckid,bhytid,bhytchecknote FROM ie_bhyt_check') AS ibc(bhytcheckid integer,bhytid integer,bhytchecknote text) where ibc.bhytid=bh.bhytid order by ibc.bhytcheckid desc limit 1) as bhytchecknote,
 	'' as nguoihuydangky,
 	log.logeventcontent
 FROM (select hosobenhanid,patientid,patientname,hosobenhandate,hosobenhandate_ravien from hosobenhan "+tieuchi_hsba+") hsba 
 	inner join (select logeventid,hosobenhanid,vienphiid,medicalrecordid,logeventcontent,logform,loguser,logeventtype,logtime from logevent where logeventtype=1 "+tieuchi_log+") log on log.hosobenhanid=hsba.hosobenhanid
-	inner join (select medicalrecordid,departmentgroupid,departmentid,bhytid,chandoanbandau,noigioithieucode,xutrikhambenhid,nextdepartmentid from medicalrecord where loaibenhanid=24 and departmentgroupid in ("+lstKhoaChonLayBC+")) mrd on mrd.medicalrecordid=log.medicalrecordid
+	inner join (select medicalrecordid,departmentgroupid,departmentid,bhytid,chandoanbandau,noigioithieucode,xutrikhambenhid,nextdepartmentid,doituongbenhnhanid from medicalrecord where loaibenhanid=24 and departmentgroupid in ("+lstKhoaChonLayBC+")) mrd on mrd.medicalrecordid=log.medicalrecordid
 	inner join (select bhytid,bhytcode,macskcbbd,bhytfromdate,bhytutildate,noisinhsong,du5nam6thangluongcoban,bhyt_loaiid from bhyt where bhytcode<>'') bh on bh.bhytid=mrd.bhytid
 	left join (select userhisid,usercode,username from nhompersonnel) ndk on ndk.usercode=log.loguser
 	left join (select departmentgroupid,departmentgroupname from departmentgroup) degp on degp.departmentgroupid=mrd.departmentgroupid

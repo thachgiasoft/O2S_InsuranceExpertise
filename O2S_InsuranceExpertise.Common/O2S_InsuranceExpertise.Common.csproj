@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\KeyTrongPhanMem.cs" />
+    <Compile Include="EncryptAndDecrypt\Base64.cs" />
     <Compile Include="EncryptAndDecrypt\EncryptAndDecrypt.cs" />
     <Compile Include="GridControl\GridControlConvert.cs" />
     <Compile Include="String\StringConvert.cs" />
@@ -70,6 +71,9 @@
     <Compile Include="WebApiClient\ApiConsumer.cs" />
     <Compile Include="WebApiClient\ApiException.cs" />
     <Compile Include="WebApiClient\ApiParam.cs" />
+    <Compile Include="Xml\ObjectXMLSerializer.cs" />
+    <Compile Include="Xml\SerializedFormat.cs" />
+    <Compile Include="Xml\XmlConvert.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\O2S_InsuranceExpertise.Model\O2S_InsuranceExpertise.Model.csproj">

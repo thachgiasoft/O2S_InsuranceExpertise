@@ -13,7 +13,7 @@ namespace O2S_InsuranceExpertise.Model.Models.Xml_917.XMLChiTiet
         [XmlElement(Order = 1)]
         public string MA_LK { get; set; }
         [XmlElement(Order = 2)]
-        public long STT { get; set; }
+        public string STT { get; set; }
         [XmlElement(Order = 3)]
         public string MA_DICH_VU { get; set; }
         [XmlElement(Order = 4)]
@@ -25,13 +25,13 @@ namespace O2S_InsuranceExpertise.Model.Models.Xml_917.XMLChiTiet
         [XmlElement(Order = 7)]
         public string DON_VI_TINH { get; set; }
         [XmlElement(Order = 8)]
-        public decimal SO_LUONG { get; set; }
+        public decimal? SO_LUONG { get; set; }
         [XmlElement(Order = 9)]
-        public decimal DON_GIA { get; set; }
+        public decimal? DON_GIA { get; set; }
         [XmlElement(Order = 10)]
-        public int TYLE_TT { get; set; }
+        public int? TYLE_TT { get; set; }
         [XmlElement(Order = 11)]
-        public decimal THANH_TIEN { get; set; }
+        public decimal? THANH_TIEN { get; set; }
         [XmlElement(Order = 12)]
         public string MA_KHOA { get; set; }
         [XmlElement(Order = 13)]
@@ -43,7 +43,7 @@ namespace O2S_InsuranceExpertise.Model.Models.Xml_917.XMLChiTiet
         [XmlElement(Order = 16)]
         public string NGAY_KQ { get; set; }
         [XmlElement(Order = 17)]
-        public int MA_PTTT { get; set; }
+        public string MA_PTTT { get; set; }
 
 
         public XML3_DVKT()
