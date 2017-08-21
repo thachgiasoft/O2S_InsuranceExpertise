@@ -75,10 +75,9 @@
             this.gridColumn38 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn39 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnKiemTraTatCa = new DevExpress.XtraEditors.SimpleButton();
             this.chkGhiNhoDuongDan = new DevExpress.XtraEditors.CheckEdit();
             this.btnMoFileXML = new DevExpress.XtraEditors.SimpleButton();
-            this.xtraTab_CHTieuChiGiamDinh = new DevExpress.XtraTab.XtraTabPage();
-            this.xtraTab_CHTheXML = new DevExpress.XtraTab.XtraTabPage();
             this.openFileDialogSelect = new System.Windows.Forms.OpenFileDialog();
             this.imageCollectionDSBN = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControlGiamDinhXML)).BeginInit();
@@ -102,9 +101,7 @@
             this.xtraTabControlGiamDinhXML.Size = new System.Drawing.Size(1000, 613);
             this.xtraTabControlGiamDinhXML.TabIndex = 0;
             this.xtraTabControlGiamDinhXML.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtraTab_GDXMLTongHop,
-            this.xtraTab_CHTieuChiGiamDinh,
-            this.xtraTab_CHTheXML});
+            this.xtraTab_GDXMLTongHop});
             this.xtraTabControlGiamDinhXML.TabPageWidth = 160;
             this.xtraTabControlGiamDinhXML.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraTabControlCongCuKhac_SelectedPageChanged);
             this.xtraTabControlGiamDinhXML.CloseButtonClick += new System.EventHandler(this.xtraTabControlCongCuKhac_CloseButtonClick);
@@ -144,6 +141,7 @@
             this.gridControlNoiDung.TabIndex = 0;
             this.gridControlNoiDung.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewNoiDung});
+            this.gridControlNoiDung.ViewRegistered += new DevExpress.XtraGrid.ViewOperationEventHandler(this.gridControlNoiDung_ViewRegistered);
             // 
             // gridViewNoiDung
             // 
@@ -212,6 +210,7 @@
             this.gridViewNoiDung.RowHeight = 25;
             this.gridViewNoiDung.ViewCaptionHeight = 25;
             this.gridViewNoiDung.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gridViewDichVu_RowCellStyle);
+            this.gridViewNoiDung.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gridViewNoiDung_PopupMenuShowing);
             // 
             // gridColumn1
             // 
@@ -223,13 +222,13 @@
             this.gridColumn1.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn1.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn1.Caption = "MA_LK";
+            this.gridColumn1.Caption = "Mã liên kết";
             this.gridColumn1.FieldName = "MA_LK";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 1;
-            this.gridColumn1.Width = 150;
+            this.gridColumn1.Width = 120;
             // 
             // gridColumn2
             // 
@@ -261,7 +260,7 @@
             this.gridColumn3.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn3.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn3.Caption = "MA_BN";
+            this.gridColumn3.Caption = "Mã bệnh nhân";
             this.gridColumn3.FieldName = "MA_BN";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.ReadOnly = true;
@@ -279,7 +278,7 @@
             this.gridColumn4.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn4.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn4.Caption = "HO_TEN";
+            this.gridColumn4.Caption = "Họ tên";
             this.gridColumn4.FieldName = "HO_TEN";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
@@ -299,8 +298,8 @@
             this.gridColumn5.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn5.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn5.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn5.Caption = "NGAY_SINH";
-            this.gridColumn5.FieldName = "NGAY_SINH";
+            this.gridColumn5.Caption = "Ngày sinh";
+            this.gridColumn5.FieldName = "NGAY_SINH_DATE";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
@@ -319,8 +318,8 @@
             this.gridColumn6.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn6.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn6.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn6.Caption = "GIOI_TINH";
-            this.gridColumn6.FieldName = "GIOI_TINH";
+            this.gridColumn6.Caption = "Giới tính";
+            this.gridColumn6.FieldName = "GIOI_TINH_TEN";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.Visible = true;
@@ -337,7 +336,7 @@
             this.gridColumn7.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn7.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn7.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn7.Caption = "DIA_CHI";
+            this.gridColumn7.Caption = "Địa chỉ";
             this.gridColumn7.FieldName = "DIA_CHI";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowEdit = false;
@@ -357,7 +356,7 @@
             this.gridColumn8.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn8.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn8.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn8.Caption = "MA_THE";
+            this.gridColumn8.Caption = "Mã thẻ BHYT";
             this.gridColumn8.FieldName = "MA_THE";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsColumn.ReadOnly = true;
@@ -377,7 +376,7 @@
             this.gridColumn9.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn9.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn9.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn9.Caption = "MA_DKBD";
+            this.gridColumn9.Caption = "Mã ĐKKCBBĐ";
             this.gridColumn9.FieldName = "MA_DKBD";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.OptionsColumn.AllowEdit = false;
@@ -397,8 +396,8 @@
             this.gridColumn10.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn10.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn10.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn10.Caption = "GT_THE_TU";
-            this.gridColumn10.FieldName = "GT_THE_TU";
+            this.gridColumn10.Caption = "Hạn thẻ từ";
+            this.gridColumn10.FieldName = "GT_THE_TU_DATE";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.OptionsColumn.AllowEdit = false;
             this.gridColumn10.Visible = true;
@@ -417,8 +416,8 @@
             this.gridColumn11.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn11.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn11.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn11.Caption = "GT_THE_DEN";
-            this.gridColumn11.FieldName = "GT_THE_DEN";
+            this.gridColumn11.Caption = "Hạn thẻ đến";
+            this.gridColumn11.FieldName = "GT_THE_DEN_DATE";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.OptionsColumn.AllowEdit = false;
             this.gridColumn11.Visible = true;
@@ -435,7 +434,7 @@
             this.gridColumn12.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn12.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn12.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn12.Caption = "TEN_BENH";
+            this.gridColumn12.Caption = "Tên bệnh";
             this.gridColumn12.FieldName = "TEN_BENH";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.OptionsColumn.AllowEdit = false;
@@ -453,7 +452,7 @@
             this.gridColumn13.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn13.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn13.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn13.Caption = "MA_BENH";
+            this.gridColumn13.Caption = "Mã bệnh";
             this.gridColumn13.FieldName = "MA_BENH";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.OptionsColumn.AllowEdit = false;
@@ -471,7 +470,7 @@
             this.gridColumn14.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn14.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn14.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn14.Caption = "MA_BENHKHAC";
+            this.gridColumn14.Caption = "Mã bệnh khác";
             this.gridColumn14.FieldName = "MA_BENHKHAC";
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.OptionsColumn.AllowEdit = false;
@@ -483,16 +482,14 @@
             // 
             this.gridColumn15.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.gridColumn15.AppearanceCell.Options.UseFont = true;
-            this.gridColumn15.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn15.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn15.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.gridColumn15.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.gridColumn15.AppearanceHeader.Options.UseFont = true;
             this.gridColumn15.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn15.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn15.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn15.Caption = "MA_LYDO_VVIEN";
-            this.gridColumn15.FieldName = "MA_LYDO_VVIEN";
+            this.gridColumn15.Caption = "Lý do vào viện";
+            this.gridColumn15.FieldName = "LYDO_VVIEN_TEN";
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.OptionsColumn.AllowEdit = false;
             this.gridColumn15.Visible = true;
@@ -511,7 +508,7 @@
             this.gridColumn16.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn16.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn16.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn16.Caption = "MA_NOI_CHUYEN";
+            this.gridColumn16.Caption = "Mã nơi chuyển";
             this.gridColumn16.FieldName = "MA_NOI_CHUYEN";
             this.gridColumn16.Name = "gridColumn16";
             this.gridColumn16.OptionsColumn.AllowEdit = false;
@@ -523,16 +520,14 @@
             // 
             this.gridColumn17.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.gridColumn17.AppearanceCell.Options.UseFont = true;
-            this.gridColumn17.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn17.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn17.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.gridColumn17.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.gridColumn17.AppearanceHeader.Options.UseFont = true;
             this.gridColumn17.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn17.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn17.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn17.Caption = "MA_TAI_NAN";
-            this.gridColumn17.FieldName = "MA_TAI_NAN";
+            this.gridColumn17.Caption = "Tai nạn thương tích";
+            this.gridColumn17.FieldName = "TAI_NAN_TEN";
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.OptionsColumn.AllowEdit = false;
             this.gridColumn17.Visible = true;
@@ -551,8 +546,8 @@
             this.gridColumn18.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn18.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn18.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn18.Caption = "NGAY_VAO";
-            this.gridColumn18.FieldName = "NGAY_VAO";
+            this.gridColumn18.Caption = "Ngày vào";
+            this.gridColumn18.FieldName = "NGAY_VAO_DATE";
             this.gridColumn18.Name = "gridColumn18";
             this.gridColumn18.OptionsColumn.AllowEdit = false;
             this.gridColumn18.Visible = true;
@@ -571,8 +566,8 @@
             this.gridColumn19.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn19.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn19.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn19.Caption = "NGAY_RA";
-            this.gridColumn19.FieldName = "NGAY_RA";
+            this.gridColumn19.Caption = "Ngày ra";
+            this.gridColumn19.FieldName = "NGAY_RA_DATE";
             this.gridColumn19.Name = "gridColumn19";
             this.gridColumn19.OptionsColumn.AllowEdit = false;
             this.gridColumn19.Visible = true;
@@ -591,7 +586,7 @@
             this.gridColumn20.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn20.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn20.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn20.Caption = "SO_NGAY_DTRI";
+            this.gridColumn20.Caption = "Số ngày điều trị";
             this.gridColumn20.FieldName = "SO_NGAY_DTRI";
             this.gridColumn20.Name = "gridColumn20";
             this.gridColumn20.OptionsColumn.AllowEdit = false;
@@ -603,16 +598,14 @@
             // 
             this.gridColumn21.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.gridColumn21.AppearanceCell.Options.UseFont = true;
-            this.gridColumn21.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn21.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn21.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.gridColumn21.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.gridColumn21.AppearanceHeader.Options.UseFont = true;
             this.gridColumn21.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn21.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn21.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn21.Caption = "KET_QUA_DTRI";
-            this.gridColumn21.FieldName = "KET_QUA_DTRI";
+            this.gridColumn21.Caption = "Kết quả điều trị";
+            this.gridColumn21.FieldName = "KET_QUA_DTRI_TEN";
             this.gridColumn21.Name = "gridColumn21";
             this.gridColumn21.OptionsColumn.AllowEdit = false;
             this.gridColumn21.Visible = true;
@@ -623,16 +616,14 @@
             // 
             this.gridColumn22.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.gridColumn22.AppearanceCell.Options.UseFont = true;
-            this.gridColumn22.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn22.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn22.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.gridColumn22.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.gridColumn22.AppearanceHeader.Options.UseFont = true;
             this.gridColumn22.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn22.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn22.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn22.Caption = "TINH_TRANG_RV";
-            this.gridColumn22.FieldName = "TINH_TRANG_RV";
+            this.gridColumn22.Caption = "Tình trạng ra viện";
+            this.gridColumn22.FieldName = "TINH_TRANG_RV_TEN";
             this.gridColumn22.Name = "gridColumn22";
             this.gridColumn22.OptionsColumn.AllowEdit = false;
             this.gridColumn22.Visible = true;
@@ -651,8 +642,8 @@
             this.gridColumn23.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn23.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn23.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn23.Caption = "NGAY_TTOAN";
-            this.gridColumn23.FieldName = "NGAY_TTOAN";
+            this.gridColumn23.Caption = "Ngày thanh toán";
+            this.gridColumn23.FieldName = "NGAY_TTOAN_DATE";
             this.gridColumn23.Name = "gridColumn23";
             this.gridColumn23.OptionsColumn.AllowEdit = false;
             this.gridColumn23.Visible = true;
@@ -671,7 +662,7 @@
             this.gridColumn24.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn24.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn24.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn24.Caption = "MUC_HUONG";
+            this.gridColumn24.Caption = "Mức hưởng";
             this.gridColumn24.FieldName = "MUC_HUONG";
             this.gridColumn24.Name = "gridColumn24";
             this.gridColumn24.OptionsColumn.AllowEdit = false;
@@ -691,7 +682,7 @@
             this.gridColumn25.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn25.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn25.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn25.Caption = "T_THUOC";
+            this.gridColumn25.Caption = "Tiền thuốc";
             this.gridColumn25.DisplayFormat.FormatString = "#,##0.00";
             this.gridColumn25.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn25.FieldName = "T_THUOC";
@@ -713,7 +704,7 @@
             this.gridColumn26.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn26.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn26.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn26.Caption = "T_VTYT";
+            this.gridColumn26.Caption = "Tiền vật tư y tế";
             this.gridColumn26.DisplayFormat.FormatString = "#,##0.00";
             this.gridColumn26.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn26.FieldName = "T_VTYT";
@@ -735,7 +726,7 @@
             this.gridColumn27.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn27.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn27.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn27.Caption = "T_TONGCHI";
+            this.gridColumn27.Caption = "Tổng chi phí";
             this.gridColumn27.DisplayFormat.FormatString = "#,##0.00";
             this.gridColumn27.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn27.FieldName = "T_TONGCHI";
@@ -757,7 +748,7 @@
             this.gridColumn28.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn28.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn28.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn28.Caption = "T_BNTT";
+            this.gridColumn28.Caption = "Tiền BN thanh toán";
             this.gridColumn28.DisplayFormat.FormatString = "#,##0.00";
             this.gridColumn28.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn28.FieldName = "T_BNTT";
@@ -779,7 +770,7 @@
             this.gridColumn29.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn29.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn29.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn29.Caption = "T_BHTT";
+            this.gridColumn29.Caption = "Tiền BHYT thanh toán";
             this.gridColumn29.DisplayFormat.FormatString = "#,##0.00";
             this.gridColumn29.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn29.FieldName = "T_BHTT";
@@ -801,7 +792,7 @@
             this.gridColumn30.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn30.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn30.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn30.Caption = "T_NGUONKHAC";
+            this.gridColumn30.Caption = "Nguồn khác";
             this.gridColumn30.DisplayFormat.FormatString = "#,##0.00";
             this.gridColumn30.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn30.FieldName = "T_NGUONKHAC";
@@ -823,7 +814,7 @@
             this.gridColumn31.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn31.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn31.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn31.Caption = "T_NGOAIDS";
+            this.gridColumn31.Caption = "Quỹ ngoài định suất";
             this.gridColumn31.DisplayFormat.FormatString = "#,##0.00";
             this.gridColumn31.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn31.FieldName = "T_NGOAIDS";
@@ -845,7 +836,7 @@
             this.gridColumn32.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn32.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn32.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn32.Caption = "NAM_QT";
+            this.gridColumn32.Caption = "Năm quyết toán";
             this.gridColumn32.FieldName = "NAM_QT";
             this.gridColumn32.Name = "gridColumn32";
             this.gridColumn32.OptionsColumn.AllowEdit = false;
@@ -865,7 +856,7 @@
             this.gridColumn33.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn33.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn33.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn33.Caption = "THANG_QT";
+            this.gridColumn33.Caption = "Tháng quyết toán";
             this.gridColumn33.FieldName = "THANG_QT";
             this.gridColumn33.Name = "gridColumn33";
             this.gridColumn33.OptionsColumn.AllowEdit = false;
@@ -877,16 +868,14 @@
             // 
             this.gridColumn34.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.gridColumn34.AppearanceCell.Options.UseFont = true;
-            this.gridColumn34.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn34.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn34.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.gridColumn34.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.gridColumn34.AppearanceHeader.Options.UseFont = true;
             this.gridColumn34.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn34.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn34.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn34.Caption = "MA_LOAI_KCB";
-            this.gridColumn34.FieldName = "MA_LOAI_KCB";
+            this.gridColumn34.Caption = "Loại KCB";
+            this.gridColumn34.FieldName = "LOAI_KCB_TEN";
             this.gridColumn34.Name = "gridColumn34";
             this.gridColumn34.OptionsColumn.AllowEdit = false;
             this.gridColumn34.Visible = true;
@@ -905,7 +894,7 @@
             this.gridColumn35.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn35.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn35.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn35.Caption = "MA_KHOA";
+            this.gridColumn35.Caption = "Mã khoa";
             this.gridColumn35.FieldName = "MA_KHOA";
             this.gridColumn35.Name = "gridColumn35";
             this.gridColumn35.OptionsColumn.AllowEdit = false;
@@ -925,7 +914,7 @@
             this.gridColumn36.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn36.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn36.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn36.Caption = "MA_CSKCB";
+            this.gridColumn36.Caption = "Mã CSKCB";
             this.gridColumn36.FieldName = "MA_CSKCB";
             this.gridColumn36.Name = "gridColumn36";
             this.gridColumn36.OptionsColumn.AllowEdit = false;
@@ -945,7 +934,7 @@
             this.gridColumn37.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn37.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn37.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn37.Caption = "MA_KHUVUC";
+            this.gridColumn37.Caption = "Mã khu vực";
             this.gridColumn37.FieldName = "MA_KHUVUC";
             this.gridColumn37.Name = "gridColumn37";
             this.gridColumn37.OptionsColumn.AllowEdit = false;
@@ -965,7 +954,7 @@
             this.gridColumn38.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn38.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn38.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn38.Caption = "MA_PTTT_QT";
+            this.gridColumn38.Caption = "Mã PTTT quốc tế";
             this.gridColumn38.FieldName = "MA_PTTT_QT";
             this.gridColumn38.Name = "gridColumn38";
             this.gridColumn38.OptionsColumn.AllowEdit = false;
@@ -985,7 +974,7 @@
             this.gridColumn39.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn39.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn39.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn39.Caption = "CAN_NANG";
+            this.gridColumn39.Caption = "Cân nặng";
             this.gridColumn39.DisplayFormat.FormatString = "#,##0.00";
             this.gridColumn39.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn39.FieldName = "CAN_NANG";
@@ -997,6 +986,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnKiemTraTatCa);
             this.panel1.Controls.Add(this.chkGhiNhoDuongDan);
             this.panel1.Controls.Add(this.btnMoFileXML);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1004,6 +994,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(994, 41);
             this.panel1.TabIndex = 1;
+            // 
+            // btnKiemTraTatCa
+            // 
+            this.btnKiemTraTatCa.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKiemTraTatCa.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnKiemTraTatCa.Appearance.Options.UseFont = true;
+            this.btnKiemTraTatCa.Appearance.Options.UseForeColor = true;
+            this.btnKiemTraTatCa.Image = global::O2S_InsuranceExpertise.Properties.Resources.checkmark_16;
+            this.btnKiemTraTatCa.Location = new System.Drawing.Point(728, 5);
+            this.btnKiemTraTatCa.Name = "btnKiemTraTatCa";
+            this.btnKiemTraTatCa.Size = new System.Drawing.Size(125, 30);
+            this.btnKiemTraTatCa.TabIndex = 35;
+            this.btnKiemTraTatCa.Text = "Kiểm tra tất cả";
+            this.btnKiemTraTatCa.Click += new System.EventHandler(this.btnKiemTraTatCa_Click);
             // 
             // chkGhiNhoDuongDan
             // 
@@ -1016,6 +1020,7 @@
             this.chkGhiNhoDuongDan.Properties.Caption = "Ghi nhớ đường dẫn";
             this.chkGhiNhoDuongDan.Size = new System.Drawing.Size(140, 20);
             this.chkGhiNhoDuongDan.TabIndex = 34;
+            this.chkGhiNhoDuongDan.CheckedChanged += new System.EventHandler(this.chkGhiNhoDuongDan_CheckedChanged);
             // 
             // btnMoFileXML
             // 
@@ -1026,38 +1031,10 @@
             this.btnMoFileXML.Image = global::O2S_InsuranceExpertise.Properties.Resources.excel_3_16;
             this.btnMoFileXML.Location = new System.Drawing.Point(18, 5);
             this.btnMoFileXML.Name = "btnMoFileXML";
-            this.btnMoFileXML.Size = new System.Drawing.Size(120, 30);
+            this.btnMoFileXML.Size = new System.Drawing.Size(125, 30);
             this.btnMoFileXML.TabIndex = 33;
             this.btnMoFileXML.Text = "Mở file XML";
             this.btnMoFileXML.Click += new System.EventHandler(this.btnMoFileXML_Click);
-            // 
-            // xtraTab_CHTieuChiGiamDinh
-            // 
-            this.xtraTab_CHTieuChiGiamDinh.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.xtraTab_CHTieuChiGiamDinh.Appearance.Header.ForeColor = System.Drawing.Color.Navy;
-            this.xtraTab_CHTieuChiGiamDinh.Appearance.Header.Options.UseFont = true;
-            this.xtraTab_CHTieuChiGiamDinh.Appearance.Header.Options.UseForeColor = true;
-            this.xtraTab_CHTieuChiGiamDinh.Image = ((System.Drawing.Image)(resources.GetObject("xtraTab_CHTieuChiGiamDinh.Image")));
-            this.xtraTab_CHTieuChiGiamDinh.Name = "xtraTab_CHTieuChiGiamDinh";
-            this.xtraTab_CHTieuChiGiamDinh.PageVisible = false;
-            this.xtraTab_CHTieuChiGiamDinh.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
-            this.xtraTab_CHTieuChiGiamDinh.Size = new System.Drawing.Size(994, 582);
-            this.xtraTab_CHTieuChiGiamDinh.Text = "Tiêu chí giám định";
-            this.xtraTab_CHTieuChiGiamDinh.Tooltip = "Cấu hình - Tiêu chí giám định";
-            // 
-            // xtraTab_CHTheXML
-            // 
-            this.xtraTab_CHTheXML.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xtraTab_CHTheXML.Appearance.Header.ForeColor = System.Drawing.Color.Navy;
-            this.xtraTab_CHTheXML.Appearance.Header.Options.UseFont = true;
-            this.xtraTab_CHTheXML.Appearance.Header.Options.UseForeColor = true;
-            this.xtraTab_CHTheXML.Image = global::O2S_InsuranceExpertise.Properties.Resources.xml_161;
-            this.xtraTab_CHTheXML.Name = "xtraTab_CHTheXML";
-            this.xtraTab_CHTheXML.PageVisible = false;
-            this.xtraTab_CHTheXML.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
-            this.xtraTab_CHTheXML.Size = new System.Drawing.Size(994, 582);
-            this.xtraTab_CHTheXML.Text = "Thẻ XML";
-            this.xtraTab_CHTheXML.Tooltip = "Cấu hình - Thẻ XML";
             // 
             // openFileDialogSelect
             // 
@@ -1068,7 +1045,8 @@
             // imageCollectionDSBN
             // 
             this.imageCollectionDSBN.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollectionDSBN.ImageStream")));
-            this.imageCollectionDSBN.Images.SetKeyName(0, "delete-16.png");
+            this.imageCollectionDSBN.Images.SetKeyName(0, "checked-checkbox-16.png");
+            this.imageCollectionDSBN.Images.SetKeyName(1, "check-mark-16.png");
             // 
             // ucMenuGiamDinhXML
             // 
@@ -1098,8 +1076,6 @@
 
         private DevExpress.XtraTab.XtraTabControl xtraTabControlGiamDinhXML;
         private DevExpress.XtraTab.XtraTabPage xtraTab_GDXMLTongHop;
-        private DevExpress.XtraTab.XtraTabPage xtraTab_CHTheXML;
-        private DevExpress.XtraTab.XtraTabPage xtraTab_CHTieuChiGiamDinh;
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.CheckEdit chkGhiNhoDuongDan;
         private DevExpress.XtraEditors.SimpleButton btnMoFileXML;
@@ -1147,5 +1123,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn37;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn38;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn39;
+        private DevExpress.XtraEditors.SimpleButton btnKiemTraTatCa;
     }
 }
