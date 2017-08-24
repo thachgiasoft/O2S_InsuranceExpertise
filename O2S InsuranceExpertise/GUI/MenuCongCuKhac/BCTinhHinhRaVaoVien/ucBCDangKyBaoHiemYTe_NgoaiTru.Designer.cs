@@ -50,6 +50,7 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -69,7 +70,6 @@
             this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlThongTinDV)).BeginInit();
             this.panelControlThongTinDV.SuspendLayout();
             this.groupBoxFile.SuspendLayout();
@@ -350,8 +350,8 @@
             this.gridColumn17,
             this.gridColumn18,
             this.gridColumn19,
-            this.gridColumn20,
             this.gridColumn21,
+            this.gridColumn20,
             this.gridColumn11});
             this.gridViewDataBaoCao.GridControl = this.gridControlDataBaoCao;
             this.gridViewDataBaoCao.Name = "gridViewDataBaoCao";
@@ -461,6 +461,24 @@
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 4;
             this.gridColumn7.Width = 146;
+            // 
+            // gridColumn25
+            // 
+            this.gridColumn25.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridColumn25.AppearanceCell.Options.UseFont = true;
+            this.gridColumn25.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridColumn25.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.gridColumn25.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn25.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn25.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn25.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn25.Caption = "Đối tượng bệnh nhân";
+            this.gridColumn25.FieldName = "doituongbenhnhanid";
+            this.gridColumn25.Name = "gridColumn25";
+            this.gridColumn25.OptionsColumn.AllowEdit = false;
+            this.gridColumn25.Visible = true;
+            this.gridColumn25.VisibleIndex = 5;
+            this.gridColumn25.Width = 130;
             // 
             // gridColumn8
             // 
@@ -787,7 +805,7 @@
             this.gridColumn20.Name = "gridColumn20";
             this.gridColumn20.OptionsColumn.AllowEdit = false;
             this.gridColumn20.Visible = true;
-            this.gridColumn20.VisibleIndex = 22;
+            this.gridColumn20.VisibleIndex = 23;
             this.gridColumn20.Width = 230;
             // 
             // gridColumn21
@@ -808,7 +826,9 @@
             this.gridColumn21.FieldName = "bhytchecksdate";
             this.gridColumn21.Name = "gridColumn21";
             this.gridColumn21.OptionsColumn.AllowEdit = false;
-            this.gridColumn21.Width = 120;
+            this.gridColumn21.Visible = true;
+            this.gridColumn21.VisibleIndex = 22;
+            this.gridColumn21.Width = 125;
             // 
             // gridColumn11
             // 
@@ -825,26 +845,8 @@
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.OptionsColumn.AllowEdit = false;
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 23;
+            this.gridColumn11.VisibleIndex = 24;
             this.gridColumn11.Width = 800;
-            // 
-            // gridColumn25
-            // 
-            this.gridColumn25.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.gridColumn25.AppearanceCell.Options.UseFont = true;
-            this.gridColumn25.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.gridColumn25.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.gridColumn25.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn25.AppearanceHeader.Options.UseForeColor = true;
-            this.gridColumn25.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn25.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn25.Caption = "Đối tượng bệnh nhân";
-            this.gridColumn25.FieldName = "doituongbenhnhanid";
-            this.gridColumn25.Name = "gridColumn25";
-            this.gridColumn25.OptionsColumn.AllowEdit = false;
-            this.gridColumn25.Visible = true;
-            this.gridColumn25.VisibleIndex = 5;
-            this.gridColumn25.Width = 130;
             // 
             // ucBCDangKyBaoHiemYTe_NgoaiTru
             // 

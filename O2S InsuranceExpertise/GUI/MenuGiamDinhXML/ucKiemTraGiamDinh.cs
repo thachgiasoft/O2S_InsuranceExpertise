@@ -12,13 +12,27 @@ using O2S_InsuranceExpertise.Model.Models.Xml_917.XMLDTO;
 using O2S_InsuranceExpertise.Model.Models.Xml_917.XMLTag;
 using AutoMapper;
 using O2S_InsuranceExpertise.Model.Models;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.IO;
+using DevExpress.XtraSplashScreen;
 
 namespace O2S_InsuranceExpertise.GUI.MenuGiamDinhXML
 {
     public partial class ucKiemTraGiamDinh : UserControl
     {
+        #region Khai bao
         private List<XML_HOSODTO> lstXMLHoSo_KiemTra { get; set; }
         private List<HoSo_CheckLoiDTO> lstXML1_KiemTra { get; set; }
+        private HttpClient client_chek = new HttpClient();
+
+        // khai báo 1 hàm delegate
+        public delegate void GetString(List<XML_HOSODTO> _lstXMLHoSo_KiemTra);
+        // khai báo 1 kiểu hàm delegate
+        public GetString MyGetData;
+
+
+        #endregion
         public ucKiemTraGiamDinh()
         {
             InitializeComponent();
@@ -28,6 +42,11 @@ namespace O2S_InsuranceExpertise.GUI.MenuGiamDinhXML
             InitializeComponent();
             this.lstXMLHoSo_KiemTra = _lstXMLHoSo_KiemTra;
         }
+        //public void Init()
+        //{
+        //    ResetDuLieuVeMacDinh();
+        //    LoadThongTinTongHop();
+        //}
 
         #region Load
         private void ucKiemTraGiamDinh_Load(object sender, EventArgs e)
@@ -36,6 +55,7 @@ namespace O2S_InsuranceExpertise.GUI.MenuGiamDinhXML
             {
                 ResetDuLieuVeMacDinh();
                 LoadThongTinTongHop();
+                //Init();
             }
             catch (Exception ex)
             {
@@ -175,15 +195,15 @@ namespace O2S_InsuranceExpertise.GUI.MenuGiamDinhXML
                 {
                     e.Appearance.BackColor = Color.LightGreen;
                     //Neu co loi thi Hien thi text mau do
-                    long _soloi = Common.TypeConvert.TypeConvertParse.ToInt64(gridViewDSHoSo.GetRowCellValue(e.RowHandle, "TONG_SO_LOI").ToString());
-                    if (_soloi > 0)
-                    {
-                        e.Appearance.ForeColor = Color.Red;
-                    }
-                    else
-                    {
-                        e.Appearance.ForeColor = Color.Black;
-                    }
+                    //long _soloi = Common.TypeConvert.TypeConvertParse.ToInt64(gridViewDSHoSo.GetRowCellValue(e.RowHandle, "TONG_SO_LOI").ToString());
+                    //if (_soloi > 0)
+                    //{
+                    //    e.Appearance.ForeColor = Color.Red;
+                    //}
+                    //else
+                    //{
+                    //    e.Appearance.ForeColor = Color.Black;
+                    //}
                 }
             }
             catch (Exception ex)
@@ -223,7 +243,81 @@ namespace O2S_InsuranceExpertise.GUI.MenuGiamDinhXML
         #endregion
 
         #region Chay Kiem Tra
-        private void chkbtnKiemTra_CheckedChanged(object sender, EventArgs e)
+        private void btnKiemTra_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                btnDung.Visible = true;
+                btnKiemTra.Visible = false;
+                KiemTraGiamDinh_Start();
+                btnDung.Visible = false;
+                btnKiemTra.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Warn(ex);
+            }
+        }
+
+        private void btnDung_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                btnDung.Visible = false;
+                btnKiemTra.Visible = true;
+                KiemTraGiamDinh_Stop();
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Warn(ex);
+            }
+        }
+        private void KiemTraGiamDinh_Start()
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(typeof(Utilities.ThongBao.WaitForm1));
+                List<LoiGiamDinh> lstLoiGiamDinh = new List<LoiGiamDinh>();
+
+                if (this.lstXML1_KiemTra != null && this.lstXML1_KiemTra.Count > 0)
+                {
+                    foreach (var item_xml in this.lstXML1_KiemTra)
+                    {
+                        client_chek = new HttpClient();
+                        client_chek.BaseAddress = new Uri(Base.SessionLogin.UrlFullServer);
+                        client_chek.DefaultRequestHeaders.Accept.Clear();
+                        client_chek.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                        FileInfo f = new FileInfo(item_xml.filePath);
+                        byte[] buffer = null;
+                        using (FileStream fs = f.OpenRead())
+                        {
+                            using (var memoryStream = new MemoryStream())
+                            {
+                                fs.CopyTo(memoryStream);
+                                buffer = memoryStream.ToArray();
+                            }
+                        }
+                        HttpResponseMessage response = client_chek.PostAsJsonAsync("api/GiamDinhHoSoPorttal/GuiHoSoGiamDinh", buffer).Result;
+
+                        NhanChiTietLoiHoSoPortalDTO _chiTietLoi = new NhanChiTietLoiHoSoPortalDTO();
+                        if (response.IsSuccessStatusCode)
+                        {
+                            _chiTietLoi = response.Content.ReadAsAsync<NhanChiTietLoiHoSoPortalDTO>().Result;
+                            lstLoiGiamDinh.AddRange(_chiTietLoi.dsLoi);
+                        }
+                    }
+                }
+                MessageBox.Show("Chay xong","OK");
+                gridControlDSLoi.DataSource = lstLoiGiamDinh;
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Warn(ex);
+            }
+            SplashScreenManager.CloseForm();
+        }
+        private void KiemTraGiamDinh_Stop()
         {
             try
             {
@@ -234,8 +328,6 @@ namespace O2S_InsuranceExpertise.GUI.MenuGiamDinhXML
                 Common.Logging.LogSystem.Warn(ex);
             }
         }
-
-
 
 
         #endregion
@@ -290,6 +382,7 @@ namespace O2S_InsuranceExpertise.GUI.MenuGiamDinhXML
         }
 
         #endregion
+
 
     }
 }

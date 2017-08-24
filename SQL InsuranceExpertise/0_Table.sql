@@ -12,6 +12,8 @@ CREATE TABLE IE_license
 -- Table: ie_config
 
 -- DROP TABLE ie_config;
+alter table ie_config add matinh text;
+alter table ie_config add macskcb text;
 
 CREATE TABLE ie_config
 (
@@ -19,6 +21,8 @@ CREATE TABLE ie_config
   usergdbhyt text,
   passgdbhyt text,
   urlfullserver text,
+  matinh text,
+  macskcb text,  
   configtype integer,
   CONSTRAINT ie_config_pkey PRIMARY KEY (configid)
 )
@@ -484,6 +488,7 @@ CREATE TABLE IE_bhyt_check
   lastupdatedate_hsba timestamp without time zone,
   lastupdatedate_bhyt timestamp without time zone,
   bhytchecknote text,
+  usercheck text,
   CONSTRAINT bhytcheckid_pkey PRIMARY KEY (bhytcheckid)
 );
 CREATE INDEX IE_bhyt_check_bhytid_idx
@@ -518,6 +523,10 @@ CREATE INDEX IE_bhyt_check_hosobenhandate_idx
   ON IE_bhyt_check
   USING btree
   (hosobenhandate);  
+CREATE INDEX IE_bhyt_check_hosobenhandate_ravien_idx
+  ON IE_bhyt_check
+  USING btree
+  (hosobenhandate_ravien); 
 CREATE INDEX IE_bhyt_check_patientname_idx
   ON IE_bhyt_check
   USING btree
@@ -542,6 +551,15 @@ CREATE INDEX IE_bhyt_check_bhytutildate_idx
   ON IE_bhyt_check
   USING btree
   (bhytutildate);      
+CREATE INDEX IE_bhyt_check_bhytchecksdate_idx
+  ON IE_bhyt_check
+  USING btree
+  (bhytchecksdate);  
+CREATE INDEX IE_bhyt_check_lastupdatedate_bhyt_idx
+  ON IE_bhyt_check
+  USING btree
+  (lastupdatedate_bhyt);     
+  
   
 --=================================================== Table IE_lichsukcb_check
 -- DROP TABLE IE_lichsukcb_check;
@@ -683,14 +701,14 @@ CREATE TABLE ie_danhmuc_giuong
 	version timestamp without time zone,
   CONSTRAINT ie_danhmuc_giuong_pkey PRIMARY KEY (danhmucgiuongid)
 );
-CREATE INDEX ie_danhmuc_giuong_ma_dvkt_idx ON ie_danhmuc_dvkt USING btree (ma_dvkt);
-CREATE INDEX ie_danhmuc_giuong_ma_ax_idx ON ie_danhmuc_dvkt USING btree (ma_ax); 
-CREATE INDEX ie_danhmuc_giuong_ten_dvkt_idx ON ie_danhmuc_dvkt USING btree (ten_dvkt); 
-CREATE INDEX ie_danhmuc_giuong_ten_ax_idx ON ie_danhmuc_dvkt USING btree (ten_ax); 
-CREATE INDEX ie_danhmuc_giuong_ma_gia_idx ON ie_danhmuc_dvkt USING btree (ma_gia); 
-CREATE INDEX ie_danhmuc_giuong_don_gia_idx ON ie_danhmuc_dvkt USING btree (don_gia); 
-CREATE INDEX ie_danhmuc_giuong_gia_ax_idx ON ie_danhmuc_dvkt USING btree (gia_ax); 
-CREATE INDEX ie_danhmuc_giuong_manhom_9324_idx ON ie_danhmuc_dvkt USING btree (manhom_9324); 
+CREATE INDEX ie_danhmuc_giuong_ma_dvkt_idx ON ie_danhmuc_giuong USING btree (ma_dvkt);
+CREATE INDEX ie_danhmuc_giuong_ma_ax_idx ON ie_danhmuc_giuong USING btree (ma_ax); 
+CREATE INDEX ie_danhmuc_giuong_ten_dvkt_idx ON ie_danhmuc_giuong USING btree (ten_dvkt); 
+CREATE INDEX ie_danhmuc_giuong_ten_ax_idx ON ie_danhmuc_giuong USING btree (ten_ax); 
+CREATE INDEX ie_danhmuc_giuong_ma_gia_idx ON ie_danhmuc_giuong USING btree (ma_gia); 
+CREATE INDEX ie_danhmuc_giuong_don_gia_idx ON ie_danhmuc_giuong USING btree (don_gia); 
+CREATE INDEX ie_danhmuc_giuong_gia_ax_idx ON ie_danhmuc_giuong USING btree (gia_ax); 
+CREATE INDEX ie_danhmuc_giuong_manhom_9324_idx ON ie_danhmuc_giuong USING btree (manhom_9324); 
   
 --===================================================Table ie_danhmuc_thuoc
 -- DROP TABLE ie_danhmuc_thuoc;
@@ -814,6 +832,116 @@ CREATE INDEX ie_danhmuc_vattu_dinh_muc_idx ON ie_danhmuc_vattu USING btree (dinh
 CREATE INDEX ie_danhmuc_vattu_ma_cskcb_idx ON ie_danhmuc_vattu USING btree (ma_cskcb); 
 CREATE INDEX ie_danhmuc_vattu_loai_thau_idx ON ie_danhmuc_vattu USING btree (loai_thau); 
 CREATE INDEX ie_danhmuc_vattu_manhom_9324_idx ON ie_danhmuc_vattu USING btree (manhom_9324); 
+
+--===================================================Table ie_thefile_xml1
+-- DROP TABLE ie_thefile_xml1;
+
+CREATE TABLE ie_thefile_xml1
+(
+	thefilexmlid serial NOT NULL,
+	stt integer,
+	ma_the text,
+	ten_the text,
+	kieu_du_lieu text,
+	kt_toida integer,
+	bat_buoc integer,
+	dien_giai text,
+	ghi_chu text,
+	is_look integer default 0,
+	version timestamp without time zone,
+  CONSTRAINT ie_thefile_xml1_pkey PRIMARY KEY (thefilexmlid)
+);
+CREATE INDEX ie_thefile_xml1_ma_the_idx ON ie_thefile_xml1 USING btree (ma_the); 
+CREATE INDEX ie_thefile_xml1_kt_toida_idx ON ie_thefile_xml1 USING btree (kt_toida); 
+
+--===================================================Table ie_thefile_xml2
+-- DROP TABLE ie_thefile_xml2;
+
+CREATE TABLE ie_thefile_xml2
+(
+	thefilexmlid serial NOT NULL,
+	stt integer,
+	ma_the text,
+	ten_the text,
+	kieu_du_lieu text,
+	kt_toida integer,
+	bat_buoc integer,
+	dien_giai text,
+	ghi_chu text,
+	is_look integer default 0,
+	version timestamp without time zone,
+  CONSTRAINT ie_thefile_xml2_pkey PRIMARY KEY (thefilexmlid)
+);
+CREATE INDEX ie_thefile_xml2_ma_the_idx ON ie_thefile_xml2 USING btree (ma_the); 
+CREATE INDEX ie_thefile_xml2_kt_toida_idx ON ie_thefile_xml2 USING btree (kt_toida); 
+
+--===================================================Table ie_thefile_xml3
+-- DROP TABLE ie_thefile_xml3;
+
+CREATE TABLE ie_thefile_xml3
+(
+	thefilexmlid serial NOT NULL,
+	stt integer,
+	ma_the text,
+	ten_the text,
+	kieu_du_lieu text,
+	kt_toida integer,
+	bat_buoc integer,
+	dien_giai text,
+	ghi_chu text,
+	is_look integer default 0,
+	version timestamp without time zone,
+  CONSTRAINT ie_thefile_xml3_pkey PRIMARY KEY (thefilexmlid)
+);
+CREATE INDEX ie_thefile_xml3_ma_the_idx ON ie_thefile_xml3 USING btree (ma_the); 
+CREATE INDEX ie_thefile_xml3_kt_toida_idx ON ie_thefile_xml3 USING btree (kt_toida); 
+
+--===================================================Table ie_thefile_xml4
+-- DROP TABLE ie_thefile_xml4;
+
+CREATE TABLE ie_thefile_xml4
+(
+	thefilexmlid serial NOT NULL,
+	stt integer,
+	ma_the text,
+	ten_the text,
+	kieu_du_lieu text,
+	kt_toida integer,
+	bat_buoc integer,
+	dien_giai text,
+	ghi_chu text,
+	is_look integer default 0,
+	version timestamp without time zone,
+  CONSTRAINT ie_thefile_xml4_pkey PRIMARY KEY (thefilexmlid)
+);
+CREATE INDEX ie_thefile_xml4_ma_the_idx ON ie_thefile_xml4 USING btree (ma_the); 
+CREATE INDEX ie_thefile_xml4_kt_toida_idx ON ie_thefile_xml4 USING btree (kt_toida); 
+
+--===================================================Table ie_thefile_xml5
+-- DROP TABLE ie_thefile_xml5;
+
+CREATE TABLE ie_thefile_xml5
+(
+	thefilexmlid serial NOT NULL,
+	stt integer,
+	ma_the text,
+	ten_the text,
+	kieu_du_lieu text,
+	kt_toida integer,
+	bat_buoc integer,
+	dien_giai text,
+	ghi_chu text,
+	is_look integer default 0,
+	version timestamp without time zone,
+  CONSTRAINT ie_thefile_xml5_pkey PRIMARY KEY (thefilexmlid)
+);
+CREATE INDEX ie_thefile_xml5_ma_the_idx ON ie_thefile_xml5 USING btree (ma_the); 
+CREATE INDEX ie_thefile_xml5_kt_toida_idx ON ie_thefile_xml5 USING btree (kt_toida); 
+
+
+
+
+
 
 --===================================================
 --===================================================

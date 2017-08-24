@@ -1,6 +1,6 @@
 --SETUP Check Thong tuyen
 
-
+//Thêm 2 cột để lưu lại trạng thái
 Alter table bhyt add bhytcheckstatus integer;
 alter table hosobenhan add bhytcheckstatus integer;
 

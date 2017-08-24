@@ -10,7 +10,7 @@ namespace O2S_InsuranceExpertise.Model.Models.Xml_917.XMLTag
     [XmlRoot("DSACH_CHI_TIET_THUOC", Namespace = "", IsNullable = false)]
     public class XML2_TagDTO
     {
-        [XmlElement("CHI_TIET_THUOC", typeof(XMLDTO.XML2DTO))]
-        public List<XMLDTO.XML2DTO> lstXML2 { get; set; }
+        [XmlElement("CHI_TIET_THUOC", typeof(XMLDTO.XML2PlusDTO))]
+        public List<XMLDTO.XML2PlusDTO> lstXML2 { get; set; }
     }
 }

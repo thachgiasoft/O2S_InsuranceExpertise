@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucMenuCauHinh));
             this.xtraTabControlCongCuKhac = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTab_CHTieuChiGiamDinh = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTab_CHDanhMuc = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControlCaiDat = new DevExpress.XtraEditors.SplitContainerControl();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
@@ -38,9 +39,18 @@
             this.navBarItemDM_Thuoc = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemDM_VatTu = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItemDM_NgayGiuong = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarGroup3 = new DevExpress.XtraNavBar.NavBarGroup();
             this.panelCauHinhNoiDung = new DevExpress.XtraEditors.PanelControl();
-            this.xtraTab_CHTieuChiGiamDinh = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTab_CHTheXML = new DevExpress.XtraTab.XtraTabPage();
+            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.navBarControl2 = new DevExpress.XtraNavBar.NavBarControl();
+            this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarItemTheXML_XML1 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItemTheXML_XML2 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItemTheXML_XML3 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItemTheXML_XML4 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItemTheXML_XML5 = new DevExpress.XtraNavBar.NavBarItem();
+            this.panelControlTheFileXML = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControlCongCuKhac)).BeginInit();
             this.xtraTabControlCongCuKhac.SuspendLayout();
             this.xtraTab_CHDanhMuc.SuspendLayout();
@@ -48,6 +58,11 @@
             this.splitContainerControlCaiDat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelCauHinhNoiDung)).BeginInit();
+            this.xtraTab_CHTheXML.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
+            this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.navBarControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControlTheFileXML)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControlCongCuKhac
@@ -66,6 +81,19 @@
             this.xtraTabControlCongCuKhac.TabPageWidth = 160;
             this.xtraTabControlCongCuKhac.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraTabControlCongCuKhac_SelectedPageChanged);
             this.xtraTabControlCongCuKhac.CloseButtonClick += new System.EventHandler(this.xtraTabControlCongCuKhac_CloseButtonClick);
+            // 
+            // xtraTab_CHTieuChiGiamDinh
+            // 
+            this.xtraTab_CHTieuChiGiamDinh.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.xtraTab_CHTieuChiGiamDinh.Appearance.Header.ForeColor = System.Drawing.Color.Navy;
+            this.xtraTab_CHTieuChiGiamDinh.Appearance.Header.Options.UseFont = true;
+            this.xtraTab_CHTieuChiGiamDinh.Appearance.Header.Options.UseForeColor = true;
+            this.xtraTab_CHTieuChiGiamDinh.Image = ((System.Drawing.Image)(resources.GetObject("xtraTab_CHTieuChiGiamDinh.Image")));
+            this.xtraTab_CHTieuChiGiamDinh.Name = "xtraTab_CHTieuChiGiamDinh";
+            this.xtraTab_CHTieuChiGiamDinh.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
+            this.xtraTab_CHTieuChiGiamDinh.Size = new System.Drawing.Size(994, 582);
+            this.xtraTab_CHTieuChiGiamDinh.Text = "Tiêu chí giám định";
+            this.xtraTab_CHTieuChiGiamDinh.Tooltip = "Cấu hình - Tiêu chí giám định";
             // 
             // xtraTab_CHDanhMuc
             // 
@@ -101,7 +129,8 @@
             this.navBarControl1.ActiveGroup = this.navBarGroup1;
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
-            this.navBarGroup1});
+            this.navBarGroup1,
+            this.navBarGroup3});
             this.navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.navBarItemDM_DVKT,
             this.navBarItemDM_Thuoc,
@@ -120,7 +149,7 @@
             this.navBarGroup1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.navBarGroup1.Appearance.Options.UseFont = true;
             this.navBarGroup1.Appearance.Options.UseForeColor = true;
-            this.navBarGroup1.Caption = "DANH MỤC";
+            this.navBarGroup1.Caption = "DANH MỤC TẠI CSKCB";
             this.navBarGroup1.Expanded = true;
             this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemDM_DVKT),
@@ -193,6 +222,16 @@
             this.navBarItemDM_NgayGiuong.Name = "navBarItemDM_NgayGiuong";
             this.navBarItemDM_NgayGiuong.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemDM_NgayGiuong_LinkClicked);
             // 
+            // navBarGroup3
+            // 
+            this.navBarGroup3.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.navBarGroup3.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.navBarGroup3.Appearance.Options.UseFont = true;
+            this.navBarGroup3.Appearance.Options.UseForeColor = true;
+            this.navBarGroup3.Caption = "DANH MỤC DÙNG CHUNG";
+            this.navBarGroup3.Name = "navBarGroup3";
+            this.navBarGroup3.Visible = false;
+            // 
             // panelCauHinhNoiDung
             // 
             this.panelCauHinhNoiDung.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -201,31 +240,157 @@
             this.panelCauHinhNoiDung.Size = new System.Drawing.Size(795, 572);
             this.panelCauHinhNoiDung.TabIndex = 0;
             // 
-            // xtraTab_CHTieuChiGiamDinh
-            // 
-            this.xtraTab_CHTieuChiGiamDinh.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.xtraTab_CHTieuChiGiamDinh.Appearance.Header.ForeColor = System.Drawing.Color.Navy;
-            this.xtraTab_CHTieuChiGiamDinh.Appearance.Header.Options.UseFont = true;
-            this.xtraTab_CHTieuChiGiamDinh.Appearance.Header.Options.UseForeColor = true;
-            this.xtraTab_CHTieuChiGiamDinh.Image = ((System.Drawing.Image)(resources.GetObject("xtraTab_CHTieuChiGiamDinh.Image")));
-            this.xtraTab_CHTieuChiGiamDinh.Name = "xtraTab_CHTieuChiGiamDinh";
-            this.xtraTab_CHTieuChiGiamDinh.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
-            this.xtraTab_CHTieuChiGiamDinh.Size = new System.Drawing.Size(994, 582);
-            this.xtraTab_CHTieuChiGiamDinh.Text = "Tiêu chí giám định";
-            this.xtraTab_CHTieuChiGiamDinh.Tooltip = "Cấu hình - Tiêu chí giám định";
-            // 
             // xtraTab_CHTheXML
             // 
             this.xtraTab_CHTheXML.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xtraTab_CHTheXML.Appearance.Header.ForeColor = System.Drawing.Color.Navy;
             this.xtraTab_CHTheXML.Appearance.Header.Options.UseFont = true;
             this.xtraTab_CHTheXML.Appearance.Header.Options.UseForeColor = true;
+            this.xtraTab_CHTheXML.Controls.Add(this.splitContainerControl1);
             this.xtraTab_CHTheXML.Image = global::O2S_InsuranceExpertise.Properties.Resources.xml_161;
             this.xtraTab_CHTheXML.Name = "xtraTab_CHTheXML";
+            this.xtraTab_CHTheXML.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.xtraTab_CHTheXML.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
             this.xtraTab_CHTheXML.Size = new System.Drawing.Size(994, 582);
-            this.xtraTab_CHTheXML.Text = "Thẻ XML";
+            this.xtraTab_CHTheXML.Text = "Thẻ file XML";
             this.xtraTab_CHTheXML.Tooltip = "Cấu hình - Thẻ XML";
+            // 
+            // splitContainerControl1
+            // 
+            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 10);
+            this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.navBarControl2);
+            this.splitContainerControl1.Panel1.Text = "Panel1";
+            this.splitContainerControl1.Panel2.Controls.Add(this.panelControlTheFileXML);
+            this.splitContainerControl1.Panel2.Text = "Panel2";
+            this.splitContainerControl1.Size = new System.Drawing.Size(994, 572);
+            this.splitContainerControl1.SplitterPosition = 194;
+            this.splitContainerControl1.TabIndex = 2;
+            this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
+            // navBarControl2
+            // 
+            this.navBarControl2.ActiveGroup = this.navBarGroup2;
+            this.navBarControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.navBarControl2.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
+            this.navBarGroup2});
+            this.navBarControl2.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
+            this.navBarItemTheXML_XML1,
+            this.navBarItemTheXML_XML2,
+            this.navBarItemTheXML_XML3,
+            this.navBarItemTheXML_XML4,
+            this.navBarItemTheXML_XML5});
+            this.navBarControl2.Location = new System.Drawing.Point(0, 0);
+            this.navBarControl2.Name = "navBarControl2";
+            this.navBarControl2.OptionsNavPane.ExpandedWidth = 194;
+            this.navBarControl2.Size = new System.Drawing.Size(194, 572);
+            this.navBarControl2.TabIndex = 0;
+            this.navBarControl2.Text = "navBarControl2";
+            // 
+            // navBarGroup2
+            // 
+            this.navBarGroup2.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.navBarGroup2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.navBarGroup2.Appearance.Options.UseFont = true;
+            this.navBarGroup2.Appearance.Options.UseForeColor = true;
+            this.navBarGroup2.Caption = "FILE XML";
+            this.navBarGroup2.Expanded = true;
+            this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemTheXML_XML1),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemTheXML_XML2),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemTheXML_XML3),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemTheXML_XML4),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemTheXML_XML5)});
+            this.navBarGroup2.Name = "navBarGroup2";
+            // 
+            // navBarItemTheXML_XML1
+            // 
+            this.navBarItemTheXML_XML1.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.navBarItemTheXML_XML1.Appearance.Options.UseFont = true;
+            this.navBarItemTheXML_XML1.AppearanceDisabled.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.navBarItemTheXML_XML1.AppearanceDisabled.Options.UseFont = true;
+            this.navBarItemTheXML_XML1.AppearanceHotTracked.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.navBarItemTheXML_XML1.AppearanceHotTracked.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.navBarItemTheXML_XML1.AppearanceHotTracked.Options.UseFont = true;
+            this.navBarItemTheXML_XML1.AppearanceHotTracked.Options.UseForeColor = true;
+            this.navBarItemTheXML_XML1.AppearancePressed.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.navBarItemTheXML_XML1.AppearancePressed.Options.UseFont = true;
+            this.navBarItemTheXML_XML1.Caption = "XML1 (tổng hợp)";
+            this.navBarItemTheXML_XML1.Name = "navBarItemTheXML_XML1";
+            this.navBarItemTheXML_XML1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemTheXML_XML1_LinkClicked);
+            // 
+            // navBarItemTheXML_XML2
+            // 
+            this.navBarItemTheXML_XML2.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.navBarItemTheXML_XML2.Appearance.Options.UseFont = true;
+            this.navBarItemTheXML_XML2.AppearanceDisabled.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.navBarItemTheXML_XML2.AppearanceDisabled.Options.UseFont = true;
+            this.navBarItemTheXML_XML2.AppearanceHotTracked.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.navBarItemTheXML_XML2.AppearanceHotTracked.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.navBarItemTheXML_XML2.AppearanceHotTracked.Options.UseFont = true;
+            this.navBarItemTheXML_XML2.AppearanceHotTracked.Options.UseForeColor = true;
+            this.navBarItemTheXML_XML2.AppearancePressed.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.navBarItemTheXML_XML2.AppearancePressed.Options.UseFont = true;
+            this.navBarItemTheXML_XML2.Caption = "XML2 (thuốc)";
+            this.navBarItemTheXML_XML2.Name = "navBarItemTheXML_XML2";
+            this.navBarItemTheXML_XML2.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemTheXML_XML2_LinkClicked);
+            // 
+            // navBarItemTheXML_XML3
+            // 
+            this.navBarItemTheXML_XML3.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F);
+            this.navBarItemTheXML_XML3.Appearance.Options.UseFont = true;
+            this.navBarItemTheXML_XML3.AppearanceDisabled.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.navBarItemTheXML_XML3.AppearanceDisabled.Options.UseFont = true;
+            this.navBarItemTheXML_XML3.AppearanceHotTracked.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.navBarItemTheXML_XML3.AppearanceHotTracked.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.navBarItemTheXML_XML3.AppearanceHotTracked.Options.UseFont = true;
+            this.navBarItemTheXML_XML3.AppearanceHotTracked.Options.UseForeColor = true;
+            this.navBarItemTheXML_XML3.AppearancePressed.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.navBarItemTheXML_XML3.AppearancePressed.Options.UseFont = true;
+            this.navBarItemTheXML_XML3.Caption = "XML3 (DVKT+Vật tư)";
+            this.navBarItemTheXML_XML3.Name = "navBarItemTheXML_XML3";
+            this.navBarItemTheXML_XML3.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemTheXML_XML3_LinkClicked);
+            // 
+            // navBarItemTheXML_XML4
+            // 
+            this.navBarItemTheXML_XML4.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F);
+            this.navBarItemTheXML_XML4.Appearance.Options.UseFont = true;
+            this.navBarItemTheXML_XML4.AppearanceDisabled.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.navBarItemTheXML_XML4.AppearanceDisabled.Options.UseFont = true;
+            this.navBarItemTheXML_XML4.AppearanceHotTracked.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.navBarItemTheXML_XML4.AppearanceHotTracked.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.navBarItemTheXML_XML4.AppearanceHotTracked.Options.UseFont = true;
+            this.navBarItemTheXML_XML4.AppearanceHotTracked.Options.UseForeColor = true;
+            this.navBarItemTheXML_XML4.AppearancePressed.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.navBarItemTheXML_XML4.AppearancePressed.Options.UseFont = true;
+            this.navBarItemTheXML_XML4.Caption = "XML4 (cận lâm sàng)";
+            this.navBarItemTheXML_XML4.Name = "navBarItemTheXML_XML4";
+            this.navBarItemTheXML_XML4.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemTheXML_XML4_LinkClicked);
+            // 
+            // navBarItemTheXML_XML5
+            // 
+            this.navBarItemTheXML_XML5.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F);
+            this.navBarItemTheXML_XML5.Appearance.Options.UseFont = true;
+            this.navBarItemTheXML_XML5.AppearanceDisabled.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.navBarItemTheXML_XML5.AppearanceDisabled.Options.UseFont = true;
+            this.navBarItemTheXML_XML5.AppearanceHotTracked.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.navBarItemTheXML_XML5.AppearanceHotTracked.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.navBarItemTheXML_XML5.AppearanceHotTracked.Options.UseFont = true;
+            this.navBarItemTheXML_XML5.AppearanceHotTracked.Options.UseForeColor = true;
+            this.navBarItemTheXML_XML5.AppearancePressed.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.navBarItemTheXML_XML5.AppearancePressed.Options.UseFont = true;
+            this.navBarItemTheXML_XML5.Caption = "XML5 (diễn biến)";
+            this.navBarItemTheXML_XML5.Name = "navBarItemTheXML_XML5";
+            this.navBarItemTheXML_XML5.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemTheXML_XML5_LinkClicked);
+            // 
+            // panelControlTheFileXML
+            // 
+            this.panelControlTheFileXML.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControlTheFileXML.Location = new System.Drawing.Point(0, 0);
+            this.panelControlTheFileXML.Name = "panelControlTheFileXML";
+            this.panelControlTheFileXML.Size = new System.Drawing.Size(795, 572);
+            this.panelControlTheFileXML.TabIndex = 0;
             // 
             // ucMenuCauHinh
             // 
@@ -242,6 +407,11 @@
             this.splitContainerControlCaiDat.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelCauHinhNoiDung)).EndInit();
+            this.xtraTab_CHTheXML.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
+            this.splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.navBarControl2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControlTheFileXML)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -263,5 +433,15 @@
         private DevExpress.XtraNavBar.NavBarItem navBarItemDM_VatTu;
         private DevExpress.XtraNavBar.NavBarItem navBarItemDM_NgayGiuong;
         private DevExpress.XtraTab.XtraTabPage xtraTab_CHTieuChiGiamDinh;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+        private DevExpress.XtraNavBar.NavBarControl navBarControl2;
+        private DevExpress.XtraNavBar.NavBarGroup navBarGroup2;
+        private DevExpress.XtraNavBar.NavBarItem navBarItemTheXML_XML1;
+        private DevExpress.XtraNavBar.NavBarItem navBarItemTheXML_XML2;
+        private DevExpress.XtraNavBar.NavBarItem navBarItemTheXML_XML3;
+        private DevExpress.XtraEditors.PanelControl panelControlTheFileXML;
+        private DevExpress.XtraNavBar.NavBarItem navBarItemTheXML_XML4;
+        private DevExpress.XtraNavBar.NavBarItem navBarItemTheXML_XML5;
+        private DevExpress.XtraNavBar.NavBarGroup navBarGroup3;
     }
 }

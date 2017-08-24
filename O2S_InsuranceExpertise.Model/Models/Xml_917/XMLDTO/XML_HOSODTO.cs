@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace O2S_InsuranceExpertise.Model.Models.Xml_917.XMLDTO
 {
-    public class XML_HOSODTO : XML1DTO
+    public class XML_HOSODTO : XML1PlusDTO
     {
-        public List<XML2DTO> lstXML2 { get; set; }
-        public List<XML3DTO> lstXML3 { get; set; }
-        public List<XML4DTO> lstXML4 { get; set; }
+        public List<XML2PlusDTO> lstXML2 { get; set; }
+        public List<XML3PlusDTO> lstXML3 { get; set; }
+        public List<XML4PlusDTO> lstXML4 { get; set; }
         public List<XML5DTO> lstXML5 { get; set; }
-
+        public string filePath { get; set; }
     }
 }

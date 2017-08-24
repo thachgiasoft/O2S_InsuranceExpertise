@@ -1,5 +1,7 @@
 ----============================ Báo cáo Đăng ký thẻ BHYT Ngoại trú
 --ngay 17/8/2017
+--ngay 21/8: ket qua ngoai tru tra ve mac dinh la Thong tin the chinh xac
+--ngay 24/8 them cot ngay check cong bhyt
 
 --SELECT dblink_connect('myconn_ie', 'dbname=O2SInsurance port=5432 host=localhost user=postgres password=1234');
 
@@ -50,7 +52,9 @@ SELECT row_number () over (order by "+orderby+") as stt,
 	kvv.departmentgroupname as khoavaovien,	
 	log.logtime,
 	(log.loguser || ' - ' || ndk.username )as nguoidangky,
-	(select ibc.bhytchecknote from dblink('myconn_ie','SELECT bhytcheckid,bhytid,bhytchecknote FROM ie_bhyt_check') AS ibc(bhytcheckid integer,bhytid integer,bhytchecknote text) where ibc.bhytid=bh.bhytid order by ibc.bhytcheckid desc limit 1) as bhytchecknote,
+	--(select ibc.bhytchecknote from dblink('myconn_ie','SELECT bhytcheckid,bhytid,bhytchecknote FROM ie_bhyt_check') AS ibc(bhytcheckid integer,bhytid integer,bhytchecknote text) where ibc.bhytid=bh.bhytid order by ibc.bhytcheckid desc limit 1) as bhytchecknote,
+	'Thông tin thẻ chính xác' as bhytchecknote,
+	(select ibc.bhytchecksdate from dblink('myconn_ie','SELECT bhytcheckid,bhytid,bhytchecksdate FROM ie_bhyt_check " + tieuchi_ie_bhyt_check + "') AS ibc(bhytcheckid integer,bhytid integer,bhytchecksdate timestamp without time zone) where ibc.bhytid=bh.bhytid order by ibc.bhytcheckid desc limit 1) as bhytchecksdate,
 	'' as nguoihuydangky,
 	log.logeventcontent
 FROM (select hosobenhanid,patientid,patientname,hosobenhandate,hosobenhandate_ravien from hosobenhan "+tieuchi_hsba+") hsba 

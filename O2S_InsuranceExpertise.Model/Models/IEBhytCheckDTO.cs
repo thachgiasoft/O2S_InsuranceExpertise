@@ -38,5 +38,6 @@ namespace O2S_InsuranceExpertise.Model.Models
         public object lastupdatedate_hsba { get; set; }
         public object lastupdatedate_bhyt { get; set; }
         public string bhytchecknote { get; set; }
+        public string usercheck { get; set; }
     }
 }

@@ -1007,6 +1007,7 @@
             this.btnKiemTraTatCa.Size = new System.Drawing.Size(125, 30);
             this.btnKiemTraTatCa.TabIndex = 35;
             this.btnKiemTraTatCa.Text = "Kiểm tra tất cả";
+            this.btnKiemTraTatCa.Visible = false;
             this.btnKiemTraTatCa.Click += new System.EventHandler(this.btnKiemTraTatCa_Click);
             // 
             // chkGhiNhoDuongDan
@@ -1045,8 +1046,9 @@
             // imageCollectionDSBN
             // 
             this.imageCollectionDSBN.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollectionDSBN.ImageStream")));
-            this.imageCollectionDSBN.Images.SetKeyName(0, "checked-checkbox-16.png");
-            this.imageCollectionDSBN.Images.SetKeyName(1, "check-mark-16.png");
+            this.imageCollectionDSBN.Images.SetKeyName(0, "arrow-48-16.png");
+            this.imageCollectionDSBN.Images.SetKeyName(1, "checked-checkbox-16.png");
+            this.imageCollectionDSBN.Images.SetKeyName(2, "check-mark-16.png");
             // 
             // ucMenuGiamDinhXML
             // 

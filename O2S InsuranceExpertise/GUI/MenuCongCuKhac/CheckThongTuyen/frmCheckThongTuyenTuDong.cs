@@ -227,6 +227,7 @@ namespace O2S_InsuranceExpertise.GUI.MenuCongCuKhac
                 {
                     form_data.departmentgroupid = Common.TypeConvert.TypeConvertParse.ToInt64(cboKhoa.EditValue.ToString());
                 }
+                form_data.usercheck = Base.SessionLogin.SessionUsercode;
                 var content = new StringContent(JsonConvert.SerializeObject(form_data), Encoding.UTF8, "application/json");
                 HttpResponseMessage response = client_1.PostAsync("api/CheckThongTuyen/GetCheckListHosobenhan", content).Result;
 

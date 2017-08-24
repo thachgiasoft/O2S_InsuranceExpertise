@@ -11,6 +11,24 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
     public partial class ucMenuGiamDinhXML : UserControl
     {
         #region Check Kiem tra
+
+        private void CheckThongTuyenMotRow()
+        {
+            try
+            {
+                if (gridViewNoiDung.RowCount > 0)
+                {
+                    var rowHandle = gridViewNoiDung.FocusedRowHandle;
+                    string _ma_lk = gridViewNoiDung.GetRowCellValue(rowHandle, "MA_LK").ToString();
+                    XML_HOSODTO _XMLHoSo_KiemTra = this.lstXMLHoSo.Where(o => o.MA_LK == _ma_lk).FirstOrDefault();
+                    Goi_KiemTraGiamDinh_ChiTiet(_XMLHoSo_KiemTra);
+                }
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Error(ex);
+            }
+        }
         private void CheckThongTuyenRowDangChon()
         {
             try
@@ -54,9 +72,23 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             try
             {
                 //Goi ucControl ucKiemTraGiamDinh
-                UserControl ucControlActive = new O2S_InsuranceExpertise.GUI.MenuGiamDinhXML.ucKiemTraGiamDinh(_lstXMLHoSo_KiemTra);
-                //UserControl ucControlActive = BUS.TabControlProcess.SelectUCControlActive("KTGD");
-                BUS.TabControlProcess.TabCreating(xtraTabControlGiamDinhXML, "GD_KTGD", "Kiểm tra giám định BHYT", "Kiểm tra giám định BHYT", ucControlActive);
+                //UserControl ucControlActive = new O2S_InsuranceExpertise.GUI.MenuGiamDinhXML.ucKiemTraGiamDinh(_lstXMLHoSo_KiemTra);
+                O2S_InsuranceExpertise.GUI.MenuGiamDinhXML.ucKiemTraGiamDinh ucControlActive = new MenuGiamDinhXML.ucKiemTraGiamDinh(_lstXMLHoSo_KiemTra);
+                BUS.TabControlProcess.TabCreatingRefresh(xtraTabControlGiamDinhXML, "GD_KTGD", "Kiểm tra giám định BHYT", "Giám định XML- Kiểm tra giám định BHYT", ucControlActive);
+                ucControlActive.Show();
+                //ucControlActive.Init();
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Error(ex);
+            }
+        }
+        private void Goi_KiemTraGiamDinh_ChiTiet(XML_HOSODTO _XMLHoSo_KiemTra)
+        {
+            try
+            {
+                O2S_InsuranceExpertise.GUI.MenuGiamDinhXML.ucKiemTraGiaDinh_ChiTiet ucControlActive = new MenuGiamDinhXML.ucKiemTraGiaDinh_ChiTiet(_XMLHoSo_KiemTra);
+                BUS.TabControlProcess.TabCreatingRefresh(xtraTabControlGiamDinhXML, "GD_KTGDCT", "Kiểm tra giám định chi tiết", "Giám định XML- Kiểm tra giám định BHYT chi tiết", ucControlActive);
                 ucControlActive.Show();
             }
             catch (Exception ex)

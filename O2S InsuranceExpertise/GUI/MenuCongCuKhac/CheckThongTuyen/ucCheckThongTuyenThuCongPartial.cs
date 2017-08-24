@@ -143,6 +143,8 @@ namespace O2S_InsuranceExpertise.GUI.MenuCongCuKhac
                         filter_thebhyt.hosobenhandate_ravien = gridViewDSBN.GetRowCellValue(item_index, "hosobenhandate_ravien").ToString();
                         filter_thebhyt.lastupdatedate_hsba = gridViewDSBN.GetRowCellValue(item_index, "lastupdatedate_hsba").ToString();
                         filter_thebhyt.lastupdatedate_bhyt = gridViewDSBN.GetRowCellValue(item_index, "lastupdatedate_bhyt").ToString();
+                        filter_thebhyt.usercheck = Base.SessionLogin.SessionUsercode;
+
                         lstFilter_thebhyt.Add(filter_thebhyt);
                     }
 
@@ -203,6 +205,7 @@ namespace O2S_InsuranceExpertise.GUI.MenuCongCuKhac
                         filter_thebhyt.hosobenhandate_ravien = gridViewDSBN.GetRowCellValue(i, "hosobenhandate_ravien").ToString();
                         filter_thebhyt.lastupdatedate_hsba = gridViewDSBN.GetRowCellValue(i, "lastupdatedate_hsba").ToString();
                         filter_thebhyt.lastupdatedate_bhyt = gridViewDSBN.GetRowCellValue(i, "lastupdatedate_bhyt").ToString();
+                        filter_thebhyt.usercheck = Base.SessionLogin.SessionUsercode;
 
                         lstFilter_thebhyt.Add(filter_thebhyt);
                     }

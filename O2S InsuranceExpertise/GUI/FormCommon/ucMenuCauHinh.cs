@@ -115,7 +115,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
         #endregion
 
 
-        #region Danh Muc
+        #region TAB Danh Muc
         private void navBarItemDM_DVKT_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             try
@@ -180,5 +180,60 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
         }
         #endregion
+
+        #region TAB The XML
+        private void navBarItemTheXML_XML1_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            try
+            {
+                panelControlTheFileXML.Controls.Clear();
+                GUI.MenuCauHinh.ucCauHinhTheXML_XML uchienthi = new MenuCauHinh.ucCauHinhTheXML_XML(1);
+                uchienthi.Dock = System.Windows.Forms.DockStyle.Fill;
+                panelControlTheFileXML.Controls.Add(uchienthi);
+                MyGetData("Thẻ file XML - XML1 (tổng hợp)");
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Warn(ex);
+            }
+        }
+
+        private void navBarItemTheXML_XML2_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            panelControlTheFileXML.Controls.Clear();
+            GUI.MenuCauHinh.ucCauHinhTheXML_XML uchienthi = new MenuCauHinh.ucCauHinhTheXML_XML(2);
+            uchienthi.Dock = System.Windows.Forms.DockStyle.Fill;
+            panelControlTheFileXML.Controls.Add(uchienthi);
+            MyGetData("Thẻ file XML - XML2 (thuốc)");
+        }
+
+        private void navBarItemTheXML_XML3_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            panelControlTheFileXML.Controls.Clear();
+            GUI.MenuCauHinh.ucCauHinhTheXML_XML uchienthi = new MenuCauHinh.ucCauHinhTheXML_XML(3);
+            uchienthi.Dock = System.Windows.Forms.DockStyle.Fill;
+            panelControlTheFileXML.Controls.Add(uchienthi);
+            MyGetData("Thẻ file XML - XML3 (DVKT + vật tư)");
+        }
+        private void navBarItemTheXML_XML4_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            panelControlTheFileXML.Controls.Clear();
+            GUI.MenuCauHinh.ucCauHinhTheXML_XML uchienthi = new MenuCauHinh.ucCauHinhTheXML_XML(4);
+            uchienthi.Dock = System.Windows.Forms.DockStyle.Fill;
+            panelControlTheFileXML.Controls.Add(uchienthi);
+            MyGetData("Thẻ file XML - XML4 (cận lâm sàng)");
+        }
+
+        private void navBarItemTheXML_XML5_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            panelControlTheFileXML.Controls.Clear();
+            GUI.MenuCauHinh.ucCauHinhTheXML_XML uchienthi = new MenuCauHinh.ucCauHinhTheXML_XML(5);
+            uchienthi.Dock = System.Windows.Forms.DockStyle.Fill;
+            panelControlTheFileXML.Controls.Add(uchienthi);
+            MyGetData("Thẻ file XML - XML5 (chi tiết diễn biến)");
+        }
+        #endregion
+
+
     }
 }

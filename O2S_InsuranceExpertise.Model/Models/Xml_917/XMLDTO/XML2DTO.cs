@@ -28,6 +28,5 @@ namespace O2S_InsuranceExpertise.Model.Models.Xml_917.XMLDTO
         public string MA_BENH { get; set; }
         public string NGAY_YL { get; set; }
         public string MA_PTTT { get; set; }
-
     }
 }

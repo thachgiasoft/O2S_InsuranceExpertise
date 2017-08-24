@@ -66,6 +66,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                 KiemTraEnable_ChucNang();
                 MyGetData("Giám định XML - Tổng hợp dữ liệu");
                 LoadFileXMLThuMucCauHinhSan();
+                //LoadDuLieuCanThietChoGiamDinh();
             }
             catch (Exception ex)
             {
@@ -98,8 +99,8 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                     string[] filePahts = System.IO.Directory.GetFiles(ConfigurationManager.AppSettings["DuongDanDocFileXML"].ToString(), "*.xml");
                     foreach (var item_file in filePahts)
                     {
-                        XML_HOSODTO _xmlHoSo = ConvertXMLFileToObject(item_file);
-                        this.lstXMLHoSo.Add(_xmlHoSo);
+                        List<XML_HOSODTO> _lstxmlHoSo = ConvertXMLFileToObject(item_file);
+                        this.lstXMLHoSo.AddRange(_lstxmlHoSo);
                     }
                 }
             }
@@ -108,6 +109,20 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                 Common.Logging.LogSystem.Warn(ex);
             }
         }
+        //private void LoadDuLieuCanThietChoGiamDinh()
+        //{
+        //    try
+        //    {
+        //        if (GlobalStore.lstTheFileXML1Global == null || GlobalStore.lstTheFileXML1Global.Count == 0)
+        //        {
+                   
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Common.Logging.LogSystem.Warn(ex);
+        //    }
+        //}
 
         #endregion
 
@@ -188,8 +203,8 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                     this.lstXMLHoSo = new List<XML_HOSODTO>();
                     foreach (var item_file in openFileDialogSelect.FileNames)
                     {
-                        XML_HOSODTO _xmlHoSo = ConvertXMLFileToObject(item_file);
-                        this.lstXMLHoSo.Add(_xmlHoSo);
+                        List<XML_HOSODTO> _lstXmlHoSo = ConvertXMLFileToObject(item_file);
+                        this.lstXMLHoSo.AddRange(_lstXmlHoSo);
                     }
                     SplashScreenManager.CloseForm();
                     if (this.lstXMLHoSo.Count > 0)
@@ -205,15 +220,16 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
             }
         }
 
-        private XML_HOSODTO ConvertXMLFileToObject(string filePath)
+        private List<XML_HOSODTO> ConvertXMLFileToObject(string filePath)
         {
-            XML_HOSODTO _xmlHoSo = new XML_HOSODTO();
+            List<XML_HOSODTO> lstXmlHoSo = new List<XML_HOSODTO>();
             try
             {
                 XML_GIAMDINHHS _giamDinhHS = Common.Xml.ObjectXMLSerializer<XML_GIAMDINHHS>.Load(filePath);
 
                 foreach (var item_hoso in _giamDinhHS.THONGTINHOSO.DANHSACHHOSO.HOSOs)
                 {
+                    XML_HOSODTO _xmlHoSo = new XML_HOSODTO();
                     foreach (var item_loaiHS in item_hoso.FILEHOSOs)
                     {
                         if (item_loaiHS.LOAIHOSO == "XML1")
@@ -224,7 +240,15 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                             Mapper.Initialize(cfg => cfg.CreateMap<XML1_TagDTO, XML_HOSODTO>());
                             _xmlHoSo = AutoMapper.Mapper.Map<XML1_TagDTO, XML_HOSODTO>(_xml1_TagDto);
 
-                            _xmlHoSo.NGAY_SINH_DATE = DateTime.ParseExact(_xmlHoSo.NGAY_SINH, "yyyyMMdd", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy");
+                            if (_xmlHoSo.NGAY_SINH.ToString().Length == 8)
+                            {
+                                _xmlHoSo.NGAY_SINH_DATE = DateTime.ParseExact(_xmlHoSo.NGAY_SINH, "yyyyMMdd", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy");
+                            }
+                            else
+                            {
+                                _xmlHoSo.NGAY_SINH_DATE = _xmlHoSo.NGAY_SINH;
+                            }
+
                             switch (_xmlHoSo.GIOI_TINH)
                             {
                                 case 1:
@@ -236,8 +260,8 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                                 default:
                                     break;
                             }
-                            _xmlHoSo.GT_THE_TU_DATE = DateTime.ParseExact(_xmlHoSo.GT_THE_TU, "yyyyMMdd", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy");
-                            _xmlHoSo.GT_THE_DEN_DATE = DateTime.ParseExact(_xmlHoSo.GT_THE_DEN, "yyyyMMdd", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy");
+                            _xmlHoSo.GT_THE_TU_DATE = DateTime.ParseExact(_xmlHoSo.GT_THE_TU.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy");
+                            _xmlHoSo.GT_THE_DEN_DATE = DateTime.ParseExact(_xmlHoSo.GT_THE_DEN.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy");
                             switch (_xmlHoSo.MA_LYDO_VVIEN)
                             {
                                 case 1:
@@ -281,8 +305,8 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                                 default:
                                     break;
                             }
-                            _xmlHoSo.NGAY_VAO_DATE = DateTime.ParseExact(_xmlHoSo.NGAY_VAO, "yyyyMMddHHmm", CultureInfo.InvariantCulture).ToString("HH:mm dd/MM/yyyy");
-                            _xmlHoSo.NGAY_RA_DATE = DateTime.ParseExact(_xmlHoSo.NGAY_RA, "yyyyMMddHHmm", CultureInfo.InvariantCulture).ToString("HH:mm dd/MM/yyyy");
+                            _xmlHoSo.NGAY_VAO_DATE = DateTime.ParseExact(_xmlHoSo.NGAY_VAO.ToString(), "yyyyMMddHHmm", CultureInfo.InvariantCulture).ToString("HH:mm dd/MM/yyyy");
+                            _xmlHoSo.NGAY_RA_DATE = DateTime.ParseExact(_xmlHoSo.NGAY_RA.ToString(), "yyyyMMddHHmm", CultureInfo.InvariantCulture).ToString("HH:mm dd/MM/yyyy");
                             switch (_xmlHoSo.KET_QUA_DTRI)
                             {
                                 case "1":
@@ -363,13 +387,15 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                             //TODO
                         }
                     }
+                    _xmlHoSo.filePath = filePath;
+                    lstXmlHoSo.Add(_xmlHoSo);
                 }
             }
             catch (Exception ex)
             {
                 Common.Logging.LogSystem.Error(ex);
             }
-            return _xmlHoSo;
+            return lstXmlHoSo;
         }
         #endregion
 
@@ -382,21 +408,38 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                 {
                     //GridView view = sender as GridView;
                     e.Menu.Items.Clear();
+                    DXMenuItem itemKiemHoSo = new DXMenuItem("Kiểm tra hồ sơ"); // caption menu
+                    itemKiemHoSo.Image = imageCollectionDSBN.Images[0]; // icon cho menu
+                    itemKiemHoSo.Click += new EventHandler(KiemTraMotHoSo_Click);// thêm sự kiện click
+                    e.Menu.Items.Add(itemKiemHoSo);
+
                     DXMenuItem itemKiemTraDaChon = new DXMenuItem("Kiểm tra hồ sơ đã chọn"); // caption menu
-                    itemKiemTraDaChon.Image = imageCollectionDSBN.Images[0]; // icon cho menu
+                    itemKiemTraDaChon.Image = imageCollectionDSBN.Images[1]; // icon cho menu
                     itemKiemTraDaChon.Click += new EventHandler(KiemTraDaChon_Click);// thêm sự kiện click
                     e.Menu.Items.Add(itemKiemTraDaChon);
+                    itemKiemTraDaChon.BeginGroup = true;
 
                     DXMenuItem itemKiemTraTatCa = new DXMenuItem("Kiểm tra tất cả hồ sơ"); // caption menu
-                    itemKiemTraTatCa.Image = imageCollectionDSBN.Images[1]; // icon cho menu
+                    itemKiemTraTatCa.Image = imageCollectionDSBN.Images[2]; // icon cho menu
                     itemKiemTraTatCa.Click += new EventHandler(KiemTraTatCa_Click);// thêm sự kiện click
                     e.Menu.Items.Add(itemKiemTraTatCa);
-                    itemKiemTraTatCa.BeginGroup = true;
                 }
             }
             catch (Exception ex)
             {
                 Common.Logging.LogSystem.Warn(ex);
+            }
+        }
+        //Kiem tra 01 ho so thi hien thi Check loi luon
+        private void KiemTraMotHoSo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CheckThongTuyenMotRow();
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Error(ex);
             }
         }
         private void KiemTraDaChon_Click(object sender, EventArgs e)

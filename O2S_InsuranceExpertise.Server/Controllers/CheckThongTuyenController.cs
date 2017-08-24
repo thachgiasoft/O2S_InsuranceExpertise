@@ -25,11 +25,12 @@ namespace O2S_InsuranceExpertise.Server.Controllers
         {
             try
             {
+                //Lay thong tin                
+                LayThongTinChoPortal laythongtin = new LayThongTinChoPortal();
+                laythongtin.GetTaiKhoanvaTokenPortal();
+
                 List<KetQuaCheckThongTuyen_ExtendDTO> results = new List<KetQuaCheckThongTuyen_ExtendDTO>();
                 CheckThongTuyenProcess checkthongtuyen = new CheckThongTuyenProcess();
-                //Lay thong tin
-                checkthongtuyen.LayThongTinVeTaiKhoan_CongBHYT();
-                checkthongtuyen.LayToken_CongBHYT();
                 results = checkthongtuyen.LayDSHosobenhanDaCheckThongTuyen(filter);
                 var response = request.CreateResponse(HttpStatusCode.OK, results);
                 return response;
@@ -47,11 +48,12 @@ namespace O2S_InsuranceExpertise.Server.Controllers
         {
             try
             {
+                //Lay thong tin                
+                LayThongTinChoPortal laythongtin = new LayThongTinChoPortal();
+                laythongtin.GetTaiKhoanvaTokenPortal();
+
                 List<KetQuaCheckThongTuyen_ExtendDTO> results = new List<KetQuaCheckThongTuyen_ExtendDTO>();
                 CheckThongTuyenProcess checkthongtuyen = new CheckThongTuyenProcess();
-                //Lay thong tin
-                checkthongtuyen.LayThongTinVeTaiKhoan_CongBHYT();
-                checkthongtuyen.LayToken_CongBHYT();
                 int stt_dem = 1;
                 foreach (var item in _lstFilter_thebhyt)
                 {
@@ -69,8 +71,8 @@ namespace O2S_InsuranceExpertise.Server.Controllers
                     form_data.token = GlobalStore.tokenSession.APIKey.access_token;
                     form_data.id_token = GlobalStore.tokenSession.APIKey.id_token;
                     KetQuaCheckThongTuyen_ExtendDTO ketquaCheck = new KetQuaCheckThongTuyen_ExtendDTO();
-                    
-                    
+
+
                     ketquaCheck = checkthongtuyen.CheckTungTheBHYT_CongBHYT(form_data);
 
                     //Lay du lieu de luu lai DB Log
@@ -106,6 +108,7 @@ namespace O2S_InsuranceExpertise.Server.Controllers
                     }
                     ketquaCheck.lastupdatedate_hsba = item.lastupdatedate_hsba;
                     ketquaCheck.lastupdatedate_bhyt = item.lastupdatedate_bhyt;
+                    ketquaCheck.usercheck = item.usercheck;
 
                     results.Add(ketquaCheck);
 
@@ -131,13 +134,13 @@ namespace O2S_InsuranceExpertise.Server.Controllers
         {
             try
             {
-                KetQuaCheckThongTuyen_ExtendDTO results = new KetQuaCheckThongTuyen_ExtendDTO();
+                //Lay thong tin                
+                LayThongTinChoPortal laythongtin = new LayThongTinChoPortal();
+                laythongtin.GetTaiKhoanvaTokenPortal();
 
+                KetQuaCheckThongTuyen_ExtendDTO results = new KetQuaCheckThongTuyen_ExtendDTO();
                 CheckThongTuyenDebugProcess checkthongtuyen = new CheckThongTuyenDebugProcess();
                 CheckThongTuyenProcess checkthongtuyen_token = new CheckThongTuyenProcess();
-                //Lay thong tin
-                checkthongtuyen_token.LayThongTinVeTaiKhoan_CongBHYT();
-                checkthongtuyen_token.LayToken_CongBHYT();
 
                 //Goi len cong BHYT de check tung the
                 TheBHYTCheckThongTuyenDTO form_data = new TheBHYTCheckThongTuyenDTO();

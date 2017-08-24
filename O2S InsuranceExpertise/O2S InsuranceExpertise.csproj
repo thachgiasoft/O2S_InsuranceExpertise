@@ -245,6 +245,12 @@
     <Compile Include="GUI\FormCommon\ucMenuGiamDinhXML.Designer.cs">
       <DependentUpon>ucMenuGiamDinhXML.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\MenuCauHinh\ucCauHinhTheXML_XML.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\MenuCauHinh\ucCauHinhTheXML_XML.Designer.cs">
+      <DependentUpon>ucCauHinhTheXML_XML.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\MenuCauHinh\ucCauHinhDM_VatTu.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -284,6 +290,24 @@
     </Compile>
     <Compile Include="GUI\FormCommon\frmChonChucNang.Designer.cs">
       <DependentUpon>frmChonChucNang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MenuGiamDinhXML\ucKiemTraGiaDinh_ChiTiet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\MenuGiamDinhXML\ucKiemTraGiaDinh_ChiTiet.Designer.cs">
+      <DependentUpon>ucKiemTraGiaDinh_ChiTiet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MenuGiamDinhXML\ucKiemTraGiaDinh_ChiTietPartial.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\MenuGiamDinhXML\ucKiemTraGiamDinh.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\MenuGiamDinhXML\ucKiemTraGiamDinh.Designer.cs">
+      <DependentUpon>ucKiemTraGiamDinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MenuGiamDinhXML\ucMenuGiamDinhXMLPatial.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GUI\MenuTrangChu\ChucNangKhac\frmTaoTemplateWord.cs">
       <SubType>Form</SubType>
@@ -487,6 +511,9 @@
     <EmbeddedResource Include="GUI\FormCommon\ucMenuGiamDinhXML.resx">
       <DependentUpon>ucMenuGiamDinhXML.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\MenuCauHinh\ucCauHinhTheXML_XML.resx">
+      <DependentUpon>ucCauHinhTheXML_XML.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\MenuCauHinh\ucCauHinhDM_VatTu.resx">
       <DependentUpon>ucCauHinhDM_VatTu.cs</DependentUpon>
     </EmbeddedResource>
@@ -504,6 +531,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\FormCommon\frmChonChucNang.resx">
       <DependentUpon>frmChonChucNang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\MenuGiamDinhXML\ucKiemTraGiaDinh_ChiTiet.resx">
+      <DependentUpon>ucKiemTraGiaDinh_ChiTiet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\MenuGiamDinhXML\ucKiemTraGiamDinh.resx">
+      <DependentUpon>ucKiemTraGiamDinh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\MenuTrangChu\ChucNangKhac\frmTaoTemplateWord.resx">
       <DependentUpon>frmTaoTemplateWord.cs</DependentUpon>
@@ -697,9 +730,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="GUI\MenuGiamDinhXML\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>

@@ -1,10 +1,10 @@
-﻿---bao cao Dang ky the BHYT ngay 16/8
+﻿---bao cao Dang ky the BHYT ngay 24/8
 --Nội trú
 
 --them stt_bhyt,
 --sua cot Ket qua tra ve tren cong bhyt
 --them cot doi tuong BN
-
+--ngay 24/8 them cot ngay check cong bhyt
 
 SELECT row_number () over (order by "+orderby+") as stt,
 	hsba.patientid, 
@@ -37,7 +37,8 @@ SELECT row_number () over (order by "+orderby+") as stt,
 	(case when hsba.hosobenhandate_ravien<>'0001-01-01 00:00:00' then hsba.hosobenhandate_ravien end) as hosobenhandate_ravien,
 	log.logtime,
 	(log.loguser || ' - ' || ndk.username )as nguoidangky,	
-	(select ibc.bhytchecknote from dblink('myconn_ie','SELECT bhytcheckid,bhytid,bhytchecknote FROM ie_bhyt_check') AS ibc(bhytcheckid integer,bhytid integer,bhytchecknote text) where ibc.bhytid=bh.bhytid order by ibc.bhytcheckid desc limit 1) as bhytchecknote,
+	(select ibc.bhytchecknote from dblink('myconn_ie','SELECT bhytcheckid,bhytid,bhytchecknote FROM ie_bhyt_check " + tieuchi_ie_bhyt_check + "') AS ibc(bhytcheckid integer,bhytid integer,bhytchecknote text) where ibc.bhytid=bh.bhytid order by ibc.bhytcheckid desc limit 1) as bhytchecknote,
+	(select ibc.bhytchecksdate from dblink('myconn_ie','SELECT bhytcheckid,bhytid,bhytchecksdate FROM ie_bhyt_check " + tieuchi_ie_bhyt_check + "') AS ibc(bhytcheckid integer,bhytid integer,bhytchecksdate timestamp without time zone) where ibc.bhytid=bh.bhytid order by ibc.bhytcheckid desc limit 1) as bhytchecksdate,
 	'' as nguoihuydangky,
 	log.logeventcontent
 FROM (select hosobenhanid,patientid,patientname,hosobenhandate,hosobenhandate_ravien,sovaovien from hosobenhan "+tieuchi_hsba+") hsba 

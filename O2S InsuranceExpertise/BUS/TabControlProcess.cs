@@ -100,6 +100,39 @@ namespace O2S_InsuranceExpertise.BUS
         }
 
         /// <summary>
+        /// Tạo thêm tab mới từ Tab cũ (Refresh lại tab cũ)
+        /// </summary>
+        /// <param name="tabControl">Xóa tab hiện tại đi và thêm tab mới</param>
+        /// <param name="name">Tên tabpage mới</param>
+        internal static void TabCreatingRefresh(XtraTabControl tabControl, string name, string text, string tooltip, UserControl uc)
+        {
+            try
+            {
+                if (tabControl.Visible == false)
+                {
+                    tabControl.Visible = true;
+                }
+                int index = KiemTraTabpageTonTai(tabControl, name);
+                if (index >= 0)
+                {
+                    tabControl.TabPages.Remove(tabControl.TabPages[index]);
+                }
+                KiemTraGioiHanSLTabpage(tabControl);
+                XtraTabPage tabpage = new XtraTabPage { Text = text, Name = name, Tooltip = tooltip };
+                tabControl.TabPages.Add(tabpage);
+                tabControl.SelectedTabPage = tabpage;
+
+                uc.Parent = tabpage;
+                uc.Show();
+                uc.Dock = DockStyle.Fill;
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Warn(ex);
+            }
+        }
+
+        /// <summary>
         /// Kiểm tra tabpage có tồn tại hay không
         /// </summary>
         /// <param name="tabControlName">Tên TabControl để kiểm tra</param>

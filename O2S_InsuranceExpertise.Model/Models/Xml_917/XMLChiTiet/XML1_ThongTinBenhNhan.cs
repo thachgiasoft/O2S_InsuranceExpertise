@@ -21,7 +21,7 @@ namespace O2S_InsuranceExpertise.Model.Models.Xml_917.XMLChiTiet
         [XmlElement(Order = 5)]
         public string NGAY_SINH { get; set; }
         [XmlElement(Order = 6)]
-        public string GIOI_TINH { get; set; }
+        public int? GIOI_TINH { get; set; }
         [XmlElement(Order = 7)]
         public string DIA_CHI { get; set; }
         [XmlElement(Order = 8)]
@@ -29,9 +29,9 @@ namespace O2S_InsuranceExpertise.Model.Models.Xml_917.XMLChiTiet
         [XmlElement(Order = 9)]
         public string MA_DKBD { get; set; }
         [XmlElement(Order = 10)]
-        public string GT_THE_TU { get; set; }
+        public long GT_THE_TU { get; set; }
         [XmlElement(Order = 11)]
-        public string GT_THE_DEN { get; set; }
+        public long GT_THE_DEN { get; set; }
         [XmlElement(Order = 12)]
         public string TEN_BENH { get; set; }
         [XmlElement(Order = 13)]
@@ -39,17 +39,17 @@ namespace O2S_InsuranceExpertise.Model.Models.Xml_917.XMLChiTiet
         [XmlElement(Order = 14)]
         public string MA_BENHKHAC { get; set; }
         [XmlElement(Order = 15)]
-        public string MA_LYDO_VVIEN { get; set; }
+        public int? MA_LYDO_VVIEN { get; set; }
         [XmlElement(Order = 16)]
         public string MA_NOI_CHUYEN { get; set; }
         [XmlElement(Order = 17)]
         public string MA_TAI_NAN { get; set; }
         [XmlElement(Order = 18)]
-        public string NGAY_VAO { get; set; }
+        public long NGAY_VAO { get; set; }
         [XmlElement(Order = 19)]
-        public string NGAY_RA { get; set; }
+        public long NGAY_RA { get; set; }
         [XmlElement(Order = 20)]
-        public string SO_NGAY_DTRI { get; set; }
+        public decimal? SO_NGAY_DTRI { get; set; }
         [XmlElement(Order = 21)]
         public string KET_QUA_DTRI { get; set; }
         [XmlElement(Order = 22)]
@@ -73,15 +73,15 @@ namespace O2S_InsuranceExpertise.Model.Models.Xml_917.XMLChiTiet
         [XmlElement(Order = 31)]
         public decimal? T_NGOAIDS { get; set; }
         [XmlElement(Order = 32)]
-        public string NAM_QT { get; set; }
+        public int? NAM_QT { get; set; }
         [XmlElement(Order = 33)]
-        public string THANG_QT { get; set; }
+        public int? THANG_QT { get; set; }
         [XmlElement(Order = 34)]
-        public string MA_LOAI_KCB { get; set; }
+        public int? MA_LOAI_KCB { get; set; }
         [XmlElement(Order = 35)]
         public string MA_KHOA { get; set; }
         [XmlElement(Order = 36)]
-        public string MA_CSKCB { get; set; }
+        public int? MA_CSKCB { get; set; }
         [XmlElement(Order = 37)]
         public string MA_KHUVUC { get; set; }
         [XmlElement(Order = 38)]

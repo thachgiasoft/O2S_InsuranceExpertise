@@ -40,7 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\ApiTokenDTO.cs" />
+    <Compile Include="Models\GiamDinh\GiamDinhLoiDTO.cs" />
+    <Compile Include="Models\GiamDinh\TieuChiGiamDinhLoi_XML1DTO.cs" />
+    <Compile Include="Models\GiamDinh\TieuChiGiamDinhLoi_DVKTDTO.cs" />
+    <Compile Include="Models\PortalBHYT\ApiTokenDTO.cs" />
+    <Compile Include="Models\GiamDinh\GiamDinhLoi_DVKTDTO.cs" />
+    <Compile Include="Models\GiamDinh\GiamDinhLoi_XML1DTO.cs" />
+    <Compile Include="Models\PortalBHYT\NhanChiTietLoiHoSoPortalDTO.cs" />
     <Compile Include="Models\DanhMucDichVu_VatTuDTO.cs" />
     <Compile Include="Models\DanhMucDichVu_ThuocDTO.cs" />
     <Compile Include="Models\DanhMucDichVu_GiuongDTO.cs" />
@@ -49,15 +55,22 @@
     <Compile Include="Models\FilterDSBNThuCongDTO.cs" />
     <Compile Include="Models\IEBhytCheckDTO.cs" />
     <Compile Include="Models\KetQuaCheckThongTuyen_ExtendDTO.cs" />
-    <Compile Include="Models\LichSuKCBDTO.cs" />
+    <Compile Include="Models\PortalBHYT\KQGuiHoSoGiamDinhPortalDTO.cs" />
+    <Compile Include="Models\PortalBHYT\LichSuKCBDTO.cs" />
     <Compile Include="Models\LichSuKCB_ThuCongDTO.cs" />
-    <Compile Include="Models\KetQuaCheckThongTuyenDTO.cs" />
+    <Compile Include="Models\PortalBHYT\KetQuaCheckThongTuyenDTO.cs" />
     <Compile Include="Models\reportExcelDTO.cs" />
     <Compile Include="Models\TheBHYTCheckThongTuyen_ThuCongDTO.cs" />
-    <Compile Include="Models\TheBHYTCheckThongTuyenDTO.cs" />
+    <Compile Include="Models\PortalBHYT\TheBHYTCheckThongTuyenDTO.cs" />
+    <Compile Include="Models\TheFileXMLDTO.cs" />
     <Compile Include="Models\TieuChiCheckThongTuyenDTO.cs" />
-    <Compile Include="Models\TieuChiCheck_ThuCongDTO.cs" />
-    <Compile Include="Models\TokenDTO.cs" />
+    <Compile Include="Models\TinhMucHuongBHYTDTO.cs" />
+    <Compile Include="Models\PortalBHYT\TokenDTO.cs" />
+    <Compile Include="Models\HoSo_CheckLoiDTO.cs" />
+    <Compile Include="Models\Xml_917\XMLDTO\XML1PlusDTO.cs" />
+    <Compile Include="Models\Xml_917\XMLDTO\XML2PlusDTO.cs" />
+    <Compile Include="Models\Xml_917\XMLDTO\XML3PlusDTO.cs" />
+    <Compile Include="Models\Xml_917\XMLDTO\XML4PlusDTO.cs" />
     <Compile Include="Models\Xml_917\XMLTag\XML2_TagDTO.cs" />
     <Compile Include="Models\Xml_917\XMLTag\XML1_TagDTO.cs" />
     <Compile Include="Models\Xml_917\XMLTag\XML4_TagDTO.cs" />

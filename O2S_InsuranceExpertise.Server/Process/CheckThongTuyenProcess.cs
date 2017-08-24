@@ -17,70 +17,10 @@ namespace O2S_InsuranceExpertise.Server.Process
     {
         #region Khai bao
         Base.ConnectDatabase condb = new Base.ConnectDatabase();
-        static HttpClient client = new HttpClient();
         private HttpClient client_1 = new HttpClient();
         //private bool _checknamsinh { get; set; }
 
 
-
-        #endregion
-
-        #region Lay thong tin phuc vu check API cong BHYT
-        internal void LayThongTinVeTaiKhoan_CongBHYT()
-        {
-            try
-            {
-                if (GlobalStore.UserName_GDBHYT == null)
-                {
-                    string sql_getThongTin = "select usergdbhyt,passgdbhyt,urlfullserver from ie_config where configtype=1;";
-                    DataTable dataTaiKhoan = condb.GetDataTable_HSBA(sql_getThongTin);
-                    if (dataTaiKhoan != null && dataTaiKhoan.Rows.Count > 0)
-                    {
-                        GlobalStore.UserName_GDBHYT = dataTaiKhoan.Rows[0]["usergdbhyt"].ToString();
-                        GlobalStore.Password_GDBHYT = dataTaiKhoan.Rows[0]["passgdbhyt"].ToString();
-                        GlobalStore.Password_GDBHYT_MD5 = Common.EncryptAndDecrypt.EncryptAndDecrypt.CalculateMD5Hash(GlobalStore.Password_GDBHYT);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Common.Logging.LogSystem.Error("Loi lay thong tin tai khoan tu DB Giam dinh " + ex.ToString());
-            }
-        }
-        internal void LayToken_CongBHYT()
-        {
-            try
-            {
-                //if (GlobalStore.tokenSession == null)
-                //{
-                client = new HttpClient();
-                client.BaseAddress = new Uri("http://egw.baohiemxahoi.gov.vn/");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                string username = GlobalStore.UserName_GDBHYT;
-                string password = GlobalStore.Password_GDBHYT_MD5;
-                //HTTP POST
-                ApiTokenDTO input = new ApiTokenDTO { username = username, password = password };
-                var values = new Dictionary<string, string>
-                {
-                    { "username",username},
-                    { "password",password}
-                };
-                var content = new FormUrlEncodedContent(values);
-                HttpResponseMessage response = client.PostAsync("api/token/take", content).Result;
-
-                GlobalStore.tokenSession = new TokenDTO();
-                if (response.IsSuccessStatusCode)
-                {
-                    GlobalStore.tokenSession = response.Content.ReadAsAsync<TokenDTO>().Result;
-                }
-                //}
-            }
-            catch (Exception ex)
-            {
-                Common.Logging.LogSystem.Error("Loi lay token tu cong BHYT " + ex.ToString());
-            }
-        }
         #endregion
 
         internal List<KetQuaCheckThongTuyen_ExtendDTO> LayDSHosobenhanDaCheckThongTuyen(TieuChiCheckThongTuyenDTO filter)
@@ -151,6 +91,8 @@ namespace O2S_InsuranceExpertise.Server.Process
                         lichsuKCB.hosobenhandate_ravien = dataTheChuaCheck.Rows[i]["hosobenhandate_ravien"].ToString();
                         lichsuKCB.lastupdatedate_hsba = dataTheChuaCheck.Rows[i]["lastupdatedate_hsba"].ToString();
                         lichsuKCB.lastupdatedate_bhyt = dataTheChuaCheck.Rows[i]["lastupdatedate_bhyt"].ToString();
+                        lichsuKCB.usercheck = filter.usercheck;
+
                         results.Add(lichsuKCB);
 
                         //Lưu lại lịch sử Check thông tuyến lên DB Giám định
@@ -468,7 +410,7 @@ namespace O2S_InsuranceExpertise.Server.Process
                 //string lastupdatedate_hsba = DateTime.ParseExact(datalichsuKCB.lastupdatedate_hsba.ToString(), "d/M/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd HH:mm:ss");
                 //string lastupdatedate_bhyt = DateTime.ParseExact(datalichsuKCB.lastupdatedate_bhyt.ToString(), "d/M/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd HH:mm:ss");
 
-                string sql_insert = "INSERT INTO ie_bhyt_check(bhytid, hosobenhanid, vienphiid, patientid, patientname, birthday, birthday_year, gioitinhcode, gioitinhname, bhytcode, macskcbbd, bhytdate, bhytfromdate, bhytutildate, bhyt_loaiid, noisinhsong, du5nam6thangluongcoban, dtcbh_luyke6thang, bhytcheckstatus, bhytchecksdate, departmentgroupid, departmentid, hosobenhandate, hosobenhandate_ravien, lastupdatedate_hsba, lastupdatedate_bhyt, bhytchecknote) VALUES ('" + datalichsuKCB.bhytid + "', '" + datalichsuKCB.hosobenhanid + "', '" + datalichsuKCB.vienphiid + "', '" + datalichsuKCB.patientid + "', '" + datalichsuKCB.patientname + "', '" + birthday + "', '" + datalichsuKCB.birthday_year + "', '" + datalichsuKCB.gioitinhcode + "', '" + datalichsuKCB.gioitinhname + "', '" + datalichsuKCB.bhytcode + "', '" + datalichsuKCB.macskcbbd + "', '" + datalichsuKCB.bhytdate + "', '" + bhytfromdate + "', '" + bhytutildate + "', '" + datalichsuKCB.bhyt_loaiid + "', '" + datalichsuKCB.noisinhsong + "', '" + datalichsuKCB.du5nam6thangluongcoban + "', '" + datalichsuKCB.dtcbh_luyke6thang + "', '" + datalichsuKCB.bhytcheckstatus + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + datalichsuKCB.departmentgroupid + "', '" + datalichsuKCB.departmentid + "', '" + datalichsuKCB.hosobenhandate + "', '" + datalichsuKCB.hosobenhandate_ravien + "', '" + datalichsuKCB.lastupdatedate_hsba + "', '" + datalichsuKCB.lastupdatedate_bhyt + "', '" + datalichsuKCB.tenKetQua + "') ; ";
+                string sql_insert = "INSERT INTO ie_bhyt_check(bhytid, hosobenhanid, vienphiid, patientid, patientname, birthday, birthday_year, gioitinhcode, gioitinhname, bhytcode, macskcbbd, bhytdate, bhytfromdate, bhytutildate, bhyt_loaiid, noisinhsong, du5nam6thangluongcoban, dtcbh_luyke6thang, bhytcheckstatus, bhytchecksdate, departmentgroupid, departmentid, hosobenhandate, hosobenhandate_ravien, lastupdatedate_hsba, lastupdatedate_bhyt, bhytchecknote,usercheck) VALUES ('" + datalichsuKCB.bhytid + "', '" + datalichsuKCB.hosobenhanid + "', '" + datalichsuKCB.vienphiid + "', '" + datalichsuKCB.patientid + "', '" + datalichsuKCB.patientname + "', '" + birthday + "', '" + datalichsuKCB.birthday_year + "', '" + datalichsuKCB.gioitinhcode + "', '" + datalichsuKCB.gioitinhname + "', '" + datalichsuKCB.bhytcode + "', '" + datalichsuKCB.macskcbbd + "', '" + datalichsuKCB.bhytdate + "', '" + bhytfromdate + "', '" + bhytutildate + "', '" + datalichsuKCB.bhyt_loaiid + "', '" + datalichsuKCB.noisinhsong + "', '" + datalichsuKCB.du5nam6thangluongcoban + "', '" + datalichsuKCB.dtcbh_luyke6thang + "', '" + datalichsuKCB.bhytcheckstatus + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + datalichsuKCB.departmentgroupid + "', '" + datalichsuKCB.departmentid + "', '" + datalichsuKCB.hosobenhandate + "', '" + datalichsuKCB.hosobenhandate_ravien + "', '" + datalichsuKCB.lastupdatedate_hsba + "', '" + datalichsuKCB.lastupdatedate_bhyt + "', '" + datalichsuKCB.tenKetQua + "','" + datalichsuKCB.usercheck + "') ; ";
 
                 string sql_updateBHYTstt = "UPDATE bhyt SET bhytcheckstatus='" + datalichsuKCB.bhytcheckstatus + "' where bhytid=" + datalichsuKCB.bhytid + "; ";
                 string sql_updateHSBAstt = "UPDATE hosobenhan SET bhytcheckstatus='" + datalichsuKCB.bhytcheckstatus + "' where hosobenhanid=" + datalichsuKCB.hosobenhanid + ";";
@@ -478,15 +420,18 @@ namespace O2S_InsuranceExpertise.Server.Process
                 condb.ExecuteNonQuery_HIS(sql_updateHSBAstt);
 
                 //Luu lai Lich su Kham Chua Benh da check
-                string sql_insertLSKCB = "";
-                foreach (var item_ls in datalichsuKCB.dsLichSuKCB)
+                if (datalichsuKCB.dsLichSuKCB != null && datalichsuKCB.dsLichSuKCB.Count > 0)
                 {
-                    string ngayvaovien = DateTime.ParseExact(item_ls.tuNgay.ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd HH:mm:ss");
-                    string ngayravien = DateTime.ParseExact(item_ls.denNgay.ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd HH:mm:ss");
+                    string sql_insertLSKCB = "";
+                    foreach (var item_ls in datalichsuKCB.dsLichSuKCB)
+                    {
+                        string ngayvaovien = DateTime.ParseExact(item_ls.tuNgay.ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd HH:mm:ss");
+                        string ngayravien = DateTime.ParseExact(item_ls.denNgay.ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd HH:mm:ss");
 
-                    sql_insertLSKCB += "INSERT INTO ie_lichsukcb_check(patientid, patientname, mahoso, macskcb, tencskcb, ngayvaovien, ngayravien, tenbenh, tinhtrangcode, tinhtrangten, kqdieutricode, kqdieutri_ten, bhytchecksdate)VALUES ('" + datalichsuKCB.patientid + "', '" + datalichsuKCB.patientname + "', '" + item_ls.maHoSo + "', '" + item_ls.maCSKCB + "', '', '" + ngayvaovien + "', '" + ngayravien + "', '" + item_ls.tenBenh + "', '" + item_ls.tinhTrang + "', '" + item_ls.tinhTrang_Ten + "', '" + item_ls.kqDieuTri + "', '" + item_ls.kqDieuTri_Ten + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'); ";
+                        sql_insertLSKCB += "INSERT INTO ie_lichsukcb_check(patientid, patientname, mahoso, macskcb, tencskcb, ngayvaovien, ngayravien, tenbenh, tinhtrangcode, tinhtrangten, kqdieutricode, kqdieutri_ten, bhytchecksdate)VALUES ('" + datalichsuKCB.patientid + "', '" + datalichsuKCB.patientname + "', '" + item_ls.maHoSo + "', '" + item_ls.maCSKCB + "', '', '" + ngayvaovien + "', '" + ngayravien + "', '" + item_ls.tenBenh + "', '" + item_ls.tinhTrang + "', '" + item_ls.tinhTrang_Ten + "', '" + item_ls.kqDieuTri + "', '" + item_ls.kqDieuTri_Ten + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'); ";
+                    }
+                    condb.ExecuteNonQuery_HSBA(sql_insertLSKCB);
                 }
-                condb.ExecuteNonQuery_HSBA(sql_insertLSKCB);
             }
             catch (Exception ex)
             {

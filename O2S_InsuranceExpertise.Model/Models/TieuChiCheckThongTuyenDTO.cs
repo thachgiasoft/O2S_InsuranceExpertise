@@ -10,5 +10,6 @@ namespace O2S_InsuranceExpertise.Model.Models
         public DateTime tuNgay { get; set; }
         public DateTime denNgay { get; set; }
         public long departmentgroupid { get; set; }
+        public string usercheck { get; set; }
     }
 }
