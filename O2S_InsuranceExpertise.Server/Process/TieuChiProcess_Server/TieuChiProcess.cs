@@ -22,7 +22,8 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                 List<GiamDinhLoi_XML1DTO> lstLoi_XML1 = new List<GiamDinhLoi_XML1DTO>();
                 List<GiamDinhLoi_DVKTDTO> lstLoi_DVKT = new List<GiamDinhLoi_DVKTDTO>();
                 TieuChiProcess_XML1 process_xml1 = new TieuChiProcess_XML1();
-                TieuChiProcess_DVKT process_dvkt = new TieuChiProcess_DVKT();
+                TieuChiProcess_XML2 process_thuoc = new TieuChiProcess_XML2();
+                TieuChiProcess_XML3 process_dvkt = new TieuChiProcess_XML3();
 
                 //XMl1
                 foreach (var item_xml1 in GlobalStore.lstTheFileXML1Global)
@@ -40,7 +41,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                 _checkThongTuyenFilter.gioiTinh = _XMLHoSo_KiemTra.GIOI_TINH ?? 1;
                 _checkThongTuyenFilter.ngayBD = _XMLHoSo_KiemTra.GT_THE_TU_DATE;//DD/MM/YYYY
                 _checkThongTuyenFilter.ngayKT = _XMLHoSo_KiemTra.GT_THE_DEN_DATE;
-                _checkThongTuyenFilter.maCSKCB = _XMLHoSo_KiemTra.MA_THE;
+                _checkThongTuyenFilter.maCSKCB = _XMLHoSo_KiemTra.MA_DKBD;
 
                 TieuChiGiamDinhLoi_XML1DTO _ketquaThongtuyen = process_xml1.TCGop8_KiemTraThongTuyen(_checkThongTuyenFilter);
 
@@ -318,7 +319,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                 //XML2,3 _ Dich vu ky thuat = Thuoc
                 foreach (var item_xml2 in _XMLHoSo_KiemTra.lstXML2)
                 {
-                    GiamDinhLoi_DVKTDTO _gdloithuoc = process_dvkt.GiamDinhLoi_XML2(item_xml2);
+                    GiamDinhLoi_DVKTDTO _gdloithuoc = process_thuoc.GiamDinhLoi_XML2(item_xml2);
                     lstLoi_DVKT.Add(_gdloithuoc);
                 }
                 foreach (var item_xml3 in _XMLHoSo_KiemTra.lstXML3)
@@ -331,6 +332,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                 result.lstGiamDinhLoiXML1 = new List<GiamDinhLoi_XML1DTO>();
                 result.lstGiamDinhLoiXML1 = lstLoi_XML1;
                 result.lstGiamDinhLoiDVKT = new List<GiamDinhLoi_DVKTDTO>();
+                //lstLoi_DVKT = lstLoi_DVKT.OrderBy(o=>o.MA_NHOM).ToList();
                 result.lstGiamDinhLoiDVKT = lstLoi_DVKT;
             }
             catch (Exception ex)

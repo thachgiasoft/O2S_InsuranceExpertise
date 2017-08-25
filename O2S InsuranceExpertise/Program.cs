@@ -29,7 +29,7 @@ namespace O2S_InsuranceExpertise
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Mapper.AssertConfigurationIsValid();
+               // Mapper.AssertConfigurationIsValid();
 
                 BonusSkins.Register();
                 SkinManager.EnableFormSkins();

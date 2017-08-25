@@ -37,6 +37,8 @@ namespace O2S_InsuranceExpertise.GUI.MenuGiamDinhXML
             {
                 //Giam dinh XML1
                 GoiKiemTraGiamDinh_Server();
+                //gridViewDSLoi_DVKT.Columns["TEN_NHOM"].SortOrder = DevExpress.Data.ColumnSortOrder.None;
+                //gridViewDSLoi_DVKT.Columns["MA_NHOM"].SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
             }
             catch (Exception ex)
             {
@@ -66,14 +68,17 @@ namespace O2S_InsuranceExpertise.GUI.MenuGiamDinhXML
         {
             try
             {
-                string _soloi = gridViewDSLoi_TongHop.GetRowCellValue(e.RowHandle, "LOAI_CANH_BAO").ToString();
-                if (_soloi != "")
+                if (gridViewDSLoi_TongHop.GetRowCellValue(e.RowHandle, "LOAI_CANH_BAO") != null)
                 {
-                    e.Appearance.ForeColor = Color.Red;
-                }
-                else
-                {
-                    e.Appearance.ForeColor = Color.Black;
+                    string _soloi = gridViewDSLoi_TongHop.GetRowCellValue(e.RowHandle, "LOAI_CANH_BAO").ToString();
+                    if (_soloi != "")
+                    {
+                        e.Appearance.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        e.Appearance.ForeColor = Color.Black;
+                    }
                 }
             }
             catch (Exception ex)
@@ -85,14 +90,17 @@ namespace O2S_InsuranceExpertise.GUI.MenuGiamDinhXML
         {
             try
             {
-                string _soloi = gridViewDSLoi_DVKT.GetRowCellValue(e.RowHandle, "LOAI_CANH_BAO").ToString();
-                if (_soloi != "")
+                if (gridViewDSLoi_DVKT.GetRowCellValue(e.RowHandle, "LOAI_CANH_BAO") != null)
                 {
-                    e.Appearance.ForeColor = Color.Red;
-                }
-                else
-                {
-                    e.Appearance.ForeColor = Color.Black;
+                    string _soloi = gridViewDSLoi_DVKT.GetRowCellValue(e.RowHandle, "LOAI_CANH_BAO").ToString();
+                    if (_soloi != "")
+                    {
+                        e.Appearance.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        e.Appearance.ForeColor = Color.Black;
+                    }
                 }
             }
             catch (Exception ex)

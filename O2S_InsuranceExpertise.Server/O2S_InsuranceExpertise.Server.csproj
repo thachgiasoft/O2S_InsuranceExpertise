@@ -250,8 +250,9 @@
     <Compile Include="Process\LayThongTinChoPortal.cs" />
     <Compile Include="Process\TieuChiProcess_Server\DanhSachThongBao.cs" />
     <Compile Include="Process\TieuChiProcess_Server\TieuChiProcess.cs" />
-    <Compile Include="Process\TieuChiProcess_Server\TieuChiProcess_DVKT.cs" />
+    <Compile Include="Process\TieuChiProcess_Server\TieuChiProcess_XML3.cs" />
     <Compile Include="Process\TieuChiProcess_Server\TieuChiProcess_XML1.cs" />
+    <Compile Include="Process\TieuChiProcess_Server\TieuChiProcess_XML2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ICheckThongTuyen.cs" />
   </ItemGroup>

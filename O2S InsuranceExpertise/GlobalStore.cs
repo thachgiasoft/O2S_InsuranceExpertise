@@ -16,6 +16,7 @@ namespace O2S_InsuranceExpertise
         public static TokenDTO tokenSession { get; set; }
         public static string SoYTe_String { get; set; }
         public static string TenBenhVien_String { get; set; }
+        public static List<Bang6CV9324DTO> lstBang6CV9324 { get; set; }
 
     }
 }

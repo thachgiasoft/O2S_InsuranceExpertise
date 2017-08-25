@@ -66,7 +66,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                 KiemTraEnable_ChucNang();
                 MyGetData("Giám định XML - Tổng hợp dữ liệu");
                 LoadFileXMLThuMucCauHinhSan();
-                //LoadDuLieuCanThietChoGiamDinh();
+                LoadDuLieuCanThietChoGiamDinh();
             }
             catch (Exception ex)
             {
@@ -109,20 +109,35 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                 Common.Logging.LogSystem.Warn(ex);
             }
         }
-        //private void LoadDuLieuCanThietChoGiamDinh()
-        //{
-        //    try
-        //    {
-        //        if (GlobalStore.lstTheFileXML1Global == null || GlobalStore.lstTheFileXML1Global.Count == 0)
-        //        {
-                   
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Common.Logging.LogSystem.Warn(ex);
-        //    }
-        //}
+        private void LoadDuLieuCanThietChoGiamDinh()
+        {
+            try
+            {
+                if (GlobalStore.lstBang6CV9324 == null || GlobalStore.lstBang6CV9324.Count == 0)
+                {
+                    GlobalStore.lstBang6CV9324 = new List<Model.Models.Bang6CV9324DTO>();
+                    GlobalStore.lstBang6CV9324.Add(new Model.Models.Bang6CV9324DTO { MA_NHOM = 1, TEN_NHOM = "01-Xét nghiệm" });
+                    GlobalStore.lstBang6CV9324.Add(new Model.Models.Bang6CV9324DTO { MA_NHOM = 2, TEN_NHOM = "02-Chẩn đoán hình ảnh" });
+                    GlobalStore.lstBang6CV9324.Add(new Model.Models.Bang6CV9324DTO { MA_NHOM = 3, TEN_NHOM = "03-Thăm dò chức năng" });
+                    GlobalStore.lstBang6CV9324.Add(new Model.Models.Bang6CV9324DTO { MA_NHOM = 4, TEN_NHOM = "04-Thuốc trong danh mục BHYT" });
+                    GlobalStore.lstBang6CV9324.Add(new Model.Models.Bang6CV9324DTO { MA_NHOM = 5, TEN_NHOM = "05-Thuốc điều trị ung thư, chống thải ghép ngoài danh mục" });
+                    GlobalStore.lstBang6CV9324.Add(new Model.Models.Bang6CV9324DTO { MA_NHOM = 6, TEN_NHOM = "06-Thuốc thanh toán theo tỷ lệ" });
+                    GlobalStore.lstBang6CV9324.Add(new Model.Models.Bang6CV9324DTO { MA_NHOM = 7, TEN_NHOM = "07-Máu và chế phẩm máu" });
+                    GlobalStore.lstBang6CV9324.Add(new Model.Models.Bang6CV9324DTO { MA_NHOM = 8, TEN_NHOM = "08-Thủ thuật, phẫu thuật" });
+                    GlobalStore.lstBang6CV9324.Add(new Model.Models.Bang6CV9324DTO { MA_NHOM = 9, TEN_NHOM = "09-DVKT thanh toán theo tỷ lệ" });
+                    GlobalStore.lstBang6CV9324.Add(new Model.Models.Bang6CV9324DTO { MA_NHOM = 10, TEN_NHOM = "10-Vật tư y tế trong danh mục BHYT" });
+                    GlobalStore.lstBang6CV9324.Add(new Model.Models.Bang6CV9324DTO { MA_NHOM = 11, TEN_NHOM = "11-VTYT thanh toán theo tỷ lệ" });
+                    GlobalStore.lstBang6CV9324.Add(new Model.Models.Bang6CV9324DTO { MA_NHOM = 12, TEN_NHOM = "12-Vận chuyển" });
+                    GlobalStore.lstBang6CV9324.Add(new Model.Models.Bang6CV9324DTO { MA_NHOM = 13, TEN_NHOM = "13-Khám bệnh" });
+                    GlobalStore.lstBang6CV9324.Add(new Model.Models.Bang6CV9324DTO { MA_NHOM = 14, TEN_NHOM = "14-Giường điều trị ngoại trú" });
+                    GlobalStore.lstBang6CV9324.Add(new Model.Models.Bang6CV9324DTO { MA_NHOM = 15, TEN_NHOM = "15-Giường điều trị nội trú" });
+                }
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Warn(ex);
+            }
+        }
 
         #endregion
 
@@ -367,6 +382,36 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                             //
                             _xmlHoSo.lstXML2 = new List<XML2PlusDTO>();
                             _xmlHoSo.lstXML2.AddRange(_xml2_TagDto.lstXML2);
+
+                            foreach (var item_xml2 in _xmlHoSo.lstXML2)
+                            {
+                                if (item_xml2.MA_NHOM != null && item_xml2.MA_NHOM != "")
+                                {
+                                    item_xml2.TEN_NHOM = GlobalStore.lstBang6CV9324.Where(o => o.MA_NHOM.ToString() == item_xml2.MA_NHOM).FirstOrDefault().TEN_NHOM;
+                                }
+
+                                if (item_xml2.NGAY_YL.ToString().Length == 12)
+                                {
+                                    item_xml2.NGAY_YL_DATE = DateTime.ParseExact(item_xml2.NGAY_YL, "yyyyMMddHHmm", CultureInfo.InvariantCulture).ToString("HH:mm dd/MM/yyyy");
+                                }
+
+                                if (item_xml2.MA_PTTT == "0")
+                                {
+                                    item_xml2.PTTT_TEN = "Phí dịch vụ";
+                                }
+                                else if (item_xml2.MA_PTTT == "1")
+                                {
+                                    item_xml2.PTTT_TEN = "Định suất";
+                                }
+                                else if (item_xml2.MA_PTTT == "2")
+                                {
+                                    item_xml2.PTTT_TEN = "Ngoài định suất";
+                                }
+                                else if (item_xml2.MA_PTTT == "3")
+                                {
+                                    item_xml2.PTTT_TEN = "DRG";
+                                }
+                            }
                         }
                         else if (item_loaiHS.LOAIHOSO == "XML3")
                         {
@@ -374,6 +419,36 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                             //
                             _xmlHoSo.lstXML3 = new List<XML3PlusDTO>();
                             _xmlHoSo.lstXML3.AddRange(_xml3_TagDto.lstXML3);
+
+                            foreach (var item_xml3 in _xmlHoSo.lstXML3)
+                            {
+                                if (item_xml3.MA_NHOM != null && item_xml3.MA_NHOM != "")
+                                {
+                                    item_xml3.TEN_NHOM = GlobalStore.lstBang6CV9324.Where(o => o.MA_NHOM.ToString() == item_xml3.MA_NHOM).FirstOrDefault().TEN_NHOM;
+                                }
+
+                                if (item_xml3.NGAY_YL.ToString().Length == 12)
+                                {
+                                    item_xml3.NGAY_YL_DATE = DateTime.ParseExact(item_xml3.NGAY_YL, "yyyyMMddHHmm", CultureInfo.InvariantCulture).ToString("HH:mm dd/MM/yyyy");
+                                }
+
+                                if (item_xml3.MA_PTTT == "0")
+                                {
+                                    item_xml3.PTTT_TEN = "Phí dịch vụ";
+                                }
+                                else if (item_xml3.MA_PTTT == "1")
+                                {
+                                    item_xml3.PTTT_TEN = "Định suất";
+                                }
+                                else if (item_xml3.MA_PTTT == "2")
+                                {
+                                    item_xml3.PTTT_TEN = "Ngoài định suất";
+                                }
+                                else if (item_xml3.MA_PTTT == "3")
+                                {
+                                    item_xml3.PTTT_TEN = "DRG";
+                                }
+                            }
                         }
                         else if (item_loaiHS.LOAIHOSO == "XML4")
                         {
@@ -515,7 +590,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                 //(e.View as GridView).Columns["MA_LK"].Caption = "Mã liên kết";
                 //(e.View as GridView).Columns["STT"].Caption = "STT";
                 //(e.View as GridView).Columns["MA_THUOC"].Caption = "Mã thuốc";
-                //(e.View as GridView).Columns["NHOM_TEN"].Caption = "Tên nhóm";
+                //(e.View as GridView).Columns["TEN_NHOM"].Caption = "Tên nhóm";
                 //(e.View as GridView).Columns["TEN_THUOC"].Caption = "Tên thuốc";
                 //(e.View as GridView).Columns["DON_VI_TINH"].Caption = "ĐVT";
                 //(e.View as GridView).Columns["HAM_LUONG"].Caption = "Hàm lượng";
@@ -534,7 +609,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
 
                 // (e.View as GridView).Columns["TEN_DICH_VU"].Caption = "Tên dịch vụ";
 
-                (e.View as GridView).Columns["NHOM_TEN"].Visible = false;
+                (e.View as GridView).Columns["TEN_NHOM"].Visible = false;
                 (e.View as GridView).Columns["NGAY_YL_DATE"].Visible = false;
                 (e.View as GridView).Columns["PTTT_TEN"].Visible = false;
                 //(e.View as GridView).Columns["MA_NHOM"].Visible = false;

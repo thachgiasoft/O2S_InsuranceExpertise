@@ -49,11 +49,11 @@ namespace O2S_InsuranceExpertise.Server.Process
         {
             try
             {
-                if (GlobalStore.lstDVKTBenhVienPheDuyet == null || GlobalStore.lstDVKTBenhVienPheDuyet.Count <= 0)
+                if (GlobalStore.lstBenhVienPheDuyet_DVKT == null || GlobalStore.lstBenhVienPheDuyet_DVKT.Count <= 0)
                 {
                     string sql_getdmdv = "SELECT danhmucdvktid, stt as STT, ma_dvkt, ma_ax, ten_dvkt, ten_ax, ma_gia, don_gia, gia_ax, quyet_dinh, cong_bo, ma_cosokcb, manhom_9324, hieuluc, ketqua, lydotuchoi, is_look, version FROM ie_danhmuc_dvkt;";
                     DataTable dataDMDV = condb.GetDataTable_HSBA(sql_getdmdv);
-                    GlobalStore.lstDVKTBenhVienPheDuyet = new List<Model.Models.DanhMucDichVu_DVKTDTO>();
+                    GlobalStore.lstBenhVienPheDuyet_DVKT = new List<Model.Models.DanhMucDichVu_DVKTDTO>();
                     if (dataDMDV != null && dataDMDV.Rows.Count > 0)
                     {
                         foreach (DataRow row in dataDMDV.Rows)
@@ -84,7 +84,7 @@ namespace O2S_InsuranceExpertise.Server.Process
                                 dichVu.KETQUA_ID = 1;
                             }
 
-                            GlobalStore.lstDVKTBenhVienPheDuyet.Add(dichVu);
+                            GlobalStore.lstBenhVienPheDuyet_DVKT.Add(dichVu);
                         }
                     }
                 }
@@ -99,11 +99,11 @@ namespace O2S_InsuranceExpertise.Server.Process
         {
             try
             {
-                if (GlobalStore.lstThuocBenhVienPheDuyet == null || GlobalStore.lstThuocBenhVienPheDuyet.Count <= 0)
+                if (GlobalStore.lstBenhVienPheDuyet_Thuoc == null || GlobalStore.lstBenhVienPheDuyet_Thuoc.Count <= 0)
                 {
                     string sql_getdmdv = "SELECT danhmucthuocid, stt, ma_hoat_chat, ma_ax, hoat_chat, hoatchat_ax, ma_duong_dung, ma_duongdung_ax, duong_dung, duongdung_ax, ham_luong, hamluong_ax, ten_thuoc, tenthuoc_ax, so_dang_ky, sodangky_ax, dong_goi, don_vi_tinh, don_gia, don_gia_tt, so_luong, ma_cskcb, hang_sx, nuoc_sx, nha_thau, quyet_dinh, cong_bo, ma_thuoc_bv, loai_thuoc, loai_thau, nhom_thau, manhom_9324, hieuluc_id, hieuluc, ketqua_id, ketqua, lydotuchoi, is_look FROM ie_danhmuc_thuoc;";
                     DataTable dataDMDV = condb.GetDataTable_HSBA(sql_getdmdv);
-                    GlobalStore.lstThuocBenhVienPheDuyet = new List<Model.Models.DanhMucDichVu_ThuocDTO>();
+                    GlobalStore.lstBenhVienPheDuyet_Thuoc = new List<Model.Models.DanhMucDichVu_ThuocDTO>();
                     if (dataDMDV != null && dataDMDV.Rows.Count > 0)
                     {
                         foreach (DataRow row in dataDMDV.Rows)
@@ -153,7 +153,7 @@ namespace O2S_InsuranceExpertise.Server.Process
                                 dichVu.KETQUA_ID = 1;
                             }
 
-                            GlobalStore.lstThuocBenhVienPheDuyet.Add(dichVu);
+                            GlobalStore.lstBenhVienPheDuyet_Thuoc.Add(dichVu);
                         }
                     }
                 }
@@ -168,11 +168,11 @@ namespace O2S_InsuranceExpertise.Server.Process
         {
             try
             {
-                if (GlobalStore.lstVatTuBenhVienPheDuyet == null || GlobalStore.lstVatTuBenhVienPheDuyet.Count <= 0)
+                if (GlobalStore.lstBenhVienPheDuyet_VatTu == null || GlobalStore.lstBenhVienPheDuyet_VatTu.Count <= 0)
                 {
                     string sql_getdmdv = "SELECT danhmucvattuid, stt, ma_nhom_vtyt, ma_nhom_ax, ten_nhom_vtyt, ten_nhom_ax, ma_hieu, ma_vtyt_bv, ten_vtyt_bv, quy_cach, nuoc_sx, hang_sx, don_vi_tinh, don_gia, don_gia_tt, nha_thau, quyet_dinh, cong_bo, dinh_muc, so_luong, ma_cskcb, loai_thau, manhom_9324, hieuluc_id, hieuluc, ketqua_id, ketqua, lydotuchoi, is_look, version FROM ie_danhmuc_vattu;";
                     DataTable dataDMDV = condb.GetDataTable_HSBA(sql_getdmdv);
-                    GlobalStore.lstVatTuBenhVienPheDuyet = new List<Model.Models.DanhMucDichVu_VatTuDTO>();
+                    GlobalStore.lstBenhVienPheDuyet_VatTu = new List<Model.Models.DanhMucDichVu_VatTuDTO>();
                     if (dataDMDV != null && dataDMDV.Rows.Count > 0)
                     {
                         foreach (DataRow row in dataDMDV.Rows)
@@ -213,7 +213,7 @@ namespace O2S_InsuranceExpertise.Server.Process
                                 dichVu.KETQUA_ID = 1;
                             }
 
-                            GlobalStore.lstVatTuBenhVienPheDuyet.Add(dichVu);
+                            GlobalStore.lstBenhVienPheDuyet_VatTu.Add(dichVu);
                         }
                     }
                 }
@@ -228,11 +228,11 @@ namespace O2S_InsuranceExpertise.Server.Process
         {
             try
             {
-                if (GlobalStore.lstGiuongBenhVienPheDuyet == null || GlobalStore.lstGiuongBenhVienPheDuyet.Count <= 0)
+                if (GlobalStore.lstBenhVienPheDuyet_Giuong == null || GlobalStore.lstBenhVienPheDuyet_Giuong.Count <= 0)
                 {
                     string sql_getdmdv = "SELECT danhmucgiuongid, stt as STT, ma_dvkt, ma_ax, ten_dvkt, ten_ax, ma_gia, don_gia, gia_ax, quyet_dinh, cong_bo, ma_cosokcb, manhom_9324, hieuluc, ketqua, lydotuchoi, is_look, version FROM ie_danhmuc_giuong order by stt;";
                     DataTable dataDMDV = condb.GetDataTable_HSBA(sql_getdmdv);
-                    GlobalStore.lstGiuongBenhVienPheDuyet = new List<Model.Models.DanhMucDichVu_GiuongDTO>();
+                    GlobalStore.lstBenhVienPheDuyet_Giuong = new List<Model.Models.DanhMucDichVu_GiuongDTO>();
                     if (dataDMDV != null && dataDMDV.Rows.Count > 0)
                     {
                         foreach (DataRow row in dataDMDV.Rows)
@@ -263,7 +263,7 @@ namespace O2S_InsuranceExpertise.Server.Process
                                 dichVu.KETQUA_ID = 1;
                             }
 
-                            GlobalStore.lstGiuongBenhVienPheDuyet.Add(dichVu);
+                            GlobalStore.lstBenhVienPheDuyet_Giuong.Add(dichVu);
                         }
                     }
                 }
