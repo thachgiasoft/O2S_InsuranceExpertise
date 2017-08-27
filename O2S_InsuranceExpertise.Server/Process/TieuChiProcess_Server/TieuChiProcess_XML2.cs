@@ -25,7 +25,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                 TieuChiGiamDinhLoi_DVKTDTO _ketqua_TC43 = TC43_GiaThuocTTLonHonGiaKeKhai(_xml2Filter);
                 if (_ketqua_TC43.TRANG_THAI == 1)
                 {
-                    result_LoiThuoc.LYDO_VIPHAM += _ketqua_TC43;
+                    result_LoiThuoc.LYDO_VIPHAM += _ketqua_TC43.LYDO_VIPHAM;
                     result_LoiThuoc.DIEN_GIAI += _ketqua_TC43.DIEN_GIAI;
                     result_LoiThuoc.LOAI_CANH_BAO += _ketqua_TC43.LOAI_CANH_BAO;
                 }
@@ -34,7 +34,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                 {
                     result_LoiThuoc.LYDO_VIPHAM += "\n" + _ketqua_TC44.LYDO_VIPHAM;
                     result_LoiThuoc.DIEN_GIAI += "\n" + _ketqua_TC44.DIEN_GIAI;
-                    result_LoiThuoc.LOAI_CANH_BAO += _ketqua_TC44.LOAI_CANH_BAO;
+                    result_LoiThuoc.LOAI_CANH_BAO += "\n" + _ketqua_TC44.LOAI_CANH_BAO;
                 }
                 TieuChiGiamDinhLoi_DVKTDTO _ketqua_TC45 = TC45_ThuocNgoaDMTT40TT05(_xml2Filter);
                 if (_ketqua_TC45.TRANG_THAI == 1)
@@ -125,16 +125,13 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
             TieuChiGiamDinhLoi_DVKTDTO result = new TieuChiGiamDinhLoi_DVKTDTO();
             try
             {
-                var _thuocTimKiem = GlobalStore.lstBenhVienPheDuyet_Thuoc.Where(o => o.MANHOM_9324.ToString() == _xml2Filter.MA_NHOM && o.MA_AX == _xml2Filter.MA_THUOC).ToList().OrderByDescending(p => p.DON_GIA).FirstOrDefault();
-                if (_thuocTimKiem != null)
+                var _thuocTimKiem = GlobalStore.lstBenhVienPheDuyet_Thuoc.Where(o => o.MANHOM_9324.ToString() == _xml2Filter.MA_NHOM && o.MA_AX == _xml2Filter.MA_THUOC && o.TEN_THUOC.ToUpper().Trim() == _xml2Filter.TEN_THUOC.ToUpper().Trim()).ToList().OrderByDescending(p => p.DON_GIA).FirstOrDefault();
+                if (_thuocTimKiem != null && _xml2Filter.DON_GIA > _thuocTimKiem.DON_GIA)
                 {
-                    if (_xml2Filter.DON_GIA > _thuocTimKiem.DON_GIA)
-                    {
-                        result.TRANG_THAI = 1;
-                        result.LYDO_VIPHAM = "Giá thuốc thanh toán > giá kê khai, kê khai lại";
-                        result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
-                        result.DIEN_GIAI = "Giá thuốc trong danh mục được phê duyệt là: " + _thuocTimKiem.DON_GIA;
-                    }
+                    result.TRANG_THAI = 1;
+                    result.LYDO_VIPHAM = "- Giá thuốc thanh toán > giá kê khai, kê khai lại";
+                    result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
+                    result.DIEN_GIAI = "- Giá thuốc trong danh mục được phê duyệt là: " + _thuocTimKiem.DON_GIA;
                 }
             }
             catch (Exception ex)
@@ -150,16 +147,13 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
             TieuChiGiamDinhLoi_DVKTDTO result = new TieuChiGiamDinhLoi_DVKTDTO();
             try
             {
-                var _thuocTimKiem = GlobalStore.lstBenhVienPheDuyet_Thuoc.Where(o => o.MANHOM_9324.ToString() == _xml2Filter.MA_NHOM && o.MA_AX == _xml2Filter.MA_THUOC).ToList().OrderByDescending(p => p.DON_GIA_TT).FirstOrDefault();
-                if (_thuocTimKiem != null)
+                var _thuocTimKiem = GlobalStore.lstBenhVienPheDuyet_Thuoc.Where(o => o.MANHOM_9324.ToString() == _xml2Filter.MA_NHOM && o.MA_AX == _xml2Filter.MA_THUOC && o.TEN_THUOC.ToUpper().Trim() == _xml2Filter.TEN_THUOC.ToUpper().Trim()).ToList().OrderByDescending(p => p.DON_GIA_TT).FirstOrDefault();
+                if (_thuocTimKiem != null && _xml2Filter.DON_GIA > _thuocTimKiem.DON_GIA)
                 {
-                    if (_xml2Filter.DON_GIA > _thuocTimKiem.DON_GIA_TT)
-                    {
-                        result.TRANG_THAI = 1;
-                        result.LYDO_VIPHAM = "Giá thuốc thanh toán > giá thuốc được phê duyệt";
-                        result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
-                        result.DIEN_GIAI = "Giá thuốc trong danh mục được phê duyệt là: " + _thuocTimKiem.DON_GIA_TT;
-                    }
+                    result.TRANG_THAI = 1;
+                    result.LYDO_VIPHAM = "- Giá thuốc thanh toán > giá thuốc được phê duyệt";
+                    result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
+                    result.DIEN_GIAI = "- Giá thuốc trong danh mục được phê duyệt là: " + _thuocTimKiem.DON_GIA_TT;
                 }
             }
             catch (Exception ex)
@@ -179,9 +173,9 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                 if (_thuocTimKiem == null || _thuocTimKiem.Count <= 0)
                 {
                     result.TRANG_THAI = 1;
-                    result.LYDO_VIPHAM = "Thuốc ngoài danh mục TT40, TT05";
+                    result.LYDO_VIPHAM = "- Thuốc ngoài danh mục TT40, TT05";
                     result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
-                    result.DIEN_GIAI = "";
+                    //result.DIEN_GIAI = "";
                 }
             }
             catch (Exception ex)
@@ -197,13 +191,40 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
             TieuChiGiamDinhLoi_DVKTDTO result = new TieuChiGiamDinhLoi_DVKTDTO();
             try
             {
-                var _thuocTimKiem = GlobalStore.lstBenhVienPheDuyet_Thuoc.Where(o => o.MANHOM_9324.ToString() == _xml2Filter.MA_NHOM && o.MA_AX == _xml2Filter.MA_THUOC && o.TEN_THUOC.ToUpper().Trim() == _xml2Filter.TEN_THUOC.ToUpper().Trim() && o.DON_VI_TINH.ToUpper().Trim() == _xml2Filter.DON_VI_TINH.ToUpper().Trim() && o.HAM_LUONG.ToUpper().Trim() == _xml2Filter.HAM_LUONG.ToUpper().Trim() && o.MA_DUONG_DUNG.ToUpper().Trim() == _xml2Filter.DUONG_DUNG.ToUpper().Trim() && o.SO_DANG_KY.ToUpper().Trim() == _xml2Filter.SO_DANG_KY.ToUpper().Trim() && o.DON_GIA == _xml2Filter.DON_GIA).ToList();
+                var _thuocTimKiem = GlobalStore.lstBenhVienPheDuyet_Thuoc.Where(o => o.MA_AX == _xml2Filter.MA_THUOC && o.DON_VI_TINH.ToUpper().Trim() == _xml2Filter.DON_VI_TINH.ToUpper().Trim() && o.SO_DANG_KY.ToUpper().Trim() == _xml2Filter.SO_DANG_KY.ToUpper().Trim()).ToList();
                 if (_thuocTimKiem == null || _thuocTimKiem.Count <= 0)
                 {
                     result.TRANG_THAI = 1;
-                    result.LYDO_VIPHAM = "Thuốc ngoài danh mục sử dụng tại BV";
+                    result.LYDO_VIPHAM = "- Thuốc ngoài danh mục sử dụng tại BV";
                     result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
-                    result.DIEN_GIAI = "";
+                    ////result.DIEN_GIAI = "";
+                    //Tim sai Don vi tinh + so dang ky
+                    var _thuocTimKiem_DVT = GlobalStore.lstBenhVienPheDuyet_Thuoc.Where(o => o.MANHOM_9324.ToString() == _xml2Filter.MA_NHOM && o.MA_AX == _xml2Filter.MA_THUOC && o.TEN_THUOC.ToUpper().Trim() == _xml2Filter.TEN_THUOC.ToUpper().Trim()).ToList();
+                    if (_thuocTimKiem_DVT != null && _thuocTimKiem_DVT.Count > 0)
+                    {
+                        DanhMucDichVu_ThuocDTO _stt_donvitinh = new DanhMucDichVu_ThuocDTO();
+                        foreach (var item in _thuocTimKiem_DVT)
+                        {
+                            if (item.DON_VI_TINH.ToUpper().Trim() != _xml2Filter.DON_VI_TINH.ToUpper().Trim())
+                            {
+                                _stt_donvitinh = item;
+                                break;
+                            }
+
+                            if (item.DON_VI_TINH.ToUpper().Trim() != _xml2Filter.DON_VI_TINH.ToUpper().Trim())
+                            {
+                                _stt_donvitinh = item;
+                            }
+                        }
+                        if (_stt_donvitinh.DON_VI_TINH != null)
+                        {
+                            result.DIEN_GIAI += "\nThuốc sai đơn vị tính; ĐVT trên danh mục là: " + _stt_donvitinh.DON_VI_TINH;
+                        }
+                        if (_stt_donvitinh.SO_DANG_KY != null && _stt_donvitinh.SO_DANG_KY.ToUpper().Trim() != _xml2Filter.SO_DANG_KY.ToUpper().Trim())
+                        {
+                            result.DIEN_GIAI += "\nThuốc sai số đăng ký; SĐK trên danh mục là: " + _stt_donvitinh.SO_DANG_KY;
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -219,13 +240,25 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
             TieuChiGiamDinhLoi_DVKTDTO result = new TieuChiGiamDinhLoi_DVKTDTO();
             try
             {
-                var _thuocTimKiem = GlobalStore.lstBenhVienPheDuyet_Thuoc.Where(o => o.MANHOM_9324.ToString() == _xml2Filter.MA_NHOM && o.MA_AX == _xml2Filter.MA_THUOC && o.TEN_THUOC.ToUpper().Trim() == _xml2Filter.TEN_THUOC.ToUpper().Trim()).ToList();
-                if (_thuocTimKiem == null || _thuocTimKiem.Count <= 0)
+                var _thuocTimKiem = GlobalStore.lstBenhVienPheDuyet_Thuoc.Where(o => o.MANHOM_9324.ToString() == _xml2Filter.MA_NHOM && o.MA_AX == _xml2Filter.MA_THUOC).ToList();
+                if (_thuocTimKiem != null && _thuocTimKiem.Count > 0)
                 {
+                    string _tenVTYTTimKiem = "";
+                    foreach (var item in _thuocTimKiem)
+                    {
+                        if (item.TEN_THUOC.ToUpper().Trim() == _xml2Filter.TEN_THUOC.ToUpper().Trim())
+                        {
+                            return result;
+                        }
+                        else
+                        {
+                            _tenVTYTTimKiem += item.TEN_THUOC + "\n";
+                        }
+                    }
                     result.TRANG_THAI = 1;
-                    result.LYDO_VIPHAM = "Thuốc sai tên so với danh mục sử dụng tại BV";
+                    result.LYDO_VIPHAM = "- Thuốc sai tên so với danh mục sử dụng tại BV";
                     result.LOAI_CANH_BAO = DanhSachThongBao.CANH_BAO;
-                    result.DIEN_GIAI = "";
+                    result.DIEN_GIAI = "- Tên thuốc trên danh mục là: " + _tenVTYTTimKiem;
                 }
             }
             catch (Exception ex)
@@ -241,13 +274,25 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
             TieuChiGiamDinhLoi_DVKTDTO result = new TieuChiGiamDinhLoi_DVKTDTO();
             try
             {
-                var _thuocTimKiem = GlobalStore.lstBenhVienPheDuyet_Thuoc.Where(o => o.MANHOM_9324.ToString() == _xml2Filter.MA_NHOM && o.MA_AX == _xml2Filter.MA_THUOC && o.MA_DUONG_DUNG == _xml2Filter.DUONG_DUNG).ToList();
-                if (_thuocTimKiem == null || _thuocTimKiem.Count <= 0)
+                var _thuocTimKiem = GlobalStore.lstBenhVienPheDuyet_Thuoc.Where(o => o.MANHOM_9324.ToString() == _xml2Filter.MA_NHOM && o.MA_AX == _xml2Filter.MA_THUOC && o.TEN_THUOC.ToUpper().Trim() == _xml2Filter.TEN_THUOC.ToUpper().Trim() && o.DON_VI_TINH.ToUpper().Trim() == _xml2Filter.DON_VI_TINH.ToUpper().Trim() && o.SO_DANG_KY.ToUpper().Trim() == _xml2Filter.SO_DANG_KY.ToUpper().Trim()).ToList();
+                if (_thuocTimKiem != null && _thuocTimKiem.Count > 0)
                 {
+                    //string _tenVTYTTimKiem = "";
+                    foreach (var item in _thuocTimKiem)
+                    {
+                        if (item.MA_DUONG_DUNG == _xml2Filter.DUONG_DUNG)
+                        {
+                            return result;
+                        }
+                        //else
+                        //{
+                        //    _tenVTYTTimKiem += item.MA_DUONG_DUNG + "\n";
+                        //}
+                    }
                     result.TRANG_THAI = 1;
-                    result.LYDO_VIPHAM = "Thuốc sai đường dùng so với danh mục sử dụng tại BV";
+                    result.LYDO_VIPHAM = "- Thuốc sai đường dùng so với danh mục sử dụng tại BV";
                     result.LOAI_CANH_BAO = DanhSachThongBao.CANH_BAO;
-                    result.DIEN_GIAI = "";
+                    result.DIEN_GIAI = "- Mã đường dùng trên danh mục là: " + _thuocTimKiem[0].MA_DUONG_DUNG;
                 }
             }
             catch (Exception ex)
@@ -263,13 +308,25 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
             TieuChiGiamDinhLoi_DVKTDTO result = new TieuChiGiamDinhLoi_DVKTDTO();
             try
             {
-                var _thuocTimKiem = GlobalStore.lstBenhVienPheDuyet_Thuoc.Where(o => o.MANHOM_9324.ToString() == _xml2Filter.MA_NHOM && o.MA_AX == _xml2Filter.MA_THUOC && o.HAM_LUONG.ToUpper().Trim() == _xml2Filter.HAM_LUONG.ToUpper().Trim()).ToList();
-                if (_thuocTimKiem == null || _thuocTimKiem.Count <= 0)
+                var _thuocTimKiem = GlobalStore.lstBenhVienPheDuyet_Thuoc.Where(o => o.MANHOM_9324.ToString() == _xml2Filter.MA_NHOM && o.MA_AX == _xml2Filter.MA_THUOC && o.TEN_THUOC.ToUpper().Trim() == _xml2Filter.TEN_THUOC.ToUpper().Trim() && o.DON_VI_TINH.ToUpper().Trim() == _xml2Filter.DON_VI_TINH.ToUpper().Trim() && o.SO_DANG_KY.ToUpper().Trim() == _xml2Filter.SO_DANG_KY.ToUpper().Trim()).ToList();
+                if (_thuocTimKiem != null && _thuocTimKiem.Count > 0)
                 {
+                    //string _tenVTYTTimKiem = "";
+                    foreach (var item in _thuocTimKiem)
+                    {
+                        if (item.HAM_LUONG.ToUpper().Trim() == _xml2Filter.HAM_LUONG.ToUpper().Trim())
+                        {
+                            return result;
+                        }
+                        //else
+                        //{
+                        //    _tenVTYTTimKiem += item.MA_DUONG_DUNG + "\n";
+                        //}
+                    }
                     result.TRANG_THAI = 1;
-                    result.LYDO_VIPHAM = "Thuốc sai hàm lượng so với danh mục sử dụng tại BV";
+                    result.LYDO_VIPHAM = "- Thuốc sai hàm lượng so với danh mục sử dụng tại BV";
                     result.LOAI_CANH_BAO = DanhSachThongBao.CANH_BAO;
-                    result.DIEN_GIAI = "";
+                    result.DIEN_GIAI = "- Hàm lượng trên danh mục là: " + _thuocTimKiem[0].HAM_LUONG;
                 }
             }
             catch (Exception ex)
@@ -285,13 +342,28 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
             TieuChiGiamDinhLoi_DVKTDTO result = new TieuChiGiamDinhLoi_DVKTDTO();
             try
             {
-                var _thuocTimKiem = GlobalStore.lstBenhVienPheDuyet_Thuoc.Where(o => o.MANHOM_9324.ToString() == _xml2Filter.MA_NHOM && o.MA_HOAT_CHAT == _xml2Filter.MA_THUOC).ToList();
-                if (_thuocTimKiem == null || _thuocTimKiem.Count <= 0)
+                if (_xml2Filter.MA_NHOM == "7")
                 {
-                    result.TRANG_THAI = 1;
-                    result.LYDO_VIPHAM = "Máu có Mã sai quy định";
-                    result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
-                    result.DIEN_GIAI = "";
+                    var _thuocTimKiem = GlobalStore.lstBenhVienPheDuyet_Thuoc.Where(o => o.TEN_THUOC.ToUpper().Trim() == _xml2Filter.TEN_THUOC.ToUpper().Trim()).ToList();
+                    if (_thuocTimKiem != null && _thuocTimKiem.Count > 0)
+                    {
+                        //string _tenVTYTTimKiem = "";
+                        foreach (var item in _thuocTimKiem)
+                        {
+                            if (item.MA_HOAT_CHAT == _xml2Filter.MA_THUOC)
+                            {
+                                return result;
+                            }
+                            //else
+                            //{
+                            //    _tenVTYTTimKiem += item.MA_DUONG_DUNG + "\n";
+                            //}
+                        }
+                        result.TRANG_THAI = 1;
+                        result.LYDO_VIPHAM = "- Máu có mã sai quy định";
+                        result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
+                        result.DIEN_GIAI = "- Mã máu trên danh mục là: " + _thuocTimKiem[0].MA_HOAT_CHAT;
+                    }
                 }
             }
             catch (Exception ex)
@@ -313,9 +385,9 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                     if (_xml2Filter.DON_GIA > _thuocTimKiem.DON_GIA)
                     {
                         result.TRANG_THAI = 1;
-                        result.LYDO_VIPHAM = "Máu vượt quá giá tối đa";
+                        result.LYDO_VIPHAM = "- Máu vượt quá giá tối đa";
                         result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
-                        result.DIEN_GIAI = "Giá máu tối đa trong danh mục được phê duyệt là: " + _thuocTimKiem.DON_GIA;
+                        result.DIEN_GIAI = "- Giá máu tối đa trong danh mục được phê duyệt là: " + _thuocTimKiem.DON_GIA;
                     }
                 }
             }
@@ -338,9 +410,9 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                     if (_thuocTimKiem.MANHOM_9324.ToString() != _xml2Filter.MA_NHOM)
                     {
                         result.TRANG_THAI = 1;
-                        result.LYDO_VIPHAM = "Thuốc sai mã nhóm với danh mục sử dụng tại BV";
+                        result.LYDO_VIPHAM = "- Thuốc sai mã nhóm với danh mục sử dụng tại BV";
                         result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
-                        result.DIEN_GIAI = "Mã nhóm của thuốc trong danh mục phê duyệt là: " + _thuocTimKiem.MANHOM_9324;
+                        result.DIEN_GIAI = "- Mã nhóm của thuốc trong danh mục phê duyệt là: " + _thuocTimKiem.MANHOM_9324;
                     }
                 }
             }
@@ -372,15 +444,26 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
             TieuChiGiamDinhLoi_DVKTDTO result = new TieuChiGiamDinhLoi_DVKTDTO();
             try
             {
-                var _thuocTimKiem = GlobalStore.lstBenhVienPheDuyet_Thuoc.Where(o => o.MANHOM_9324 == 6 && o.MA_HOAT_CHAT == _xml2Filter.MA_THUOC && o.TEN_THUOC.ToUpper().Trim() == _xml2Filter.TEN_THUOC.ToUpper().Trim()).FirstOrDefault();
-                if (_thuocTimKiem != null)
+                if (_xml2Filter.TYLE_TT == 100)
                 {
-                    if (_xml2Filter.TYLE_TT == 100)
+                    var _thuocTimKiem = GlobalStore.lstBenhVienPheDuyet_Thuoc.Where(o => o.MANHOM_9324 == 6 && o.MA_HOAT_CHAT == _xml2Filter.MA_THUOC && o.TEN_THUOC.ToUpper().Trim() == _xml2Filter.TEN_THUOC.ToUpper().Trim()).FirstOrDefault();
+                    if (_thuocTimKiem != null)
                     {
                         result.TRANG_THAI = 1;
-                        result.LYDO_VIPHAM = "Sử dụng thuốc thanh toán sai tỷ lệ";
+                        result.LYDO_VIPHAM = "- Sử dụng thuốc thanh toán sai tỷ lệ";
                         result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
-                        result.DIEN_GIAI = "";
+                        result.DIEN_GIAI = "- Thuốc nằm ở nhóm thanh toán theo tỷ lệ";
+                    }
+                }
+                else
+                {
+                    var _thuocTimKiem = GlobalStore.lstBenhVienPheDuyet_Thuoc.Where(o => o.MANHOM_9324 != 6 && o.MA_HOAT_CHAT == _xml2Filter.MA_THUOC && o.TEN_THUOC.ToUpper().Trim() == _xml2Filter.TEN_THUOC.ToUpper().Trim()).FirstOrDefault();
+                    if (_thuocTimKiem != null)
+                    {
+                        result.TRANG_THAI = 1;
+                        result.LYDO_VIPHAM = "- Sử dụng thuốc thanh toán sai tỷ lệ";
+                        result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
+                        result.DIEN_GIAI = "- Thuốc nằm ở nhóm không phải là thanh toán theo tỷ lệ";
                     }
                 }
             }

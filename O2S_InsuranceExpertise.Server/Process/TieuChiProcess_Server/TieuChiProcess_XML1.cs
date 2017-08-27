@@ -1,4 +1,5 @@
 ﻿using O2S_InsuranceExpertise.Model.Models;
+using O2S_InsuranceExpertise.Model.Models.Xml_917.XMLDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                 else if (_MA_LYDO_VVIEN == 0)
                 {
                     result.LYDO_VIPHAM = DanhSachThongBao.THIEU_TRUONG_DU_LIEU_BAT_BUOC;
+                    result.GHI_CHU = "Thiếu lý do vào viện";
                     result.LOAI_CANH_BAO = DanhSachThongBao.CANH_BAO;
                 }
             }
@@ -33,11 +35,12 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
             return result;
         }
 
-        //TC10;TC11;TC12;TC12;TC15;TC19;TC20;TC21;TC22;TC23
+        //TC10;TC11;TC12;TC12;TC15;TC16;TC19;TC20;TC21;TC22;TC23
         /*TC10 - Thẻ hết giá trị sử dụng
          * TC11 - Thẻ hết giá trị sử dụng (so với dữ liệu TST)
          * TC13 - Thẻ hết hạn khi chưa ra viện (so với dữ liệu TST)
          * TC15 - Thời gian điều trị không nằm trong hạn thẻ (so với dữ liệu TST)
+         * TC16 - KCB khi chưa đến hạn thẻ (so với dữ liệu xml)
          * TC12 - KCB khi chưa đến hạn thẻ (so với dữ liệu TST)
          * TC19 -  Mã thẻ không có dữ liệu thẻ
          * TC20 - Thẻ sai họ tên
@@ -49,12 +52,9 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
         {
             TieuChiGiamDinhLoi_XML1DTO result = new TieuChiGiamDinhLoi_XML1DTO();
             try
-            {
-                //Check thong tuyen
-                //Lay thong tin                
+            {           
                 LayThongTinChoPortal laythongtin = new LayThongTinChoPortal();
                 laythongtin.GetTaiKhoanvaTokenPortal();
-                //Du lieu dau vao gui Check giam dinh
                 _checkThongTuyenFilter.username = GlobalStore.UserName_GDBHYT;
                 _checkThongTuyenFilter.password = GlobalStore.Password_GDBHYT;
                 _checkThongTuyenFilter.token = GlobalStore.tokenSession.APIKey.access_token;
@@ -68,54 +68,63 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                 {
                     case "01":
                         {
+                            result.LYDO_VIPHAM = "Thẻ hết giá trị sử dụng";
                             result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
                             result.MA_THE = "GT_THE_DEN";
                             break;
                         }
                     case "02":
                         {
+                            result.LYDO_VIPHAM = "KCB khi chưa đến hạn thẻ (so với dữ liệu TST)";
                             result.LOAI_CANH_BAO = DanhSachThongBao.CANH_BAO;
-                            result.MA_THE = "GT_THE_TU";
+                            result.MA_THE = "NGAY_VAO";
                             break;
                         }
                     case "03":
                         {
+                            result.LYDO_VIPHAM = "Hết hạn thẻ khi chưa ra viện (so với dữ liệu TST)";
                             result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
                             result.MA_THE = "GT_THE_DEN";
                             break;
                         }
                     case "04":
                         {
+                            result.LYDO_VIPHAM = "Thẻ có giá trị khi đang nằm viện";
                             result.LOAI_CANH_BAO = DanhSachThongBao.CANH_BAO;
                             result.MA_THE = "GT_THE_TU";
                             break;
                         }
                     case "05":
                         {
+                            result.LYDO_VIPHAM = "Mã thẻ không có trong dữ liệu thẻ";
                             result.LOAI_CANH_BAO = DanhSachThongBao.CANH_BAO;
                             result.MA_THE = "MA_THE";
                             break;
                         }
                     case "06":
                         {
+                            result.LYDO_VIPHAM = "Thẻ sai họ tên";
                             result.LOAI_CANH_BAO = DanhSachThongBao.CANH_BAO;
                             result.MA_THE = "HO_TEN";
                             break;
                         }
                     case "07":
                         {
+                            result.LYDO_VIPHAM = "Thẻ sai ngày sinh";
                             result.LOAI_CANH_BAO = DanhSachThongBao.CANH_BAO;
                             result.MA_THE = "NGAY_SINH";
                             break;
                         }
                     case "08":
                         {
+                            result.LYDO_VIPHAM = "Thẻ sai giới tính";
                             result.LOAI_CANH_BAO = DanhSachThongBao.CANH_BAO;
                             result.MA_THE = "GIOI_TINH";
                             break;
                         }
                     case "09":
                         {
+                            result.LYDO_VIPHAM = "Thẻ sai nơi đăng ký KCB ban đầu";
                             result.LOAI_CANH_BAO = DanhSachThongBao.CANH_BAO;
                             result.MA_THE = "MA_DKBD";
                             break;
@@ -158,33 +167,13 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
             return result;
         }
 
-        //TC16 - KCB khi chưa đến hạn thẻ (so với dữ liệu xml)
-        public TieuChiGiamDinhLoi_XML1DTO TC16_KCBKhiChuaDenHanThe(long _NGAY_VAO, long _NGAY_RA, long _GT_THE_TU, long _GT_THE_DEN)
-        {
-            TieuChiGiamDinhLoi_XML1DTO result = new TieuChiGiamDinhLoi_XML1DTO();
-            try
-            {
-                long _ngayvao = Common.TypeConvert.TypeConvertParse.ToInt64(_NGAY_VAO.ToString().Substring(0, 8));
-                if (_GT_THE_TU > _ngayvao)
-                {
-                    result.LYDO_VIPHAM = "KCB khi chưa đến hạn thẻ";
-                    result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
-                }
-            }
-            catch (Exception ex)
-            {
-                Common.Logging.LogSystem.Error(ex);
-            }
-            return result;
-        }
-
         //TC24  TC41 - Ve ty le thanh toan
         public TieuChiGiamDinhLoi_XML1DTO TC24_TC41_TheCoGiaTriSauNgayVaoVien(TinhMucHuongBHYTDTO _TINH_MUC_HUONG)
         {
             TieuChiGiamDinhLoi_XML1DTO result = new TieuChiGiamDinhLoi_XML1DTO();
             try
             {
-                //Check thong tuyen
+                //TODO
             }
             catch (Exception ex)
             {
@@ -212,5 +201,29 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
             return result;
         }
 
+        //TC74 - Thanh toán tiền giường vượt quá số ngày quy định
+        public TieuChiGiamDinhLoi_XML1DTO TC74_GiuongVuotQuaSoNgayQuyDinh(decimal _SO_NGAY_DTRI, List<XML3PlusDTO> _lstXML3)
+        {
+            TieuChiGiamDinhLoi_XML1DTO result = new TieuChiGiamDinhLoi_XML1DTO();
+            try
+            {
+                decimal _tongngaygiuong = 0;
+                foreach (var item in _lstXML3)
+                {
+                    _tongngaygiuong += item.SO_LUONG ?? 0;
+                }
+                if (_tongngaygiuong > _SO_NGAY_DTRI)
+                {
+                    result.LYDO_VIPHAM = "Thanh toán tiền giường vượt quá số ngày quy định";
+                    result.LOAI_CANH_BAO = DanhSachThongBao.CANH_BAO;
+                    result.GHI_CHU = "Số lượng ngày giường chỉ định cho bệnh nhân là: "+_tongngaygiuong;
+                }
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Error(ex);
+            }
+            return result;
+        }
     }
 }

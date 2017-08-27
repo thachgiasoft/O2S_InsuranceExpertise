@@ -431,6 +431,10 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                                 {
                                     item_xml3.NGAY_YL_DATE = DateTime.ParseExact(item_xml3.NGAY_YL, "yyyyMMddHHmm", CultureInfo.InvariantCulture).ToString("HH:mm dd/MM/yyyy");
                                 }
+                                if (item_xml3.NGAY_KQ.ToString().Length == 12)
+                                {
+                                    item_xml3.NGAY_KQ_DATE = DateTime.ParseExact(item_xml3.NGAY_KQ, "yyyyMMddHHmm", CultureInfo.InvariantCulture).ToString("HH:mm dd/MM/yyyy");
+                                }
 
                                 if (item_xml3.MA_PTTT == "0")
                                 {

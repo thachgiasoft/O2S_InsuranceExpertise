@@ -25,7 +25,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                 TieuChiProcess_XML2 process_thuoc = new TieuChiProcess_XML2();
                 TieuChiProcess_XML3 process_dvkt = new TieuChiProcess_XML3();
 
-                //XMl1
+                //XMl1 - tong hop
                 foreach (var item_xml1 in GlobalStore.lstTheFileXML1Global)
                 {
                     Mapper.Initialize(cfg => cfg.CreateMap<Model.Models.TheFileXMLDTO, GiamDinhLoi_XML1DTO>());
@@ -33,17 +33,17 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                     _xmloi_XML1.LOAI_XML = "XML1";
                     lstLoi_XML1.Add(_xmloi_XML1);
                 }
+                #region XML1 Process Check
                 //Check Thong tuyen
-                TheBHYTCheckThongTuyenDTO _checkThongTuyenFilter = new TheBHYTCheckThongTuyenDTO();
-                _checkThongTuyenFilter.maThe = _XMLHoSo_KiemTra.MA_THE;
-                _checkThongTuyenFilter.hoTen = _XMLHoSo_KiemTra.HO_TEN;
-                _checkThongTuyenFilter.ngaySinh = _XMLHoSo_KiemTra.NGAY_SINH_DATE;
-                _checkThongTuyenFilter.gioiTinh = _XMLHoSo_KiemTra.GIOI_TINH ?? 1;
-                _checkThongTuyenFilter.ngayBD = _XMLHoSo_KiemTra.GT_THE_TU_DATE;//DD/MM/YYYY
-                _checkThongTuyenFilter.ngayKT = _XMLHoSo_KiemTra.GT_THE_DEN_DATE;
-                _checkThongTuyenFilter.maCSKCB = _XMLHoSo_KiemTra.MA_DKBD;
-
-                TieuChiGiamDinhLoi_XML1DTO _ketquaThongtuyen = process_xml1.TCGop8_KiemTraThongTuyen(_checkThongTuyenFilter);
+                TheBHYTCheckThongTuyenDTO _checkTTFilter = new TheBHYTCheckThongTuyenDTO();
+                _checkTTFilter.maThe = _XMLHoSo_KiemTra.MA_THE;
+                _checkTTFilter.hoTen = _XMLHoSo_KiemTra.HO_TEN;
+                _checkTTFilter.ngaySinh = _XMLHoSo_KiemTra.NGAY_SINH_DATE;
+                _checkTTFilter.gioiTinh = _XMLHoSo_KiemTra.GIOI_TINH ?? 1;
+                _checkTTFilter.ngayBD = _XMLHoSo_KiemTra.GT_THE_TU_DATE;//DD/MM/YYYY
+                _checkTTFilter.ngayKT = _XMLHoSo_KiemTra.GT_THE_DEN_DATE;
+                _checkTTFilter.maCSKCB = _XMLHoSo_KiemTra.MA_DKBD;
+                TieuChiGiamDinhLoi_XML1DTO _ketquaThongtuyen = process_xml1.TCGop8_KiemTraThongTuyen(_checkTTFilter);
 
                 foreach (var item_loixml1 in lstLoi_XML1)
                 {
@@ -184,11 +184,12 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                         case "NGAY_VAO":
                             {
                                 item_loixml1.GIA_TRI = _XMLHoSo_KiemTra.NGAY_VAO_DATE;
-                                TieuChiGiamDinhLoi_XML1DTO _ketqua_tc1416 = process_xml1.TC16_KCBKhiChuaDenHanThe(_XMLHoSo_KiemTra.NGAY_VAO, _XMLHoSo_KiemTra.NGAY_RA, _XMLHoSo_KiemTra.GT_THE_TU, _XMLHoSo_KiemTra.GT_THE_DEN);
-
-                                item_loixml1.LYDO_VIPHAM = _ketqua_tc1416.LYDO_VIPHAM;
-                                item_loixml1.LOAI_CANH_BAO = _ketqua_tc1416.LOAI_CANH_BAO;
-                                item_loixml1.GHI_CHU = _ketqua_tc1416.GHI_CHU;
+                                if (_ketquaThongtuyen.MA_THE == "NGAY_VAO")
+                                {
+                                    item_loixml1.LYDO_VIPHAM = _ketquaThongtuyen.LYDO_VIPHAM;
+                                    item_loixml1.LOAI_CANH_BAO = _ketquaThongtuyen.LOAI_CANH_BAO;
+                                    item_loixml1.GHI_CHU = _ketquaThongtuyen.GHI_CHU;
+                                }
                                 break;
                             }
                         case "NGAY_RA":
@@ -204,6 +205,11 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                         case "SO_NGAY_DTRI":
                             {
                                 item_loixml1.GIA_TRI = _XMLHoSo_KiemTra.SO_NGAY_DTRI.ToString();
+                                TieuChiGiamDinhLoi_XML1DTO _ketqua_tcrv = process_xml1.TC74_GiuongVuotQuaSoNgayQuyDinh(_XMLHoSo_KiemTra.SO_NGAY_DTRI ?? 0, _XMLHoSo_KiemTra.lstXML3.Where(o => (o.MA_NHOM == "14" || o.MA_NHOM == "15")).ToList());
+
+                                item_loixml1.LYDO_VIPHAM = _ketqua_tcrv.LYDO_VIPHAM;
+                                item_loixml1.LOAI_CANH_BAO = _ketqua_tcrv.LOAI_CANH_BAO;
+                                item_loixml1.GHI_CHU = _ketqua_tcrv.GHI_CHU;
                                 break;
                             }
                         case "KET_QUA_DTRI":
@@ -315,24 +321,33 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                             break;
                     }
                 }
+                #endregion
 
-                //XML2,3 _ Dich vu ky thuat = Thuoc
+                //XML2 Thuoc
                 foreach (var item_xml2 in _XMLHoSo_KiemTra.lstXML2)
                 {
                     GiamDinhLoi_DVKTDTO _gdloithuoc = process_thuoc.GiamDinhLoi_XML2(item_xml2);
                     lstLoi_DVKT.Add(_gdloithuoc);
                 }
+
+                //XML3 - DVKT + Vat tu
                 foreach (var item_xml3 in _XMLHoSo_KiemTra.lstXML3)
                 {
                     GiamDinhLoi_DVKTDTO _gdloidv = process_dvkt.GiamDinhLoi_XML3(item_xml3);
                     lstLoi_DVKT.Add(_gdloidv);
+
+                    //TC76 - Khám bệnh đề nghị tiền khám trên 1 chuyên khoa sai quy định
+                    if (item_xml3.MA_NHOM == "13")
+                    {
+                        GiamDinhLoi_DVKTDTO _gdloidvTC76 = process_dvkt.TC75TC76_KBDeNghiTienKhamTren1CKSaiQD(item_xml3, _XMLHoSo_KiemTra.MA_LOAI_KCB, _XMLHoSo_KiemTra.lstXML3.Where(o => o.MA_NHOM == "13").ToList());
+                        lstLoi_DVKT.Add(_gdloidvTC76);
+                    }
                 }
 
                 //Gan vao result
                 result.lstGiamDinhLoiXML1 = new List<GiamDinhLoi_XML1DTO>();
                 result.lstGiamDinhLoiXML1 = lstLoi_XML1;
                 result.lstGiamDinhLoiDVKT = new List<GiamDinhLoi_DVKTDTO>();
-                //lstLoi_DVKT = lstLoi_DVKT.OrderBy(o=>o.MA_NHOM).ToList();
                 result.lstGiamDinhLoiDVKT = lstLoi_DVKT;
             }
             catch (Exception ex)

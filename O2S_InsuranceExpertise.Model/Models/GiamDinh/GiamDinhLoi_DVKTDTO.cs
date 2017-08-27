@@ -26,6 +26,8 @@ namespace O2S_InsuranceExpertise.Model.Models
         public string MA_BENH { get; set; }
         public string NGAY_YL { get; set; }
         public string NGAY_YL_DATE { get; set; }
+        public string NGAY_KQ { get; set; }
+        public string NGAY_KQ_DATE { get; set; }
         public string MA_PTTT { get; set; }
         public string PTTT_TEN { get; set; }
 
@@ -34,5 +36,12 @@ namespace O2S_InsuranceExpertise.Model.Models
         public string LOAI_CANH_BAO { get; set; }
         public string DIEN_GIAI { get; set; }
         public string GHI_CHU { get; set; }
+
+        public string HAM_LUONG { get; set; }
+        public string DUONG_DUNG { get; set; }
+        public string LIEU_DUNG { get; set; }
+        public string SO_DANG_KY { get; set; }
+
+
     }
 }

@@ -41,7 +41,7 @@ namespace O2S_InsuranceExpertise.Model.Models.Xml_917.XMLDTO
         public decimal? T_NGOAIDS { get; set; }
         public int? NAM_QT { get; set; }
         public int? THANG_QT { get; set; }
-        public int? MA_LOAI_KCB { get; set; }
+        public int MA_LOAI_KCB { get; set; }
         public string MA_KHOA { get; set; }
         public int? MA_CSKCB { get; set; }
         public string MA_KHUVUC { get; set; }

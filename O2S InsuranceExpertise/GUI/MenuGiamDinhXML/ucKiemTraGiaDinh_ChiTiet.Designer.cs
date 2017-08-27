@@ -54,6 +54,7 @@
             this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemMemoEdit_lydovp = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemMemo_diengiai = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -70,6 +71,11 @@
             this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn29 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn30 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn31 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn32 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn33 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit3)).BeginInit();
@@ -85,6 +91,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControlDSLoi_DVKT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDSLoi_DVKT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit_lydovp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemo_diengiai)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemMemoEdit1
@@ -361,7 +368,8 @@
             this.gridControlDSLoi_DVKT.MainView = this.gridViewDSLoi_DVKT;
             this.gridControlDSLoi_DVKT.Name = "gridControlDSLoi_DVKT";
             this.gridControlDSLoi_DVKT.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemMemoEdit_lydovp});
+            this.repositoryItemMemoEdit_lydovp,
+            this.repositoryItemMemo_diengiai});
             this.gridControlDSLoi_DVKT.Size = new System.Drawing.Size(1094, 659);
             this.gridControlDSLoi_DVKT.TabIndex = 2;
             this.gridControlDSLoi_DVKT.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -369,7 +377,7 @@
             // 
             // gridViewDSLoi_DVKT
             // 
-            this.gridViewDSLoi_DVKT.Appearance.FooterPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridViewDSLoi_DVKT.Appearance.FooterPanel.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.gridViewDSLoi_DVKT.Appearance.FooterPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.gridViewDSLoi_DVKT.Appearance.FooterPanel.Options.UseFont = true;
             this.gridViewDSLoi_DVKT.Appearance.FooterPanel.Options.UseForeColor = true;
@@ -417,6 +425,11 @@
             this.gridColumn28,
             this.gridColumn20,
             this.gridColumn21,
+            this.gridColumn33,
+            this.gridColumn32,
+            this.gridColumn31,
+            this.gridColumn30,
+            this.gridColumn29,
             this.gridColumn22,
             this.gridColumn24});
             this.gridViewDSLoi_DVKT.FooterPanelHeight = 25;
@@ -512,12 +525,17 @@
             this.gridColumn23.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn23.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn23.Caption = "Diễn giải";
+            this.gridColumn23.ColumnEdit = this.repositoryItemMemo_diengiai;
             this.gridColumn23.FieldName = "DIEN_GIAI";
             this.gridColumn23.Name = "gridColumn23";
             this.gridColumn23.OptionsColumn.AllowEdit = false;
             this.gridColumn23.Visible = true;
             this.gridColumn23.VisibleIndex = 3;
             this.gridColumn23.Width = 260;
+            // 
+            // repositoryItemMemo_diengiai
+            // 
+            this.repositoryItemMemo_diengiai.Name = "repositoryItemMemo_diengiai";
             // 
             // gridColumn11
             // 
@@ -701,9 +719,9 @@
             // 
             // gridColumn27
             // 
-            this.gridColumn27.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn27.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.gridColumn27.AppearanceCell.Options.UseFont = true;
-            this.gridColumn27.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn27.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.gridColumn27.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.gridColumn27.AppearanceHeader.Options.UseFont = true;
             this.gridColumn27.AppearanceHeader.Options.UseForeColor = true;
@@ -733,9 +751,9 @@
             // 
             // gridColumn28
             // 
-            this.gridColumn28.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn28.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.gridColumn28.AppearanceCell.Options.UseFont = true;
-            this.gridColumn28.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn28.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.gridColumn28.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.gridColumn28.AppearanceHeader.Options.UseFont = true;
             this.gridColumn28.AppearanceHeader.Options.UseForeColor = true;
@@ -815,8 +833,100 @@
             this.gridColumn24.Name = "gridColumn24";
             this.gridColumn24.OptionsColumn.AllowEdit = false;
             this.gridColumn24.Visible = true;
-            this.gridColumn24.VisibleIndex = 16;
+            this.gridColumn24.VisibleIndex = 21;
             this.gridColumn24.Width = 150;
+            // 
+            // gridColumn29
+            // 
+            this.gridColumn29.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridColumn29.AppearanceCell.Options.UseFont = true;
+            this.gridColumn29.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridColumn29.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.gridColumn29.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn29.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn29.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn29.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn29.Caption = "Số đăng ký";
+            this.gridColumn29.FieldName = "SO_DANG_KY";
+            this.gridColumn29.Name = "gridColumn29";
+            this.gridColumn29.OptionsColumn.AllowEdit = false;
+            this.gridColumn29.Visible = true;
+            this.gridColumn29.VisibleIndex = 16;
+            this.gridColumn29.Width = 120;
+            // 
+            // gridColumn30
+            // 
+            this.gridColumn30.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridColumn30.AppearanceCell.Options.UseFont = true;
+            this.gridColumn30.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridColumn30.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.gridColumn30.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn30.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn30.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn30.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn30.Caption = "Liều dùng";
+            this.gridColumn30.FieldName = "LIEU_DUNG";
+            this.gridColumn30.Name = "gridColumn30";
+            this.gridColumn30.OptionsColumn.AllowEdit = false;
+            this.gridColumn30.Visible = true;
+            this.gridColumn30.VisibleIndex = 20;
+            this.gridColumn30.Width = 120;
+            // 
+            // gridColumn31
+            // 
+            this.gridColumn31.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridColumn31.AppearanceCell.Options.UseFont = true;
+            this.gridColumn31.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridColumn31.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.gridColumn31.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn31.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn31.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn31.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn31.Caption = "Đường dùng";
+            this.gridColumn31.FieldName = "DUONG_DUNG";
+            this.gridColumn31.Name = "gridColumn31";
+            this.gridColumn31.OptionsColumn.AllowEdit = false;
+            this.gridColumn31.Visible = true;
+            this.gridColumn31.VisibleIndex = 19;
+            this.gridColumn31.Width = 120;
+            // 
+            // gridColumn32
+            // 
+            this.gridColumn32.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridColumn32.AppearanceCell.Options.UseFont = true;
+            this.gridColumn32.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridColumn32.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.gridColumn32.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn32.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn32.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn32.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn32.Caption = "Hàm lượng";
+            this.gridColumn32.FieldName = "HAM_LUONG";
+            this.gridColumn32.Name = "gridColumn32";
+            this.gridColumn32.OptionsColumn.AllowEdit = false;
+            this.gridColumn32.Visible = true;
+            this.gridColumn32.VisibleIndex = 18;
+            this.gridColumn32.Width = 120;
+            // 
+            // gridColumn33
+            // 
+            this.gridColumn33.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridColumn33.AppearanceCell.Options.UseFont = true;
+            this.gridColumn33.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn33.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn33.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.gridColumn33.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.gridColumn33.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn33.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn33.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn33.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn33.Caption = "Ngày trả KQ";
+            this.gridColumn33.FieldName = "NGAY_KQ_DATE";
+            this.gridColumn33.Name = "gridColumn33";
+            this.gridColumn33.OptionsColumn.AllowEdit = false;
+            this.gridColumn33.Visible = true;
+            this.gridColumn33.VisibleIndex = 17;
+            this.gridColumn33.Width = 125;
             // 
             // ucKiemTraGiaDinh_ChiTiet
             // 
@@ -842,6 +952,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControlDSLoi_DVKT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDSLoi_DVKT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit_lydovp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemo_diengiai)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -890,5 +1001,11 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit2;
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit3;
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit_lydovp;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemo_diengiai;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn33;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn32;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn31;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn30;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn29;
     }
 }
