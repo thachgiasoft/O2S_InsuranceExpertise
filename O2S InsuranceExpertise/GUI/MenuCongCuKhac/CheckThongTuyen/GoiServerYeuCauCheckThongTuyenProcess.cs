@@ -32,7 +32,7 @@ namespace O2S_InsuranceExpertise.GUI.MenuCongCuKhac
                 if (response.IsSuccessStatusCode)
                 {
                     result = response.Content.ReadAsAsync<List<KetQuaCheckThongTuyen_ExtendDTO>>().Result;
-                }
+                }            
             }
             catch (Exception ex)
             {

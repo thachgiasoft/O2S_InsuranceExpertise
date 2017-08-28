@@ -74,7 +74,7 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                 //Goi ucControl ucKiemTraGiamDinh
                 //UserControl ucControlActive = new O2S_InsuranceExpertise.GUI.MenuGiamDinhXML.ucKiemTraGiamDinh(_lstXMLHoSo_KiemTra);
                 O2S_InsuranceExpertise.GUI.MenuGiamDinhXML.ucKiemTraGiamDinh ucControlActive = new MenuGiamDinhXML.ucKiemTraGiamDinh(_lstXMLHoSo_KiemTra);
-                BUS.TabControlProcess.TabCreatingRefresh(xtraTabControlGiamDinhXML, "GD_KTGD", "Kiểm tra giám định BHYT", "Giám định XML- Kiểm tra giám định BHYT", ucControlActive);
+                BUS.TabControlProcess.TabCreatingRefresh(xtraTabControlGiamDinhXML, "GD_KTGD", "Kiểm tra giám định BHYT", "Giám định XML - Kiểm tra giám định BHYT", ucControlActive);
                 ucControlActive.Show();
                 //ucControlActive.Init();
             }
@@ -87,8 +87,8 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
         {
             try
             {
-                O2S_InsuranceExpertise.GUI.MenuGiamDinhXML.ucKiemTraGiaDinh_ChiTiet ucControlActive = new MenuGiamDinhXML.ucKiemTraGiaDinh_ChiTiet(_XMLHoSo_KiemTra);
-                BUS.TabControlProcess.TabCreatingRefresh(xtraTabControlGiamDinhXML, "GD_KTGDCT", "Kiểm tra giám định chi tiết", "Giám định XML- Kiểm tra giám định BHYT chi tiết", ucControlActive);
+                O2S_InsuranceExpertise.GUI.MenuGiamDinhXML.ucKiemTraGiamDinh_ChiTiet ucControlActive = new MenuGiamDinhXML.ucKiemTraGiamDinh_ChiTiet(_XMLHoSo_KiemTra);
+                BUS.TabControlProcess.TabCreatingRefresh(xtraTabControlGiamDinhXML, "GD_KTGDCT", "Kiểm tra giám định chi tiết", "Giám định XML - Kiểm tra giám định BHYT chi tiết", ucControlActive);
                 ucControlActive.Show();
             }
             catch (Exception ex)

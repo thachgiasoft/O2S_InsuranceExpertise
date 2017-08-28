@@ -426,7 +426,7 @@
             this.lblThongBaoKetQua.ForeColor = System.Drawing.Color.Green;
             this.lblThongBaoKetQua.Location = new System.Drawing.Point(16, 117);
             this.lblThongBaoKetQua.Name = "lblThongBaoKetQua";
-            this.lblThongBaoKetQua.Size = new System.Drawing.Size(391, 23);
+            this.lblThongBaoKetQua.Size = new System.Drawing.Size(656, 23);
             this.lblThongBaoKetQua.TabIndex = 36;
             this.lblThongBaoKetQua.Text = "Thông báo";
             // 

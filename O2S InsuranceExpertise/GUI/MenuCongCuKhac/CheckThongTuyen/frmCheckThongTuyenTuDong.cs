@@ -84,7 +84,7 @@ namespace O2S_InsuranceExpertise.GUI.MenuCongCuKhac
                 {
                     this.Size = new System.Drawing.Size(700, 650);
                     linkLabelXemDanhSach.Text = "Thu gọn danh sách";
-                    this.StartPosition= FormStartPosition.CenterScreen;
+                    this.StartPosition = FormStartPosition.CenterScreen;
                 }
                 else
                 {
@@ -238,10 +238,10 @@ namespace O2S_InsuranceExpertise.GUI.MenuCongCuKhac
                     //Danh sách BN trả KQ về thẻ bị lỗi
                     List<KetQuaCheckThongTuyen_ExtendDTO> lstlichsuKCB_Loi = this.lsLichSuKhamChuaBenh.Where(o => o.maKetQua != "00").ToList();
                     //Lỗi do cổng BHYT
-                    List<KetQuaCheckThongTuyen_ExtendDTO> lstlichsuKCB_MaKQGDBHYT = this.lsLichSuKhamChuaBenh.Where(o => o.maLoi_CongGDBHYT == null).ToList();
-                    if ((lstlichsuKCB_MaKQGDBHYT == null || lstlichsuKCB_MaKQGDBHYT.Count == 0) && this.lsLichSuKhamChuaBenh.Count > 0)
+                    List<KetQuaCheckThongTuyen_ExtendDTO> lstlichsuKCB_MaKQGDBHYT = this.lsLichSuKhamChuaBenh.Where(o => o.maLoi_CongGDBHYT == "500").ToList();
+                    if ((lstlichsuKCB_MaKQGDBHYT != null && lstlichsuKCB_MaKQGDBHYT.Count > 0) && this.lsLichSuKhamChuaBenh.Count > 0)
                     {
-                        lblThongBaoKetQua.Text = "Lỗi kết nối đến cổng Giám định BHYT!";
+                        lblThongBaoKetQua.Text = lstlichsuKCB_MaKQGDBHYT[0].tenLoi_CongGDBHYT;//"Lỗi kết nối đến cổng Giám định BHYT!";
                         lblThongBaoKetQua.ForeColor = System.Drawing.Color.Red;
                         SplashScreenManager.CloseForm();
                         return;

@@ -275,8 +275,14 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                                 default:
                                     break;
                             }
-                            _xmlHoSo.GT_THE_TU_DATE = DateTime.ParseExact(_xmlHoSo.GT_THE_TU.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy");
-                            _xmlHoSo.GT_THE_DEN_DATE = DateTime.ParseExact(_xmlHoSo.GT_THE_DEN.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy");
+                            if (_xmlHoSo.GT_THE_TU.ToString().Length == 8)
+                            {
+                                _xmlHoSo.GT_THE_TU_DATE = DateTime.ParseExact(_xmlHoSo.GT_THE_TU.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy");
+                            }
+                            if (_xmlHoSo.GT_THE_TU.ToString().Length == 8)
+                            {
+                                _xmlHoSo.GT_THE_DEN_DATE = DateTime.ParseExact(_xmlHoSo.GT_THE_DEN.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy");
+                            }
                             switch (_xmlHoSo.MA_LYDO_VVIEN)
                             {
                                 case 1:
@@ -320,8 +326,14 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                                 default:
                                     break;
                             }
-                            _xmlHoSo.NGAY_VAO_DATE = DateTime.ParseExact(_xmlHoSo.NGAY_VAO.ToString(), "yyyyMMddHHmm", CultureInfo.InvariantCulture).ToString("HH:mm dd/MM/yyyy");
-                            _xmlHoSo.NGAY_RA_DATE = DateTime.ParseExact(_xmlHoSo.NGAY_RA.ToString(), "yyyyMMddHHmm", CultureInfo.InvariantCulture).ToString("HH:mm dd/MM/yyyy");
+                            if (_xmlHoSo.NGAY_VAO.ToString().Length == 12)
+                            {
+                                _xmlHoSo.NGAY_VAO_DATE = DateTime.ParseExact(_xmlHoSo.NGAY_VAO.ToString(), "yyyyMMddHHmm", CultureInfo.InvariantCulture).ToString("HH:mm dd/MM/yyyy");
+                            }
+                            if (_xmlHoSo.NGAY_RA.ToString().Length == 12)
+                            {
+                                _xmlHoSo.NGAY_RA_DATE = DateTime.ParseExact(_xmlHoSo.NGAY_RA.ToString(), "yyyyMMddHHmm", CultureInfo.InvariantCulture).ToString("HH:mm dd/MM/yyyy");
+                            }
                             switch (_xmlHoSo.KET_QUA_DTRI)
                             {
                                 case "1":
@@ -359,7 +371,10 @@ namespace O2S_InsuranceExpertise.GUI.FormCommon
                                 default:
                                     break;
                             }
-                            _xmlHoSo.NGAY_TTOAN_DATE = DateTime.ParseExact(_xmlHoSo.NGAY_TTOAN, "yyyyMMddHHmm", CultureInfo.InvariantCulture).ToString("HH:mm dd/MM/yyyy");
+                            if (_xmlHoSo.NGAY_TTOAN.Length == 12)
+                            {
+                                _xmlHoSo.NGAY_TTOAN_DATE = DateTime.ParseExact(_xmlHoSo.NGAY_TTOAN, "yyyyMMddHHmm", CultureInfo.InvariantCulture).ToString("HH:mm dd/MM/yyyy");
+                            }
                             switch (_xmlHoSo.MA_LOAI_KCB)
                             {
                                 case 1:

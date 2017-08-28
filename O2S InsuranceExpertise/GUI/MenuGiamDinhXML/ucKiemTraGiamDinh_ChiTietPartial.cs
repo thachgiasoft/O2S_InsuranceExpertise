@@ -13,12 +13,13 @@ using System.Windows.Forms;
 
 namespace O2S_InsuranceExpertise.GUI.MenuGiamDinhXML
 {
-    public partial class ucKiemTraGiaDinh_ChiTiet : UserControl
+    public partial class ucKiemTraGiamDinh_ChiTiet : UserControl
     {
         private HttpClient client_1 = new HttpClient();
 
         private void GoiKiemTraGiamDinh_Server()
         {
+            SplashScreenManager.ShowForm(typeof(Utilities.ThongBao.WaitForm1));
             try
             {
                 GiamDinhLoiDTO _loiHoSO = new GiamDinhLoiDTO();
@@ -38,6 +39,10 @@ namespace O2S_InsuranceExpertise.GUI.MenuGiamDinhXML
                     _lstGiamDinhLoiXML1 = _loiHoSO.lstGiamDinhLoiXML1;
                     _lstGiamDinhLoiDVKT = _loiHoSO.lstGiamDinhLoiDVKT;
                     gridControlDSLoi_TongHop.DataSource = _lstGiamDinhLoiXML1;
+
+                    //Dat lai STT va hien thi len man hinh
+                    //for (int )
+
                     gridControlDSLoi_DVKT.DataSource = _lstGiamDinhLoiDVKT;
                 }
                 else
@@ -49,7 +54,10 @@ namespace O2S_InsuranceExpertise.GUI.MenuGiamDinhXML
             catch (Exception ex)
             {
                 Common.Logging.LogSystem.Error(ex);
+                Utilities.ThongBao.frmThongBao frmthongbao = new Utilities.ThongBao.frmThongBao("Có lỗi xảy ra khi kết nối đến server!");
+                frmthongbao.Show();
             }
+            SplashScreenManager.CloseForm();
         }
 
 

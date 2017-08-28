@@ -29,7 +29,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                 }
                 result_DVKT.TEN_DVKT = _xml3Filter.TEN_DICH_VU;
 
-                if (_xml3Filter.MA_VAT_TU != null || _xml3Filter.MA_VAT_TU != "")
+                if (_xml3Filter.MA_VAT_TU != null && _xml3Filter.MA_VAT_TU != "")
                 {
                     //TieuChiGiamDinhLoi_DVKTDTO _ketqua_TC47 = TC47_VTYTKhongThanhToanRieng(_xml3Filter);
                     //if (_ketqua_TC47.TRANG_THAI == 1)
@@ -44,6 +44,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                         result_DVKT.LYDO_VIPHAM += "\n" + _ketqua_TC48.LYDO_VIPHAM;
                         result_DVKT.DIEN_GIAI += "\n" + _ketqua_TC48.DIEN_GIAI;
                         result_DVKT.LOAI_CANH_BAO += "\n" + _ketqua_TC48.LOAI_CANH_BAO;
+                        result_DVKT.SL_LOAI_CANH_BAO = 1;
                     }
                     TieuChiGiamDinhLoi_DVKTDTO _ketqua_TC51 = TC51_VTYTSaiTenVoiDMTaiBV(_xml3Filter);
                     if (_ketqua_TC51.TRANG_THAI == 1)
@@ -51,6 +52,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                         result_DVKT.LYDO_VIPHAM += "\n" + _ketqua_TC51.LYDO_VIPHAM;
                         result_DVKT.DIEN_GIAI += "\n" + _ketqua_TC51.DIEN_GIAI;
                         result_DVKT.LOAI_CANH_BAO += "\n" + _ketqua_TC51.LOAI_CANH_BAO;
+                        result_DVKT.SL_LOAI_CANH_BAO = 1;
                     }
                     if (_xml3Filter.MA_NHOM == "7")
                     {
@@ -60,6 +62,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                             result_DVKT.LYDO_VIPHAM += "\n" + _ketqua_TC58.LYDO_VIPHAM;
                             result_DVKT.DIEN_GIAI += "\n" + _ketqua_TC58.DIEN_GIAI;
                             result_DVKT.LOAI_CANH_BAO += "\n" + _ketqua_TC58.LOAI_CANH_BAO;
+                            result_DVKT.SL_LOAI_CANH_BAO = 1;
                         }
                     }
                     TieuChiGiamDinhLoi_DVKTDTO _ketqua_TC61 = TC61_VTYTSaiMaNhomVoiDMTaiBV(_xml3Filter);
@@ -68,6 +71,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                         result_DVKT.LYDO_VIPHAM += "\n" + _ketqua_TC61.LYDO_VIPHAM;
                         result_DVKT.DIEN_GIAI += "\n" + _ketqua_TC61.DIEN_GIAI;
                         result_DVKT.LOAI_CANH_BAO += "\n" + _ketqua_TC61.LOAI_CANH_BAO;
+                        result_DVKT.SL_LOAI_CANH_BAO = 1;
                     }
                     TieuChiGiamDinhLoi_DVKTDTO _ketqua_TC72 = TC72_VTYTThanhToanSaiTyLe(_xml3Filter);
                     if (_ketqua_TC72.TRANG_THAI == 1)
@@ -75,6 +79,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                         result_DVKT.LYDO_VIPHAM += "\n" + _ketqua_TC72.LYDO_VIPHAM;
                         result_DVKT.DIEN_GIAI += "\n" + _ketqua_TC72.DIEN_GIAI;
                         result_DVKT.LOAI_CANH_BAO += "\n" + _ketqua_TC72.LOAI_CANH_BAO;
+                        result_DVKT.SL_LOAI_CANH_BAO = 1;
                     }
                 }
                 else //dich vu ky thuat
@@ -87,6 +92,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                             result_DVKT.LYDO_VIPHAM += "\n" + _ketqua_TC54.LYDO_VIPHAM;
                             result_DVKT.DIEN_GIAI += "\n" + _ketqua_TC54.DIEN_GIAI;
                             result_DVKT.LOAI_CANH_BAO += "\n" + _ketqua_TC54.LOAI_CANH_BAO;
+                            result_DVKT.SL_LOAI_CANH_BAO = 1;
                         }
                     }
                     TieuChiGiamDinhLoi_DVKTDTO _ketqua_TC62 = TC62_DVKTSaiTenVoiDM(_xml3Filter);
@@ -95,6 +101,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                         result_DVKT.LYDO_VIPHAM += "\n" + _ketqua_TC62.LYDO_VIPHAM;
                         result_DVKT.DIEN_GIAI += "\n" + _ketqua_TC62.DIEN_GIAI;
                         result_DVKT.LOAI_CANH_BAO += "\n" + _ketqua_TC62.LOAI_CANH_BAO;
+                        result_DVKT.SL_LOAI_CANH_BAO = 1;
                     }
                     TieuChiGiamDinhLoi_DVKTDTO _ketqua_TC63 = TC63_DVKTKhongNamTrongBangGiaPheDuyet(_xml3Filter);
                     if (_ketqua_TC63.TRANG_THAI == 1)
@@ -102,6 +109,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                         result_DVKT.LYDO_VIPHAM += "\n" + _ketqua_TC63.LYDO_VIPHAM;
                         result_DVKT.DIEN_GIAI += "\n" + _ketqua_TC63.DIEN_GIAI;
                         result_DVKT.LOAI_CANH_BAO += "\n" + _ketqua_TC63.LOAI_CANH_BAO;
+                        result_DVKT.SL_LOAI_CANH_BAO = 1;
                     }
                     TieuChiGiamDinhLoi_DVKTDTO _ketqua_TC64 = TC64_DVKTKhongNamTrongDMThucHien(_xml3Filter);
                     if (_ketqua_TC64.TRANG_THAI == 1)
@@ -109,6 +117,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                         result_DVKT.LYDO_VIPHAM += "\n" + _ketqua_TC64.LYDO_VIPHAM;
                         result_DVKT.DIEN_GIAI += "\n" + _ketqua_TC64.DIEN_GIAI;
                         result_DVKT.LOAI_CANH_BAO += "\n" + _ketqua_TC64.LOAI_CANH_BAO;
+                        result_DVKT.SL_LOAI_CANH_BAO = 1;
                     }
                     TieuChiGiamDinhLoi_DVKTDTO _ketqua_TC65 = TC65_DVKTGiaCaohonGiaPheDuyet(_xml3Filter);
                     if (_ketqua_TC65.TRANG_THAI == 1)
@@ -116,6 +125,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                         result_DVKT.LYDO_VIPHAM += "\n" + _ketqua_TC65.LYDO_VIPHAM;
                         result_DVKT.DIEN_GIAI += "\n" + _ketqua_TC65.DIEN_GIAI;
                         result_DVKT.LOAI_CANH_BAO += "\n" + _ketqua_TC65.LOAI_CANH_BAO;
+                        result_DVKT.SL_LOAI_CANH_BAO = 1;
                     }
                     TieuChiGiamDinhLoi_DVKTDTO _ketqua_TC66 = TC66_DVKTMaKhongNamTrongDMTuongDuong(_xml3Filter);
                     if (_ketqua_TC66.TRANG_THAI == 1)
@@ -123,6 +133,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                         result_DVKT.LYDO_VIPHAM += "\n" + _ketqua_TC66.LYDO_VIPHAM;
                         result_DVKT.DIEN_GIAI += "\n" + _ketqua_TC66.DIEN_GIAI;
                         result_DVKT.LOAI_CANH_BAO += "\n" + _ketqua_TC66.LOAI_CANH_BAO;
+                        result_DVKT.SL_LOAI_CANH_BAO = 1;
                     }
                     TieuChiGiamDinhLoi_DVKTDTO _ketqua_TC67 = TC67_DVKTTenKhongNamTrongDMTT43TT50(_xml3Filter);
                     if (_ketqua_TC67.TRANG_THAI == 1)
@@ -130,6 +141,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                         result_DVKT.LYDO_VIPHAM += "\n" + _ketqua_TC67.LYDO_VIPHAM;
                         result_DVKT.DIEN_GIAI += "\n" + _ketqua_TC67.DIEN_GIAI;
                         result_DVKT.LOAI_CANH_BAO += "\n" + _ketqua_TC67.LOAI_CANH_BAO;
+                        result_DVKT.SL_LOAI_CANH_BAO = 1;
                     }
                     TieuChiGiamDinhLoi_DVKTDTO _ketqua_TC68 = TC68_DVKTSaiMaNhomVoiDMThucHien(_xml3Filter);
                     if (_ketqua_TC68.TRANG_THAI == 1)
@@ -137,6 +149,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                         result_DVKT.LYDO_VIPHAM += "\n" + _ketqua_TC68.LYDO_VIPHAM;
                         result_DVKT.DIEN_GIAI += "\n" + _ketqua_TC68.DIEN_GIAI;
                         result_DVKT.LOAI_CANH_BAO += "\n" + _ketqua_TC68.LOAI_CANH_BAO;
+                        result_DVKT.SL_LOAI_CANH_BAO = 1;
                     }
 
 
@@ -301,7 +314,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
             return result;
         }
 
-        //TC72 - Sử dụng VTYT toán sai tỷ lệ
+        //TC72 - VTYT sai tỷ lệ thanh toán
         private TieuChiGiamDinhLoi_DVKTDTO TC72_VTYTThanhToanSaiTyLe(XML3PlusDTO _xml3Filter)
         {
             TieuChiGiamDinhLoi_DVKTDTO result = new TieuChiGiamDinhLoi_DVKTDTO();
@@ -318,7 +331,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                         }
                     }
                     result.TRANG_THAI = 1;
-                    result.LYDO_VIPHAM = "- Sử dụng VTYT toán sai tỷ lệ";
+                    result.LYDO_VIPHAM = "- VTYT sai tỷ lệ thanh toán";
                     result.LOAI_CANH_BAO = DanhSachThongBao.CANH_BAO;
                     //result.DIEN_GIAI = "";
                 }
@@ -438,13 +451,29 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
             TieuChiGiamDinhLoi_DVKTDTO result = new TieuChiGiamDinhLoi_DVKTDTO();
             try
             {
-                var _dvktTimKiem = GlobalStore.lstBenhVienPheDuyet_DVKT.Where(o => o.MANHOM_9324.ToString() == _xml3Filter.MA_NHOM && o.MA_DVKT == _xml3Filter.MA_DICH_VU && o.TEN_DVKT.ToUpper().Trim() == _xml3Filter.TEN_DICH_VU.ToUpper().Trim() && o.DON_GIA == _xml3Filter.DON_GIA).ToList();
-                if (_dvktTimKiem == null || _dvktTimKiem.Count <= 0)
+                if (_xml3Filter.MA_NHOM == "14" || _xml3Filter.MA_NHOM == "15") // ngay giuong
                 {
-                    result.TRANG_THAI = 1;
-                    result.LYDO_VIPHAM = "- DVKT không nằm trong bảng giá được phê duyệt";
-                    result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
-                   // result.DIEN_GIAI = "";
+                    var _dvktTimKiem = GlobalStore.lstBenhVienPheDuyet_Giuong.Where(o => o.MA_DVKT == _xml3Filter.MA_DICH_VU && o.DON_GIA == _xml3Filter.DON_GIA).ToList();
+
+                    if (_dvktTimKiem == null || _dvktTimKiem.Count <= 0)
+                    {
+                        result.TRANG_THAI = 1;
+                        result.LYDO_VIPHAM = "- DV giường không nằm trong bảng giá được phê duyệt";
+                        result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
+                        // result.DIEN_GIAI = "";
+                    }
+                }
+                else
+                {
+                    var _dvktTimKiem = GlobalStore.lstBenhVienPheDuyet_DVKT.Where(o => o.MA_DVKT == _xml3Filter.MA_DICH_VU && o.TEN_DVKT.ToUpper().Trim() == _xml3Filter.TEN_DICH_VU.ToUpper().Trim() && o.DON_GIA == _xml3Filter.DON_GIA).ToList();
+
+                    if (_dvktTimKiem == null || _dvktTimKiem.Count <= 0)
+                    {
+                        result.TRANG_THAI = 1;
+                        result.LYDO_VIPHAM = "- DVKT không nằm trong bảng giá được phê duyệt";
+                        result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
+                        // result.DIEN_GIAI = "";
+                    }
                 }
             }
             catch (Exception ex)
@@ -460,13 +489,27 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
             TieuChiGiamDinhLoi_DVKTDTO result = new TieuChiGiamDinhLoi_DVKTDTO();
             try
             {
-                var _dvktTimKiem = GlobalStore.lstBenhVienPheDuyet_DVKT.Where(o => o.MA_DVKT == _xml3Filter.MA_DICH_VU && o.TEN_DVKT.ToUpper().Trim() == _xml3Filter.TEN_DICH_VU.ToUpper().Trim()).ToList();
-                if (_dvktTimKiem == null || _dvktTimKiem.Count <= 0)
+                if (_xml3Filter.MA_NHOM == "14" || _xml3Filter.MA_NHOM == "15") // ngay giuong
                 {
-                    result.TRANG_THAI = 1;
-                    result.LYDO_VIPHAM = "- DVKT không nằm trong danh mục được thực hiện";
-                    result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
-                    //result.DIEN_GIAI = "";
+                    var _dvktTimKiem = GlobalStore.lstBenhVienPheDuyet_Giuong.Where(o => o.MA_DVKT == _xml3Filter.MA_DICH_VU).ToList();
+                    if (_dvktTimKiem == null || _dvktTimKiem.Count <= 0)
+                    {
+                        result.TRANG_THAI = 1;
+                        result.LYDO_VIPHAM = "- DV giường không nằm trong danh mục được thực hiện";
+                        result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
+                        //result.DIEN_GIAI = "";
+                    }
+                }
+                else
+                {
+                    var _dvktTimKiem = GlobalStore.lstBenhVienPheDuyet_DVKT.Where(o => o.MA_DVKT == _xml3Filter.MA_DICH_VU && o.TEN_DVKT.ToUpper().Trim() == _xml3Filter.TEN_DICH_VU.ToUpper().Trim()).ToList();
+                    if (_dvktTimKiem == null || _dvktTimKiem.Count <= 0)
+                    {
+                        result.TRANG_THAI = 1;
+                        result.LYDO_VIPHAM = "- DVKT không nằm trong danh mục được thực hiện";
+                        result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
+                        //result.DIEN_GIAI = "";
+                    }
                 }
             }
             catch (Exception ex)
@@ -482,13 +525,27 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
             TieuChiGiamDinhLoi_DVKTDTO result = new TieuChiGiamDinhLoi_DVKTDTO();
             try
             {
-                var _dvktTimKiem = GlobalStore.lstBenhVienPheDuyet_DVKT.Where(o => o.MANHOM_9324.ToString() == _xml3Filter.MA_NHOM && o.MA_DVKT == _xml3Filter.MA_DICH_VU && o.TEN_DVKT.ToUpper().Trim() == _xml3Filter.TEN_DICH_VU.ToUpper().Trim()).ToList().OrderByDescending(d => d.DON_GIA).FirstOrDefault();
-                if (_dvktTimKiem != null && _dvktTimKiem.DON_GIA < _xml3Filter.DON_GIA)
+                if (_xml3Filter.MA_NHOM == "14" || _xml3Filter.MA_NHOM == "15") // ngay giuong
                 {
-                    result.TRANG_THAI = 1;
-                    result.LYDO_VIPHAM = "- DVKT giá cao hơn giá được phê duyệt";
-                    result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
-                    result.DIEN_GIAI = "- Giá DVKT được phê duyệt lớn nhất là: " + _dvktTimKiem.DON_GIA;
+                    var _dvktTimKiem = GlobalStore.lstBenhVienPheDuyet_Giuong.Where(o => o.MA_DVKT == _xml3Filter.MA_DICH_VU).ToList().OrderByDescending(d => d.DON_GIA).FirstOrDefault();
+                    if (_dvktTimKiem != null && _dvktTimKiem.DON_GIA < _xml3Filter.DON_GIA)
+                    {
+                        result.TRANG_THAI = 1;
+                        result.LYDO_VIPHAM = "- DV giường giá cao hơn giá được phê duyệt";
+                        result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
+                        result.DIEN_GIAI = "- Giá DV giường được phê duyệt lớn nhất là: " + _dvktTimKiem.DON_GIA;
+                    }
+                }
+                else
+                {
+                    var _dvktTimKiem = GlobalStore.lstBenhVienPheDuyet_DVKT.Where(o => o.MA_DVKT == _xml3Filter.MA_DICH_VU && o.TEN_DVKT.ToUpper().Trim() == _xml3Filter.TEN_DICH_VU.ToUpper().Trim()).ToList().OrderByDescending(d => d.DON_GIA).FirstOrDefault();
+                    if (_dvktTimKiem != null && _dvktTimKiem.DON_GIA < _xml3Filter.DON_GIA)
+                    {
+                        result.TRANG_THAI = 1;
+                        result.LYDO_VIPHAM = "- DVKT giá cao hơn giá được phê duyệt";
+                        result.LOAI_CANH_BAO = DanhSachThongBao.XUAT_TOAN;
+                        result.DIEN_GIAI = "- Giá DVKT được phê duyệt lớn nhất là: " + _dvktTimKiem.DON_GIA;
+                    }
                 }
             }
             catch (Exception ex)
@@ -504,13 +561,27 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
             TieuChiGiamDinhLoi_DVKTDTO result = new TieuChiGiamDinhLoi_DVKTDTO();
             try
             {
-                var _dvktTimKiem = GlobalStore.lstBenhVienPheDuyet_DVKT.Where(o => o.MANHOM_9324.ToString() == _xml3Filter.MA_NHOM && (o.MA_DVKT == _xml3Filter.MA_DICH_VU || o.MA_AX == _xml3Filter.MA_DICH_VU)).ToList();
-                if (_dvktTimKiem == null || _dvktTimKiem.Count <= 0)
+                if (_xml3Filter.MA_NHOM == "14" || _xml3Filter.MA_NHOM == "15") // ngay giuong
                 {
-                    result.TRANG_THAI = 1;
-                    result.LYDO_VIPHAM = "- DVKT có mã không nằm trong danh mục tương đương";
-                    result.LOAI_CANH_BAO = DanhSachThongBao.CANH_BAO;
-                    //result.DIEN_GIAI = "";
+                    var _dvktTimKiem = GlobalStore.lstBenhVienPheDuyet_Giuong.Where(o => (o.MA_DVKT == _xml3Filter.MA_DICH_VU || o.MA_DVKT == _xml3Filter.MA_DICH_VU)).ToList();
+                    if (_dvktTimKiem == null || _dvktTimKiem.Count <= 0)
+                    {
+                        result.TRANG_THAI = 1;
+                        result.LYDO_VIPHAM = "- DV giường có mã không nằm trong danh mục tương đương";
+                        result.LOAI_CANH_BAO = DanhSachThongBao.CANH_BAO;
+                        //result.DIEN_GIAI = "";
+                    }
+                }
+                else
+                {
+                    var _dvktTimKiem = GlobalStore.lstBenhVienPheDuyet_DVKT.Where(o => (o.MA_DVKT == _xml3Filter.MA_DICH_VU || o.MA_DVKT == _xml3Filter.MA_DICH_VU)).ToList();
+                    if (_dvktTimKiem == null || _dvktTimKiem.Count <= 0)
+                    {
+                        result.TRANG_THAI = 1;
+                        result.LYDO_VIPHAM = "- DVKT có mã không nằm trong danh mục tương đương";
+                        result.LOAI_CANH_BAO = DanhSachThongBao.CANH_BAO;
+                        //result.DIEN_GIAI = "";
+                    }
                 }
             }
             catch (Exception ex)
@@ -526,7 +597,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
             TieuChiGiamDinhLoi_DVKTDTO result = new TieuChiGiamDinhLoi_DVKTDTO();
             try
             {
-                var _dvktTimKiem = GlobalStore.lstBenhVienPheDuyet_DVKT.Where(o => o.MANHOM_9324.ToString() == _xml3Filter.MA_NHOM && o.TEN_AX.ToUpper().Trim() == _xml3Filter.TEN_DICH_VU.ToUpper().Trim()).ToList();
+                var _dvktTimKiem = GlobalStore.lstBenhVienPheDuyet_DVKTGiuong.Where(o => o.TEN_DVKT.ToUpper().Trim() == _xml3Filter.TEN_DICH_VU.ToUpper().Trim()).ToList();
                 if (_dvktTimKiem == null || _dvktTimKiem.Count <= 0)
                 {
                     result.TRANG_THAI = 1;
@@ -548,7 +619,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
             TieuChiGiamDinhLoi_DVKTDTO result = new TieuChiGiamDinhLoi_DVKTDTO();
             try
             {
-                var _dvktTimKiem = GlobalStore.lstBenhVienPheDuyet_DVKT.Where(o => o.MA_DVKT == _xml3Filter.MA_DICH_VU && o.TEN_DVKT.ToUpper().Trim() == _xml3Filter.TEN_DICH_VU.ToUpper().Trim()).ToList();
+                var _dvktTimKiem = GlobalStore.lstBenhVienPheDuyet_DVKTGiuong.Where(o => o.MA_DVKT == _xml3Filter.MA_DICH_VU && o.TEN_DVKT.ToUpper().Trim() == _xml3Filter.TEN_DICH_VU.ToUpper().Trim()).ToList();
                 if (_dvktTimKiem != null && _dvktTimKiem.Count > 0)
                 {
                     foreach (var item in _dvktTimKiem)
@@ -570,23 +641,6 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
             }
             return result;
         }
-
-        /*
-        //TC75 - Hồ sơ nội trú thanh toán trên 1 lần tiền khám
-        private TieuChiGiamDinhLoi_DVKTDTO TC75_ThanhToanTren1LanTienKham(string _MA_LOAI_KCB, string _SO_LUONG_KHAMBENH)
-        {
-            TieuChiGiamDinhLoi_DVKTDTO result = new TieuChiGiamDinhLoi_DVKTDTO();
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                Common.Logging.LogSystem.Error(ex);
-            }
-            return result;
-        }
-        */
 
         //TC75 - Hồ sơ nội trú thanh toán trên 1 lần tiền khám
         //TC76 - Khám bệnh đề nghị tiền khám trên 1 chuyên khoa sai quy định

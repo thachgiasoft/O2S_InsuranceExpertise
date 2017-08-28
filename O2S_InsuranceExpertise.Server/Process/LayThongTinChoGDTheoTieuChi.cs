@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -273,6 +274,37 @@ namespace O2S_InsuranceExpertise.Server.Process
                 Common.Logging.LogSystem.Error(ex);
             }
         }
+
+        internal static void GopDanhMucDVKTVaGiuong()
+        {
+            try
+            {
+                if (GlobalStore.lstBenhVienPheDuyet_DVKTGiuong == null || GlobalStore.lstBenhVienPheDuyet_DVKTGiuong.Count <= 0)
+                {
+                    GlobalStore.lstBenhVienPheDuyet_DVKTGiuong = new List<Model.Models.DanhMucDichVu_DVKTDTO>();
+                    if (GlobalStore.lstBenhVienPheDuyet_DVKT != null && GlobalStore.lstBenhVienPheDuyet_DVKT.Count>0)
+                    {
+                        GlobalStore.lstBenhVienPheDuyet_DVKTGiuong.AddRange(GlobalStore.lstBenhVienPheDuyet_DVKT);
+                    }
+
+                    if (GlobalStore.lstBenhVienPheDuyet_Giuong != null && GlobalStore.lstBenhVienPheDuyet_Giuong.Count > 0)
+                    {
+                        foreach (var item_giuong in GlobalStore.lstBenhVienPheDuyet_Giuong)
+                        {
+                            Mapper.Initialize(cfg => cfg.CreateMap<Model.Models.DanhMucDichVu_GiuongDTO, Model.Models.DanhMucDichVu_DVKTDTO>());
+                            Model.Models.DanhMucDichVu_DVKTDTO _giuongDTO = AutoMapper.Mapper.Map<Model.Models.DanhMucDichVu_GiuongDTO, Model.Models.DanhMucDichVu_DVKTDTO>(item_giuong);
+                            GlobalStore.lstBenhVienPheDuyet_DVKTGiuong.Add(_giuongDTO);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Error(ex);
+            }
+        }
+
+
 
 
     }

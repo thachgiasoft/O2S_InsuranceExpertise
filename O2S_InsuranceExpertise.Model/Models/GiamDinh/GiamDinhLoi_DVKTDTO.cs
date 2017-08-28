@@ -41,7 +41,7 @@ namespace O2S_InsuranceExpertise.Model.Models
         public string DUONG_DUNG { get; set; }
         public string LIEU_DUNG { get; set; }
         public string SO_DANG_KY { get; set; }
-
+        public int SL_LOAI_CANH_BAO { get; set; }
 
     }
 }

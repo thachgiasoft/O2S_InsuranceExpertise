@@ -43,7 +43,8 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                 _checkTTFilter.ngayBD = _XMLHoSo_KiemTra.GT_THE_TU_DATE;//DD/MM/YYYY
                 _checkTTFilter.ngayKT = _XMLHoSo_KiemTra.GT_THE_DEN_DATE;
                 _checkTTFilter.maCSKCB = _XMLHoSo_KiemTra.MA_DKBD;
-                TieuChiGiamDinhLoi_XML1DTO _ketquaThongtuyen = process_xml1.TCGop8_KiemTraThongTuyen(_checkTTFilter);
+                TieuChiGiamDinhLoi_XML1DTO _ketquaThongtuyen = new TieuChiGiamDinhLoi_XML1DTO();
+                _ketquaThongtuyen = process_xml1.TCGop8_KiemTraThongTuyen(_checkTTFilter);
 
                 foreach (var item_loixml1 in lstLoi_XML1)
                 {

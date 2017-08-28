@@ -10,24 +10,32 @@ using System.Windows.Forms;
 using O2S_InsuranceExpertise.Model.Models.Xml_917.XMLDTO;
 using O2S_InsuranceExpertise.Model.Models;
 using DevExpress.XtraGrid.Views.Grid;
+using O2S_InsuranceExpertise.Utilities.GridView;
 
 namespace O2S_InsuranceExpertise.GUI.MenuGiamDinhXML
 {
-    public partial class ucKiemTraGiaDinh_ChiTiet : UserControl
+    public partial class ucKiemTraGiamDinh_ChiTiet : UserControl
     {
         #region Khai bao
         private XML_HOSODTO XMLHoSo_KiemTra { get; set; }
 
 
         #endregion
-        public ucKiemTraGiaDinh_ChiTiet()
+        public ucKiemTraGiamDinh_ChiTiet()
         {
             InitializeComponent();
         }
-        public ucKiemTraGiaDinh_ChiTiet(XML_HOSODTO _XMLHoSo_KiemTra)
+        public ucKiemTraGiamDinh_ChiTiet(XML_HOSODTO _XMLHoSo_KiemTra)
         {
-            InitializeComponent();
-            this.XMLHoSo_KiemTra = _XMLHoSo_KiemTra;
+            try
+            {
+                InitializeComponent();
+                this.XMLHoSo_KiemTra = _XMLHoSo_KiemTra;
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Error(ex);
+            }
         }
 
         #region Load
@@ -35,10 +43,29 @@ namespace O2S_InsuranceExpertise.GUI.MenuGiamDinhXML
         {
             try
             {
+                HienThiThongTinBenhNhan();
                 //Giam dinh XML1
                 GoiKiemTraGiamDinh_Server();
                 //gridViewDSLoi_DVKT.Columns["TEN_NHOM"].SortOrder = DevExpress.Data.ColumnSortOrder.None;
                 //gridViewDSLoi_DVKT.Columns["MA_NHOM"].SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Error(ex);
+            }
+        }
+        private void HienThiThongTinBenhNhan()
+        {
+            try
+            {
+                if (this.XMLHoSo_KiemTra != null)
+                {
+                    lblMaBN.Text = this.XMLHoSo_KiemTra.MA_BN;
+                    lblTenBN.Text = this.XMLHoSo_KiemTra.HO_TEN;
+                    lblTongChiPhi.Text = Common.Number.NumberConvert.NumberToString(this.XMLHoSo_KiemTra.T_TONGCHI ?? 0, 2);
+                    lblBHYTThanhToan.Text = Common.Number.NumberConvert.NumberToString(this.XMLHoSo_KiemTra.T_BHTT ?? 0, 2);
+                    lblBNThanhToan.Text = Common.Number.NumberConvert.NumberToString(this.XMLHoSo_KiemTra.T_BNTT ?? 0, 2);
+                }
             }
             catch (Exception ex)
             {
@@ -101,6 +128,25 @@ namespace O2S_InsuranceExpertise.GUI.MenuGiamDinhXML
                     {
                         e.Appearance.ForeColor = Color.Black;
                     }
+                }
+            }
+            catch (Exception ex)
+            {
+                Common.Logging.LogSystem.Warn(ex);
+            }
+        }
+        //Danh stt Group row gridview
+        private void gridViewDSLoi_DVKT_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            try
+            {
+                GridView view = sender as GridView;
+                if (e.Column.FieldName != "STT")
+                    return;
+                if (view.GroupedColumns.Count != 0 && !e.IsForGroupRow)
+                {
+                    int rowHandle = view.GetRowHandle(e.ListSourceRowIndex);
+                    e.DisplayText = (view.GetRowGroupIndexByRowHandle(rowHandle) + 1).ToString();
                 }
             }
             catch (Exception ex)

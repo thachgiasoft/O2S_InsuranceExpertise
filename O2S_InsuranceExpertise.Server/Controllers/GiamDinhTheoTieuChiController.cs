@@ -26,7 +26,7 @@ namespace O2S_InsuranceExpertise.Server.Controllers
                 LayThongTinChoGDTheoTieuChi.LayDanhSachThuocPheDuyet();
                 LayThongTinChoGDTheoTieuChi.LayDanhSachVatTuPheDuyet();
                 LayThongTinChoGDTheoTieuChi.LayDanhSachGiuongPheDuyet();
-
+                LayThongTinChoGDTheoTieuChi.GopDanhMucDVKTVaGiuong();
 
                 TieuChiProcess _process = new TieuChiProcess();
                 GiamDinhLoiDTO _loiHoSO = _process.TieuChiProcess_HSBA(_XMLHoSo_KiemTra);

@@ -19,6 +19,7 @@ namespace O2S_InsuranceExpertise.Server
         public static List<Model.Models.DanhMucDichVu_ThuocDTO> lstBenhVienPheDuyet_Thuoc { get; set; }
         public static List<Model.Models.DanhMucDichVu_VatTuDTO> lstBenhVienPheDuyet_VatTu { get; set; }
         public static List<Model.Models.DanhMucDichVu_GiuongDTO> lstBenhVienPheDuyet_Giuong { get; set; }
+        public static List<Model.Models.DanhMucDichVu_DVKTDTO> lstBenhVienPheDuyet_DVKTGiuong { get; set; }
 
         //Chia 15 nhom tai bang 6: danh muc nhom theo chi phi
         //public static List<Model.Models.DanhMucDichVu_ThuocDTO> lstThuocBenhVienPheDuyet_Nhom4 { get; set; }

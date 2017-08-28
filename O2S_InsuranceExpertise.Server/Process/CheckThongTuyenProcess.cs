@@ -280,6 +280,7 @@ namespace O2S_InsuranceExpertise.Server.Process
                 {
                     string ketqua = string.Format("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase); //Get 401 error here.
                     lsKhamChuaBenh.maLoi_CongGDBHYT = response.StatusCode.ToString();
+                    lsKhamChuaBenh.tenLoi_CongGDBHYT = "Có lỗi xảy ra khi gọi services tại Cổng giám định BHYT.";
                 }
                 result = lsKhamChuaBenh;
             }
@@ -288,6 +289,7 @@ namespace O2S_InsuranceExpertise.Server.Process
                 Common.Logging.LogSystem.Error("Loi khi goi API len cong check the " + ex.ToString());
                 Common.Logging.LogSystem.Info("DTO gui len cong de check the " + form_data);
                 result.maLoi_CongGDBHYT = "500";
+                result.tenLoi_CongGDBHYT = "Không thể kết nối đến Cổng giám định BHYT.";
             }
             return result;
         }

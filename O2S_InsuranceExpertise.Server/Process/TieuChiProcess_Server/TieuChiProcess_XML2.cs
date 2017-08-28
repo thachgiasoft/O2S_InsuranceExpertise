@@ -28,6 +28,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                     result_LoiThuoc.LYDO_VIPHAM += _ketqua_TC43.LYDO_VIPHAM;
                     result_LoiThuoc.DIEN_GIAI += _ketqua_TC43.DIEN_GIAI;
                     result_LoiThuoc.LOAI_CANH_BAO += _ketqua_TC43.LOAI_CANH_BAO;
+                    result_LoiThuoc.SL_LOAI_CANH_BAO = 1;
                 }
                 TieuChiGiamDinhLoi_DVKTDTO _ketqua_TC44 = TC44_GiaThuocTTLonHonGiaPheDuyet(_xml2Filter);
                 if (_ketqua_TC44.TRANG_THAI == 1)
@@ -35,6 +36,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                     result_LoiThuoc.LYDO_VIPHAM += "\n" + _ketqua_TC44.LYDO_VIPHAM;
                     result_LoiThuoc.DIEN_GIAI += "\n" + _ketqua_TC44.DIEN_GIAI;
                     result_LoiThuoc.LOAI_CANH_BAO += "\n" + _ketqua_TC44.LOAI_CANH_BAO;
+                    result_LoiThuoc.SL_LOAI_CANH_BAO = 1;
                 }
                 TieuChiGiamDinhLoi_DVKTDTO _ketqua_TC45 = TC45_ThuocNgoaDMTT40TT05(_xml2Filter);
                 if (_ketqua_TC45.TRANG_THAI == 1)
@@ -42,6 +44,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                     result_LoiThuoc.LYDO_VIPHAM += "\n" + _ketqua_TC45.LYDO_VIPHAM;
                     result_LoiThuoc.DIEN_GIAI += "\n" + _ketqua_TC45.DIEN_GIAI;
                     result_LoiThuoc.LOAI_CANH_BAO += "\n" + _ketqua_TC45.LOAI_CANH_BAO;
+                    result_LoiThuoc.SL_LOAI_CANH_BAO = 1;
                 }
                 TieuChiGiamDinhLoi_DVKTDTO _ketqua_TC46 = TC46_ThuocNgoaiDMSDTaiBV(_xml2Filter);
                 if (_ketqua_TC46.TRANG_THAI == 1)
@@ -49,6 +52,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                     result_LoiThuoc.LYDO_VIPHAM += "\n" + _ketqua_TC46.LYDO_VIPHAM;
                     result_LoiThuoc.DIEN_GIAI += "\n" + _ketqua_TC46.DIEN_GIAI;
                     result_LoiThuoc.LOAI_CANH_BAO += "\n" + _ketqua_TC46.LOAI_CANH_BAO;
+                    result_LoiThuoc.SL_LOAI_CANH_BAO = 1;
                 }
                 TieuChiGiamDinhLoi_DVKTDTO _ketqua_TC49 = TC49_ThuocSaiTenVoiDMTaiBV(_xml2Filter);
                 if (_ketqua_TC49.TRANG_THAI == 1)
@@ -56,6 +60,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                     result_LoiThuoc.LYDO_VIPHAM += "\n" + _ketqua_TC49.LYDO_VIPHAM;
                     result_LoiThuoc.DIEN_GIAI += "\n" + _ketqua_TC49.DIEN_GIAI;
                     result_LoiThuoc.LOAI_CANH_BAO += "\n" + _ketqua_TC49.LOAI_CANH_BAO;
+                    result_LoiThuoc.SL_LOAI_CANH_BAO = 1;
                 }
                 TieuChiGiamDinhLoi_DVKTDTO _ketqua_TC50 = TC50_ThuocSaiDuongDungVoiDMTaiBV(_xml2Filter);
                 if (_ketqua_TC50.TRANG_THAI == 1)
@@ -63,6 +68,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                     result_LoiThuoc.LYDO_VIPHAM += "\n" + _ketqua_TC50.LYDO_VIPHAM;
                     result_LoiThuoc.DIEN_GIAI += "\n" + _ketqua_TC50.DIEN_GIAI;
                     result_LoiThuoc.LOAI_CANH_BAO += "\n" + _ketqua_TC50.LOAI_CANH_BAO;
+                    result_LoiThuoc.SL_LOAI_CANH_BAO = 1;
                 }
                 TieuChiGiamDinhLoi_DVKTDTO _ketqua_TC52 = TC52_ThuocSaiHamLuongVoiDMTaiBV(_xml2Filter);
                 if (_ketqua_TC52.TRANG_THAI == 1)
@@ -70,6 +76,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                     result_LoiThuoc.LYDO_VIPHAM += "\n" + _ketqua_TC52.LYDO_VIPHAM;
                     result_LoiThuoc.DIEN_GIAI += "\n" + _ketqua_TC52.DIEN_GIAI;
                     result_LoiThuoc.LOAI_CANH_BAO += "\n" + _ketqua_TC52.LOAI_CANH_BAO;
+                    result_LoiThuoc.SL_LOAI_CANH_BAO = 1;
                 }
                 TieuChiGiamDinhLoi_DVKTDTO _ketqua_TC53 = TC53_MauSaiMaVoiTT05(_xml2Filter);
                 if (_ketqua_TC53.TRANG_THAI == 1)
@@ -77,6 +84,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                     result_LoiThuoc.LYDO_VIPHAM += "\n" + _ketqua_TC53.LYDO_VIPHAM;
                     result_LoiThuoc.DIEN_GIAI += "\n" + _ketqua_TC53.DIEN_GIAI;
                     result_LoiThuoc.LOAI_CANH_BAO += "\n" + _ketqua_TC53.LOAI_CANH_BAO;
+                    result_LoiThuoc.SL_LOAI_CANH_BAO = 1;
                 }
                 TieuChiGiamDinhLoi_DVKTDTO _ketqua_TC55 = TC55_MauVuotQuaGiaToiDa(_xml2Filter);
                 if (_ketqua_TC55.TRANG_THAI == 1)
@@ -84,6 +92,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                     result_LoiThuoc.LYDO_VIPHAM += "\n" + _ketqua_TC55.LYDO_VIPHAM;
                     result_LoiThuoc.DIEN_GIAI += "\n" + _ketqua_TC55.DIEN_GIAI;
                     result_LoiThuoc.LOAI_CANH_BAO += "\n" + _ketqua_TC55.LOAI_CANH_BAO;
+                    result_LoiThuoc.SL_LOAI_CANH_BAO = 1;
                 }
                 TieuChiGiamDinhLoi_DVKTDTO _ketqua_TC60 = TC60_ThuocSaiMaNhomVoiDMTaiBV(_xml2Filter);
                 if (_ketqua_TC60.TRANG_THAI == 1)
@@ -91,6 +100,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                     result_LoiThuoc.LYDO_VIPHAM += "\n" + _ketqua_TC60.LYDO_VIPHAM;
                     result_LoiThuoc.DIEN_GIAI += "\n" + _ketqua_TC60.DIEN_GIAI;
                     result_LoiThuoc.LOAI_CANH_BAO += "\n" + _ketqua_TC60.LOAI_CANH_BAO;
+                    result_LoiThuoc.SL_LOAI_CANH_BAO = 1;
                 }
                 TieuChiGiamDinhLoi_DVKTDTO _ketqua_TC71 = TC71_ThuocThanhToanSaiTyLe(_xml2Filter);
                 if (_ketqua_TC71.TRANG_THAI == 1)
@@ -98,6 +108,7 @@ namespace O2S_InsuranceExpertise.Server.Process.TieuChiProcess_Server
                     result_LoiThuoc.LYDO_VIPHAM += "\n" + _ketqua_TC71.LYDO_VIPHAM;
                     result_LoiThuoc.DIEN_GIAI += "\n" + _ketqua_TC71.DIEN_GIAI;
                     result_LoiThuoc.LOAI_CANH_BAO += "\n" + _ketqua_TC71.LOAI_CANH_BAO;
+                    result_LoiThuoc.SL_LOAI_CANH_BAO = 1;
                 }
 
                 //--khong thay doi

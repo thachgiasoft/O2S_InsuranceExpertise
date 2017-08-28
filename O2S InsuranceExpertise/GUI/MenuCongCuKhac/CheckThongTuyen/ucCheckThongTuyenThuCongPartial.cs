@@ -150,8 +150,16 @@ namespace O2S_InsuranceExpertise.GUI.MenuCongCuKhac
 
                     GoiServerYeuCauCheckThongTuyenProcess yeucaucheck = new GoiServerYeuCauCheckThongTuyenProcess();
                     lstKetQuaCheckThongTuyen = yeucaucheck.YeuCauCheckThongTuyen_List(lstFilter_thebhyt);
-
-                    gridControlDSDotDieuTri.DataSource = lstKetQuaCheckThongTuyen;
+                    var _kiemTraLoi = lstKetQuaCheckThongTuyen.Where(o => o.maLoi_CongGDBHYT == "500").ToList();
+                    if (_kiemTraLoi != null && _kiemTraLoi.Count > 0)
+                    {
+                        Utilities.ThongBao.frmThongBao frmthongbao = new Utilities.ThongBao.frmThongBao(lstKetQuaCheckThongTuyen[0].tenLoi_CongGDBHYT);
+                        frmthongbao.Show();
+                    }
+                    else
+                    {
+                        gridControlDSDotDieuTri.DataSource = lstKetQuaCheckThongTuyen;
+                    }
                 }
             }
             catch (Exception ex)
@@ -211,7 +219,16 @@ namespace O2S_InsuranceExpertise.GUI.MenuCongCuKhac
                     }
                     GoiServerYeuCauCheckThongTuyenProcess yeucaucheck = new GoiServerYeuCauCheckThongTuyenProcess();
                     lstKetQuaCheckThongTuyen = yeucaucheck.YeuCauCheckThongTuyen_List(lstFilter_thebhyt);
-                    gridControlDSDotDieuTri.DataSource = lstKetQuaCheckThongTuyen;
+                    var _kiemTraLoi = lstKetQuaCheckThongTuyen.Where(o => o.maLoi_CongGDBHYT == "500").ToList();
+                    if (_kiemTraLoi != null && _kiemTraLoi.Count > 0)
+                    {
+                        Utilities.ThongBao.frmThongBao frmthongbao = new Utilities.ThongBao.frmThongBao(lstKetQuaCheckThongTuyen[0].tenLoi_CongGDBHYT);
+                        frmthongbao.Show();
+                    }
+                    else
+                    {
+                        gridControlDSDotDieuTri.DataSource = lstKetQuaCheckThongTuyen;
+                    }
                 }
             }
             catch (Exception ex)

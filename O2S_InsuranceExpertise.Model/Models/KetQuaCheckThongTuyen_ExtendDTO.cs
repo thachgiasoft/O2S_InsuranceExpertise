@@ -11,6 +11,7 @@ namespace O2S_InsuranceExpertise.Model.Models
         public string maKetQua { get; set; }
         public string tenKetQua { get; set; }
         public string maLoi_CongGDBHYT { get; set; }
+        public string tenLoi_CongGDBHYT { get; set; }
         public List<LichSuKCBDTO> dsLichSuKCB { get; set; }
     }
 
